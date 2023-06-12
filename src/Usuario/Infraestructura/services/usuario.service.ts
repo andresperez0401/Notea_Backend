@@ -21,6 +21,10 @@ export class UsuarioService {
     return this.usuarioRepo.save(newUsuario);
   }
   //Buscar usuarios
+
+  async getAllUsuarios() : Promise<Iterable<Usuario>>{
+    return await this.usuarioRepository.buscarUsuarios();
+  }
   //Buscar un usuario
   //Actualizar un usuario
   //Eliminar un usuario

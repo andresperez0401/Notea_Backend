@@ -13,4 +13,8 @@ export class UsuarioRepositoryImpl { //implements UsuarioRepository { por alguna
   async crearUsuario(usuario: Usuario): Promise<Usuario> {
     return await this.usuarioRepo.save(usuario);
   }
+
+  async buscarUsuarios(): Promise<Iterable<Usuario>> {
+    return await this.usuarioRepo.find();
+  }
 }

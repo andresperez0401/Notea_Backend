@@ -29,4 +29,10 @@ export class UsuarioController {
   createUsuario(@Body() payload: CreateUsuarioDto) {
     return this.usuarioService.createUsuario(payload);
   }
+
+  //buscar todos los usuarios
+  @Get()
+  findAll(): Promise<Iterable<Usuario>>{
+    return this.usuarioService.getAllUsuarios();
+  }
 }
