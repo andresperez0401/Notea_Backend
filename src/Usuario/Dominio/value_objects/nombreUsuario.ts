@@ -1,4 +1,4 @@
-import { ValueObject } from 'src/core/domain/ValueObject';
+import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 
 export class nombreUsuario implements ValueObject<string> {
   private readonly name: string;
