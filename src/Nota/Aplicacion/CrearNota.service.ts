@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { IAplicationService } from 'src/@Core/aplicacion/IAplicationService';
 import { CrearNotaDto } from '../Infraestructura/dto/CrearNota.dto';
 import { Either } from 'src/Utils/Either';
@@ -13,7 +13,9 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
 
   private readonly repositorioNota: RepositorioNota;
 
-  constructor(repositorioNota: RepositorioNotaImp) {
+  constructor(
+    @Inject(RepositorioNotaImp) 
+    repositorioNota: RepositorioNota) {
     this.repositorioNota = repositorioNota;
   }
   
