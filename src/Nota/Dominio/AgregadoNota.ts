@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { error } from "console";
 import { EstadoEnum } from "./ValueObjects/EstadoEnum";
 import { IdNota } from "./ValueObjects/IdNota";
 import { VOContenidoNota } from "./ValueObjects/VOContenidoNota";
@@ -23,13 +24,20 @@ export class Nota{
     }
 
     //Los constructores estaticos son una alternativa a los Factories
-    static crearNota(titulo: string, contenido: string, fechaCreacion: Date, estado: string, latitud: number, longitud: number): Nota{
-        return new Nota(
-            new VOTituloNota(titulo), 
-            new VOContenidoNota(contenido), 
-            fechaCreacion, 
-            EstadoEnum[estado], 
-            new VOubicacionNota(latitud, longitud));
+    static crearNota(titulo: string, contenido: string, fechaCreacion: Date, estado: EstadoEnum, latitud: number, longitud: number): Nota{
+        
+        
+        if (Object.values(EstadoEnum).includes(estado)) { //validacion???
+            return new Nota(
+                VOTituloNota.crearTituloNota(titulo), 
+                VOContenidoNota.crearContenidoNota(contenido), 
+                fechaCreacion, 
+                EstadoEnum[estado], 
+                VOubicacionNota.crearUbicacionNota(latitud, longitud));
+            } else {
+                throw new error();
+            }
+            
     }
 
     //los get deben retornar primitivos, no objetos

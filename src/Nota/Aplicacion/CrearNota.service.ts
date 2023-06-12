@@ -6,10 +6,6 @@ import { Either } from 'src/Utils/Either';
 import { Nota } from '../dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { RepositorioNotaImp } from '../Infraestructura/RepositorioNotaImp';
-import { VOubicacionNota } from '../Dominio/ValueObjects/VOUbicacionNota';
-import { IdNota } from '../Dominio/ValueObjects/IdNota';
-import { VOTituloNota } from '../Dominio/ValueObjects/VOTituloNota';
-import { VOContenidoNota } from '../Dominio/ValueObjects/VOContenidoNota';
 import { EstadoEnum } from '../Dominio/ValueObjects/EstadoEnum';
 
 @Injectable()
