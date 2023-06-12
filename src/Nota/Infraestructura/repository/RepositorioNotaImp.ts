@@ -2,10 +2,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { RepositorioNota } from '../Dominio/RepositorioNota';
-import { Nota } from '../Dominio/AgregadoNota';
+import { RepositorioNota } from '../../Dominio/RepositorioNota';
+import { Nota } from '../../Dominio/AgregadoNota';
 import { Either } from 'src/Utils/Either';
-import { EntidadNota } from './Entidades/EntidadNota';
+import { EntidadNota } from '../entities/EntidadNota';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{

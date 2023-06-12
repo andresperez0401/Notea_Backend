@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Either } from "src/Utils/Either";
 import { Nota } from "./AgregadoNota";
-import { EntidadNota } from "../Infraestructura/Entidades/EntidadNota";
+import { EntidadNota } from "../Infraestructura/entities/EntidadNota";
 
 export interface RepositorioNota {
      crearNota(nota: Nota): Promise<Either<Nota,Error>>;

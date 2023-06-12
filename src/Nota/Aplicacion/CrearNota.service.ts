@@ -5,7 +5,7 @@ import { CrearNotaDto } from '../Infraestructura/dto/CrearNota.dto';
 import { Either } from 'src/Utils/Either';
 import { Nota } from '../dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
-import { RepositorioNotaImp } from '../Infraestructura/RepositorioNotaImp';
+import { RepositorioNotaImp } from '../Infraestructura/repository/RepositorioNotaImp';
 import { EstadoEnum } from '../Dominio/ValueObjects/EstadoEnum';
 
 @Injectable()
