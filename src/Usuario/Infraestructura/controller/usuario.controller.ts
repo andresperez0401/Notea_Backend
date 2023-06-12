@@ -9,6 +9,7 @@ import {
 
 import { CreateUsuarioDto } from '../dto/usuario.dto';
 import { UsuarioService } from '../services/usuario.service';
+import { Usuario } from '../entities/usuario';
 
 @Controller('usuarios')
 export class UsuarioController {
@@ -23,21 +24,7 @@ export class UsuarioController {
       role: 'admin',
     },
   ];
-
-  @Get()
-  findAll() {
-    return this.users;
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    const user = this.users.find((item) => item.id === parseInt(id));
-    if (!user) {
-      throw new NotFoundException(`User #${id} not found`);
-    }
-    return user;
-  }
-
+  //Crear usuario
   @Post()
   createUsuario(@Body() payload: CreateUsuarioDto) {
     return this.usuarioService.createUsuario(payload);
