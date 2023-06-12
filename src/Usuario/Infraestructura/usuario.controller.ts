@@ -1,5 +1,5 @@
 import { Body, Controller, Post, Get, Query} from '@nestjs/common';
-import { Usuario } from './user.entity';
+import { _user } from './user.entity';
 import { usuarioService } from './usuariosService';
 
 
@@ -8,8 +8,8 @@ export class usuarioController{
 
     constructor(private usuariosService: usuarioService){}
 
-    @Get('')
-    async getUsuarios(): Promise<Iterable<Usuario>>{
+    @Get()
+   async getUsuarios(): Promise<Iterable<_user>>{
         return this.usuariosService.getAllUsers();
     }
 }

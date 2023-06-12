@@ -8,7 +8,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     username: 'postgres',
     password: 'perezdasilva',
     database: 'prueba_dart',
-    entities: ['Notea_Backend/src/Usuario/Infraestructura/user.entity.ts'],
+    entities: ['Notea_Backend/src/Usuario/Infraestructura/user.entity.{js,ts}'],
     synchronize: true,
     logging: true,
 }

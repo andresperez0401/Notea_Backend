@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { userModule } from './Usuario/Infraestructura/user.module';
 import { typeOrmConfig } from './databases/database.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { _user } from './Usuario/Infraestructura/user.entity';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     HttpModule,
     userModule,
     TypeOrmModule.forRoot(typeOrmConfig),
+    TypeOrmModule.forFeature([_user]),
   ],
 })
 export class AppModule {}

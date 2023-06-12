@@ -1,7 +1,7 @@
 import { apellidoUsuario } from "../Dominio/apellidoUsuario-VO";
 import { idUsuario } from "../Dominio/idUsuario_VO"
 import { nombreUsuario } from "../Dominio/nombreUsuario-VO";
-import { Usuario } from "./user.entity"
+import { _user } from "./user.entity"
 
 export class getUserDto {
     id: idUsuario;
