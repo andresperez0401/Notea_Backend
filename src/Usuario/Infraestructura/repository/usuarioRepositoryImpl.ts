@@ -4,7 +4,7 @@ import { User } from '../entities/usuario';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsuarioRepository } from 'src/Usuario/Dominio/usuario.repository';
-import { Either } from 'src/Usuario/utils/either';
+import { Either } from 'src/utils/either';
 import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
 import { nombreUsuario } from 'src/Usuario/Dominio/value_objects/nombreUsuario';
 import { apellidoUsuario } from 'src/Usuario/Dominio/value_objects/apellidoUsuario';
