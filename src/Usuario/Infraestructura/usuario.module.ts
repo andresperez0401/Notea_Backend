@@ -6,11 +6,17 @@ import { UsuarioRepositoryImpl } from './repository/usuarioRepositoryImpl';
 import { crearUsuarioService } from '../Aplicacion/crearUsuarioService';
 import { getAllUsersService } from '../Aplicacion/getAllUsersService';
 import { findByEmailService } from '../Aplicacion/findByEmailService';
+import { findByIdService } from '../Aplicacion/findByIdService';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UsuarioController],
-  providers: [UsuarioRepositoryImpl, crearUsuarioService, getAllUsersService, findByEmailService
+  providers: [
+    UsuarioRepositoryImpl,
+    crearUsuarioService,
+    getAllUsersService,
+    findByEmailService,
+    findByIdService,
   ],
 })
 export class UsuarioModule {}
