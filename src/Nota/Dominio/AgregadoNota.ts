@@ -16,6 +16,7 @@ export class Nota{
     private estado: EstadoEnum;
 
     private constructor(titulo: VOTituloNota, contenido: VOContenidoNota, fechaCreacion: Date, estado: EstadoEnum, ubicacion: VOubicacionNota){
+        this.id = IdNota.crearIdNota();
         this.titulo = titulo;
         this.contenido = contenido;
         this.fechaCreacion = fechaCreacion;
@@ -24,19 +25,18 @@ export class Nota{
     }
 
     //Los constructores estaticos son una alternativa a los Factories
-    static crearNota(titulo: string, contenido: string, fechaCreacion: Date, estado: EstadoEnum, latitud: number, longitud: number): Nota{
-        
-        
-        if (Object.values(EstadoEnum).includes(estado)) { //validacion???
+    static crearNota(titulo: string, contenido: string, fechaCreacion: Date,  estado: EstadoEnum, latitud: number, longitud: number): Nota{
+
+       // if (Object.values(EstadoEnum).includes(estado)) { //validacion???
             return new Nota(
                 VOTituloNota.crearTituloNota(titulo), 
                 VOContenidoNota.crearContenidoNota(contenido), 
                 fechaCreacion, 
                 EstadoEnum[estado], 
                 VOubicacionNota.crearUbicacionNota(latitud, longitud));
-            } else {
-                throw new error();
-            }
+            // } else {
+            //     throw new error();
+            // }
             
     }
 

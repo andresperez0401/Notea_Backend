@@ -21,11 +21,13 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
   
   async execute(s: CrearNotaDto): Promise<Either<Nota, Error>> {
 
-    const nota =  Nota.crearNota(
+    const estado = EstadoEnum.GUARDADO;
+
+    const nota =  Nota.crearNota( //factory agreagado
       s.titulo,
       s.contenido,
       s.fechaCreacion,
-      EstadoEnum.GUARDADO,
+      estado,
       s.latitud, 
       s.longitud
     );

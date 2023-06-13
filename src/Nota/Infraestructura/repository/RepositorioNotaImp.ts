@@ -15,7 +15,6 @@ export class RepositorioNotaImp implements RepositorioNota{
     ){}
 
     async crearNota(nota: Nota): Promise<Either<Nota,Error>>{
-        console.log('CrearNota RepoImp');
 
         const entidadNota : EntidadNota = {
             id: nota.getId(),
@@ -26,7 +25,7 @@ export class RepositorioNotaImp implements RepositorioNota{
             ubicacion: { latitud: nota.getUbicacion().get('latitud'),
                         longitud: nota.getUbicacion().get('longitud'), } 
         }
-
+ 
         try{
             await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
             return Either.makeLeft<Nota,Error>(nota);

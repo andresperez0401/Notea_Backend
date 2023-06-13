@@ -8,11 +8,15 @@ import { Either } from "src/Utils/Either";
 @Controller('nota')
 export class NotaController {
 
-    constructor(private readonly crearNotaService : CrearNotaService){};
+    constructor(
+        @Inject(CrearNotaService)
+        private readonly crearNotaService : CrearNotaService){
+            this.crearNotaService = crearNotaService;
+        };
 
     @Post()
     async save(@Body() nota:CrearNotaDto): Promise<Either<Nota,Error>>{
-
+        console.log('Post Nota');
         const  n =  await this.crearNotaService.execute(nota);
 
         if (n.isLeft()){ //validamos que el resultado sea correcto
@@ -21,5 +25,4 @@ export class NotaController {
             return Either.makeRight<Nota,Error>(new Error('Error al crear la nota'));
         }
     }
-
 }
