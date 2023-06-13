@@ -40,7 +40,7 @@ export class Usuario {
     suscripcion: boolean,
     id?: idUsuario,
   ) {
-    return new Usuario(nombre, apellido, email, clave, suscripcion);
+    return new Usuario(nombre, apellido, email, clave, suscripcion, id);
   }
 
   public getId(): string {
