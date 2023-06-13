@@ -6,6 +6,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UsuarioRepository } from 'src/Usuario/Dominio/usuario.repository';
 import { Either } from 'src/Usuario/utils/either';
 import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
+import { nombreUsuario } from 'src/Usuario/Dominio/value_objects/nombreUsuario';
+import { apellidoUsuario } from 'src/Usuario/Dominio/value_objects/apellidoUsuario';
+import { idUsuario } from 'src/Usuario/Dominio/value_objects/idUsuario';
+import { claveUsuario } from 'src/Usuario/Dominio/value_objects/claveUsuario';
 
 // eslint-disable-next-line prettier/prettier
 export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements UsuarioRepository { por alguna razon al implementar la interfaz me da error
@@ -37,22 +41,23 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
     return await this.usuarioRepo.find();
   }*/
 
-  /*async buscarUsuarios(): Promise<Either<Iterable<Usuario>,Error>> {
+  async buscarUsuarios(): Promise<Either<Iterable<Usuario>,Error>> {
     try {
      const respuesta: User []=  await this.usuarioRepo.find();
+     console.log (respuesta);
      
-     const usuarios: Usuario[] = respuesta.map((user) => Usuario.crearUsuario(user));
+     const usuarios: Usuario[] = respuesta.map((user) => 
+     Usuario.crearUsuario(new nombreUsuario(user.nombre), new apellidoUsuario(user.apellido),
+      new emailUsuario(user.email) , new claveUsuario(user.clave) ,user.suscripcion,new idUsuario(user.id)));
 
-     return Either.makeLeft(respuesta);
+     return Either.makeLeft(usuarios);
     
     } catch (error) {
       return Either.makeRight(error);
     }
-  }*/
-
-  buscarUsuarios(): Promise<Either<Iterable<Usuario>, Error>> {
-    return;
   }
+
+ 
 
   editarUsuario(usuario: Usuario):void {
 

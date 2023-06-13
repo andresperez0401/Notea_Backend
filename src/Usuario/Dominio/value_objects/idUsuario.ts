@@ -1,11 +1,17 @@
+import { identity } from 'rxjs';
 import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 import { v4 as uuidv4 } from 'uuid';
 
 export class idUsuario implements ValueObject<string> {
   private readonly id: string;
 
-  constructor() {
-    this.id = uuidv4();
+  constructor(id?: string) {
+    if (id !== undefined){
+      this.id = id;
+    }
+    else{
+      this.id = uuidv4()
+    }
   }
 
   isValid(): boolean {

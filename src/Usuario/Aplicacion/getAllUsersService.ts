@@ -1,4 +1,4 @@
-/*import { IAplicationService } from "src/core/domain/appService/IAplicationService";
+import { IAplicationService } from "src/core/domain/appService/IAplicationService";
 import { Injectable } from "@nestjs/common";
 import { Inject } from "@nestjs/common";
 import { Either } from "../utils/either";
@@ -12,7 +12,7 @@ import { claveUsuario } from "../Dominio/value_objects/claveUsuario";
 import { UsuarioRepositoryImpl } from "../Infraestructura/repository/usuarioRepositoryImpl";
 
 @Injectable()
-export class getAllUsersService implements IAplicationService<Usuario, Error>{
+export class getAllUsersService implements IAplicationService<null, Iterable<Usuario>>{
 
     private readonly repositorioUsuario: UsuarioRepository;
 
@@ -23,9 +23,7 @@ export class getAllUsersService implements IAplicationService<Usuario, Error>{
         this.repositorioUsuario = repositorioUsuario;
     }
 
-    async execute(s: Usuario): Promise<Either<Usuario, Error>> {
-        
-        
-        return await this.repositorioUsuario.crearUsuario(newUser);
+    async execute(s: null): Promise<Either<Iterable<Usuario>, Error>> {        
+        return await this.repositorioUsuario.buscarUsuarios();
     }
-}*/
+}

@@ -14,8 +14,13 @@ export class Usuario {
   private suscripcion: boolean;
 
   private constructor(nombre: nombreUsuario, apellido: apellidoUsuario, email:emailUsuario,
-    clave: claveUsuario, suscripcion: boolean){
+    clave: claveUsuario, suscripcion: boolean, id?:idUsuario){
+     if (id !== undefined){
+      this.id = id
+     }
+     else{
       this.id = new idUsuario();
+     }
       this.nombre = nombre;
       this.apellido = apellido;
       this.email = email;
@@ -24,7 +29,7 @@ export class Usuario {
   }
 
   static crearUsuario(nombre: nombreUsuario, apellido: apellidoUsuario, email:emailUsuario,
-    clave: claveUsuario, suscripcion: boolean){
+    clave: claveUsuario, suscripcion: boolean, id? : idUsuario){
     
       return new Usuario(
         nombre,
