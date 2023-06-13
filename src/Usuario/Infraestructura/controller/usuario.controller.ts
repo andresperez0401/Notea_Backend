@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   NotFoundException,
   Param,
@@ -8,24 +9,21 @@ import {
 } from '@nestjs/common';
 
 import { CreateUsuarioDto } from '../dto/usuario.dto';
-import { Usuario } from 'src/Usuario/Dominio/Usuario';
 import { crearUsuarioService } from 'src/Usuario/Aplicacion/crearUsuarioService';
 import { getAllUsersService } from 'src/Usuario/Aplicacion/getAllUsersService';
 import { findByEmailService } from 'src/Usuario/Aplicacion/findByEmailService';
-import { Either } from 'src/Usuario/utils/either';
-import { idUsuario } from 'src/Usuario/Dominio/value_objects/idUsuario';
-import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
-import { nombreUsuario } from 'src/Usuario/Dominio/value_objects/nombreUsuario';
-import { apellidoUsuario } from 'src/Usuario/Dominio/value_objects/apellidoUsuario';
-import { claveUsuario } from 'src/Usuario/Dominio/value_objects/claveUsuario';
+import { findByIdService } from 'src/Usuario/Aplicacion/findByIdService';
+import { eliminarUsuarioService } from 'src/Usuario/Aplicacion/eliminarUsuarioService';
 
 @Controller('usuarios')
 export class UsuarioController {
   constructor(
     private readonly usuarioService: crearUsuarioService,
     private readonly findAllService: getAllUsersService,
-    private readonly findByEmailService : findByEmailService,
-    ) {}
+    private readonly findByEmailService: findByEmailService,
+    private readonly findByIdService: findByIdService,
+    private readonly eliminarUsuarioService: eliminarUsuarioService,
+  ) {}
 
   private counterId = 1;
   private users = [
@@ -43,18 +41,28 @@ export class UsuarioController {
   }*/
 
   @Post()
-  createUsuario(@Body() payload: CreateUsuarioDto){
+  createUsuario(@Body() payload: CreateUsuarioDto) {
     return this.usuarioService.execute(payload);
   }
 
   //buscar todos los usuarios
   @Get()
-  findAll(){
-     return this.findAllService.execute(null);
+  findAll() {
+    return this.findAllService.execute(null);
   }
-
-  @Get(':email')
-  async buscarUsuarioPorId(@Param('email') email: string) {
+  //Buscar por email
+  @Get('email/:email')
+  async buscarUsuarioPorEmail(@Param('email') email: string) {
     return await this.findByEmailService.execute(email);
+  }
+  //Buscar por id
+  @Get('id/:id')
+  async buscarUsuarioPorId(@Param('id') id: string) {
+    return await this.findByIdService.execute(id);
+  }
+  //Eliminar usuario
+  @Delete(':id')
+  async eliminarUsuario(@Param('id') id: string) {
+    return await this.eliminarUsuarioService.execute(id);
   }
 }
