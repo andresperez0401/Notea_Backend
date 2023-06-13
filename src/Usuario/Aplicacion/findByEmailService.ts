@@ -12,7 +12,7 @@ import { claveUsuario } from "../Dominio/value_objects/claveUsuario";
 import { UsuarioRepositoryImpl } from "../Infraestructura/repository/usuarioRepositoryImpl";
 
 @Injectable()
-export class getAllUsersService implements IAplicationService<null, Iterable<Usuario>>{
+export class findByEmailService implements IAplicationService<string, Usuario>{
 
     private readonly repositorioUsuario: UsuarioRepository;
 
@@ -23,7 +23,7 @@ export class getAllUsersService implements IAplicationService<null, Iterable<Usu
         this.repositorioUsuario = repositorioUsuario;
     }
 
-    async execute(s: null): Promise<Either<Iterable<Usuario>, Error>> {        
-        return await this.repositorioUsuario.buscarUsuarios();
+    async execute(s: string): Promise<Either<Usuario, Error>> {        
+        return await this.repositorioUsuario.buscarUsuario(s);
     }
 }

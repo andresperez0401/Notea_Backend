@@ -6,6 +6,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UsuarioRepository } from 'src/Usuario/Dominio/usuario.repository';
 import { Either } from 'src/Usuario/utils/either';
 import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
+import { nombreUsuario } from 'src/Usuario/Dominio/value_objects/nombreUsuario';
+import { apellidoUsuario } from 'src/Usuario/Dominio/value_objects/apellidoUsuario';
+import { idUsuario } from 'src/Usuario/Dominio/value_objects/idUsuario';
+import { claveUsuario } from 'src/Usuario/Dominio/value_objects/claveUsuario';
 
 // eslint-disable-next-line prettier/prettier
 export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements UsuarioRepository { por alguna razon al implementar la interfaz me da error
@@ -14,7 +18,8 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
     private readonly usuarioRepo: Repository<User>,
   ) {}
 
-  async crearUsuario(usuario: Usuario): Promise<Either<Usuario, Error>> {
+//metodo que hace post de un usuario
+async crearUsuario(usuario: Usuario): Promise<Either<Usuario, Error>> {
     
     const userEntidad = new User();
     userEntidad.id = usuario.getId();
@@ -33,26 +38,41 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
     }
   }
 
- /* async buscarUsuarios(): Promise<Iterable<Usuario>> {
-    return await this.usuarioRepo.find();
-  }*/
-
-  /*async buscarUsuarios(): Promise<Either<Iterable<Usuario>,Error>> {
+ //metodo que busca todos los usuarios que se encuentran registrados 
+  async buscarUsuarios(): Promise<Either<Iterable<Usuario>,Error>> {
     try {
      const respuesta: User []=  await this.usuarioRepo.find();
+     const usuarios: Usuario[] = respuesta.map((user) =>
      
-     const usuarios: Usuario[] = respuesta.map((user) => Usuario.crearUsuario(user));
+     //transformamos el iterable de user(entity) a usuario (dominio)
+     Usuario.crearUsuario(new nombreUsuario(user.nombre), new apellidoUsuario(user.apellido),
+      new emailUsuario(user.email) , new claveUsuario(user.clave) ,user.suscripcion,new idUsuario(user.id)));
 
-     return Either.makeLeft(respuesta);
+     return Either.makeLeft(usuarios);
     
     } catch (error) {
       return Either.makeRight(error);
     }
-  }*/
-
-  buscarUsuarios(): Promise<Either<Iterable<Usuario>, Error>> {
-    return;
   }
+
+  //Buscar usuario por email (es unico)
+  async buscarUsuario(email: string): Promise<Either<Usuario,Error>> {
+    try {
+    const respuesta: User = await this.usuarioRepo.findOne({ where: {email} });
+    let newUser: Usuario = 
+    Usuario.crearUsuario(new nombreUsuario(respuesta.nombre),
+    new apellidoUsuario(respuesta.apellido),
+    new emailUsuario(respuesta.email), 
+    new claveUsuario(respuesta.clave),
+    respuesta.suscripcion,
+    new idUsuario(respuesta.id));
+    
+      return Either.makeLeft(newUser);
+    } catch (error) {
+      return Either.makeRight(error);
+    }
+  };
+ 
 
   editarUsuario(usuario: Usuario):void {
 
@@ -60,9 +80,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
   eliminarUsuario(usuario: Usuario): void{
 
   };
-  buscarUsuario(email: emailUsuario): void{
-
-  };
+  
   save(usuario: Usuario): void {
     
   }
