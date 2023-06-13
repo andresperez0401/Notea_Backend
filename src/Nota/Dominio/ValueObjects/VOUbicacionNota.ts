@@ -2,9 +2,16 @@ export class VOubicacionNota {
   private latitud: number;
   private longitud: number;
 
-  constructor(latitud: number, longitud: number) {
+  private constructor(latitud: number, longitud: number) {
     this.latitud = latitud;
     this.longitud = longitud;
+  }
+
+  static crearUbicacionNota(
+    latitud: number,
+    longitud: number,
+  ): VOubicacionNota {
+    return new VOubicacionNota(latitud, longitud);
   }
 
   getLatitud(): number {
