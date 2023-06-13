@@ -13,6 +13,7 @@ import { crearUsuarioService } from 'src/Usuario/Aplicacion/crearUsuarioService'
 import { getAllUsersService } from 'src/Usuario/Aplicacion/getAllUsersService';
 import { findByEmailService } from 'src/Usuario/Aplicacion/findByEmailService';
 import { findByIdService } from 'src/Usuario/Aplicacion/findByIdService';
+import { eliminarUsuarioService } from 'src/Usuario/Aplicacion/eliminarUsuarioService';
 
 @Controller('usuarios')
 export class UsuarioController {
@@ -21,6 +22,7 @@ export class UsuarioController {
     private readonly findAllService: getAllUsersService,
     private readonly findByEmailService: findByEmailService,
     private readonly findByIdService: findByIdService,
+    private readonly eliminarUsuarioService: eliminarUsuarioService,
   ) {}
 
   private counterId = 1;
@@ -57,5 +59,10 @@ export class UsuarioController {
   @Get('id/:id')
   async buscarUsuarioPorId(@Param('id') id: string) {
     return await this.findByIdService.execute(id);
+  }
+  //Eliminar usuario
+  @Delete(':id')
+  async eliminarUsuario(@Param('id') id: string) {
+    return await this.eliminarUsuarioService.execute(id);
   }
 }

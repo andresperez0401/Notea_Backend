@@ -101,7 +101,19 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
   }
 
   editarUsuario(usuario: Usuario): void {}
-  eliminarUsuario(usuario: Usuario): void {}
+
+  async eliminarUsuario(id: string): Promise<Either<string, Error>> {
+    try {
+      const usuarioAEliminar: User = await this.usuarioRepo.findOne({
+        where: { id },
+      });
+      await this.usuarioRepo.delete(usuarioAEliminar);
+      return Either.makeLeft(`Usuario de id #${id} ha sido eliminado`);
+    } catch (error) {
+      return Either.makeRight(error);
+    }
+    return undefined;
+  }
 
   save(usuario: Usuario): void {}
 }
