@@ -36,7 +36,8 @@ export class Usuario {
         apellido,
         email,
         clave,
-        suscripcion
+        suscripcion,
+        id
       )
   }
 
