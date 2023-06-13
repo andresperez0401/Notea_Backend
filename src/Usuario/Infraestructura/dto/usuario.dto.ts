@@ -2,6 +2,7 @@ import { IsString, IsNotEmpty, IsEmail, IsBoolean } from 'class-validator';
 import { PartialType, ApiProperty } from '@nestjs/swagger';
 
 export class CreateUsuarioDto {
+
   @IsNotEmpty()
   @IsString()
   @ApiProperty()

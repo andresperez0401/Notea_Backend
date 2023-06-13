@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-
 import { DatabaseModule } from './db/db.module';
 import { UsuarioModule } from './Usuario/Infraestructura/usuario.module';
 

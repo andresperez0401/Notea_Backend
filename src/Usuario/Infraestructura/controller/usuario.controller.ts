@@ -8,12 +8,12 @@ import {
 } from '@nestjs/common';
 
 import { CreateUsuarioDto } from '../dto/usuario.dto';
-import { UsuarioService } from '../services/usuario.service';
-import { Usuario } from '../entities/usuario';
+import { Usuario } from 'src/Usuario/Dominio/Usuario';
+import { crearUsuarioService } from 'src/Usuario/Aplicacion/crearUsuarioService';
 
 @Controller('usuarios')
 export class UsuarioController {
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: crearUsuarioService) {}
 
   private counterId = 1;
   private users = [
@@ -24,15 +24,20 @@ export class UsuarioController {
       role: 'admin',
     },
   ];
-  //Crear usuario
+  /*//Crear usuario
   @Post()
   createUsuario(@Body() payload: CreateUsuarioDto) {
     return this.usuarioService.createUsuario(payload);
+  }*/
+
+  @Post()
+  createUsuario(@Body() payload: CreateUsuarioDto){
+    return this.usuarioService.execute(payload);
   }
 
   //buscar todos los usuarios
-  @Get()
+  /*@Get()
   findAll(): Promise<Iterable<Usuario>>{
     return this.usuarioService.getAllUsuarios();
-  }
+  }*/
 }
