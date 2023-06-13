@@ -9,6 +9,7 @@ import { EntidadNota } from '../entities/EntidadNota';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
+
     constructor(
         @InjectRepository(EntidadNota)
         private readonly repositorio: Repository<EntidadNota>,
@@ -29,7 +30,7 @@ export class RepositorioNotaImp implements RepositorioNota{
         try{
             await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
             return Either.makeLeft<Nota,Error>(nota);
-        }catch(error){
+        }catch(error){ //no se puede manejar el error en el mismo repositorio
             return Either.makeRight<Nota,Error>(error);
         }
     }

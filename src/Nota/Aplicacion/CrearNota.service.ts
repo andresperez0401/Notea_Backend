@@ -12,7 +12,6 @@ import { EstadoEnum } from '../Dominio/ValueObjects/EstadoEnum';
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
 
   private readonly repositorioNota: RepositorioNota;
-
   constructor(
     @Inject(RepositorioNotaImp) 
     repositorioNota: RepositorioNota) {

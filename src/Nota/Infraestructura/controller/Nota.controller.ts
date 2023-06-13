@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, HttpCode, HttpStatus, Inject, Post} from "@nestjs/common";
+import { Body, Controller, Inject, Post} from "@nestjs/common";
 import { Nota } from "src/nota/dominio/AgregadoNota";
 import { CrearNotaService } from "../../Aplicacion/CrearNota.service";
 import { CrearNotaDto } from "../dto/CrearNota.dto";
