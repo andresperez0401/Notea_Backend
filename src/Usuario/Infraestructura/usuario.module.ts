@@ -8,6 +8,7 @@ import { getAllUsersService } from '../Aplicacion/getAllUsersService';
 import { findByEmailService } from '../Aplicacion/findByEmailService';
 import { findByIdService } from '../Aplicacion/findByIdService';
 import { eliminarUsuarioService } from '../Aplicacion/eliminarUsuarioService';
+import { editarUsuarioService } from '../Aplicacion/editarUsuarioService';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
@@ -19,6 +20,7 @@ import { eliminarUsuarioService } from '../Aplicacion/eliminarUsuarioService';
     findByEmailService,
     findByIdService,
     eliminarUsuarioService,
+    editarUsuarioService,
   ],
 })
 export class UsuarioModule {}

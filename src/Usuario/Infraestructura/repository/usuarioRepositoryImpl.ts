@@ -10,9 +10,9 @@ import { nombreUsuario } from 'src/Usuario/Dominio/value_objects/nombreUsuario';
 import { apellidoUsuario } from 'src/Usuario/Dominio/value_objects/apellidoUsuario';
 import { idUsuario } from 'src/Usuario/Dominio/value_objects/idUsuario';
 import { claveUsuario } from 'src/Usuario/Dominio/value_objects/claveUsuario';
+import { editarUsuarioPO } from '../dto/editarUsuarioPO';
 
-// eslint-disable-next-line prettier/prettier
-export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements UsuarioRepository { por alguna razon al implementar la interfaz me da error
+export class UsuarioRepositoryImpl implements UsuarioRepository {
   constructor(
     @InjectRepository(User)
     private readonly usuarioRepo: Repository<User>,
@@ -100,7 +100,24 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
     }
   }
 
-  editarUsuario(usuario: Usuario): void {}
+  async editarUsuario(info: editarUsuarioPO): Promise<Either<Usuario, Error>> {
+    try {
+      const usuario = await this.usuarioRepo.findOneBy({ id: info.id });
+      await this.usuarioRepo.merge(usuario, info.payload);
+      await this.usuarioRepo.save(usuario);
+      const usuarioEditado: Usuario = Usuario.crearUsuario(
+        new nombreUsuario(usuario.nombre),
+        new apellidoUsuario(usuario.apellido),
+        new emailUsuario(usuario.email),
+        new claveUsuario(usuario.clave),
+        usuario.suscripcion,
+        new idUsuario(usuario.id),
+      );
+      return Either.makeLeft(usuarioEditado);
+    } catch (error) {
+      return Either.makeRight(error);
+    }
+  }
 
   async eliminarUsuario(id: string): Promise<Either<string, Error>> {
     try {
