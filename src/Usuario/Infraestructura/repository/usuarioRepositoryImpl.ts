@@ -18,7 +18,8 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
     private readonly usuarioRepo: Repository<User>,
   ) {}
 
-  async crearUsuario(usuario: Usuario): Promise<Either<Usuario, Error>> {
+//metodo que hace post de un usuario
+async crearUsuario(usuario: Usuario): Promise<Either<Usuario, Error>> {
     
     const userEntidad = new User();
     userEntidad.id = usuario.getId();
@@ -37,16 +38,13 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
     }
   }
 
- /* async buscarUsuarios(): Promise<Iterable<Usuario>> {
-    return await this.usuarioRepo.find();
-  }*/
-
+ //metodo que busca todos los usuarios que se encuentran registrados 
   async buscarUsuarios(): Promise<Either<Iterable<Usuario>,Error>> {
     try {
      const respuesta: User []=  await this.usuarioRepo.find();
-     console.log (respuesta);
+     const usuarios: Usuario[] = respuesta.map((user) =>
      
-     const usuarios: Usuario[] = respuesta.map((user) => 
+     //transformamos el iterable de user(entity) a usuario (dominio)
      Usuario.crearUsuario(new nombreUsuario(user.nombre), new apellidoUsuario(user.apellido),
       new emailUsuario(user.email) , new claveUsuario(user.clave) ,user.suscripcion,new idUsuario(user.id)));
 
@@ -57,6 +55,23 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
     }
   }
 
+  //Buscar usuario por email (es unico)
+  async buscarUsuario(email: string): Promise<Either<Usuario,Error>> {
+    try {
+    const respuesta: User = await this.usuarioRepo.findOne({ where: {email} });
+    let newUser: Usuario = 
+    Usuario.crearUsuario(new nombreUsuario(respuesta.nombre),
+    new apellidoUsuario(respuesta.apellido),
+    new emailUsuario(respuesta.email), 
+    new claveUsuario(respuesta.clave),
+    respuesta.suscripcion,
+    new idUsuario(respuesta.id));
+    
+      return Either.makeLeft(newUser);
+    } catch (error) {
+      return Either.makeRight(error);
+    }
+  };
  
 
   editarUsuario(usuario: Usuario):void {
@@ -65,9 +80,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository{ //implements Us
   eliminarUsuario(usuario: Usuario): void{
 
   };
-  buscarUsuario(email: emailUsuario): void{
-
-  };
+  
   save(usuario: Usuario): void {
     
   }

@@ -9,5 +9,5 @@ export interface UsuarioRepository {
   editarUsuario(usuario: Usuario): void;
   eliminarUsuario(usuario: Usuario): void;
   buscarUsuarios(): Promise<Either<Iterable<Usuario>,Error>>;
-  buscarUsuario(email: emailUsuario): void;
+  buscarUsuario(email: string): Promise<Either<Usuario, Error>>;
 }

@@ -5,11 +5,12 @@ import { UsuarioController } from './controller/usuario.controller';
 import { UsuarioRepositoryImpl } from './repository/usuarioRepositoryImpl';
 import { crearUsuarioService } from '../Aplicacion/crearUsuarioService';
 import { getAllUsersService } from '../Aplicacion/getAllUsersService';
+import { findByEmailService } from '../Aplicacion/findByEmailService';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UsuarioController],
-  providers: [UsuarioRepositoryImpl, crearUsuarioService, getAllUsersService
+  providers: [UsuarioRepositoryImpl, crearUsuarioService, getAllUsersService, findByEmailService
   ],
 })
 export class UsuarioModule {}
