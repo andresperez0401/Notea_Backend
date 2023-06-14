@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { apellidoUsuario } from './value_objects/apellidoUsuario';
 import { claveUsuario } from './value_objects/claveUsuario';
 import { emailUsuario } from './value_objects/emailUsuario';
@@ -20,11 +21,7 @@ export class Usuario {
     suscripcion: boolean,
     id?: idUsuario,
   ) {
-    if (id !== undefined) {
-      this.id = id;
-    } else {
-      this.id = new idUsuario();
-    }
+    this.id = id;
     this.nombre = nombre;
     this.apellido = apellido;
     this.email = email;
@@ -38,9 +35,9 @@ export class Usuario {
     email: emailUsuario,
     clave: claveUsuario,
     suscripcion: boolean,
-    id?: idUsuario,
+    id?: string,
   ) {
-    return new Usuario(nombre, apellido, email, clave, suscripcion, id);
+    return new Usuario(nombre, apellido, email, clave, suscripcion, idUsuario.crearIdUsuario(id));
   }
 
   public getId(): string {

@@ -1,6 +1,5 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Injectable } from '@nestjs/common';
-import { Inject } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
 import { Usuario } from '../Dominio/Usuario';
 import { UsuarioRepository } from '../Dominio/usuario.repository';

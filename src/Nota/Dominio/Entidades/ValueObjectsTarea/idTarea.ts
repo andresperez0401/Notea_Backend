@@ -4,6 +4,7 @@ export class IdTarea {
   private id: string;
 
   private constructor() {
+    //debe tener optional
     this.id = uuidv4();
   }
 

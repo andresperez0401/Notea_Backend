@@ -48,7 +48,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
           new emailUsuario(user.email),
           new claveUsuario(user.clave),
           user.suscripcion,
-          new idUsuario(user.id),
+          user.id,
         ),
       );
 
@@ -70,7 +70,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
         new emailUsuario(respuesta.email),
         new claveUsuario(respuesta.clave),
         respuesta.suscripcion,
-        new idUsuario(respuesta.id),
+        respuesta.id,
       );
 
       return Either.makeLeft(newUser);
@@ -91,7 +91,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
         new emailUsuario(respuesta.email),
         new claveUsuario(respuesta.clave),
         respuesta.suscripcion,
-        new idUsuario(respuesta.id),
+        respuesta.id,
       );
 
       return Either.makeLeft(newUser);
@@ -111,7 +111,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
         new emailUsuario(usuario.email),
         new claveUsuario(usuario.clave),
         usuario.suscripcion,
-        new idUsuario(usuario.id),
+        usuario.id,
       );
       return Either.makeLeft(usuarioEditado);
     } catch (error) {

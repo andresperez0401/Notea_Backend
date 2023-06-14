@@ -16,11 +16,11 @@ export class Nota{
     private fechaCreacion: Date;
     private ubicacion: VOubicacionNota;
     private estado: EstadoEnum;
-    private tareas : Array<Tarea>
+    //private tareas : Array<Tarea>
 
     private constructor(titulo: VOTituloNota, contenido: VOContenidoNota, 
         fechaCreacion: Date, estado: EstadoEnum, 
-        ubicacion: VOubicacionNota, tareas?: Array<Tarea>, id?: IdNota){
+        ubicacion: VOubicacionNota, /*tareas?: Array<Tarea>,*/ id?: IdNota){
 
         this.id = id;
         this.titulo = titulo;
@@ -28,13 +28,13 @@ export class Nota{
         this.fechaCreacion = fechaCreacion;
         this.estado = estado;
         this.ubicacion = ubicacion;
-        this.tareas = tareas;
+        //this.tareas = tareas;
     }
 
     //Los constructores estaticos son una alternativa a los Factories
     static crearNota(titulo: string, contenido: string, 
         fechaCreacion: Date,  estado: EstadoEnum, latitud: number, longitud: 
-        number, tareas?: Array<string>, id?: string): Nota{
+        number, /*tareas?: Array<string>,*/ id?: string): Nota{
 
        // if (Object.values(EstadoEnum).includes(estado)) { //validacion???
             return new Nota(
@@ -43,7 +43,7 @@ export class Nota{
                 fechaCreacion, 
                 EstadoEnum[estado], 
                 VOubicacionNota.crearUbicacionNota(latitud, longitud),
-                tareas?.map(tarea => Tarea.crearTarea(tarea)),
+                //tareas?.map(tarea => Tarea.crearTarea(tarea)),
                 IdNota.crearIdNota(id)
                 );
             // } else {
