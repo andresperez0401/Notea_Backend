@@ -6,6 +6,7 @@ import { RepositorioNota } from '../../Dominio/RepositorioNota';
 import { Nota } from '../../Dominio/AgregadoNota';
 import { Either } from 'src/Utils/Either';
 import { EntidadNota } from '../entities/EntidadNota';
+import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
@@ -31,7 +32,7 @@ export class RepositorioNotaImp implements RepositorioNota{
             await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
             return Either.makeLeft<Nota,Error>(nota);
         }catch(error){ //no se puede manejar el error en el mismo repositorio
-            return Either.makeRight<Nota,Error>(error);
+            return Either.makeRight<Nota,Error>(new Error('Error al crear la nota'));
         }
     }
 
@@ -46,15 +47,28 @@ export class RepositorioNotaImp implements RepositorioNota{
     //     }
     // }
 
-    // async buscarNotas(): Promise<Either<Nota[],Error>>{
-    //     console.log('BuscarNotas RepoImp');
-    //     try{
-    //         const notas = await this.repositorio.find();
-    //         return Either.right(notas);
-    //     }catch(error){
-    //         return Either.left(error);
-    //     }
-    // }
+    async buscarNotas(): Promise<Either<Iterable<Nota>,Error>>{
+        console.log('BuscarNotas RepoImp');
+
+    try {
+        const respuesta: EntidadNota[] = await this.repositorio.find();
+        const notas: Nota[] = respuesta.map((nota) =>
+            Nota.crearNota(
+            nota.titulo,
+            nota.contenido,
+            nota.fechaCreacion,
+            EstadoEnum[nota.estado],
+            nota.ubicacion.latitud,
+            nota.ubicacion.longitud,
+            nota.id,
+            ),
+        );
+
+        return Either.makeLeft(notas);
+    } catch (error) {
+        return Either.makeRight(new Error('Error al buscar las notas'));
+    }
+    }
 
     async eliminarNota(id: string): Promise<Either<string,Error>>{
         console.log('EliminarNota RepoImp');
