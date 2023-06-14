@@ -1,6 +1,6 @@
 import { Usuario } from 'src/Usuario/Dominio/Usuario';
 import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
-import { Either } from '../utils/either';
+import { Either } from 'src/utils/either';
 import { editarUsuarioPO } from '../Infraestructura/dto/editarUsuarioPO';
 
 export interface UsuarioRepository {

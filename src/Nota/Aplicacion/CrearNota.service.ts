@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Inject, Injectable } from '@nestjs/common';
-import { IAplicationService } from 'src/@Core/aplicacion/IAplicationService';
-import { CrearNotaDto } from '../Infraestructura/dto/CrearNota.dto';
+import { IAplicationService } from 'src/Core/domain/appService/IAplicationService';
+import { CrearNotaDto } from './dto/CrearNota.dto';
 import { Either } from 'src/Utils/Either';
 import { Nota } from '../dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
