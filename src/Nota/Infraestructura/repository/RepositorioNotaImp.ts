@@ -56,16 +56,17 @@ export class RepositorioNotaImp implements RepositorioNota{
     //     }
     // }
 
-    // async eliminarNota(id: string): Promise<Either<Nota,Error>>{
-    //     console.log('EliminarNota RepoImp');
-    //     try{
-    //         const nota = await this.repositorio.findOne(id);
-    //         await this.repositorio.delete(id);
-    //         return Either.right(nota);
-    //     }catch(error){
-    //         return Either.left(error);
-    //     }
-    // }
+    async eliminarNota(id: string): Promise<Either<string,Error>>{
+        console.log('EliminarNota RepoImp');
+        
+        try{
+            const notaAEliminar = await this.repositorio.findOne({where: {id}});
+           await this.repositorio.delete(notaAEliminar);
+            return Either.makeLeft('La nota ha sido eliminada');
+        }catch(error){
+            return Either.makeRight(error);
+        }
+    }
 
     // async buscarNotasPorEstado(estado: string): Promise<Either<Nota[],Error>>{
     //     console.log('BuscarNotasPorEstado RepoImp');

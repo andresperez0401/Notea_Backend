@@ -3,6 +3,7 @@ import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
 import { Either } from 'src/utils/either';
 import { editarUsuarioPO } from '../Aplicacion/dto/editarUsuarioPO';
 
+
 export interface UsuarioRepository {
   //Arreglar lo que devuelve cada metodo
   save(usuario: Usuario): void;
