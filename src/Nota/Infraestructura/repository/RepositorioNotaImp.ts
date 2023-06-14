@@ -7,6 +7,7 @@ import { Nota } from '../../Dominio/AgregadoNota';
 import { Either } from 'src/Utils/Either';
 import { EntidadNota } from '../entities/EntidadNota';
 import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
+import { ModificarNotaDto } from 'src/Nota/Aplicacion/dto/ModificarNota.dto';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
@@ -35,7 +36,21 @@ export class RepositorioNotaImp implements RepositorioNota{
             return Either.makeRight<Nota,Error>(new Error('Error al crear la nota'));
         }
     }
+    
+    async updateNota(infoNota : ModificarNotaDto): Promise<Either<string,Error>>{
 
+        const nota =  await this.repositorio.findOneBy({id : infoNota.id}); 
+        try{         
+            await this.repositorio.merge(nota, infoNota)
+        await this.repositorio.save(nota)  
+            //guardar en la base de datos usando TypeORM
+            return Either.makeLeft("Nota actualizada");
+        }catch(error){ //no se puede manejar el error en el mismo repositorio
+            return Either.makeRight(new Error('Error al modificar nota'));
+        }
+    }
+    
+    
     // async buscarNota(id: string): Promise<Either<Nota,Error>>{
     //     console.log('BuscarNota RepoImp');
     //     try{
