@@ -1,13 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Inject, Post,Get,Delete, Param} from "@nestjs/common";
+import { Body, Controller, Inject, Post,Get,Delete, Param,Patch} from "@nestjs/common";
 import { Nota } from "src/nota/dominio/AgregadoNota";
 import { CrearNotaService } from "../../Aplicacion/CrearNota.service";
 import { CrearNotaDto } from "../../Aplicacion/dto/CrearNota.dto";
 import { Either } from "src/Utils/Either";
 import { EliminarNotaService } from "src/Nota/Aplicacion/EliminarNota.service";
-import { eliminarUsuarioService } from "src/Usuario/Aplicacion/eliminarUsuarioService";
 import { EliminarNotaDto } from "src/Nota/Aplicacion/dto/EliminarNota.dto";
 import { getAllNotasService } from "src/Nota/Aplicacion/GetAllNotas.service";
+import { ModificarNotaDto } from "src/Nota/Aplicacion/dto/ModificarNota.dto";
+import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service";
 
 @Controller('nota')
 export class NotaController {
@@ -16,12 +17,17 @@ export class NotaController {
         @Inject(CrearNotaService)
         @Inject(EliminarNotaService)
         @Inject(getAllNotasService)
+        @Inject(ModificarNotaService)
         private readonly crearNotaService : CrearNotaService,
         private readonly eliminarNotaService : EliminarNotaService,
-        private readonly getAllNotasService : getAllNotasService){
+        private readonly getAllNotasService : getAllNotasService,
+        private readonly ModificarNotaService : ModificarNotaService){
+           
+            
             this.crearNotaService = crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
             this.getAllNotasService = getAllNotasService;
+            this.ModificarNotaService = ModificarNotaService;
         };
 
     @Get('/all')
@@ -57,6 +63,18 @@ export class NotaController {
         }else{
             return Either.makeRight<string,Error>(new Error('Error al eliminar la nota'));
         }
+    }
+
+    @Patch()
+    async update(@Body() notaMod: ModificarNotaDto): Promise<Either<string,Error>> {
+        console.log('Mod  Nota');
+        const modificar =  this.ModificarNotaService.execute(notaMod)
+        if ((await modificar).isLeft){ //validamos que el resultado sea correcto
+            return modificar;
+        }else{
+            return Either.makeRight<string,Error>(new Error('Error al eliminar la nota'));
+        }
+         
     }
 
 
