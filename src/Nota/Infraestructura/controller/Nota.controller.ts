@@ -7,7 +7,6 @@ import { CrearNotaDto } from "../../Aplicacion/dto/CrearNota.dto";
 import { Either } from "src/Utils/Either";
 import { EliminarNotaService } from "src/Nota/Aplicacion/EliminarNota.service";
 import { EliminarNotaDto } from "src/Nota/Aplicacion/dto/EliminarNota.dto";
-import { getAllNotasService } from "src/Nota/Aplicacion/GetAllNotas.service";
 import { ModificarNotaDto } from "src/Nota/Aplicacion/dto/ModificarNota.dto";
 import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service";
 import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
@@ -19,21 +18,19 @@ export class NotaController {
     constructor(
         @Inject(CrearNotaService)
         @Inject(EliminarNotaService)
-        @Inject(getAllNotasService)
         @Inject(ModificarNotaService)
         @Inject(BuscarNotas)
         private readonly crearNotaService : CrearNotaService,
         private readonly eliminarNotaService : EliminarNotaService,
-        private readonly getAllNotasService : getAllNotasService,
         private readonly ModificarNotaService : ModificarNotaService,
         private readonly buscarNotasService : BuscarNotas){
            
             
             this.crearNotaService = crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
-            this.getAllNotasService = getAllNotasService;
             this.ModificarNotaService = ModificarNotaService;
-            this.buscarNotasService = buscarNotasService;
+            this.buscarNotasService = buscarNotasService
+
         };
 
     @Get('/all')
