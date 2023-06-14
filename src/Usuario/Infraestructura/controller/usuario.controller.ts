@@ -9,14 +9,14 @@ import {
   Put,
 } from '@nestjs/common';
 
-import { CreateUsuarioDto, UpdateUsuarioDto } from '../dto/usuario.dto';
+import { CreateUsuarioDto, UpdateUsuarioDto } from '../../Aplicacion/dto/usuario.dto';
 import { crearUsuarioService } from 'src/Usuario/Aplicacion/crearUsuarioService';
 import { getAllUsersService } from 'src/Usuario/Aplicacion/getAllUsersService';
 import { findByEmailService } from 'src/Usuario/Aplicacion/findByEmailService';
 import { findByIdService } from 'src/Usuario/Aplicacion/findByIdService';
 import { eliminarUsuarioService } from 'src/Usuario/Aplicacion/eliminarUsuarioService';
 import path from 'path';
-import { editarUsuarioPO } from '../dto/editarUsuarioPO';
+import { editarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 import { editarUsuarioService } from 'src/Usuario/Aplicacion/editarUsuarioService';
 
 @Controller('usuarios')

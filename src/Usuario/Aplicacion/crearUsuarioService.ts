@@ -1,7 +1,7 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Injectable, Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
-import { CreateUsuarioDto } from '../Infraestructura/dto/usuario.dto';
+import { CreateUsuarioDto } from './dto/usuario.dto';
 import { Usuario } from '../Dominio/Usuario';
 import { UsuarioRepository } from '../Dominio/usuario.repository';
 import { nombreUsuario } from '../Dominio/value_objects/nombreUsuario';

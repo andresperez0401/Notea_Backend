@@ -10,7 +10,7 @@ import { nombreUsuario } from 'src/Usuario/Dominio/value_objects/nombreUsuario';
 import { apellidoUsuario } from 'src/Usuario/Dominio/value_objects/apellidoUsuario';
 import { idUsuario } from 'src/Usuario/Dominio/value_objects/idUsuario';
 import { claveUsuario } from 'src/Usuario/Dominio/value_objects/claveUsuario';
-import { editarUsuarioPO } from '../dto/editarUsuarioPO';
+import { editarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 
 export class UsuarioRepositoryImpl implements UsuarioRepository {
   constructor(
