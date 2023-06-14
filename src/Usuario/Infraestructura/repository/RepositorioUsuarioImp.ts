@@ -1,26 +1,25 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Usuario } from 'src/Usuario/Dominio/Usuario';
-import { User } from '../entities/usuario';
+import { Usuario } from 'src/Usuario/Dominio/AgregadoUsuario';
+import { EntidadUsuario } from '../entities/EntidadUsuario';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UsuarioRepository } from 'src/Usuario/Dominio/usuario.repository';
+import { RepositorioUsuario } from 'src/Usuario/Dominio/RepositorioUsuario';
 import { Either } from 'src/utils/either';
 import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
 import { nombreUsuario } from 'src/Usuario/Dominio/value_objects/nombreUsuario';
 import { apellidoUsuario } from 'src/Usuario/Dominio/value_objects/apellidoUsuario';
-import { idUsuario } from 'src/Usuario/Dominio/value_objects/idUsuario';
 import { claveUsuario } from 'src/Usuario/Dominio/value_objects/claveUsuario';
-import { editarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
+import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 
-export class UsuarioRepositoryImpl implements UsuarioRepository {
+export class RepositorioUsuarioImp implements RepositorioUsuario {
   constructor(
-    @InjectRepository(User)
-    private readonly usuarioRepo: Repository<User>,
+    @InjectRepository(EntidadUsuario)
+    private readonly usuarioRepo: Repository<EntidadUsuario>,
   ) {}
 
   //metodo que hace post de un usuario
   async crearUsuario(usuario: Usuario): Promise<Either<Usuario, Error>> {
-    const userEntidad = new User();
+    const userEntidad = new EntidadUsuario();
     userEntidad.id = usuario.getId();
     userEntidad.nombre = usuario.getNombre();
     userEntidad.apellido = usuario.getApellido();
@@ -39,7 +38,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
   //metodo que busca todos los usuarios que se encuentran registrados
   async buscarUsuarios(): Promise<Either<Iterable<Usuario>, Error>> {
     try {
-      const respuesta: User[] = await this.usuarioRepo.find();
+      const respuesta: EntidadUsuario[] = await this.usuarioRepo.find();
       const usuarios: Usuario[] = respuesta.map((user) =>
         //transformamos el iterable de user(entity) a usuario (dominio)
         Usuario.crearUsuario(
@@ -61,7 +60,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
   //Buscar usuario por email (es unico)
   async buscarUsuario(email: string): Promise<Either<Usuario, Error>> {
     try {
-      const respuesta: User = await this.usuarioRepo.findOne({
+      const respuesta: EntidadUsuario = await this.usuarioRepo.findOne({
         where: { email },
       });
       const newUser: Usuario = Usuario.crearUsuario(
@@ -82,7 +81,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
   //Buscar usuario por id
   async buscarUsuarioId(id: string): Promise<Either<Usuario, Error>> {
     try {
-      const respuesta: User = await this.usuarioRepo.findOne({
+      const respuesta: EntidadUsuario = await this.usuarioRepo.findOne({
         where: { id },
       });
       const newUser: Usuario = Usuario.crearUsuario(
@@ -100,7 +99,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
     }
   }
 
-  async editarUsuario(info: editarUsuarioPO): Promise<Either<Usuario, Error>> {
+  async editarUsuario(info: EditarUsuarioPO): Promise<Either<Usuario, Error>> {
     try {
       const usuario = await this.usuarioRepo.findOneBy({ id: info.id });
       await this.usuarioRepo.merge(usuario, info.payload);
@@ -121,7 +120,7 @@ export class UsuarioRepositoryImpl implements UsuarioRepository {
 
   async eliminarUsuario(id: string): Promise<Either<string, Error>> {
     try {
-      const usuarioAEliminar: User = await this.usuarioRepo.findOne({
+      const usuarioAEliminar: EntidadUsuario = await this.usuarioRepo.findOne({
         where: { id },
       });
       await this.usuarioRepo.delete(usuarioAEliminar);

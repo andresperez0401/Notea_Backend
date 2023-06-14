@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Inject, Post,Get,Delete, Param,Patch} from "@nestjs/common";
 import { Nota } from "src/nota/dominio/AgregadoNota";
@@ -9,6 +10,8 @@ import { EliminarNotaDto } from "src/Nota/Aplicacion/dto/EliminarNota.dto";
 import { getAllNotasService } from "src/Nota/Aplicacion/GetAllNotas.service";
 import { ModificarNotaDto } from "src/Nota/Aplicacion/dto/ModificarNota.dto";
 import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service";
+import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
+
 
 @Controller('nota')
 export class NotaController {
@@ -18,22 +21,25 @@ export class NotaController {
         @Inject(EliminarNotaService)
         @Inject(getAllNotasService)
         @Inject(ModificarNotaService)
+        @Inject(BuscarNotas)
         private readonly crearNotaService : CrearNotaService,
         private readonly eliminarNotaService : EliminarNotaService,
         private readonly getAllNotasService : getAllNotasService,
-        private readonly ModificarNotaService : ModificarNotaService){
+        private readonly ModificarNotaService : ModificarNotaService,
+        private readonly buscarNotasService : BuscarNotas){
            
             
             this.crearNotaService = crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
             this.getAllNotasService = getAllNotasService;
             this.ModificarNotaService = ModificarNotaService;
+            this.buscarNotasService = buscarNotasService;
         };
 
     @Get('/all')
-    async getNotes(): Promise<Either<Iterable<Nota>, Error>>{
+    async buscarNotas(): Promise<Either<Iterable<Nota>, Error>>{
         console.log('Get All Notas');
-        const n = await this.getAllNotasService.execute(null);
+        const n = await this.buscarNotasService.execute(null);
         
         if (n.isLeft()){ //validamos que el resultado sea correcto
             return n;
@@ -43,7 +49,7 @@ export class NotaController {
     }
     
     @Post()
-    async save(@Body() nota:CrearNotaDto): Promise<Either<Nota,Error>>{
+    async crearNota(@Body() nota:CrearNotaDto): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
         const  n =  await this.crearNotaService.execute(nota);
 
@@ -55,7 +61,7 @@ export class NotaController {
     }
     
     @Delete()
-    async delete(@Body() id :EliminarNotaDto){
+    async eliminarNota(@Body() id :EliminarNotaDto){
         console.log('Delete  Nota');
         const eliminar = this.eliminarNotaService.execute(id);
         if ((await eliminar).isLeft){ //validamos que el resultado sea correcto

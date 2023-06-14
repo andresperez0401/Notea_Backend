@@ -1,13 +1,12 @@
-import { Usuario } from 'src/Usuario/Dominio/Usuario';
-import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
+import { Usuario } from 'src/Usuario/Dominio/AgregadoUsuario';
 import { Either } from 'src/utils/either';
-import { editarUsuarioPO } from '../Aplicacion/dto/editarUsuarioPO';
+import { EditarUsuarioPO } from '../Aplicacion/dto/editarUsuarioPO';
 
-export interface UsuarioRepository {
+export interface RepositorioUsuario {
   //Arreglar lo que devuelve cada metodo
   save(usuario: Usuario): void;
   crearUsuario(usuario: Usuario): Promise<Either<Usuario, Error>>;
-  editarUsuario(usuario: editarUsuarioPO): Promise<Either<Usuario, Error>>;
+  editarUsuario(usuario: EditarUsuarioPO): Promise<Either<Usuario, Error>>;
   eliminarUsuario(id: string): Promise<Either<string, Error>>;
   buscarUsuarios(): Promise<Either<Iterable<Usuario>, Error>>;
   buscarUsuario(email: string): Promise<Either<Usuario, Error>>;

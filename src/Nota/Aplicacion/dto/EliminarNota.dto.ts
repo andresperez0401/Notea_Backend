@@ -1,6 +1,3 @@
-
-export class EliminarNotaDto{
-id : string;
+export class EliminarNotaDto {
+  id: string;
 }
-
-

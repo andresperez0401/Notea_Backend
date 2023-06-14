@@ -6,7 +6,6 @@ import { VOContenidoNota } from "./ValueObjectsNota/VOContenidoNota";
 import { VOTituloNota } from "./ValueObjectsNota/VOTituloNota";
 import { VOubicacionNota } from "./ValueObjectsNota/VOUbicacionNota";
 import { Tarea } from "./Entidades/EntidadTarea";
-import { Optional } from "src/Utils/opcional";
 
 export class Nota{
 

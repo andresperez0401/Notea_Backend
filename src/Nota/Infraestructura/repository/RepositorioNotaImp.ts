@@ -63,8 +63,6 @@ export class RepositorioNotaImp implements RepositorioNota{
     // }
 
     async buscarNotas(): Promise<Either<Iterable<Nota>,Error>>{
-        console.log('BuscarNotas RepoImp');
-
     try {
         const respuesta: EntidadNota[] = await this.repositorio.find();
         const notas: Nota[] = respuesta.map((nota) =>
