@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 //model
 
-import { EstadoEnum } from "src/Nota/Dominio/ValueObjects/EstadoEnum";
+import { EstadoEnum } from "src/Nota/Dominio/ValueObjectsNota/EstadoEnum";
 import { Column, Entity, PrimaryColumn } from "typeorm";
 import { EntidadUbicacion } from "./EntidadUbicacion";
 

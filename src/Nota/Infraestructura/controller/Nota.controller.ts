@@ -2,7 +2,7 @@
 import { Body, Controller, Inject, Post} from "@nestjs/common";
 import { Nota } from "src/nota/dominio/AgregadoNota";
 import { CrearNotaService } from "../../Aplicacion/CrearNota.service";
-import { CrearNotaDto } from "../dto/CrearNota.dto";
+import { CrearNotaDto } from "../../Aplicacion/dto/CrearNota.dto";
 import { Either } from "src/Utils/Either";
 
 @Controller('nota')

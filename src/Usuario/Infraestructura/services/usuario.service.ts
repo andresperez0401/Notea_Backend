@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm/dist';
 import { Repository } from 'typeorm';
 
-import { CreateUsuarioDto } from '../dto/usuario.dto';
+import { CreateUsuarioDto } from '../../Aplicacion/dto/usuario.dto';
 import { Usuario } from 'src/Usuario/Dominio/Usuario';
 import { UsuarioRepositoryImpl } from '../repository/usuarioRepositoryImpl';
 

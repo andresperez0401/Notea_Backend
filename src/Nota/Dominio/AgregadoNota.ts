@@ -1,10 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { error } from "console";
-import { EstadoEnum } from "./ValueObjects/EstadoEnum";
-import { IdNota } from "./ValueObjects/IdNota";
-import { VOContenidoNota } from "./ValueObjects/VOContenidoNota";
-import { VOTituloNota } from "./ValueObjects/VOTituloNota";
-import { VOubicacionNota } from "./ValueObjects/VOUbicacionNota";
+import { EstadoEnum } from "./ValueObjectsNota/EstadoEnum";
+import { IdNota } from "./ValueObjectsNota/IdNota";
+import { VOContenidoNota } from "./ValueObjectsNota/VOContenidoNota";
+import { VOTituloNota } from "./ValueObjectsNota/VOTituloNota";
+import { VOubicacionNota } from "./ValueObjectsNota/VOUbicacionNota";
+import { Tarea } from "./Entidades/EntidadTarea";
+import { Optional } from "src/Utils/opcional";
 
 export class Nota{
 
@@ -14,18 +16,25 @@ export class Nota{
     private fechaCreacion: Date;
     private ubicacion: VOubicacionNota;
     private estado: EstadoEnum;
+    private tareas : Array<Tarea>
 
-    private constructor(titulo: VOTituloNota, contenido: VOContenidoNota, fechaCreacion: Date, estado: EstadoEnum, ubicacion: VOubicacionNota){
-        this.id = IdNota.crearIdNota();
+    private constructor(titulo: VOTituloNota, contenido: VOContenidoNota, 
+        fechaCreacion: Date, estado: EstadoEnum, 
+        ubicacion: VOubicacionNota, tareas?: Array<Tarea>, id?: IdNota){
+
+        this.id = id;
         this.titulo = titulo;
         this.contenido = contenido;
         this.fechaCreacion = fechaCreacion;
         this.estado = estado;
         this.ubicacion = ubicacion;
+        this.tareas = tareas;
     }
 
     //Los constructores estaticos son una alternativa a los Factories
-    static crearNota(titulo: string, contenido: string, fechaCreacion: Date,  estado: EstadoEnum, latitud: number, longitud: number): Nota{
+    static crearNota(titulo: string, contenido: string, 
+        fechaCreacion: Date,  estado: EstadoEnum, latitud: number, longitud: 
+        number, tareas?: Array<string>, id?: string): Nota{
 
        // if (Object.values(EstadoEnum).includes(estado)) { //validacion???
             return new Nota(
@@ -33,7 +42,10 @@ export class Nota{
                 VOContenidoNota.crearContenidoNota(contenido), 
                 fechaCreacion, 
                 EstadoEnum[estado], 
-                VOubicacionNota.crearUbicacionNota(latitud, longitud));
+                VOubicacionNota.crearUbicacionNota(latitud, longitud),
+                tareas?.map(tarea => Tarea.crearTarea(tarea)),
+                IdNota.crearIdNota(id)
+                );
             // } else {
             //     throw new error();
             // }
@@ -43,7 +55,7 @@ export class Nota{
     //los get deben retornar primitivos, no objetos
     // asi no violamos la ley de demeter
     public getId(): string{
-        return this.id.getId();
+        return this.id.getValue();
     }
 
     public getTitulo(): string{
