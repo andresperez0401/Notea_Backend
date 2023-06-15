@@ -5,11 +5,11 @@ import { Either } from 'src/utils/either';
 import { Usuario } from '../Dominio/AgregadoUsuario';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
 import { RepositorioUsuarioImp } from '../Infraestructura/repository/RepositorioUsuarioImp';
-import { editarUsuarioPO } from './dto/editarUsuarioPO';
+import { EditarUsuarioPO } from './dto/editarUsuarioPO';
 
 @Injectable()
 export class EditarUsuarioService
-  implements IAplicationService<editarUsuarioPO, Usuario>
+  implements IAplicationService<EditarUsuarioPO, Usuario>
 {
   private readonly repositorioUsuario: RepositorioUsuario;
 
@@ -20,7 +20,7 @@ export class EditarUsuarioService
     this.repositorioUsuario = repositorioUsuario;
   }
 
-  async execute(s: editarUsuarioPO): Promise<Either<Usuario, Error>> {
+  async execute(s: EditarUsuarioPO): Promise<Either<Usuario, Error>> {
     return await this.repositorioUsuario.editarUsuario(s);
   }
 }
