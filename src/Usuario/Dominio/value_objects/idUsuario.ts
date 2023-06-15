@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import { identity } from 'rxjs';
 import { Optional } from 'src/Utils/opcional';
 import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 import { v4 as uuidv4 } from 'uuid';

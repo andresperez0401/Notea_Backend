@@ -1,29 +1,29 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Injectable, Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
-import { CreateUsuarioDto } from './dto/usuario.dto';
-import { Usuario } from '../Dominio/Usuario';
-import { UsuarioRepository } from '../Dominio/usuario.repository';
+import { CrearUsuarioDto } from './dto/CrearUsuario.dto';
+import { Usuario } from '../Dominio/AgregadoUsuario';
+import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
 import { nombreUsuario } from '../Dominio/value_objects/nombreUsuario';
 import { apellidoUsuario } from '../Dominio/value_objects/apellidoUsuario';
 import { emailUsuario } from '../Dominio/value_objects/emailUsuario';
 import { claveUsuario } from '../Dominio/value_objects/claveUsuario';
-import { UsuarioRepositoryImpl } from '../Infraestructura/repository/usuarioRepositoryImpl';
+import { RepositorioUsuarioImp } from '../Infraestructura/repository/RepositorioUsuarioImp';
 
 @Injectable()
-export class crearUsuarioService
-  implements IAplicationService<CreateUsuarioDto, Usuario>
+export class CrearUsuarioService
+  implements IAplicationService<CrearUsuarioDto, Usuario>
 {
-  private readonly repositorioUsuario: UsuarioRepository;
+  private readonly repositorioUsuario: RepositorioUsuario;
 
   constructor(
-    @Inject(UsuarioRepositoryImpl)
-    repositorioUsuario: UsuarioRepository,
+    @Inject(RepositorioUsuarioImp)
+    repositorioUsuario: RepositorioUsuario,
   ) {
     this.repositorioUsuario = repositorioUsuario;
   }
 
-  async execute(s: CreateUsuarioDto): Promise<Either<Usuario, Error>> {
+  async execute(s: CrearUsuarioDto): Promise<Either<Usuario, Error>> {
     const newUser: Usuario = Usuario.crearUsuario(
       new nombreUsuario(s.nombre),
       new apellidoUsuario(s.apellido),

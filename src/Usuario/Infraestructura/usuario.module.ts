@@ -1,26 +1,26 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './entities/usuario';
-import { UsuarioController } from './controller/usuario.controller';
-import { UsuarioRepositoryImpl } from './repository/usuarioRepositoryImpl';
-import { crearUsuarioService } from '../Aplicacion/crearUsuarioService';
-import { getAllUsersService } from '../Aplicacion/getAllUsersService';
-import { findByEmailService } from '../Aplicacion/findByEmailService';
-import { findByIdService } from '../Aplicacion/findByIdService';
-import { eliminarUsuarioService } from '../Aplicacion/eliminarUsuarioService';
-import { editarUsuarioService } from '../Aplicacion/editarUsuarioService';
+import { EntidadUsuario } from './entities/EntidadUsuario';
+import { UsuarioController } from './controller/Usuario.controller';
+import { RepositorioUsuarioImp } from './repository/RepositorioUsuarioImp';
+import { CrearUsuarioService } from '../Aplicacion/CrearUsuario.service';
+import { BuscarUsuariosService } from '../Aplicacion/BuscarUsuarios.service';
+import { EncontrarPorEmailService } from '../Aplicacion/EncontrarPorEmail.service';
+import { EncontrarPorIdService } from '../Aplicacion/EncontrarPorId.service';
+import { EliminarUsuarioService } from '../Aplicacion/EliminarUsuario.service';
+import { EditarUsuarioService } from '../Aplicacion/EditarUsuario.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([EntidadUsuario])],
   controllers: [UsuarioController],
   providers: [
-    UsuarioRepositoryImpl,
-    crearUsuarioService,
-    getAllUsersService,
-    findByEmailService,
-    findByIdService,
-    eliminarUsuarioService,
-    editarUsuarioService,
+    RepositorioUsuarioImp,
+    CrearUsuarioService,
+    BuscarUsuariosService,
+    EncontrarPorEmailService,
+    EncontrarPorIdService,
+    EliminarUsuarioService,
+    EditarUsuarioService,
   ],
 })
 export class UsuarioModule {}
