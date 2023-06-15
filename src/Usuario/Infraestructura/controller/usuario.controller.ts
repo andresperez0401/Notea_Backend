@@ -18,7 +18,7 @@ import { EliminarUsuarioService } from 'src/Usuario/Aplicacion/EliminarUsuario.s
 import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 import { EditarUsuarioService } from 'src/Usuario/Aplicacion/EditarUsuario.service';
 
-@Controller('usuarios')
+@Controller('usuario')
 export class UsuarioController {
   constructor(
     private readonly usuarioService: CrearUsuarioService,

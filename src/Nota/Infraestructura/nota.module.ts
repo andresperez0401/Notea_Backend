@@ -8,12 +8,15 @@ import { EliminarNotaService } from '../Aplicacion/EliminarNota.service';
 import { ModificarNotaService } from '../Aplicacion/ModificarNota.service';
 import { BuscarNotas } from '../Aplicacion/BuscarNotas.service';
 
-
-
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadNota])],
   controllers: [NotaController],
-  providers: [CrearNotaService, RepositorioNotaImp, EliminarNotaService,ModificarNotaService,BuscarNotas],
-
+  providers: [
+    CrearNotaService,
+    RepositorioNotaImp,
+    EliminarNotaService,
+    ModificarNotaService,
+    BuscarNotas,
+  ],
 })
 export class NotaModule {}
