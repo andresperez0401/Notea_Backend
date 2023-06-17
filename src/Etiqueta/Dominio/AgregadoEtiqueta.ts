@@ -27,7 +27,7 @@ export class Etiqueta {
     return new Etiqueta(
       nombreEtiqueta.crearNombreEtiqueta(nombre),
       colorEtiqueta[color],
-      idEtiqueta.crearIdEtiqueta(id),
+      idEtiqueta.crearIdEtiqueta(id)
     );
   }
 

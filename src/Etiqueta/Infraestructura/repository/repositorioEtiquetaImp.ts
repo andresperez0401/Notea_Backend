@@ -19,14 +19,14 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
     const entidadEtiqueta: entidadEtiqueta = {
       id: etiqueta.getId(),
       nombre: etiqueta.getNombre(),
-      color: etiqueta.getColor(),
+      color: etiqueta.getColor()
     };
 
     try {
       await this.repositorio.save(entidadEtiqueta);
       return Either.makeLeft<Etiqueta, Error>(etiqueta);
     } catch (error) {
-      return Either.makeRight<Etiqueta, Error>(error);
+      return Either.makeRight<Etiqueta, Error>(new Error('Error al crear la etiqueta'));
     }
   }
 
