@@ -22,18 +22,18 @@ export class EtiquetaController {
     @Inject(crearEtiquetaService)
     //@Inject(modificarEtiquetaService)
     @Inject(buscarEtiquetasService)
-    private readonly crearEtiquetaService: crearEtiquetaService,
+    private readonly CrearEtiquetaService: crearEtiquetaService,
     //private readonly modificarEtiquetaService: modificarEtiquetaService,
-    private readonly buscarEtiquetasService: buscarEtiquetasService,
+    private readonly BuscarEtiquetasService: buscarEtiquetasService,
   ) {
-    this.crearEtiquetaService = crearEtiquetaService;
+    this.CrearEtiquetaService = CrearEtiquetaService;
     //this.modificarEtiquetaService = modificarEtiquetaService;
-    this.buscarEtiquetasService = buscarEtiquetasService;
+    this.BuscarEtiquetasService = BuscarEtiquetasService;
   }
 
   @Get('/all')
-  async getEtiquetas(): Promise<Either<Iterable<Etiqueta>, Error>> {
-    const result = await this.buscarEtiquetasService.execute(null);
+  async buscarEtiquetas(): Promise<Either<Iterable<Etiqueta>, Error>> {
+    const result = await this.BuscarEtiquetasService.execute(null);
 
     if (result.isLeft()) {
       return result;
@@ -44,10 +44,10 @@ export class EtiquetaController {
     }
   }
   @Post()
-  async save(
+  async crearEtiqueta(
     @Body() etiqueta: crearEtiquetaDto,
   ): Promise<Either<Etiqueta, Error>> {
-    const result = await this.crearEtiquetaService.execute(etiqueta);
+    const result = await this.CrearEtiquetaService.execute(etiqueta);
 
     if (result.isLeft()) {
       return result;
