@@ -7,7 +7,7 @@ import { NotaModule } from './Nota/Infraestructura/nota.module';
 import { EtiquetaModule } from './Etiqueta/Infraestructura/etiqueta.module';
 
 @Module({
-  imports: [DatabaseModule, NotaModule, UsuarioModule,EtiquetaModule], // Importa tus módulos aquí
+  imports: [DatabaseModule, NotaModule, UsuarioModule, EtiquetaModule], // Importa tus módulos aquí
   controllers: [AppController],
   providers: [AppService],
 })

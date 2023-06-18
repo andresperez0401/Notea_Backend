@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntidadNota } from './entities/EntidadNota';
@@ -11,12 +12,16 @@ import { BuscarNotas } from '../Aplicacion/BuscarNotas.service';
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadNota])],
   controllers: [NotaController],
-  providers: [
+  providers: [ // Aqui se agregan los servicios
     CrearNotaService,
-    RepositorioNotaImp,
+    //RepositorioNotaImp,
     EliminarNotaService,
     ModificarNotaService,
     BuscarNotas,
+    { // Aqui se agregan los repositorios, se debe especificar la clase que implementa la interfaz
+      provide: 'RepositorioNota',
+      useClass: RepositorioNotaImp
+    }
   ],
 })
 export class NotaModule {}

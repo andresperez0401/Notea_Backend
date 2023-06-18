@@ -5,7 +5,6 @@ import { CrearNotaDto } from './dto/CrearNota.dto';
 import { Either } from 'src/Utils/Either';
 import { Nota } from '../dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
-import { RepositorioNotaImp } from '../Infraestructura/repository/RepositorioNotaImp';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
 
 @Injectable()
@@ -13,7 +12,7 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
 
   private readonly repositorioNota: RepositorioNota;
   constructor(
-    @Inject(RepositorioNotaImp) 
+    @Inject('RepositorioNota') 
     repositorioNota: RepositorioNota) {
     this.repositorioNota = repositorioNota;
   }

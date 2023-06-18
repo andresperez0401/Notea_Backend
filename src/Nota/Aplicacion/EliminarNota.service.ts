@@ -12,7 +12,7 @@ export class EliminarNotaService
   private readonly repositorioNota: RepositorioNota;
 
   constructor(
-    @Inject(RepositorioNotaImp)
+    @Inject('RepositorioNota')
     repositorioNota: RepositorioNota,
   ) {
     this.repositorioNota = repositorioNota;

@@ -14,13 +14,17 @@ import { EditarUsuarioService } from '../Aplicacion/EditarUsuario.service';
   imports: [TypeOrmModule.forFeature([EntidadUsuario])],
   controllers: [UsuarioController],
   providers: [
-    RepositorioUsuarioImp,
+    //RepositorioUsuarioImp,
     CrearUsuarioService,
     BuscarUsuariosService,
     EncontrarPorEmailService,
     EncontrarPorIdService,
     EliminarUsuarioService,
     EditarUsuarioService,
+    {
+      provide: 'RepositorioUsuario',
+      useClass: RepositorioUsuarioImp,
+    },
   ],
 })
 export class UsuarioModule {}

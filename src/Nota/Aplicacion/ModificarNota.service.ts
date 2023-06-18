@@ -4,7 +4,6 @@ import { Nota } from "../dominio/AgregadoNota";
 import { Injectable, Inject } from "@nestjs/common";
 import { Either } from "src/utils/either";
 import { RepositorioNota } from "../Dominio/RepositorioNota";
-import { RepositorioNotaImp } from "../Infraestructura/repository/RepositorioNotaImp";
 import { ModificarNotaDto } from "./dto/ModificarNota.dto";
 
 @Injectable()
@@ -13,7 +12,7 @@ export class ModificarNotaService implements IAplicationService<ModificarNotaDto
     private readonly repositorioNota: RepositorioNota;
 
     constructor (
-        @Inject(RepositorioNotaImp)
+        @Inject('RepositorioNota')
         repositorioNota: RepositorioNota){
         
         this.repositorioNota = repositorioNota;

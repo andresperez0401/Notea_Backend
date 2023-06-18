@@ -4,7 +4,6 @@ import { crearEtiquetaDto } from './dto/crearEtiqueta.dto';
 import { Either } from 'src/Utils/Either';
 import { Etiqueta } from '../dominio/AgregadoEtiqueta';
 import { RepositorioEtiqueta } from '../dominio/RepositorioEtiqueta';
-import { repositorioEtiquetaImp } from '../Infraestructura/repository/RepositorioEtiquetaImp';
 import { colorEtiqueta } from '../Dominio/ValueObjectsEtiqueta/colorEtiqueta';
 
 @Injectable()
@@ -13,7 +12,7 @@ export class crearEtiquetaService
 {
   private readonly repositorioEtiqueta: RepositorioEtiqueta;
   constructor(
-    @Inject(repositorioEtiquetaImp)
+    @Inject('RepositorioEtiqueta')
     repositorioEtiqueta: RepositorioEtiqueta,
   ) {
     this.repositorioEtiqueta = repositorioEtiqueta;

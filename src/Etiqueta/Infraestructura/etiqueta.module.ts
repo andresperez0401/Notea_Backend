@@ -11,10 +11,15 @@ import { buscarEtiquetasService } from '../Aplicacion/buscarEtiquetas.service';
   imports: [TypeOrmModule.forFeature([entidadEtiqueta])],
   controllers: [EtiquetaController],
   providers: [
-    repositorioEtiquetaImp,
+    //repositorioEtiquetaImp,
     crearEtiquetaService,
     //modificarEtiquetaService,
     buscarEtiquetasService,
+    {
+      // Aqui se agregan los repositorios, se debe especificar la clase que implementa la interfaz
+      provide: 'RepositorioEtiqueta',
+      useClass: repositorioEtiquetaImp,
+    },
   ],
 })
 export class EtiquetaModule {}

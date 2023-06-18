@@ -25,7 +25,6 @@ export class NotaController {
         private readonly ModificarNotaService : ModificarNotaService,
         private readonly buscarNotasService : BuscarNotas){
            
-            
             this.crearNotaService = crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
             this.ModificarNotaService = ModificarNotaService;
@@ -48,6 +47,7 @@ export class NotaController {
     @Post()
     async crearNota(@Body() nota:CrearNotaDto): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
+        //new crearnotaservice
         const  n =  await this.crearNotaService.execute(nota);
 
         if (n.isLeft()){ //validamos que el resultado sea correcto

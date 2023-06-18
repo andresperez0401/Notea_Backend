@@ -2,7 +2,6 @@ import { IAplicationService } from 'src/core/domain/appService/IAplicationServic
 import { Injectable, Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
-import { RepositorioUsuarioImp } from '../Infraestructura/repository/RepositorioUsuarioImp';
 
 @Injectable()
 export class EliminarUsuarioService
@@ -11,7 +10,7 @@ export class EliminarUsuarioService
   private readonly repositorioUsuario: RepositorioUsuario;
 
   constructor(
-    @Inject(RepositorioUsuarioImp)
+    @Inject('RepositorioUsuario')
     repositorioUsuario: RepositorioUsuario,
   ) {
     this.repositorioUsuario = repositorioUsuario;

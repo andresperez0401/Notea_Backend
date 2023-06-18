@@ -3,7 +3,6 @@ import { Injectable, Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
 import { Usuario } from '../Dominio/AgregadoUsuario';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
-import { RepositorioUsuarioImp } from '../Infraestructura/repository/RepositorioUsuarioImp';
 
 @Injectable()
 export class EncontrarPorEmailService
@@ -12,7 +11,7 @@ export class EncontrarPorEmailService
   private readonly repositorioUsuario: RepositorioUsuario;
 
   constructor(
-    @Inject(RepositorioUsuarioImp)
+    @Inject('RepositorioUsuario')
     repositorioUsuario: RepositorioUsuario,
   ) {
     this.repositorioUsuario = repositorioUsuario;

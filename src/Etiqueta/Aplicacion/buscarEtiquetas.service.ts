@@ -4,7 +4,6 @@ import { Injectable, Inject } from '@nestjs/common';
 
 import { Etiqueta } from '../dominio/AgregadoEtiqueta';
 import { RepositorioEtiqueta } from '../Dominio/RepositorioEtiqueta';
-import { repositorioEtiquetaImp } from '../Infraestructura/repository/RepositorioEtiquetaImp';
 
 @Injectable()
 export class buscarEtiquetasService
@@ -13,7 +12,7 @@ export class buscarEtiquetasService
   private readonly repositorioEtiqueta: RepositorioEtiqueta;
 
   constructor(
-    @Inject(repositorioEtiquetaImp)
+    @Inject('RepositorioEtiqueta')
     repositorioEtiq: RepositorioEtiqueta,
   ) {
     this.repositorioEtiqueta = repositorioEtiq;

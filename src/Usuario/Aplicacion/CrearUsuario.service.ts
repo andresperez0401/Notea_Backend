@@ -8,7 +8,6 @@ import { nombreUsuario } from '../Dominio/value_objects/nombreUsuario';
 import { apellidoUsuario } from '../Dominio/value_objects/apellidoUsuario';
 import { emailUsuario } from '../Dominio/value_objects/emailUsuario';
 import { claveUsuario } from '../Dominio/value_objects/claveUsuario';
-import { RepositorioUsuarioImp } from '../Infraestructura/repository/RepositorioUsuarioImp';
 
 @Injectable()
 export class CrearUsuarioService
@@ -17,7 +16,7 @@ export class CrearUsuarioService
   private readonly repositorioUsuario: RepositorioUsuario;
 
   constructor(
-    @Inject(RepositorioUsuarioImp)
+    @Inject('RepositorioUsuario')
     repositorioUsuario: RepositorioUsuario,
   ) {
     this.repositorioUsuario = repositorioUsuario;
