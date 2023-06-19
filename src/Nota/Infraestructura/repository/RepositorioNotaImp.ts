@@ -86,13 +86,17 @@ export class RepositorioNotaImp implements RepositorioNota{
     async eliminarNota(id: string): Promise<Either<string,Error>>{
         console.log('EliminarNota RepoImp');
         
-        try{
+        
             const notaAEliminar = await this.repositorio.findOne({where: {id}});
-           await this.repositorio.delete(notaAEliminar);
-            return Either.makeLeft('La nota ha sido eliminada');
-        }catch(error){
-            return Either.makeRight(error);
-        }
+            const respuesta =  await this.repositorio.delete(notaAEliminar);
+            
+            if (respuesta){
+               return Either.makeLeft<string,Error>('La nota ha sido eliminada');
+            }
+            else{
+               return Either.makeRight<string,Error>(new Error('no se pudo eliminar la nota'));
+            }
+        
     }
 
     // async buscarNotasPorEstado(estado: string): Promise<Either<Nota[],Error>>{

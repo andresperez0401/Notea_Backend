@@ -108,11 +108,19 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
   }
 
   async editarUsuario(info: EditarUsuarioPO): Promise<Either<Usuario, Error>> {
+      let encontro:boolean;
       const usuario = await this.usuarioRepo.findOneBy({ id: info.id });
-      await this.usuarioRepo.merge(usuario, info.payload);
-      const resultado =  await this.usuarioRepo.save(usuario);
-      
-      if(resultado){
+
+      if(usuario){
+        await this.usuarioRepo.merge(usuario, info.payload);
+        encontro = true;
+        const resultado =  await this.usuarioRepo.save(usuario);
+      }
+      else{
+        encontro = false;
+      }
+
+      if(encontro){
         const usuarioEditado: Usuario = Usuario.crearUsuario(
           new nombreUsuario(usuario.nombre),
           new apellidoUsuario(usuario.apellido),
@@ -129,12 +137,20 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
   }
 
   async eliminarUsuario(id: string): Promise<Either<string, Error>> {
+   
+    let encontro: boolean;
     const usuarioAEliminar: EntidadUsuario = await this.usuarioRepo.findOne({
-        where: { id },
+        where: { id },                                 
     });
+    if(usuarioAEliminar){                  //primero validamos que el id proporcionado exista
+      const resultado =  await this.usuarioRepo.delete(usuarioAEliminar);
+      encontro = true;
+    }
+    else{
+      encontro = false;
+    }
   
-    const resultado =  await this.usuarioRepo.delete(usuarioAEliminar);
-    if(resultado){
+    if(encontro){
       return Either.makeLeft<string,Error> (`Usuario de id #${id} ha sido eliminado`);
     }
     else{
