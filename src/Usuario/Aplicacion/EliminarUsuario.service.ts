@@ -1,9 +1,8 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Injectable, Inject } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
 
-@Injectable()
 export class EliminarUsuarioService
   implements IAplicationService<null, string>
 {

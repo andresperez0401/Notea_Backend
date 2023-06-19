@@ -1,11 +1,9 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Either } from 'src/Utils/Either';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
-import { RepositorioNotaImp } from '../Infraestructura/repository/RepositorioNotaImp';
 import { EliminarNotaDto } from './dto/EliminarNota.dto';
 
-@Injectable()
 export class EliminarNotaService
   implements IAplicationService<EliminarNotaDto, string>
 {

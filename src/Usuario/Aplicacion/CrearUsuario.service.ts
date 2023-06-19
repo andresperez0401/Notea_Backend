@@ -1,5 +1,5 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Injectable, Inject } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
 import { CrearUsuarioDto } from './dto/CrearUsuario.dto';
 import { Usuario } from '../Dominio/AgregadoUsuario';
@@ -9,7 +9,6 @@ import { apellidoUsuario } from '../Dominio/value_objects/apellidoUsuario';
 import { emailUsuario } from '../Dominio/value_objects/emailUsuario';
 import { claveUsuario } from '../Dominio/value_objects/claveUsuario';
 
-@Injectable()
 export class CrearUsuarioService
   implements IAplicationService<CrearUsuarioDto, Usuario>
 {

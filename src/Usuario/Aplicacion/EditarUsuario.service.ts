@@ -1,12 +1,10 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Injectable } from '@nestjs/common';
 import { Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
 import { Usuario } from '../Dominio/AgregadoUsuario';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
 import { EditarUsuarioPO } from './dto/editarUsuarioPO';
 
-@Injectable()
 export class EditarUsuarioService
   implements IAplicationService<EditarUsuarioPO, Usuario>
 {

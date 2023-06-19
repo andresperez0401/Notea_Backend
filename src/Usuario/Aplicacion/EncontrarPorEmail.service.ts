@@ -1,10 +1,9 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Injectable, Inject } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { Either } from 'src/utils/either';
 import { Usuario } from '../Dominio/AgregadoUsuario';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
 
-@Injectable()
 export class EncontrarPorEmailService
   implements IAplicationService<string, Usuario>
 {

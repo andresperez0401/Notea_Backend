@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { crearEtiquetaDto } from './dto/crearEtiqueta.dto';
 import { Either } from 'src/Utils/Either';
@@ -6,7 +6,6 @@ import { Etiqueta } from '../dominio/AgregadoEtiqueta';
 import { RepositorioEtiqueta } from '../dominio/RepositorioEtiqueta';
 import { colorEtiqueta } from '../Dominio/ValueObjectsEtiqueta/colorEtiqueta';
 
-@Injectable()
 export class crearEtiquetaService
   implements IAplicationService<crearEtiquetaDto, Etiqueta>
 {
