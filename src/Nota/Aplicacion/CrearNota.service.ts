@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { CrearNotaDto } from './dto/CrearNota.dto';
 import { Either } from 'src/Utils/Either';
@@ -7,7 +7,6 @@ import { Nota } from '../dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
 
-@Injectable()
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
 
   private readonly repositorioNota: RepositorioNota;
