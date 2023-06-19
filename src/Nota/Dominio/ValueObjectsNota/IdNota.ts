@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { Optional } from 'src/Utils/opcional';
-import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 import { v4 as uuidv4 } from 'uuid';
+import { Optional } from 'src/Utils/opcional';
 
-export class idUsuario implements ValueObject<string> {
-  private readonly id: string;
+export class IdNota {
+  private id: string;
 
-  private constructor(id: Optional<string>) {
+  constructor(id: Optional<string>) {
     if (id.hasvalue()){
       this.id = id.getValue();
     }
@@ -15,8 +14,8 @@ export class idUsuario implements ValueObject<string> {
     }
   }
 
-  static crearIdUsuario(id?: string): idUsuario {
-    return new idUsuario(new Optional<string>(id));
+  static crearIdNota(id?: string): IdNota {
+    return new IdNota(new Optional<string>(id));
   }
 
   isValid(): boolean {
