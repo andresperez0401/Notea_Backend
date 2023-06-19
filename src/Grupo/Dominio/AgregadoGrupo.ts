@@ -22,4 +22,16 @@ export class Grupo {
           idGrupo.crearIdGrupo(id)
       );
     }
+
+    getId() : string {
+        return this.id.getValue();
+    }
+
+    getNombre() :string{
+        return this.nombre.getNombreGrupo();
+    }
+
+    getIdUsuario(): string{
+        return this.usuario.getValue();
+    }
 }

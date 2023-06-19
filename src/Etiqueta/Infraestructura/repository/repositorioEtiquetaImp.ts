@@ -22,17 +22,17 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
       color: etiqueta.getColor()
     };
 
-    try {
-      await this.repositorio.save(entidadEtiqueta);
+      const e = await this.repositorio.save(entidadEtiqueta);
+    if (e){
       return Either.makeLeft<Etiqueta, Error>(etiqueta);
-    } catch (error) {
+    } else {
       return Either.makeRight<Etiqueta, Error>(new Error('Error al crear la etiqueta'));
     }
   }
 
   async buscarEtiquetas(): Promise<Either<Iterable<Etiqueta>,Error>>{
-    try {
-        const result: entidadEtiqueta[] = await this.repositorio.find();
+      const result: entidadEtiqueta[] = await this.repositorio.find();
+      if (result) {
         const etiquetas: Etiqueta[] = result.map((etiqueta) =>
             Etiqueta.crearEtiqueta(
             etiqueta.nombre,
@@ -40,9 +40,8 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
             etiqueta.id
             ),
         );
-
         return Either.makeLeft(etiquetas);
-    } catch (error) {
+      } else {
         return Either.makeRight(new Error('Error al buscar las etiquetas'));
     }
 }
