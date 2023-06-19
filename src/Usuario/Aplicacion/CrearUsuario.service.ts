@@ -23,10 +23,10 @@ export class CrearUsuarioService
 
   async execute(s: CrearUsuarioDto): Promise<Either<Usuario, Error>> {
     const newUser: Usuario = Usuario.crearUsuario(
-      new nombreUsuario(s.nombre),
-      new apellidoUsuario(s.apellido),
-      new emailUsuario(s.email),
-      new claveUsuario(s.clave),
+      s.nombre,
+      s.apellido,
+      s.email,
+      s.clave,
       s.suscripcion,
     );
 

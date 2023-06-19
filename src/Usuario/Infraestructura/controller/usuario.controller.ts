@@ -33,7 +33,7 @@ export class UsuarioController {
   ) {}
 
   @Post()
-  async crearUsuario(@Body() payload: CrearUsuarioDto) {
+  async crearUsuario(@Res() response, @Body() payload: CrearUsuarioDto) {
     const respuesta = await this.usuarioService.execute(payload);
 
     if(respuesta.isLeft()){
@@ -46,7 +46,7 @@ export class UsuarioController {
 
   //buscar todos los usuarios
   @Get('/all')
-  async buscarUsuarios() {
+  async buscarUsuarios(@Res() response) {
     const respuesta = await this.buscarUsuariosService.execute();
 
     if(respuesta.isLeft()){
@@ -82,7 +82,7 @@ export class UsuarioController {
   }
   //Eliminar usuario
   @Delete(':id')
-  async eliminarUsuario(@Param('id') id: string) {
+  async eliminarUsuario(@Res() response, @Param('id') id: string) {
     const respuesta = await this.eliminarUsuarioService.execute(id);
 
     if(respuesta.isLeft()){
@@ -95,6 +95,7 @@ export class UsuarioController {
   //Editar usuario
   @Put(':id')
   async editarUsuario(
+    @Res() response,
     @Param('id') id: string,
     @Body() payload: UpdateUsuarioDto,
   ) {

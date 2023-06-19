@@ -41,16 +41,15 @@ export class RepositorioNotaImp implements RepositorioNota{
 
         const nota =  await this.repositorio.findOneBy({id : infoNota.id});
         if (nota){
-
+            const responde = this.repositorio.merge(nota, infoNota)
+            if (responde){         
+                await this.repositorio.save(nota)  
+                return Either.makeLeft("Nota actualizada");
+            }else{ 
+                return Either.makeRight(new Error('Error al modificar nota'));
+            }
         }else {
-            return Either.makeRight(new Error('No se encontro usuario con id' + info.id));
-        }
-        const responde = await this.repositorio.merge(nota, infoNota)
-        try{         
-        await this.repositorio.save(nota)  
-            return Either.makeLeft("Nota actualizada");
-        }catch(error){ //no se puede manejar el error en el mismo repositorio
-            return Either.makeRight(new Error('Error al modificar nota'));
+            return Either.makeRight(new Error('No se encontro usuario con id' + infoNota.id));
         }
     }
     
@@ -67,8 +66,8 @@ export class RepositorioNotaImp implements RepositorioNota{
     // }
 
     async buscarNotas(): Promise<Either<Iterable<Nota>,Error>>{
-    try {
         const respuesta: EntidadNota[] = await this.repositorio.find();
+        if (respuesta) {
         const notas: Nota[] = respuesta.map((nota) =>
             Nota.crearNota(
             nota.titulo,
@@ -82,7 +81,7 @@ export class RepositorioNotaImp implements RepositorioNota{
         );
 
         return Either.makeLeft(notas);
-    } catch (error) {
+    } else {
         return Either.makeRight(new Error('Error al buscar las notas'));
     }
     }
