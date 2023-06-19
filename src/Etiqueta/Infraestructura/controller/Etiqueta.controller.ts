@@ -6,6 +6,7 @@ import {
   Get,
   Delete,
   Param,
+  Res,
 } from '@nestjs/common';
 import { Either } from 'src/Utils/Either';
 import { Etiqueta } from 'src/Etiqueta/dominio/AgregadoEtiqueta';
@@ -32,29 +33,28 @@ export class EtiquetaController {
   }
 
   @Get('/all')
-  async buscarEtiquetas(): Promise<Either<Iterable<Etiqueta>, Error>> {
+  async buscarEtiquetas(@Res() response): Promise<Either<Iterable<Etiqueta>, Error>> {
     const result = await this.BuscarEtiquetasService.execute(null);
 
     if (result.isLeft()) {
-      return result;
-    } else {
-      return Either.makeRight<Iterable<Etiqueta>, Error>(
-        new Error('Error al obtener las Etiquetas'),
-      );
+      return response.status(200).json(result.getLeft());
+    }
+    else {
+      return response.status(404).json(result.getRight().message);
     }
   }
   @Post()
   async crearEtiqueta(
+    @Res() response, 
     @Body() etiqueta: crearEtiquetaDto,
   ): Promise<Either<Etiqueta, Error>> {
     const result = await this.CrearEtiquetaService.execute(etiqueta);
 
     if (result.isLeft()) {
-      return result;
-    } else {
-      return Either.makeRight<Etiqueta, Error>(
-        new Error('Error al crear la etiqueta'),
-      );
+      return response.status(200).json(result.getLeft());
+    }
+    else {
+      return response.status(404).json(result.getRight().message);
     }
   }
 }

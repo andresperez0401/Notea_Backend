@@ -29,21 +29,25 @@ export class RepositorioNotaImp implements RepositorioNota{
                         longitud: nota.getUbicacion().get('longitud'), } 
         }
  
-        try{
-            await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
+        const response = await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
+        if (response){
             return Either.makeLeft<Nota,Error>(nota);
-        }catch(error){ //no se puede manejar el error en el mismo repositorio
+        }else{ 
             return Either.makeRight<Nota,Error>(new Error('Error al crear la nota'));
         }
     }
     
     async updateNota(infoNota : ModificarNotaDto): Promise<Either<string,Error>>{
 
-        const nota =  await this.repositorio.findOneBy({id : infoNota.id}); 
+        const nota =  await this.repositorio.findOneBy({id : infoNota.id});
+        if (nota){
+
+        }else {
+            return Either.makeRight(new Error('No se encontro usuario con id' + info.id));
+        }
+        const responde = await this.repositorio.merge(nota, infoNota)
         try{         
-            await this.repositorio.merge(nota, infoNota)
         await this.repositorio.save(nota)  
-            //guardar en la base de datos usando TypeORM
             return Either.makeLeft("Nota actualizada");
         }catch(error){ //no se puede manejar el error en el mismo repositorio
             return Either.makeRight(new Error('Error al modificar nota'));

@@ -47,10 +47,10 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
         const usuarios: Usuario[] = respuesta.map((user) =>
         //transformamos el iterable de user(entity) a usuario (dominio)
         Usuario.crearUsuario(
-          new nombreUsuario(user.nombre),
-          new apellidoUsuario(user.apellido),
-          new emailUsuario(user.email),
-          new claveUsuario(user.clave),
+          user.nombre,
+          user.apellido,
+          user.email,
+          user.clave,
           user.suscripcion,
           user.id,
         ),
@@ -70,14 +70,13 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
       });
       if(respuesta){
         const newUser: Usuario = Usuario.crearUsuario(
-          new nombreUsuario(respuesta.nombre),
-          new apellidoUsuario(respuesta.apellido),
-          new emailUsuario(respuesta.email),
-          new claveUsuario(respuesta.clave),
+          respuesta.nombre,
+          respuesta.apellido,
+          respuesta.email,
+          respuesta.clave,
           respuesta.suscripcion,
           respuesta.id,
         );
-
         return Either.makeLeft<Usuario,Error>(newUser);
       }
       else{
@@ -93,10 +92,10 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
       });
       if (respuesta){
         const newUser: Usuario = Usuario.crearUsuario(
-          new nombreUsuario(respuesta.nombre),
-          new apellidoUsuario(respuesta.apellido),
-          new emailUsuario(respuesta.email),
-          new claveUsuario(respuesta.clave),
+          respuesta.nombre,
+          respuesta.apellido,
+          respuesta.email,
+          respuesta.clave,
           respuesta.suscripcion,
           respuesta.id,
         );
@@ -113,48 +112,43 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
 
       if(usuario){
         await this.usuarioRepo.merge(usuario, info.payload);
-        encontro = true;
         const resultado =  await this.usuarioRepo.save(usuario);
+        if(resultado){
+          const usuarioEditado: Usuario = Usuario.crearUsuario(
+            usuario.nombre,
+            usuario.apellido,
+            usuario.email,
+            usuario.clave,
+            usuario.suscripcion,
+            usuario.id,
+          );
+          return Either.makeLeft<Usuario,Error>(usuarioEditado);
+        }
+        else{   
+          return Either.makeRight<Usuario,Error>(new Error('Error al editar usuario'));
+        }
       }
       else{
-        encontro = false;
+        return Either.makeRight<Usuario, Error>(new Error('No se encontro usuario con id' + info.id));
       }
 
-      if(encontro){
-        const usuarioEditado: Usuario = Usuario.crearUsuario(
-          new nombreUsuario(usuario.nombre),
-          new apellidoUsuario(usuario.apellido),
-          new emailUsuario(usuario.email),
-          new claveUsuario(usuario.clave),
-          usuario.suscripcion,
-          usuario.id,
-        );
-        return Either.makeLeft<Usuario,Error>(usuarioEditado);
-      }
-      else{   
-        return Either.makeRight<Usuario,Error>(new Error('Error al editar usuario'));
-      }
   }
 
   async eliminarUsuario(id: string): Promise<Either<string, Error>> {
-   
-    let encontro: boolean;
     const usuarioAEliminar: EntidadUsuario = await this.usuarioRepo.findOne({
         where: { id },                                 
     });
     if(usuarioAEliminar){                  //primero validamos que el id proporcionado exista
       const resultado =  await this.usuarioRepo.delete(usuarioAEliminar);
-      encontro = true;
+      if(resultado){
+        return Either.makeLeft<string,Error> (`Usuario de id #${id} ha sido eliminado`);
+      }
+      else{
+        return Either.makeRight<string,Error>(new Error('Error al eliminar usuario'));
+      }
     }
     else{
-      encontro = false;
-    }
-  
-    if(encontro){
-      return Either.makeLeft<string,Error> (`Usuario de id #${id} ha sido eliminado`);
-    }
-    else{
-      return Either.makeRight<string,Error>(new Error('Error al eliminar usuario'));
+      return Either.makeRight<string,Error>(new Error('No se encontro usuario para eliminar'));
     }
   }
 

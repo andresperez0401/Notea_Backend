@@ -3,8 +3,12 @@ import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 export class claveUsuario implements ValueObject<string> {
   private readonly clave: string;
 
-  constructor(clave: string) {
+  private constructor(clave: string) {
     this.clave = clave;
+  }
+  
+  static createClave(clave: string){
+    return new claveUsuario(clave);
   }
 
   isValid(): boolean {

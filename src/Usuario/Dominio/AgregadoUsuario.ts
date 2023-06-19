@@ -30,14 +30,20 @@ export class Usuario {
   }
 
   static crearUsuario(
-    nombre: nombreUsuario,
-    apellido: apellidoUsuario,
-    email: emailUsuario,
-    clave: claveUsuario,
+    nombre: string,
+    apellido: string,
+    email: string,
+    clave: string,
     suscripcion: boolean,
     id?: string,
   ) {
-    return new Usuario(nombre, apellido, email, clave, suscripcion, idUsuario.crearIdUsuario(id));
+    return new Usuario(
+      nombreUsuario.crearNombreUsuario(nombre),
+      apellidoUsuario.crearApellidoUsuario(apellido),
+      emailUsuario.crearEmail(email),
+      claveUsuario.createClave(clave), 
+      suscripcion, 
+      idUsuario.crearIdUsuario(id));
   }
 
   public getId(): string {

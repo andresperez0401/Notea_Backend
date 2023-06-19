@@ -3,8 +3,12 @@ import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 export class nombreUsuario implements ValueObject<string> {
   private readonly name: string;
 
-  constructor(name: string) {
+  private constructor(name: string) {
     this.name = name;
+  }
+
+  static crearNombreUsuario(name: string): nombreUsuario{
+    return new nombreUsuario(name);
   }
 
   isValid(): boolean {

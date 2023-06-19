@@ -7,6 +7,8 @@ import {
   Param,
   Post,
   Put,
+  Res,
+  Response,
 } from '@nestjs/common';
 
 import { CrearUsuarioDto, UpdateUsuarioDto } from '../../Aplicacion/dto/CrearUsuario.dto';
@@ -17,6 +19,7 @@ import { EncontrarPorIdService } from 'src/Usuario/Aplicacion/EncontrarPorId.ser
 import { EliminarUsuarioService } from 'src/Usuario/Aplicacion/EliminarUsuario.service';
 import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 import { EditarUsuarioService } from 'src/Usuario/Aplicacion/EditarUsuario.service';
+import { response } from 'express';
 
 @Controller('usuario')
 export class UsuarioController {
@@ -30,29 +33,64 @@ export class UsuarioController {
   ) {}
 
   @Post()
-  crearUsuario(@Body() payload: CrearUsuarioDto) {
-    return this.usuarioService.execute(payload);
+  async crearUsuario(@Body() payload: CrearUsuarioDto) {
+    const respuesta = await this.usuarioService.execute(payload);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
 
   //buscar todos los usuarios
   @Get('/all')
-  buscarUsuarios() {
-    return this.buscarUsuariosService.execute();
+  async buscarUsuarios() {
+    const respuesta = await this.buscarUsuariosService.execute();
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
   //Buscar por email
   @Get('email/:email')
-  async buscarUsuarioPorEmail(@Param('email') email: string) {
-    return await this.buscarUsuariosEmailService.execute(email);
+  async buscarUsuarioPorEmail(@Res() response, @Param('email') email: string) {
+    const respuesta = await this.buscarUsuariosEmailService.execute(email)
+  
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
   //Buscar por id
   @Get('id/:id')
-  async buscarUsuarioPorId(@Param('id') id: string) {
-    return await this.buscarUsuariosIdService.execute(id);
+  async buscarUsuarioPorId(@Res() response, @Param('id') id: string) {
+    const respuesta = await this.buscarUsuariosIdService.execute(id);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
   //Eliminar usuario
   @Delete(':id')
   async eliminarUsuario(@Param('id') id: string) {
-    return await this.eliminarUsuarioService.execute(id);
+    const respuesta = await this.eliminarUsuarioService.execute(id);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
   //Editar usuario
   @Put(':id')
@@ -63,6 +101,13 @@ export class UsuarioController {
     const editarPO = new EditarUsuarioPO();
     editarPO.id = id;
     editarPO.payload = payload;
-    return await this.editarUsuarioService.execute(editarPO);
+    const respuesta = await this.editarUsuarioService.execute(editarPO);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
 }

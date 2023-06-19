@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Inject, Post,Get,Delete, Param,Patch} from "@nestjs/common";
+import { Body, Controller, Inject, Post,Get,Delete, Param,Patch, Res} from "@nestjs/common";
 import { Nota } from "src/nota/dominio/AgregadoNota";
 import { CrearNotaService } from "../../Aplicacion/CrearNota.service";
 import { CrearNotaDto } from "../../Aplicacion/dto/CrearNota.dto";
@@ -33,49 +33,53 @@ export class NotaController {
         };
 
     @Get('/all')
-    async buscarNotas(): Promise<Either<Iterable<Nota>, Error>>{
+    async buscarNotas(@Res() response): Promise<Either<Iterable<Nota>, Error>>{
         console.log('Get All Notas');
         const n = await this.buscarNotasService.execute(null);
         
-        if (n.isLeft()){ //validamos que el resultado sea correcto
-            return n;
-        }else{
-            return Either.makeRight<Iterable<Nota>,Error>(new Error('Error al obtener las notas'));
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
         }
     }
     
     @Post()
-    async crearNota(@Body() nota:CrearNotaDto): Promise<Either<Nota,Error>>{
+    async crearNota(@Res() response, @Body() nota:CrearNotaDto): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
         //new crearnotaservice
         const  n =  await this.crearNotaService.execute(nota);
 
-        if (n.isLeft()){ //validamos que el resultado sea correcto
-            return n;
-        }else{
-            return Either.makeRight<Nota,Error>(new Error('Error al crear la nota'));
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
         }
     }
     
     @Delete()
-    async eliminarNota(@Body() id :EliminarNotaDto){
+    async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){
         console.log('Delete  Nota');
-        const eliminar = this.eliminarNotaService.execute(id);
-        if ((await eliminar).isLeft){ //validamos que el resultado sea correcto
-            return eliminar;
-        }else{
-            return Either.makeRight<string,Error>(new Error('Error al eliminar la nota'));
+        const n = await this.eliminarNotaService.execute(id);
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
         }
     }
 
     @Patch()
-    async update(@Body() notaMod: ModificarNotaDto): Promise<Either<string,Error>> {
+    async update(@Res() response, @Body() notaMod: ModificarNotaDto): Promise<Either<string,Error>> {
         console.log('Mod  Nota');
-        const modificar =  this.ModificarNotaService.execute(notaMod)
-        if ((await modificar).isLeft){ //validamos que el resultado sea correcto
-            return modificar;
-        }else{
-            return Either.makeRight<string,Error>(new Error('Error al eliminar la nota'));
+        const n =  await this.ModificarNotaService.execute(notaMod)
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
         }
          
     }
