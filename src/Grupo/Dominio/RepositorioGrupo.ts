@@ -7,6 +7,6 @@ export interface RepositorioGrupo{
   creargrupo(grupo: Grupo): Promise<Either<Grupo, Error>>;
  // editarGrupo(grupo: EditarGrupoPO): Promise<Either<Grupo, Error>>;
   //eliminarGrupo(id: string): Promise<Either<string, Error>>;
- // buscarGrupos(): Promise<Either<Iterable<Grupo>, Error>>;
+   buscarGrupos(): Promise<Either<Iterable<Grupo>, Error>>;
  // buscarGrupo(id: string): Promise<Either<Grupo, Error>>;
 }

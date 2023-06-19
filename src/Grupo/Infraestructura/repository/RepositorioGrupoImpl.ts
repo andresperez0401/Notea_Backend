@@ -29,5 +29,25 @@ export class RepositorioGrupoImp implements RepositorioGrupo{
         }
     }
 
+    async buscarGrupos(): Promise<Either<Iterable<Grupo>, Error>> {
+   
+        const respuesta: EntidadGrupo[] = await this.grupoRepo.find();
+       
+        if(respuesta){
+          const grupos: Grupo[] = respuesta.map((group) =>
+          //transformamos el iterable de user(entity) a usuario (dominio)
+          Grupo.crearGrupo(
+            group.nombre,
+            group.idUsuario,
+            group.id,
+          ),
+        );
+          return Either.makeLeft<Iterable<Grupo>, Error>(grupos);
+        }
+        else{
+          return Either.makeRight<Iterable<Grupo>,Error>(new Error ('Error al obtener los grupos'));
+        }
+    }
+
 
 }

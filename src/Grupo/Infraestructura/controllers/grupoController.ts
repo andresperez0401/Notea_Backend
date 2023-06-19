@@ -14,11 +14,13 @@ import {
   import { Grupo } from 'src/Grupo/Dominio/AgregadoGrupo';
   import { CrearGrupoService } from 'src/Grupo/Aplicacion/crearGrupoService';
   import { CrearGrupoDto } from 'src/Grupo/Aplicacion/dto/CrearGrupo.dto';
+  import { buscarGruposService } from 'src/Grupo/Aplicacion/buscarGruposService';
   
   @Controller('grupo')
   export class GrupoController {
     constructor(
       private readonly crearGrupoService: CrearGrupoService,
+      private readonly buscarGruposService: buscarGruposService,
     ) {}
   
     @Post()
@@ -33,10 +35,10 @@ import {
       }
     }
   
-   /* //buscar todos los usuarios
+    //buscar todos los grupos
     @Get('/all')
-    async buscarUsuarios(@Res() response) {
-      const respuesta = await this.buscarUsuariosService.execute();
+    async buscarGrupos(@Res() response) {
+      const respuesta = await this.buscarGruposService.execute();
   
       if(respuesta.isLeft()){
         return response.status(200).json(respuesta.getLeft());
@@ -45,6 +47,7 @@ import {
         return response.status(404).json(respuesta.getRight().message);
       }
     }
+    /*
     //Buscar por email
     @Get('email/:email')
     async buscarUsuarioPorEmail(@Res() response, @Param('email') email: string) {
