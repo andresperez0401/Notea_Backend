@@ -3,11 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntidadGrupo } from './entities/EntidadGrupo';
 import { RepositorioGrupoImp } from './repository/RepositorioGrupoImpl';
 import { CrearGrupoService } from '../Aplicacion/crearGrupoService';
-import { grupoController } from './controllers/grupoController';
+import { GrupoController } from './controllers/grupoController';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadGrupo])],
-  controllers: [grupoController],
+  controllers: [GrupoController],
   providers: [
     //RepositorioUsuarioImp,
     CrearGrupoService,

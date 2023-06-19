@@ -8,10 +8,11 @@ import { RepositorioGrupo } from '../Dominio/RepositorioGrupo';
 
 export class CrearGrupoService implements IAplicationService<CrearGrupoDto, Grupo> {
 
-  private readonly repositorioNota: RepositorioGrupo;
+  private readonly repositorioGrupo: RepositorioGrupo;
   constructor( 
-    repositorioNota: RepositorioGrupo) {
-    this.repositorioNota = repositorioNota;
+    @Inject('RepositorioGrupo')
+    repositorioGrupo: RepositorioGrupo) {
+    this.repositorioGrupo = repositorioGrupo;
   }
   
   async execute(s: CrearGrupoDto): Promise<Either<Grupo, Error>> {
@@ -21,7 +22,7 @@ export class CrearGrupoService implements IAplicationService<CrearGrupoDto, Grup
       s.nombre,
     );
     
-    return await this.repositorioNota.creargrupo(grupo);
+    return await this.repositorioGrupo.creargrupo(grupo);
   }
     
 }
