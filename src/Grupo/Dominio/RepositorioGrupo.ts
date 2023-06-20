@@ -1,5 +1,5 @@
 import { Grupo } from './AgregadoGrupo';
-import { Either } from 'src/utils/either';
+import { Either } from 'src/Utils/Uither';
 
 export interface RepositorioGrupo{
   //Arreglar lo que devuelve cada metodo

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 import { Body, Controller, Inject, Post,Get,Delete, Param,Patch, Res} from "@nestjs/common";
-import { Nota } from "src/nota/dominio/AgregadoNota";
+import { Nota } from "src/Nota/Dominio/AgregadoNota";
 import { CrearNotaService } from "../../Aplicacion/CrearNota.service";
 import { CrearNotaDto } from "../../Aplicacion/dto/CrearNota.dto";
 import { Either } from "src/Utils/Either";

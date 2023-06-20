@@ -3,7 +3,7 @@ import { RepositorioGrupo } from "src/Grupo/Dominio/RepositorioGrupo";
 import { EntidadGrupo } from "../entities/EntidadGrupo";
 import { Repository } from "typeorm";
 import { Grupo } from "src/Grupo/Dominio/AgregadoGrupo";
-import { Either } from "src/utils/either";
+import { Either } from "src/Utils/Either";
 
 
 export class RepositorioGrupoImp implements RepositorioGrupo{

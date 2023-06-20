@@ -9,7 +9,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { Either } from 'src/Utils/Either';
-import { Etiqueta } from 'src/Etiqueta/dominio/AgregadoEtiqueta';
+import { Etiqueta } from 'src/Etiqueta/Dominio/AgregadoEtiqueta';
 import { crearEtiquetaService } from '../../Aplicacion/crearEtiqueta.service';
 import { crearEtiquetaDto } from '../../Aplicacion/dto/crearEtiqueta.dto';
 //import { modificarEtiquetaService } from 'src/Etiqueta/Aplicacion/modificarEtiqueta.service';

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Optional } from 'src/Utils/opcional';
+import { Optional } from 'src/Utils/Opcional';
 import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 import { v4 as uuidv4 } from 'uuid';
 
