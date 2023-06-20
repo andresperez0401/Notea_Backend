@@ -33,27 +33,27 @@ export class EtiquetaController {
   }
 
   @Get('/all')
-  async buscarEtiquetas(@Res() response): Promise<Either<Iterable<Etiqueta>, Error>> {
+  async buscarEtiquetas(
+    @Res() response,
+  ): Promise<Either<Iterable<Etiqueta>, Error>> {
     const result = await this.BuscarEtiquetasService.execute(null);
 
     if (result.isLeft()) {
       return response.status(200).json(result.getLeft());
-    }
-    else {
+    } else {
       return response.status(404).json(result.getRight().message);
     }
   }
   @Post()
   async crearEtiqueta(
-    @Res() response, 
+    @Res() response,
     @Body() etiqueta: crearEtiquetaDto,
   ): Promise<Either<Etiqueta, Error>> {
     const result = await this.CrearEtiquetaService.execute(etiqueta);
 
     if (result.isLeft()) {
       return response.status(200).json(result.getLeft());
-    }
-    else {
+    } else {
       return response.status(404).json(result.getRight().message);
     }
   }
