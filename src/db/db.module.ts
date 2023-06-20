@@ -1,7 +1,7 @@
 import { Module, Global } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } from 'config';
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } from 'src/config';
 
 @Global()
 @Module({
