@@ -1,5 +1,5 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Either } from 'src/utils/Either';
+import { Either } from 'src/Utils/Either';
 import { Inject } from '@nestjs/common';
 
 import { Etiqueta } from 'src/Etiqueta/dominio/AgregadoEtiqueta';
