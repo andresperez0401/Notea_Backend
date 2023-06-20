@@ -14,33 +14,6 @@ export class Usuario {
   private clave: claveUsuario;
   private suscripcion: boolean;
 
-<<<<<<< HEAD:src/Usuario/Dominio/usuario.ts
-  private constructor(nombre: nombreUsuario, apellido: apellidoUsuario, email:emailUsuario,
-    clave: claveUsuario, suscripcion: boolean, id?:idUsuario){
-     if (id !== undefined){
-      this.id = id
-     }
-     else{
-      this.id = new idUsuario();
-     }
-      this.nombre = nombre;
-      this.apellido = apellido;
-      this.email = email;
-      this.clave = clave;
-      this.suscripcion = suscripcion;
-  }
-
-  static crearUsuario(nombre: nombreUsuario, apellido: apellidoUsuario, email:emailUsuario,
-    clave: claveUsuario, suscripcion: boolean, id? : idUsuario){
-    
-      return new Usuario(
-        nombre,
-        apellido,
-        email,
-        clave,
-        suscripcion
-      )
-=======
   private constructor(
     nombre: nombreUsuario,
     apellido: apellidoUsuario,
@@ -72,7 +45,6 @@ export class Usuario {
       claveUsuario.createClave(clave), 
       suscripcion, 
       idUsuario.crearIdUsuario(id));
->>>>>>> main:src/Usuario/Dominio/AgregadoUsuario.ts
   }
 
   public getId(): string {          //getters del usuario 
