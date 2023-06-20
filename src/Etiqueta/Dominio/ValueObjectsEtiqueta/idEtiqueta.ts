@@ -1,14 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Optional } from 'src/Utils/opcional';
+import { Optional } from 'src/Utils/Opcional';
 
 export class idEtiqueta {
   private id: string;
 
   constructor(id: Optional<string>) {
-    if (id.hasvalue()){
+    if (id.hasvalue()) {
       this.id = id.getValue();
-    }
-    else{
+    } else {
       this.id = uuidv4();
     }
   }
