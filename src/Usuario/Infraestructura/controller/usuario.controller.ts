@@ -1,84 +1,114 @@
+/* eslint-disable prettier/prettier */
 import {
   Body,
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Post,
   Put,
+  Res,
+  Response,
 } from '@nestjs/common';
 
-import { CreateUsuarioDto, UpdateUsuarioDto } from '../dto/usuario.dto';
-import { crearUsuarioService } from 'src/Usuario/Aplicacion/crearUsuarioService';
-import { getAllUsersService } from 'src/Usuario/Aplicacion/getAllUsersService';
-import { findByEmailService } from 'src/Usuario/Aplicacion/findByEmailService';
-import { findByIdService } from 'src/Usuario/Aplicacion/findByIdService';
-import { eliminarUsuarioService } from 'src/Usuario/Aplicacion/eliminarUsuarioService';
-import path from 'path';
-import { editarUsuarioPO } from '../dto/editarUsuarioPO';
-import { editarUsuarioService } from 'src/Usuario/Aplicacion/editarUsuarioService';
+import { CrearUsuarioDto, UpdateUsuarioDto } from '../../Aplicacion/dto/CrearUsuario.dto';
+import { CrearUsuarioService } from 'src/Usuario/Aplicacion/CrearUsuario.service';
+import { BuscarUsuariosService } from 'src/Usuario/Aplicacion/BuscarUsuarios.service';
+import { EncontrarPorEmailService } from 'src/Usuario/Aplicacion/EncontrarPorEmail.service';
+import { EncontrarPorIdService } from 'src/Usuario/Aplicacion/EncontrarPorId.service';
+import { EliminarUsuarioService } from 'src/Usuario/Aplicacion/EliminarUsuario.service';
+import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
+import { EditarUsuarioService } from 'src/Usuario/Aplicacion/EditarUsuario.service';
+import { response } from 'express';
 
-@Controller('usuarios')
+@Controller('usuario')
 export class UsuarioController {
   constructor(
-    private readonly usuarioService: crearUsuarioService,
-    private readonly findAllService: getAllUsersService,
-    private readonly findByEmailService: findByEmailService,
-    private readonly findByIdService: findByIdService,
-    private readonly eliminarUsuarioService: eliminarUsuarioService,
-    private readonly editarUsuarioService: editarUsuarioService,
+    private readonly usuarioService: CrearUsuarioService,
+    private readonly buscarUsuariosService: BuscarUsuariosService,
+    private readonly buscarUsuariosEmailService: EncontrarPorEmailService,
+    private readonly buscarUsuariosIdService: EncontrarPorIdService,
+    private readonly eliminarUsuarioService: EliminarUsuarioService,
+    private readonly editarUsuarioService: EditarUsuarioService,
   ) {}
 
-  private counterId = 1;
-  private users = [
-    {
-      id: 1,
-      email: 'correo@mail.com',
-      password: '12345',
-      role: 'admin',
-    },
-  ];
-  /*//Crear usuario
   @Post()
-  createUsuario(@Body() payload: CreateUsuarioDto) {
-    return this.usuarioService.createUsuario(payload);
-  }*/
+  async crearUsuario(@Res() response, @Body() payload: CrearUsuarioDto) {
+    const respuesta = await this.usuarioService.execute(payload);
 
-  @Post()
-  createUsuario(@Body() payload: CreateUsuarioDto) {
-    return this.usuarioService.execute(payload);
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
 
   //buscar todos los usuarios
-  @Get()
-  findAll() {
-    return this.findAllService.execute(null);
+  @Get('/all')
+  async buscarUsuarios(@Res() response) {
+    const respuesta = await this.buscarUsuariosService.execute();
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
   //Buscar por email
   @Get('email/:email')
-  async buscarUsuarioPorEmail(@Param('email') email: string) {
-    return await this.findByEmailService.execute(email);
+  async buscarUsuarioPorEmail(@Res() response, @Param('email') email: string) {
+    const respuesta = await this.buscarUsuariosEmailService.execute(email)
+  
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
   //Buscar por id
   @Get('id/:id')
-  async buscarUsuarioPorId(@Param('id') id: string) {
-    return await this.findByIdService.execute(id);
+  async buscarUsuarioPorId(@Res() response, @Param('id') id: string) {
+    const respuesta = await this.buscarUsuariosIdService.execute(id);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
   //Eliminar usuario
   @Delete(':id')
-  async eliminarUsuario(@Param('id') id: string) {
-    return await this.eliminarUsuarioService.execute(id);
+  async eliminarUsuario(@Res() response, @Param('id') id: string) {
+    const respuesta = await this.eliminarUsuarioService.execute(id);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
   //Editar usuario
   @Put(':id')
   async editarUsuario(
+    @Res() response,
     @Param('id') id: string,
     @Body() payload: UpdateUsuarioDto,
   ) {
-    const editarPO = new editarUsuarioPO();
+    const editarPO = new EditarUsuarioPO();
     editarPO.id = id;
     editarPO.payload = payload;
-    return await this.editarUsuarioService.execute(editarPO);
+    const respuesta = await this.editarUsuarioService.execute(editarPO);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
 }

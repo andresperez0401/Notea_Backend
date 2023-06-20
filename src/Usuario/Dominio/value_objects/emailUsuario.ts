@@ -3,8 +3,12 @@ import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 export class emailUsuario implements ValueObject<string> {
   private email: string;
 
-  constructor(email: string) {
+  private constructor(email: string) {
     this.email = email;
+  }
+
+  static crearEmail(email:string){
+    return new emailUsuario(email);
   }
 
   isValid(): boolean {
