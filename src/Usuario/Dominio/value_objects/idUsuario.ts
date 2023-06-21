@@ -31,3 +31,4 @@ export class idUsuario implements ValueObject<string> {
     return this.id;
   }
 }
+

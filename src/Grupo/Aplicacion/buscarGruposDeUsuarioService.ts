@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { CrearGrupoDto } from './dto/CrearGrupo.dto';
 import { Either } from 'src/Utils/Either';
 import { Grupo } from '../Dominio/AgregadoGrupo';
 import { RepositorioGrupo } from '../Dominio/RepositorioGrupo';
 
-export class CrearGrupoService implements IAplicationService<CrearGrupoDto, Grupo> {
+export class buscarGruposDeUsuarioService implements IAplicationService<null, Iterable<Grupo>> {
 
   private readonly repositorioGrupo: RepositorioGrupo;
   constructor( 
@@ -14,15 +13,7 @@ export class CrearGrupoService implements IAplicationService<CrearGrupoDto, Grup
     repositorioGrupo: RepositorioGrupo) {
     this.repositorioGrupo = repositorioGrupo;
   }
-  
-  async execute(s: CrearGrupoDto): Promise<Either<Grupo, Error>> {
-
-     const grupo =  Grupo.crearGrupo( //factory agregado
-      s.nombre,
-      s.idUsuario,
-    );
-    
-    return await this.repositorioGrupo.creargrupo(grupo);
+  async execute(idUsuarioDueno: string): Promise<Either<Iterable<Grupo>, Error>> {
+    return await this.repositorioGrupo.buscarGruposDeUsuario(idUsuarioDueno);
   }
-    
 }

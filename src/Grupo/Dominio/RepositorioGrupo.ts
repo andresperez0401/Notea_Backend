@@ -9,4 +9,8 @@ export interface RepositorioGrupo {
   eliminarGrupo(id: string): Promise<Either<string, Error>>;
   buscarGrupos(): Promise<Either<Iterable<Grupo>, Error>>;
   // buscarGrupo(id: string): Promise<Either<Grupo, Error>>;
+
+  buscarGruposDeUsuario(
+    idUsuarioDueno: string,
+  ): Promise<Either<Iterable<Grupo>, Error>>;
 }
