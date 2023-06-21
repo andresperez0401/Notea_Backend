@@ -30,7 +30,6 @@ export class RepositorioGrupoImp implements RepositorioGrupo{
     }
 
     async buscarGrupos(): Promise<Either<Iterable<Grupo>, Error>> {
-   
         const respuesta: EntidadGrupo[] = await this.grupoRepo.find();
        
         if(respuesta){
@@ -47,6 +46,31 @@ export class RepositorioGrupoImp implements RepositorioGrupo{
         else{
           return Either.makeRight<Iterable<Grupo>,Error>(new Error ('Error al obtener los grupos'));
         }
+    }
+
+    async eliminarGrupo(id: string): Promise<Either<string, Error>> {
+        
+            const grupoAEliminar: EntidadGrupo = await this.grupoRepo.findOne({
+              where: { id },
+            });
+            if (grupoAEliminar) {
+              //primero validamos que el id proporcionado exista
+              const resultado = await this.grupoRepo.delete(grupoAEliminar);
+              if (resultado) {
+                return Either.makeLeft<string, Error>(
+                  `Grupo de id #${id} ha sido eliminado`,
+                );
+              } else {
+                return Either.makeRight<string, Error>(
+                  new Error('Error al eliminar el grupo'),
+                );
+              }
+            } else {
+              return Either.makeRight<string, Error>(
+                new Error('No se encontro grupo para eliminar'),
+              );
+            }
+          
     }
 
 

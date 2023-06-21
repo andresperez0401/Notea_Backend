@@ -6,7 +6,7 @@ import { Either } from 'src/Utils/Either';
 import { Grupo } from '../Dominio/AgregadoGrupo';
 import { RepositorioGrupo } from '../Dominio/RepositorioGrupo';
 
-export class buscarGruposService implements IAplicationService<null, Iterable<Grupo>> {
+export class eliminarGrupoService implements IAplicationService<null, string> {
 
   private readonly repositorioGrupo: RepositorioGrupo;
   constructor( 
@@ -15,9 +15,9 @@ export class buscarGruposService implements IAplicationService<null, Iterable<Gr
     this.repositorioGrupo = repositorioGrupo;
   }
   
-  async execute(): Promise<Either<Iterable<Grupo>, Error>> {
+  async execute(s: string): Promise<Either<string, Error>> {
     
-    return await this.repositorioGrupo.buscarGrupos();
+    return await this.repositorioGrupo.eliminarGrupo(s);
   }
     
 }
