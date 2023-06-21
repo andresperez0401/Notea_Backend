@@ -20,6 +20,8 @@ import { EliminarUsuarioService } from 'src/Usuario/Aplicacion/EliminarUsuario.s
 import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 import { EditarUsuarioService } from 'src/Usuario/Aplicacion/EditarUsuario.service';
 import { response } from 'express';
+import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto';
+import { LoguearUsuarioService } from 'src/Usuario/Aplicacion/LoguearUsuario.service';
 
 @Controller('usuario')
 export class UsuarioController {
@@ -29,6 +31,7 @@ export class UsuarioController {
     private readonly buscarUsuariosEmailService: EncontrarPorEmailService,
     private readonly buscarUsuariosIdService: EncontrarPorIdService,
     private readonly eliminarUsuarioService: EliminarUsuarioService,
+    private readonly loguearUsuarioService: LoguearUsuarioService,
     private readonly editarUsuarioService: EditarUsuarioService,
   ) {}
 
@@ -80,6 +83,20 @@ export class UsuarioController {
       return response.status(404).json(respuesta.getRight().message);
     }
   }
+
+  //Loguear usuario
+  @Post('/login')
+  async loguearUsuario(@Res() response, @Body() payload: loguearUsuarioDTO) {
+    const respuesta = await this.loguearUsuarioService.execute(payload);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
+  }
+
   //Eliminar usuario
   @Delete(':id')
   async eliminarUsuario(@Res() response, @Param('id') id: string) {

@@ -1,6 +1,7 @@
 import { Usuario } from 'src/Usuario/Dominio/AgregadoUsuario';
 import { Either } from 'src/utils/either';
 import { EditarUsuarioPO } from '../Aplicacion/dto/editarUsuarioPO';
+import { loguearUsuarioDTO } from '../Aplicacion/dto/LoguearUsuario.dto';
 
 export interface RepositorioUsuario {
   //Arreglar lo que devuelve cada metodo
@@ -11,4 +12,5 @@ export interface RepositorioUsuario {
   buscarUsuarios(): Promise<Either<Iterable<Usuario>, Error>>;
   buscarUsuario(email: string): Promise<Either<Usuario, Error>>;
   buscarUsuarioId(id: string): Promise<Either<Usuario, Error>>;
+  loguearUsuario(s: loguearUsuarioDTO): Promise<Either<Usuario, Error>>;
 }
