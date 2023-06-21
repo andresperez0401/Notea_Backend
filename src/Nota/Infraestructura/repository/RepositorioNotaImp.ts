@@ -26,7 +26,8 @@ export class RepositorioNotaImp implements RepositorioNota{
             fechaCreacion: nota.getFechaCreacion(),
             estado: nota.getEstado(),
             ubicacion: { latitud: nota.getUbicacion().get('latitud'),
-                        longitud: nota.getUbicacion().get('longitud'), } 
+                        longitud: nota.getUbicacion().get('longitud'), },
+            grupo: nota.getIdGrupo(),
         }
  
         const response = await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
@@ -42,8 +43,8 @@ export class RepositorioNotaImp implements RepositorioNota{
         const nota =  await this.repositorio.findOneBy({id : infoNota.id});
         if (nota){
             const responde = this.repositorio.merge(nota, infoNota)
-            if (responde){         
-                await this.repositorio.save(nota)  
+            if (responde){
+                await this.repositorio.save(nota)
                 return Either.makeLeft("Nota actualizada");
             }else{ 
                 return Either.makeRight(new Error('Error al modificar nota'));
@@ -76,6 +77,7 @@ export class RepositorioNotaImp implements RepositorioNota{
             EstadoEnum[nota.estado],
             nota.ubicacion.latitud,
             nota.ubicacion.longitud,
+            nota.grupo,
             nota.id,
             ),
         );
@@ -104,34 +106,4 @@ export class RepositorioNotaImp implements RepositorioNota{
             }
         
     }
-
-    // async buscarNotasPorEstado(estado: string): Promise<Either<Nota[],Error>>{
-    //     console.log('BuscarNotasPorEstado RepoImp');
-    //     try{
-    //         const notas = await this.repositorio.find({estado: estado});
-    //         return Either.right(notas);
-    //     }catch(error){
-    //         return Either.left(error);
-    //     }
-    // }
-
-    // async buscarNotasPorKeyword(keyword: string): Promise<Either<Nota[],Error>>{
-    //     console.log('BuscarNotasPorKeyword RepoImp');
-    //     try{
-    //         const notas = await this.repositorio.find({titulo: keyword});
-    //         return Either.right(notas);
-    //     }catch(error){
-    //         return Either.left(error);
-    //     }
-    // }
-
-    // async buscarNotasPorFecha(fecha: Date): Promise<Either<Nota[],Error>>{
-    //     console.log('BuscarNotasPorFecha RepoImp');
-    //     try{
-    //         const notas = await this.repositorio.find({fechaCreacion: fecha});
-    //         return Either.right(notas);
-    //     }catch(error){
-    //         return Either.left(error);
-    //     }
-    // }
 }
