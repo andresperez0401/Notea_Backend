@@ -6,6 +6,7 @@ import { Grupo } from "src/Grupo/Dominio/AgregadoGrupo";
 import { Either } from "src/Utils/Either";
 
 
+
 export class RepositorioGrupoImp implements RepositorioGrupo{
 
     constructor (
@@ -72,6 +73,27 @@ export class RepositorioGrupoImp implements RepositorioGrupo{
             }
           
     }
+
+    async buscarGruposDeUsuario(
+      idUsuarioDueno: string,
+    ): Promise<Either<Iterable<Grupo>, Error>> {
+      const respuesta: EntidadGrupo[] = await this.grupoRepo.find({
+        where: { idUsuario: idUsuarioDueno },
+      });
+      if (respuesta) {
+        const grupos: Grupo[] = respuesta.map((group) =>
+          //Transformamos el iterable de EntidadGrupo(infraestrutura) a Grupo(dominio)
+          Grupo.crearGrupo(group.nombre, group.idUsuario, group.id),
+        );
+        return Either.makeLeft<Iterable<Grupo>, Error>(grupos);
+      } else {
+        return Either.makeRight<Iterable<Grupo>, Error>(
+          new Error(`Error al obtener los grupos del usuario ${idUsuarioDueno}`),
+        );
+      }
+    }
+
+
 
 
 }
