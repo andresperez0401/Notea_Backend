@@ -5,6 +5,8 @@ import { RepositorioGrupoImp } from './repository/RepositorioGrupoImpl';
 import { CrearGrupoService } from '../Aplicacion/crearGrupoService';
 import { GrupoController } from './controllers/grupoController';
 import { buscarGruposService } from '../Aplicacion/buscarGruposService';
+import { eliminarGrupoService } from '../Aplicacion/eliminarGrupoService';
+import { buscarGruposDeUsuarioService } from '../Aplicacion/buscarGrupoDeUsuarioService';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadGrupo])],
@@ -13,6 +15,8 @@ import { buscarGruposService } from '../Aplicacion/buscarGruposService';
     //RepositorioUsuarioImp,
     CrearGrupoService,
     buscarGruposService,
+    eliminarGrupoService,
+    buscarGruposDeUsuarioService,
     {
       provide: 'RepositorioGrupo',
       useClass: RepositorioGrupoImp,

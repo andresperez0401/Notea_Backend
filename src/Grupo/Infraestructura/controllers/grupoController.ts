@@ -15,12 +15,16 @@ import {
   import { CrearGrupoService } from 'src/Grupo/Aplicacion/crearGrupoService';
   import { CrearGrupoDto } from 'src/Grupo/Aplicacion/dto/CrearGrupo.dto';
   import { buscarGruposService } from 'src/Grupo/Aplicacion/buscarGruposService';
+  import { eliminarGrupoService } from 'src/Grupo/Aplicacion/eliminarGrupoService';
+import { buscarGruposDeUsuarioService } from 'src/Grupo/Aplicacion/buscarGrupoDeUsuarioService';
   
   @Controller('grupo')
   export class GrupoController {
     constructor(
       private readonly crearGrupoService: CrearGrupoService,
       private readonly buscarGruposService: buscarGruposService,
+      private readonly eliminarGrupoService: eliminarGrupoService,
+      private readonly buscarGruposDeUsuarioService: buscarGruposDeUsuarioService,
     ) {}
   
     @Post()
@@ -47,12 +51,12 @@ import {
         return response.status(404).json(respuesta.getRight().message);
       }
     }
-    /*
-    //Buscar por email
-    @Get('email/:email')
-    async buscarUsuarioPorEmail(@Res() response, @Param('email') email: string) {
-      const respuesta = await this.buscarUsuariosEmailService.execute(email)
-    
+
+    //Eliminar grupo
+    @Delete(':id')
+    async eliminarGrupo(@Res() response, @Param('id') id: string) {
+      const respuesta = await this.eliminarGrupoService.execute(id);
+  
       if(respuesta.isLeft()){
         return response.status(200).json(respuesta.getLeft());
       }
@@ -60,10 +64,11 @@ import {
         return response.status(404).json(respuesta.getRight().message);
       }
     }
+    /*
     //Buscar por id
     @Get('id/:id')
-    async buscarUsuarioPorId(@Res() response, @Param('id') id: string) {
-      const respuesta = await this.buscarUsuariosIdService.execute(id);
+    async buscarGrupoPorId(@Res() response, @Param('id') id: string) {
+      const respuesta = await this.buscarGruposIdService.execute(id);
   
       if(respuesta.isLeft()){
         return response.status(200).json(respuesta.getLeft());
@@ -72,29 +77,17 @@ import {
         return response.status(404).json(respuesta.getRight().message);
       }
     }
-    //Eliminar usuario
-    @Delete(':id')
-    async eliminarUsuario(@Res() response, @Param('id') id: string) {
-      const respuesta = await this.eliminarUsuarioService.execute(id);
-  
-      if(respuesta.isLeft()){
-        return response.status(200).json(respuesta.getLeft());
-      }
-      else{
-        return response.status(404).json(respuesta.getRight().message);
-      }
-    }
-    //Editar usuario
+    //Editar Grupo
     @Put(':id')
-    async editarUsuario(
+    async editargrupo(
       @Res() response,
       @Param('id') id: string,
-      @Body() payload: UpdateUsuarioDto,
+      @Body() payload: UpdateGrupoDto,
     ) {
-      const editarPO = new EditarUsuarioPO();
+      const editarPO = new EditarGrupoPO();
       editarPO.id = id;
       editarPO.payload = payload;
-      const respuesta = await this.editarUsuarioService.execute(editarPO);
+      const respuesta = await this.editarGrupoService.execute(editarPO);
   
       if(respuesta.isLeft()){
         return response.status(200).json(respuesta.getLeft());
@@ -103,5 +96,23 @@ import {
         return response.status(404).json(respuesta.getRight().message);
       }
     }*/
+
+
+
+
+
+
+  // http://localhost:3000/grupo/usuario/$idUsuarioDueno
+  //Buscar los grupos de un usuario en especifico
+  @Get('/usuario/:idUsuarioDueno')
+  async buscarGruposUsuario(@Res() response, @Param('idUsuarioDueno') id: string) {
+    const respuesta = await this.buscarGruposDeUsuarioService.execute(id);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
   }
-  
+}

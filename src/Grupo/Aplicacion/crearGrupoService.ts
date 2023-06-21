@@ -9,20 +9,17 @@ import { RepositorioGrupo } from '../Dominio/RepositorioGrupo';
 export class CrearGrupoService implements IAplicationService<CrearGrupoDto, Grupo> {
 
   private readonly repositorioGrupo: RepositorioGrupo;
-  constructor( 
+  constructor(
     @Inject('RepositorioGrupo')
     repositorioGrupo: RepositorioGrupo) {
     this.repositorioGrupo = repositorioGrupo;
   }
   
   async execute(s: CrearGrupoDto): Promise<Either<Grupo, Error>> {
-
      const grupo =  Grupo.crearGrupo( //factory agregado
-      s.idUsuario,
       s.nombre,
+      s.idUsuario,
     );
-    
     return await this.repositorioGrupo.creargrupo(grupo);
   }
-    
 }
