@@ -6,6 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { RepositorioUsuario } from 'src/Usuario/Dominio/RepositorioUsuario';
 import { Either } from 'src/Utils/Either';
 import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
+import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto';
 
 export class RepositorioUsuarioImp implements RepositorioUsuario {
   constructor(
@@ -150,6 +151,31 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
     } else {
       return Either.makeRight<string, Error>(
         new Error('No se encontro usuario para eliminar'),
+      );
+    }
+  }
+
+  async loguearUsuario(s: loguearUsuarioDTO): Promise<Either<Usuario, Error>> {
+    const usuario = await this.usuarioRepo.findOne({
+      where: { email: s.email },
+    });
+    if (usuario) {
+      if (usuario.clave === s.clave) {
+        const usuarioLogueado: Usuario = Usuario.crearUsuario(
+          usuario.nombre,
+          usuario.apellido,
+          usuario.email,
+          usuario.clave,
+          usuario.suscripcion,
+          usuario.id,
+        );
+        return Either.makeLeft<Usuario, Error>(usuarioLogueado);
+      } else {
+        return Either.makeRight<Usuario, Error>(new Error('Clave incorrecta'));
+      }
+    } else {
+      return Either.makeRight<Usuario, Error>(
+        new Error('Usuario no encontrado'),
       );
     }
   }
