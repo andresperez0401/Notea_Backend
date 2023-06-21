@@ -7,13 +7,13 @@ import { EntidadUbicacion } from "./EntidadUbicacion";
 
 @Entity('nota')
 export class EntidadNota {
-    
+
     @PrimaryColumn()
     id: string;
 
     @Column()
     titulo: string;
-    
+
     @Column()
     contenido: string;
 
@@ -26,4 +26,6 @@ export class EntidadNota {
     @Column({type:'enum', enum:EstadoEnum}) //el enumerado se guarda como string
     estado: string;
 
+    @Column()
+    grupo: string
 }

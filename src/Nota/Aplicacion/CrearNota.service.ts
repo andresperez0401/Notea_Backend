@@ -15,7 +15,7 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
     repositorioNota: RepositorioNota) {
     this.repositorioNota = repositorioNota;
   }
-  
+
   async execute(s: CrearNotaDto): Promise<Either<Nota, Error>> {
 
     const estado = EstadoEnum.GUARDADO;
@@ -25,12 +25,13 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       s.contenido,
       s.fechaCreacion,
       estado,
-      s.latitud, 
-      s.longitud
+      s.latitud,
+      s.longitud,
+      s.grupo
     );
     
     return await this.repositorioNota.crearNota(nota);
   }
-    
+
 }
 
