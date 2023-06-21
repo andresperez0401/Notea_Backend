@@ -9,6 +9,7 @@ import { EncontrarPorEmailService } from '../Aplicacion/EncontrarPorEmail.servic
 import { EncontrarPorIdService } from '../Aplicacion/EncontrarPorId.service';
 import { EliminarUsuarioService } from '../Aplicacion/EliminarUsuario.service';
 import { EditarUsuarioService } from '../Aplicacion/EditarUsuario.service';
+import { LoguearUsuarioService } from '../Aplicacion/LoguearUsuario.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadUsuario])],
@@ -21,6 +22,7 @@ import { EditarUsuarioService } from '../Aplicacion/EditarUsuario.service';
     EncontrarPorIdService,
     EliminarUsuarioService,
     EditarUsuarioService,
+    LoguearUsuarioService,
     {
       provide: 'RepositorioUsuario',
       useClass: RepositorioUsuarioImp,
