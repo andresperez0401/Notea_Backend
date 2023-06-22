@@ -1,6 +1,7 @@
 import { Module, Global } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { DB_HOST1, DB_NAME1, DB_PASSWORD1, DB_PORT1, DB_USER1 } from 'config';
 
 @Global()
 @Module({
@@ -9,11 +10,11 @@ import { ConfigModule } from '@nestjs/config';
     //Propiedades correspondientes a la conexion con la base de datos
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      host: DB_HOST1,
+      port: parseInt(DB_PORT1),
+      username: DB_USER1,
+      password: DB_PASSWORD1,
+      database: DB_NAME1,
       synchronize: true,
       autoLoadEntities: true,
     }),

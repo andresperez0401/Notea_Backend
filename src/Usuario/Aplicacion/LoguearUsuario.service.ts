@@ -1,10 +1,12 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Inject } from '@nestjs/common';
-import { Either } from 'src/Utils/Either';
+import { Either } from 'src/utils/either';
+import { Usuario } from '../Dominio/AgregadoUsuario';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
+import { loguearUsuarioDTO } from './dto/LoguearUsuario.dto';
 
-export class EliminarUsuarioService
-  implements IAplicationService<null, string>
+export class LoguearUsuarioService
+  implements IAplicationService<loguearUsuarioDTO, Usuario>
 {
   private readonly repositorioUsuario: RepositorioUsuario;
 
@@ -15,7 +17,7 @@ export class EliminarUsuarioService
     this.repositorioUsuario = repositorioUsuario;
   }
 
-  async execute(s: string): Promise<Either<string, Error>> {
-    return await this.repositorioUsuario.eliminarUsuario(s);
+  async execute(s: loguearUsuarioDTO): Promise<Either<Usuario, Error>> {
+    return await this.repositorioUsuario.loguearUsuario(s);
   }
 }

@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { IAplicationService } from "src/core/domain/appService/IAplicationService";
-import { Nota } from "../dominio/AgregadoNota";
+import { Nota } from "../Dominio/AgregadoNota";
 import { Inject } from "@nestjs/common";
-import { Either } from "src/utils/either";
+import { Either } from "src/Utils/Either";
 import { RepositorioNota } from "../Dominio/RepositorioNota";
 import { ModificarNotaDto } from "./dto/ModificarNota.dto";
 

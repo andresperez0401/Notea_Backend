@@ -1,9 +1,9 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Either } from 'src/utils/either';
+import { Either } from 'src/Utils/Either';
 import { Inject } from '@nestjs/common';
 
-import { Etiqueta } from '../dominio/AgregadoEtiqueta';
-import { RepositorioEtiqueta } from '../Dominio/RepositorioEtiqueta';
+import { Etiqueta } from 'src/Etiqueta/Dominio/AgregadoEtiqueta';
+import { RepositorioEtiqueta } from 'src/Etiqueta/Dominio/RepositorioEtiqueta';
 
 export class buscarEtiquetasService
   implements IAplicationService<null, Iterable<Etiqueta>>

@@ -6,7 +6,7 @@ import { Either } from 'src/Utils/Either';
 import { Grupo } from '../Dominio/AgregadoGrupo';
 import { RepositorioGrupo } from '../Dominio/RepositorioGrupo';
 
-export class buscarGruposService implements IAplicationService<CrearGrupoDto, Iterable<Grupo>> {
+export class buscarGruposService implements IAplicationService<null, Iterable<Grupo>> {
 
   private readonly repositorioGrupo: RepositorioGrupo;
   constructor( 

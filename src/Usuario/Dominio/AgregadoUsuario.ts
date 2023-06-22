@@ -5,6 +5,7 @@ import { emailUsuario } from './value_objects/emailUsuario';
 import { idUsuario } from './value_objects/idUsuario';
 import { nombreUsuario } from './value_objects/nombreUsuario';
 
+
 export class Usuario {
   private id?: idUsuario;
   private nombre: nombreUsuario;
@@ -46,12 +47,11 @@ export class Usuario {
       idUsuario.crearIdUsuario(id));
   }
 
-  public getId(): string {
-    //getters del usuario
+  public getId(): string {          //getters del usuario 
     return this.id.getValue();
   }
-
-  public getNombre(): string {
+  
+  public getNombre():string {
     return this.nombre.getValue();
   }
 
@@ -59,15 +59,15 @@ export class Usuario {
     return this.apellido.getValue();
   }
 
-  public getEmail(): string {
+  public getEmail() : string {
     return this.email.getValue();
   }
 
-  public isSuscribed(): boolean {
+  public isSuscribed() : boolean {
     return this.suscripcion;
   }
 
-  public getClave(): string {
+  public getClave() : string {
     return this.clave.getValue();
   }
 }
