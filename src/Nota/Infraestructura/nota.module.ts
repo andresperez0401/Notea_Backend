@@ -9,9 +9,10 @@ import { EliminarNotaService } from '../Aplicacion/EliminarNota.service';
 import { ModificarNotaService } from '../Aplicacion/ModificarNota.service';
 import { BuscarNotas } from '../Aplicacion/BuscarNotas.service';
 import { cambiarGrupoNota } from '../Aplicacion/cambiarGrupoNota.service';
+import EntidadImagen from './entities/EntidadImagen';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EntidadNota])],
+  imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen])],
   controllers: [NotaController],
   providers: [ // Aqui se agregan los servicios
     CrearNotaService,

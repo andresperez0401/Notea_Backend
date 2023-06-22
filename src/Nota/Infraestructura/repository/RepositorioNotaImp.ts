@@ -9,6 +9,7 @@ import { EntidadNota } from '../entities/EntidadNota';
 import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
 import { ModificarNotaDto } from 'src/Nota/Aplicacion/dto/ModificarNota.dto';
 import { moverNotaGrupo } from 'src/Nota/Aplicacion/dto/moverNotaGrupoDto';
+import { VOImagen } from 'src/Nota/Dominio/ValueObjectsNota/VOImagen';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
@@ -20,6 +21,15 @@ export class RepositorioNotaImp implements RepositorioNota{
 
     async crearNota(nota: Nota): Promise<Either<Nota,Error>>{
 
+        let im = null
+        
+        if (nota.existeUbicacion){
+            im = nota.getImagenes().map(imagen => {
+                return {nombre: imagen.getNombreImagen(), 
+                        buffer: imagen.getBufferImagen()}
+            })
+        }
+
         const entidadNota : EntidadNota = {
             id: nota.getId(),
             titulo: nota.getTitulo(),
@@ -29,6 +39,7 @@ export class RepositorioNotaImp implements RepositorioNota{
             ubicacion: { latitud: nota.getUbicacion().get('latitud'),
                         longitud: nota.getUbicacion().get('longitud'), },
             grupo: nota.getIdGrupo(),
+            imagenes: im
         }
  
         const response = await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
@@ -91,10 +102,11 @@ export class RepositorioNotaImp implements RepositorioNota{
             nota.contenido,
             nota.fechaCreacion,
             EstadoEnum[nota.estado],
+            nota.grupo,
             nota.ubicacion.latitud,
             nota.ubicacion.longitud,
-            nota.grupo,
             nota.id,
+            nota.imagenes.map(imagen => {return VOImagen.crearImagenNota(imagen.nombre, imagen.buffer);}),
             ),
         );
 
@@ -110,7 +122,7 @@ export class RepositorioNotaImp implements RepositorioNota{
         
             const notaAEliminar = await this.repositorio.findOne({where: {id}});
             if (notaAEliminar){
-            const respuesta =  await this.repositorio.delete(notaAEliminar);
+            const respuesta =  await this.repositorio.remove(notaAEliminar); //cambie de delete a remove (no se si es correcto)
                 if (respuesta){
                     return Either.makeLeft<string,Error>('La nota '+ id +' ha sido eliminada');
                 }
