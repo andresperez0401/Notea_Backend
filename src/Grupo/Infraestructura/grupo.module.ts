@@ -8,6 +8,7 @@ import { buscarGruposService } from '../Aplicacion/buscarGruposService';
 import { eliminarGrupoService } from '../Aplicacion/eliminarGrupoService';
 import { buscarGruposDeUsuarioService } from '../Aplicacion/buscarGruposDeUsuarioService';
 import { EditarGrupoService } from '../Aplicacion/editarGrupoService';
+import { buscarGrupoPorIdService } from '../Aplicacion/buscarGrupoPorIdService';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadGrupo])],
@@ -19,6 +20,7 @@ import { EditarGrupoService } from '../Aplicacion/editarGrupoService';
     eliminarGrupoService,
     buscarGruposDeUsuarioService,
     EditarGrupoService,
+    buscarGrupoPorIdService,
     RepositorioGrupoImp,
     {
       provide: 'RepositorioGrupo',

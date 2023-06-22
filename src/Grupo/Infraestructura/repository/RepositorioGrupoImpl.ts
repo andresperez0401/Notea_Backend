@@ -100,6 +100,24 @@ export class RepositorioGrupoImp implements RepositorioGrupo{
       }
     }
 
+    async buscarGrupoPorId(id: string): Promise<Either<Grupo, Error>> {
+      const respuesta: EntidadGrupo = await this.grupoRepo.findOne({
+        where: { id },
+      });
+      if (respuesta) {
+        const newGroup: Grupo = Grupo.crearGrupo(
+          respuesta.nombre,
+          respuesta.idUsuario,
+          respuesta.id
+        );
+        return Either.makeLeft<Grupo, Error>(newGroup);
+      } else {
+        return Either.makeRight<Grupo, Error>(
+          new Error('Grupo no encontrado'),
+        );
+      }
+    }
+
     async buscarGruposDeUsuario(
       idUsuarioDueno: string,
     ): Promise<Either<Iterable<Grupo>, Error>> {

@@ -20,6 +20,7 @@ import { buscarGruposDeUsuarioService } from 'src/Grupo/Aplicacion/buscarGruposD
 import { EditarGrupoDto } from 'src/Grupo/Aplicacion/dto/EditarGrupo.dto';
 import { EditarGrupoService } from 'src/Grupo/Aplicacion/editarGrupoService';
 import { RepositorioGrupoImp } from '../repository/RepositorioGrupoImpl';
+import { buscarGrupoPorIdService } from 'src/Grupo/Aplicacion/buscarGrupoPorIdService';
   
   @Controller('grupo')
   export class GrupoController {
@@ -29,9 +30,11 @@ import { RepositorioGrupoImp } from '../repository/RepositorioGrupoImpl';
       private readonly eliminarGrupoService: eliminarGrupoService,
       private readonly buscarGrupoPorUsuario: buscarGruposDeUsuarioService,
       private editarGrupoService:EditarGrupoService,
+      private buscarPorIdService: buscarGrupoPorIdService,
       private repositorioGrupo: RepositorioGrupoImp
     ) {
       this.editarGrupoService = new EditarGrupoService(this.repositorioGrupo);
+      this.buscarPorIdService = new buscarGrupoPorIdService(this.repositorioGrupo);
     }
   
     @Post()
@@ -103,11 +106,11 @@ import { RepositorioGrupoImp } from '../repository/RepositorioGrupoImpl';
       }
     }
 
-    /*
+    
     //Buscar por id
     @Get('id/:id')
     async buscarGrupoPorId(@Res() response, @Param('id') id: string) {
-      const respuesta = await this.buscarGruposIdService.execute(id);
+      const respuesta = await this.buscarPorIdService.execute(id);
   
       if(respuesta.isLeft()){
         return response.status(200).json(respuesta.getLeft());
@@ -116,6 +119,6 @@ import { RepositorioGrupoImp } from '../repository/RepositorioGrupoImpl';
         return response.status(404).json(respuesta.getRight().message);
       }
     }
-    */
+    
   }
   
