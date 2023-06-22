@@ -4,6 +4,7 @@ import { EntidadGrupo } from "../entities/EntidadGrupo";
 import { Repository } from "typeorm";
 import { Grupo } from "src/Grupo/Dominio/AgregadoGrupo";
 import { Either } from "src/Utils/Either";
+import { EditarGrupoDto } from "src/Grupo/Aplicacion/dto/EditarGrupo.dto";
 
 
 
@@ -70,8 +71,33 @@ export class RepositorioGrupoImp implements RepositorioGrupo{
               return Either.makeRight<string, Error>(
                 new Error('No se encontro grupo para eliminar'),
               );
-            }
-          
+            } 
+    }
+
+    async editarGrupo(info: EditarGrupoDto): Promise<Either<Grupo, Error>> {
+      let encontro: boolean;
+      const group = await this.grupoRepo.findOneBy({ id: info.id });
+  
+      if (group) {
+        await this.grupoRepo.merge(group, info.payload);
+        const resultado = await this.grupoRepo.save(group);
+        if (resultado) {
+          const grupoEditado: Grupo = Grupo.crearGrupo(
+            group.nombre,
+            group.idUsuario,
+            group.id,
+          );
+          return Either.makeLeft<Grupo, Error>(grupoEditado);
+        } else {
+          return Either.makeRight<Grupo, Error>(
+            new Error('Error al editar el grupo'),
+          );
+        }
+      } else {
+        return Either.makeRight<Grupo, Error>(
+          new Error('No se encontro el grupo por id' + info.id),
+        );
+      }
     }
 
     async buscarGruposDeUsuario(
