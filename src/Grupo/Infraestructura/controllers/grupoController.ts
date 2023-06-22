@@ -16,7 +16,7 @@ import {
   import { CrearGrupoDto } from 'src/Grupo/Aplicacion/dto/CrearGrupo.dto';
   import { buscarGruposService } from 'src/Grupo/Aplicacion/buscarGruposService';
   import { eliminarGrupoService } from 'src/Grupo/Aplicacion/eliminarGrupoService';
-import { buscarGruposDeUsuarioService } from 'src/Grupo/Aplicacion/buscarGrupoDeUsuarioService';
+import { buscarGruposDeUsuarioService } from 'src/Grupo/Aplicacion/buscarGruposDeUsuarioService';
   
   @Controller('grupo')
   export class GrupoController {
@@ -24,7 +24,7 @@ import { buscarGruposDeUsuarioService } from 'src/Grupo/Aplicacion/buscarGrupoDe
       private readonly crearGrupoService: CrearGrupoService,
       private readonly buscarGruposService: buscarGruposService,
       private readonly eliminarGrupoService: eliminarGrupoService,
-      private readonly buscarGruposDeUsuarioService: buscarGruposDeUsuarioService,
+      private readonly buscarGrupoPorUsuario: buscarGruposDeUsuarioService
     ) {}
   
     @Post()
@@ -64,6 +64,19 @@ import { buscarGruposDeUsuarioService } from 'src/Grupo/Aplicacion/buscarGrupoDe
         return response.status(404).json(respuesta.getRight().message);
       }
     }
+
+    @Get('/usuario/:idUsuarioDueno')
+    async buscarGruposUsuario(@Res() response, @Param('idUsuarioDueno') id: string) {
+      const respuesta = await this.buscarGrupoPorUsuario.execute(id);
+  
+      if(respuesta.isLeft()){
+        return response.status(200).json(respuesta.getLeft());
+      }
+      else{
+        return response.status(404).json(respuesta.getRight().message);
+      }
+    }
+
     /*
     //Buscar por id
     @Get('id/:id')

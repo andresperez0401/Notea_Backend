@@ -16,7 +16,6 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
     grupoEntidad.id = grupo.getId();
     grupoEntidad.nombre = grupo.getNombre();
     grupoEntidad.idUsuario = grupo.getIdUsuario();
-
     const respuesta = await this.grupoRepo.save(grupoEntidad);
 
     if (respuesta) {
