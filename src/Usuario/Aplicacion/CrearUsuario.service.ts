@@ -15,7 +15,7 @@ export class CrearUsuarioService
   private readonly repositorioUsuario: RepositorioUsuario;
 
   constructor(
-    @Inject('RepositorioUsuario')
+   // @Inject('RepositorioUsuario')
     repositorioUsuario: RepositorioUsuario,
   ) {
     this.repositorioUsuario = repositorioUsuario;

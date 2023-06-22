@@ -21,6 +21,7 @@ import { EditarUsuarioService } from '../Aplicacion/EditarUsuario.service';
     EncontrarPorIdService,
     EliminarUsuarioService,
     EditarUsuarioService,
+    RepositorioUsuarioImp,
     {
       provide: 'RepositorioUsuario',
       useClass: RepositorioUsuarioImp,
