@@ -10,6 +10,8 @@ import { EliminarNotaDto } from "src/Nota/Aplicacion/dto/EliminarNota.dto";
 import { ModificarNotaDto } from "src/Nota/Aplicacion/dto/ModificarNota.dto";
 import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service";
 import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
+import { moverNotaGrupo } from "src/Nota/Aplicacion/dto/moverNotaGrupoDto";
+import { cambiarGrupoNota } from "src/Nota/Aplicacion/cambiarGrupoNota.service";
 
 
 @Controller('nota')
@@ -23,13 +25,14 @@ export class NotaController {
         private readonly crearNotaService : CrearNotaService,
         private readonly eliminarNotaService : EliminarNotaService,
         private readonly ModificarNotaService : ModificarNotaService,
+        private readonly moverNotaGrupoService : cambiarGrupoNota,
         private readonly buscarNotasService : BuscarNotas){
            
             this.crearNotaService = crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
             this.ModificarNotaService = ModificarNotaService;
-            this.buscarNotasService = buscarNotasService
-
+            this.buscarNotasService = buscarNotasService;
+            this.moverNotaGrupoService = moverNotaGrupoService
         };
 
     @Get('/all')
@@ -84,5 +87,17 @@ export class NotaController {
          
     }
 
+    @Patch('/moverNota')
+    async moveNote(@Res() response, @Body() notamove: moverNotaGrupo): Promise<Either<string,Error>> {
+        console.log('Mod  Nota');
+        const n =  await this.moverNotaGrupoService.execute(notamove)
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
+        }
+         
+    }
 
 }
