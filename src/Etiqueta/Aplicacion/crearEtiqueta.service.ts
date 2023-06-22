@@ -2,8 +2,8 @@ import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { crearEtiquetaDto } from './dto/crearEtiqueta.dto';
 import { Either } from 'src/Utils/Either';
-import { Etiqueta } from '../dominio/AgregadoEtiqueta';
-import { RepositorioEtiqueta } from '../dominio/RepositorioEtiqueta';
+import { Etiqueta } from '../Dominio/AgregadoEtiqueta';
+import { RepositorioEtiqueta } from '../Dominio/RepositorioEtiqueta';
 import { colorEtiqueta } from '../Dominio/ValueObjectsEtiqueta/colorEtiqueta';
 
 export class crearEtiquetaService

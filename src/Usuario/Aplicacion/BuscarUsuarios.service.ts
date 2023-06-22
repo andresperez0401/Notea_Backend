@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { IAplicationService } from "src/core/domain/appService/IAplicationService";
 import { Inject } from "@nestjs/common";
-import { Either } from "src/utils/either";
+import { Either } from "src/Utils/Either";
 import { Usuario } from "../Dominio/AgregadoUsuario";
 import { RepositorioUsuario } from "../Dominio/RepositorioUsuario";
 

@@ -8,6 +8,7 @@ import { Either } from 'src/Utils/Either';
 import { EntidadNota } from '../entities/EntidadNota';
 import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
 import { ModificarNotaDto } from 'src/Nota/Aplicacion/dto/ModificarNota.dto';
+import { moverNotaGrupo } from 'src/Nota/Aplicacion/dto/moverNotaGrupoDto';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
@@ -26,7 +27,8 @@ export class RepositorioNotaImp implements RepositorioNota{
             fechaCreacion: nota.getFechaCreacion(),
             estado: nota.getEstado(),
             ubicacion: { latitud: nota.getUbicacion().get('latitud'),
-                        longitud: nota.getUbicacion().get('longitud'), } 
+                        longitud: nota.getUbicacion().get('longitud'), },
+            grupo: nota.getIdGrupo(),
         }
  
         const response = await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
@@ -42,8 +44,8 @@ export class RepositorioNotaImp implements RepositorioNota{
         const nota =  await this.repositorio.findOneBy({id : infoNota.id});
         if (nota){
             const responde = this.repositorio.merge(nota, infoNota)
-            if (responde){         
-                await this.repositorio.save(nota)  
+            if (responde){
+                await this.repositorio.save(nota)
                 return Either.makeLeft("Nota actualizada");
             }else{ 
                 return Either.makeRight(new Error('Error al modificar nota'));
@@ -52,7 +54,22 @@ export class RepositorioNotaImp implements RepositorioNota{
             return Either.makeRight(new Error('No se encontro usuario con id' + infoNota.id));
         }
     }
-    
+    async moverNota(moveNota : moverNotaGrupo): Promise<Either<string,Error>>{
+
+        const nota =  await this.repositorio.findOneBy({id : moveNota.id});
+        if (nota){
+            const responde = this.repositorio.merge(nota, moveNota)
+            if (responde){
+                await this.repositorio.save(nota)
+                return Either.makeLeft("Nota actualizada");
+            }else{ 
+                return Either.makeRight(new Error('Error al modificar nota'));
+            }
+        }else {
+            return Either.makeRight(new Error('No se encontro usuario con id' + moveNota.id));
+        }
+    }
+
     
     // async buscarNota(id: string): Promise<Either<Nota,Error>>{
     //     console.log('BuscarNota RepoImp');
@@ -76,6 +93,7 @@ export class RepositorioNotaImp implements RepositorioNota{
             EstadoEnum[nota.estado],
             nota.ubicacion.latitud,
             nota.ubicacion.longitud,
+            nota.grupo,
             nota.id,
             ),
         );
@@ -104,34 +122,4 @@ export class RepositorioNotaImp implements RepositorioNota{
             }
         
     }
-
-    // async buscarNotasPorEstado(estado: string): Promise<Either<Nota[],Error>>{
-    //     console.log('BuscarNotasPorEstado RepoImp');
-    //     try{
-    //         const notas = await this.repositorio.find({estado: estado});
-    //         return Either.right(notas);
-    //     }catch(error){
-    //         return Either.left(error);
-    //     }
-    // }
-
-    // async buscarNotasPorKeyword(keyword: string): Promise<Either<Nota[],Error>>{
-    //     console.log('BuscarNotasPorKeyword RepoImp');
-    //     try{
-    //         const notas = await this.repositorio.find({titulo: keyword});
-    //         return Either.right(notas);
-    //     }catch(error){
-    //         return Either.left(error);
-    //     }
-    // }
-
-    // async buscarNotasPorFecha(fecha: Date): Promise<Either<Nota[],Error>>{
-    //     console.log('BuscarNotasPorFecha RepoImp');
-    //     try{
-    //         const notas = await this.repositorio.find({fechaCreacion: fecha});
-    //         return Either.right(notas);
-    //     }catch(error){
-    //         return Either.left(error);
-    //     }
-    // }
 }

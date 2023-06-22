@@ -15,4 +15,7 @@ export class CrearNotaDto {
   @IsNumber()
   @IsNotEmpty()
   longitud: number;
+  @IsString()
+  @IsNotEmpty()
+  grupo: string;
 }

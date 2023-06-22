@@ -1,5 +1,5 @@
 import { Usuario } from 'src/Usuario/Dominio/AgregadoUsuario';
-import { Either } from 'src/utils/either';
+import { Either } from 'src/Utils/Either';
 import { EditarUsuarioPO } from '../Aplicacion/dto/editarUsuarioPO';
 import { loguearUsuarioDTO } from '../Aplicacion/dto/LoguearUsuario.dto';
 

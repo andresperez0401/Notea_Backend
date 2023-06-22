@@ -2,7 +2,7 @@ import { error } from 'console';
 import { colorEtiqueta } from './ValueObjectsEtiqueta/colorEtiqueta';
 import { idEtiqueta } from './ValueObjectsEtiqueta/idEtiqueta';
 import { nombreEtiqueta } from './ValueObjectsEtiqueta/nombreEtiqueta';
-import { Optional } from 'src/Utils/opcional';
+import { Optional } from 'src/Utils/Opcional';
 
 export class Etiqueta {
   private id: idEtiqueta;
@@ -27,7 +27,7 @@ export class Etiqueta {
     return new Etiqueta(
       nombreEtiqueta.crearNombreEtiqueta(nombre),
       colorEtiqueta[color],
-      idEtiqueta.crearIdEtiqueta(id)
+      idEtiqueta.crearIdEtiqueta(id),
     );
   }
 
