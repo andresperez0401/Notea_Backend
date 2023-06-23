@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Either } from "src/Utils/Either";
 import { Nota } from "./AgregadoNota";
-import { EntidadNota } from "../Infraestructura/entities/EntidadNota";
 import { ModificarNotaDto } from "../Aplicacion/dto/ModificarNota.dto";
 import { moverNotaGrupo } from "../Aplicacion/dto/moverNotaGrupoDto";
+import { VOImagen } from "./ValueObjectsNota/VOImagen";
 
 export interface RepositorioNota {
      crearNota(nota: Nota): Promise<Either<Nota,Error>>;
@@ -15,4 +15,5 @@ export interface RepositorioNota {
     // buscarNotasPorEstado(estado: string): Promise<Either<Nota[],Error>>;
     // buscarNotasPorKeyword(keyword: string): Promise<Either<Nota[],Error>>;
     // buscarNotasPorFecha(fecha: Date): Promise<Either<Nota[],Error>>;
+    guardarImagenes(id: string, imagenes: VOImagen[]): Promise<Either<string,Error>>;
 }

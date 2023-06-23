@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CrearNotaDto {
@@ -10,12 +11,12 @@ export class CrearNotaDto {
   @IsNotEmpty()
   fechaCreacion: Date;
   @IsNumber()
-  @IsNotEmpty()
-  latitud: number;
+  latitud?: number;
   @IsNumber()
-  @IsNotEmpty()
-  longitud: number;
+  longitud?: number;
   @IsString()
   @IsNotEmpty()
   grupo: string;
+
+  imagenes: { nombre: string, buffer: Buffer }[]; 
 }

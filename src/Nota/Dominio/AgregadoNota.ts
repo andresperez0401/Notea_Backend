@@ -7,6 +7,8 @@ import { VOTituloNota } from "./ValueObjectsNota/VOTituloNota";
 import { VOubicacionNota } from "./ValueObjectsNota/VOUbicacionNota";
 import { Tarea } from "./Entidades/EntidadTarea";
 import { idGrupo } from "src/Grupo/Dominio/ValueObjectsGrupo/idGrupo";
+import { VOImagen } from "./ValueObjectsNota/VOImagen";
+import { Optional } from "src/Utils/Opcional";
 
 export class Nota{
 
@@ -14,14 +16,16 @@ export class Nota{
     private titulo: VOTituloNota;
     private contenido: VOContenidoNota;
     private fechaCreacion: Date;
-    private ubicacion: VOubicacionNota;
+    private ubicacion: Optional<VOubicacionNota>; 
     private estado: EstadoEnum;
-    //private tareas : Array<Tarea>
+    //private tareas : Optional<Array<Tarea>>
+    private imagenes: Optional<Array<VOImagen>>
     private grupo: idGrupo;
 
     private constructor(titulo: VOTituloNota, contenido: VOContenidoNota,
         fechaCreacion: Date, estado: EstadoEnum,
-        ubicacion: VOubicacionNota, /*tareas?: Array<Tarea>,*/ grupoId: idGrupo, id?: IdNota){
+        ubicacion: Optional<VOubicacionNota>, /*tareas?: Optional<Array<Tarea>>,*/ grupoId: idGrupo,
+        id: IdNota, imagenes: Optional<Array<VOImagen>>){
 
             this.id = id;
             this.titulo = titulo;
@@ -31,27 +35,29 @@ export class Nota{
             this.ubicacion = ubicacion;
             //this.tareas = tareas;
             this.grupo = grupoId;
+            this.imagenes = imagenes;
         }
     
     //Los constructores estaticos son una alternativa a los Factories
-        static crearNota(titulo: string, contenido: string,
-            fechaCreacion: Date,  estado: EstadoEnum, latitud: number, longitud:
-            number, /*tareas?: Array<string>,*/ grupoId: string, id?: string): Nota{
-    
-           // if (Object.values(EstadoEnum).includes(estado)) { //validacion???
+        static crearNota(titulo: string, contenido: string, fechaCreacion: Date,  estado: EstadoEnum
+            , /*tareas?: Array<string>,*/ grupoId: string, latitud?:number, longitud?: number, 
+            id?: string, imagenes?: Array<VOImagen>): Nota{
+                
+                const opUbicacion = new Optional<VOubicacionNota>(VOubicacionNota.crearUbicacionNota(latitud, longitud));
+                const opImagenes = new Optional<Array<VOImagen>>(imagenes);
+
                 return new Nota(
                     VOTituloNota.crearTituloNota(titulo),
                     VOContenidoNota.crearContenidoNota(contenido),
                     fechaCreacion, 
                     EstadoEnum[estado], 
-                    VOubicacionNota.crearUbicacionNota(latitud, longitud),
+                    opUbicacion,
                     //tareas?.map(tarea => Tarea.crearTarea(tarea)),
                     idGrupo.crearIdGrupo(grupoId),
-                    IdNota.crearIdNota(id)
+                    IdNota.crearIdNota(id),
+                    opImagenes
                     );
-                // } else {
-                //     throw new error();
-                // }
+
         }
     
         //los get deben retornar primitivos, no objetos
@@ -78,12 +84,24 @@ export class Nota{
         public getIdGrupo(): string{
             return this.grupo.getValue();
         }
+
+        public existeUbicacion(): boolean{
+            return this.ubicacion.hasvalue();
+        }
     
         public getUbicacion(): Map<string, number>{
             return new Map<string, number>([
-                ['latitud', this.ubicacion.getLatitud()],
-                ['longitud', this.ubicacion.getLongitud()]
+                ['latitud', this.ubicacion.getValue().getLatitud()],
+                ['longitud', this.ubicacion.getValue().getLongitud()]
             ]);
+        }
+
+        public existenImagenes(): boolean{
+            return this.imagenes.hasvalue();
+        }
+
+        public getImagenes(): Array<VOImagen>{
+            return this.imagenes.getValue();
         }
     
         public setEstado(estado: EstadoEnum): void{
