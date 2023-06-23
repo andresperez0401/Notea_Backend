@@ -20,9 +20,14 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
   async execute(s: CrearNotaDto): Promise<Either<Nota, Error>> {
 
     const estado = EstadoEnum.GUARDADO;
-    const im = s.imagenes.map((i) => {
+    
+    let im: VOImagen[] = [];
+
+    if (s.imagenes.length >= 1) {
+      im = s.imagenes.map((i) => {
       return VOImagen.crearImagenNota(i.nombre, i.buffer); 
       });
+    }
 
     const nota =  Nota.crearNota( //factory agregado
       s.titulo,
@@ -36,7 +41,13 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       im
     );
     
-    return await this.repositorioNota.crearNota(nota);
+    const notacreada = await this.repositorioNota.crearNota(nota);
+    if (notacreada.isLeft()) {
+     await this.repositorioNota.guardarImagenes(nota.getId(), im);
+    }
+
+    return notacreada;
+
   }
 
 }

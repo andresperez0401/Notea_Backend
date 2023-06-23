@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { VOImagen } from 'src/Nota/Dominio/ValueObjectsNota/VOImagen';
 
 export class CrearNotaDto {
   @IsString()
@@ -19,5 +18,5 @@ export class CrearNotaDto {
   @IsNotEmpty()
   grupo: string;
 
-  imagenes: Array<{ nombre: string, buffer: Buffer }>; //no se jeje
+  imagenes: { nombre: string, buffer: Buffer }[]; //no se jeje
 }

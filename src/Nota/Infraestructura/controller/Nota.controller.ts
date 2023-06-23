@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Inject, Post,Get,Delete, Param,Patch, Res} from "@nestjs/common";
+import { Body, Controller, Inject, Post,Get,Delete, Param,Patch, Res, UseInterceptors, UploadedFile, UploadedFiles} from "@nestjs/common";
 import { Nota } from "src/Nota/Dominio/AgregadoNota";
 import { CrearNotaService } from "../../Aplicacion/CrearNota.service";
 import { CrearNotaDto } from "../../Aplicacion/dto/CrearNota.dto";
@@ -12,6 +12,7 @@ import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service"
 import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
 import { moverNotaGrupo } from "src/Nota/Aplicacion/dto/moverNotaGrupoDto";
 import { cambiarGrupoNota } from "src/Nota/Aplicacion/cambiarGrupoNota.service";
+import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express/multer";
 
 
 @Controller('nota')
@@ -49,9 +50,24 @@ export class NotaController {
     }
     
     @Post()
-    async crearNota(@Res() response, @Body() nota:CrearNotaDto): Promise<Either<Nota,Error>>{
+    @UseInterceptors(FilesInterceptor('imagenes', 5))
+    async crearNota(@Res() response, @Body() nota:CrearNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
-        //new crearnotaservice
+        
+        nota.imagenes = [];
+        if (files.length > 5) {
+            return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
+        }
+        if (files.length != 0) {
+            const imagenes = files.map((file) => {
+                return {
+                    nombre: file.originalname,
+                    buffer: file.buffer,
+                }});
+                
+                nota.imagenes = imagenes; // se le asigna las imagenes a la nota
+        }
+
         const  n =  await this.crearNotaService.execute(nota);
 
         if (n.isLeft()) {
