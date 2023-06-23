@@ -1,10 +1,11 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class ModificarNotaDto {
- id: string;  
- @IsString()
+  id: string;
+  @IsString()
   titulo?: string;
   @IsString()
   contenido?: string;
-  
+
+  imagenes?: { nombre: string; buffer: Buffer }[];
 }

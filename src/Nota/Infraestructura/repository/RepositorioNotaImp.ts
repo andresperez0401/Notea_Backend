@@ -62,18 +62,23 @@ export class RepositorioNotaImp implements RepositorioNota{
     async guardarImagenes(id: string, imagenes: VOImagen[]): Promise<Either<string,Error>>{
         const nota =  await this.repositorio.findOneBy({id : id});
 
-        const im = imagenes.map(imagen => { //pasamos de VO a Entidad
-            return {nombre: imagen.getNombreImagen(),
-                    buffer: imagen.getBufferImagen(),
-                    nota : nota,  
-                }
-        })
+        if (imagenes.length >= 1) {
 
-        const response = await this.repositorioImagen.save(im); //guardar en la base de datos usando TypeORM
-        if (response){
-            return Either.makeLeft("Imagenes guardadas");
-        }else{
-            return Either.makeRight(new Error('Error al guardar imagenes'));
+            const im = imagenes.map(imagen => { //pasamos de VO a Entidad
+                return {nombre: imagen.getNombreImagen(),
+                        buffer: imagen.getBufferImagen(),
+                        nota : nota,  
+                    }
+            })
+
+            const response = await this.repositorioImagen.save(im); //guardar en la base de datos usando TypeORM
+            if (response){
+                return Either.makeLeft("Imagenes guardadas");
+            }else{
+                return Either.makeRight(new Error('Error al guardar imagenes'));
+            }
+        } else {
+            return Either.makeLeft("No hay imagenes para guardar");
         }
 
         //no se si este codigo podria simplificar la subida de imagen

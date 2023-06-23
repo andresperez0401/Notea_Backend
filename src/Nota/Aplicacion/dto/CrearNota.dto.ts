@@ -18,5 +18,5 @@ export class CrearNotaDto {
   @IsNotEmpty()
   grupo: string;
 
-  imagenes: { nombre: string, buffer: Buffer }[]; //no se jeje
+  imagenes: { nombre: string, buffer: Buffer }[]; 
 }
