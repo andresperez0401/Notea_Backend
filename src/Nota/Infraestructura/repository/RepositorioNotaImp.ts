@@ -165,7 +165,7 @@ export class RepositorioNotaImp implements RepositorioNota{
 
     async eliminarNota(id: string): Promise<Either<string,Error>>{
         console.log('EliminarNota RepoImp');
-        
+    
         
             const notaAEliminar = await this.repositorio.findOne({where: {id}});
             if (notaAEliminar){
