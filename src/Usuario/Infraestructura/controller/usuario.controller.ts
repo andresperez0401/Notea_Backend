@@ -4,6 +4,7 @@ import {
   Controller,
   Delete,
   Get,
+  Inject,
   Param,
   Post,
   Put,
@@ -20,11 +21,12 @@ import { EliminarUsuarioService } from 'src/Usuario/Aplicacion/EliminarUsuario.s
 import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 import { EditarUsuarioService } from 'src/Usuario/Aplicacion/EditarUsuario.service';
 import { RepositorioNotaImp } from 'src/Nota/Infraestructura/repository/RepositorioNotaImp';
-import { response } from 'express';
+
 import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto';
 import { LoguearUsuarioService } from 'src/Usuario/Aplicacion/LoguearUsuario.service';
-import { RepositorioUsuarioImp } from '../repository/RepositorioUsuarioImp';
 import { RepositorioUsuario } from 'src/Usuario/Dominio/RepositorioUsuario';
+import { EventPublisher } from 'src/core/domain/events/EventPublisher';
+
 
 @Controller('usuario')
 export class UsuarioController {
@@ -36,9 +38,11 @@ export class UsuarioController {
     private readonly eliminarUsuarioService: EliminarUsuarioService,
     private readonly loguearUsuarioService: LoguearUsuarioService,
     private readonly editarUsuarioService: EditarUsuarioService,
-    private readonly repoUsuario: RepositorioUsuarioImp,
+
+    @Inject('RepositorioUsuario') private readonly repoUsuario: RepositorioUsuario,
+    @Inject('EventPublisher') private readonly eventPublisher: EventPublisher,
   ) {
-    this.usuarioService = new CrearUsuarioService(this.repoUsuario);
+    this.usuarioService = new CrearUsuarioService(this.repoUsuario,eventPublisher);
 
   }
 

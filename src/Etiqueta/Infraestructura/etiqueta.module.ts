@@ -4,8 +4,8 @@ import { entidadEtiqueta } from './entities/entidadEtiqueta';
 import { EtiquetaController } from './controller/Etiqueta.controller';
 import { repositorioEtiquetaImp } from './repository/repositorioEtiquetaImp';
 import { crearEtiquetaService } from '../Aplicacion/crearEtiqueta.service';
-//import { modificarEtiquetaService } from '../Aplicacion/modificarEtiqueta.service';
 import { buscarEtiquetasService } from '../Aplicacion/buscarEtiquetas.service';
+import { actualizarEtiquetaService } from '../Aplicacion/actualizarEtiqueta.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([entidadEtiqueta])],
@@ -13,13 +13,21 @@ import { buscarEtiquetasService } from '../Aplicacion/buscarEtiquetas.service';
   providers: [
     //repositorioEtiquetaImp,
     crearEtiquetaService,
-    //modificarEtiquetaService,
+    actualizarEtiquetaService,
     buscarEtiquetasService,
     {
-      // Aqui se agregan los repositorios, se debe especificar la clase que implementa la interfaz
+
       provide: 'RepositorioEtiqueta',
       useClass: repositorioEtiquetaImp,
     },
+    {
+      provide: 'crearEtiquetaService',
+      useClass: crearEtiquetaService,
+    },
+
   ],
+  exports: ['crearEtiquetaService'], // Añade esta línea para exportar el servicio
 })
 export class EtiquetaModule {}
+
+

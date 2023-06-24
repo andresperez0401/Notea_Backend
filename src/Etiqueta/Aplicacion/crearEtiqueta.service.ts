@@ -4,7 +4,9 @@ import { crearEtiquetaDto } from './dto/crearEtiqueta.dto';
 import { Either } from 'src/Utils/Either';
 import { Etiqueta } from '../Dominio/AgregadoEtiqueta';
 import { RepositorioEtiqueta } from '../Dominio/RepositorioEtiqueta';
-import { colorEtiqueta } from '../Dominio/ValueObjectsEtiqueta/colorEtiqueta';
+
+import { repositorioEtiquetaImp } from '../Infraestructura/repository/RepositorioEtiquetaImp';
+
 
 export class crearEtiquetaService
   implements IAplicationService<crearEtiquetaDto, Etiqueta>
@@ -18,9 +20,8 @@ export class crearEtiquetaService
   }
 
   async execute(s: crearEtiquetaDto): Promise<Either<Etiqueta, Error>> {
-    const color = colorEtiqueta.AMARILLO;
-
-    const etiqueta = Etiqueta.crearEtiqueta(s.nombre, color);
+    
+    const etiqueta = Etiqueta.crearEtiqueta(s.nombre, s.color, s.idUsuario);
 
     return await this.repositorioEtiqueta.crearEtiqueta(etiqueta);
   }

@@ -11,4 +11,8 @@ export class entidadEtiqueta {
 
   @Column({ type: 'enum', enum: colorEtiqueta })
   color: string;
+
+  @Column()  // Nueva columna para el ID del usuario
+  usuarioId: string;
 }
+

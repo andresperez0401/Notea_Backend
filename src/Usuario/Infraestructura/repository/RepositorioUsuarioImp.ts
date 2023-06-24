@@ -8,11 +8,20 @@ import { Either } from 'src/Utils/Either';
 import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto';
 
+import { EventPublisher } from 'src/core/domain/events/EventPublisher';
+import { Inject } from '@nestjs/common';
+
+
 export class RepositorioUsuarioImp implements RepositorioUsuario {
+
   constructor(
     @InjectRepository(EntidadUsuario)
     private readonly usuarioRepo: Repository<EntidadUsuario>,
-  ) {}
+    @Inject('EventPublisher')
+    private readonly eventPublisher: EventPublisher,
+  ) {
+    this.eventPublisher = eventPublisher;
+  }
 
   //metodo que hace post de un usuario
   async crearUsuario(usuario: Usuario): Promise<Either<Usuario, Error>> {
@@ -182,3 +191,5 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
 
   save(usuario: Usuario): void {}
 }
+
+
