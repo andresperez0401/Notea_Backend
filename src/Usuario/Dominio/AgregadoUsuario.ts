@@ -7,6 +7,7 @@ import { nombreUsuario } from './value_objects/nombreUsuario';
 import { UsuarioCreadoEvent } from './eventos/UsuarioCreadoEvent';
 import { EventPublisher } from 'src/core/domain/events/EventPublisher';
 
+
 export class Usuario {
   private id?: idUsuario;
   private nombre: nombreUsuario;
@@ -39,26 +40,32 @@ export class Usuario {
   }
 
   static crearUsuario(
-    nombre: nombreUsuario,
-    apellido: apellidoUsuario,
-    email: emailUsuario,
-    clave: claveUsuario,
+    nombre: string,
+    apellido: string,
+    email: string,
+    clave: string,
     suscripcion: boolean,
     id?: string,
   ) {
-    return new Usuario(nombre, apellido, email, clave, suscripcion, idUsuario.crearIdUsuario(id));
+    return new Usuario(
+      nombreUsuario.crearNombreUsuario(nombre),
+      apellidoUsuario.crearApellidoUsuario(apellido),
+      emailUsuario.crearEmail(email),
+      claveUsuario.createClave(clave), 
+      suscripcion, 
+      idUsuario.crearIdUsuario(id));
   }
+
 
   public getEvents(): UsuarioCreadoEvent[] {
     return this.events;
   }
 
-
   public getId(): string {          //getters del usuario 
     return this.id.getValue();
   }
-
-  public getNombre(): string {
+  
+  public getNombre():string {
     return this.nombre.getValue();
   }
 
@@ -66,15 +73,15 @@ export class Usuario {
     return this.apellido.getValue();
   }
 
-  public getEmail(): string {
+  public getEmail() : string {
     return this.email.getValue();
   }
 
-  public isSuscribed(): boolean {
+  public isSuscribed() : boolean {
     return this.suscripcion;
   }
 
-  public getClave(): string {
+  public getClave() : string {
     return this.clave.getValue();
   }
 

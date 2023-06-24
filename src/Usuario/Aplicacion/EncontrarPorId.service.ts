@@ -1,19 +1,16 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Injectable } from '@nestjs/common';
 import { Inject } from '@nestjs/common';
-import { Either } from 'src/utils/either';
+import { Either } from 'src/Utils/Either';
 import { Usuario } from '../Dominio/AgregadoUsuario';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
-import { RepositorioUsuarioImp } from '../Infraestructura/repository/RepositorioUsuarioImp';
 
-@Injectable()
 export class EncontrarPorIdService
   implements IAplicationService<string, Usuario>
 {
   private readonly repositorioUsuario: RepositorioUsuario;
 
   constructor(
-    @Inject(RepositorioUsuarioImp)
+    @Inject('RepositorioUsuario')
     repositorioUsuario: RepositorioUsuario,
   ) {
     this.repositorioUsuario = repositorioUsuario;

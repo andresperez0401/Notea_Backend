@@ -27,13 +27,16 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
       usuarioId: etiqueta.getUsuarioId() // Añade esto
     };
 
+
     const e = await this.repositorio.save(entidadEtiqueta);
+
     if (e){
       return Either.makeLeft<Etiqueta, Error>(etiqueta);
-    } catch (error) {
+    } else {
       return Either.makeRight<Etiqueta, Error>(new Error('Error al crear la etiqueta'));
     }
   }
+
 
   async buscarEtiquetas(idUsuario: string): Promise<Either<Iterable<Etiqueta>,Error>> {
     const result: entidadEtiqueta[] = await this.repositorio
@@ -53,6 +56,7 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
       return Either.makeLeft(etiquetas);
     } else {
       return Either.makeRight(new Error('Error al buscar las etiquetas'));
+
     }
   }
 

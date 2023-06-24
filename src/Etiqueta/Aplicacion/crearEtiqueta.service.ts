@@ -1,19 +1,19 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { crearEtiquetaDto } from './dto/crearEtiqueta.dto';
 import { Either } from 'src/Utils/Either';
 import { Etiqueta } from '../Dominio/AgregadoEtiqueta';
 import { RepositorioEtiqueta } from '../Dominio/RepositorioEtiqueta';
+
 import { repositorioEtiquetaImp } from '../Infraestructura/repository/RepositorioEtiquetaImp';
 
 
-@Injectable()
 export class crearEtiquetaService
   implements IAplicationService<crearEtiquetaDto, Etiqueta>
 {
   private readonly repositorioEtiqueta: RepositorioEtiqueta;
   constructor(
-    @Inject(repositorioEtiquetaImp)
+    @Inject('RepositorioEtiqueta')
     repositorioEtiqueta: RepositorioEtiqueta,
   ) {
     this.repositorioEtiqueta = repositorioEtiqueta;

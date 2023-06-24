@@ -4,15 +4,13 @@ import { EntidadUsuario } from '../entities/EntidadUsuario';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RepositorioUsuario } from 'src/Usuario/Dominio/RepositorioUsuario';
-import { Either } from 'src/utils/either';
-import { emailUsuario } from 'src/Usuario/Dominio/value_objects/emailUsuario';
-import { nombreUsuario } from 'src/Usuario/Dominio/value_objects/nombreUsuario';
-import { apellidoUsuario } from 'src/Usuario/Dominio/value_objects/apellidoUsuario';
-import { claveUsuario } from 'src/Usuario/Dominio/value_objects/claveUsuario';
+import { Either } from 'src/Utils/Either';
 import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto';
+
 import { EventPublisher } from 'src/core/domain/events/EventPublisher';
 import { Inject } from '@nestjs/common';
+
 
 export class RepositorioUsuarioImp implements RepositorioUsuario {
 
@@ -35,108 +33,160 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
     userEntidad.clave = usuario.getClave();
     userEntidad.suscripcion = usuario.isSuscribed();
 
-    try {
-      await this.usuarioRepo.save(userEntidad);
-      return Either.makeLeft(usuario);
-    } catch (error) {
-      return Either.makeRight(error);
+    const respuesta = await this.usuarioRepo.save(userEntidad);
+
+    if (respuesta) {
+      return Either.makeLeft<Usuario, Error>(usuario);
+    } else {
+      return Either.makeRight<Usuario, Error>(
+        new Error('No se pudo guardar el usuario'),
+      );
     }
   }
 
   //metodo que busca todos los usuarios que se encuentran registrados
   async buscarUsuarios(): Promise<Either<Iterable<Usuario>, Error>> {
-    try {
-      const respuesta: EntidadUsuario[] = await this.usuarioRepo.find();
+    const respuesta: EntidadUsuario[] = await this.usuarioRepo.find();
+
+    if (respuesta) {
       const usuarios: Usuario[] = respuesta.map((user) =>
         //transformamos el iterable de user(entity) a usuario (dominio)
         Usuario.crearUsuario(
-          new nombreUsuario(user.nombre),
-          new apellidoUsuario(user.apellido),
-          new emailUsuario(user.email),
-          new claveUsuario(user.clave),
+          user.nombre,
+          user.apellido,
+          user.email,
+          user.clave,
           user.suscripcion,
           user.id,
         ),
       );
-
-      return Either.makeLeft(usuarios);
-    } catch (error) {
-      return Either.makeRight(error);
+      return Either.makeLeft<Iterable<Usuario>, Error>(usuarios);
+    } else {
+      return Either.makeRight<Iterable<Usuario>, Error>(
+        new Error('Error al obtener usuarios'),
+      );
     }
   }
 
   //Buscar usuario por email (es unico)
   async buscarUsuario(email: string): Promise<Either<Usuario, Error>> {
-    try {
-      const respuesta: EntidadUsuario = await this.usuarioRepo.findOne({
-        where: { email },
-      });
+    const respuesta: EntidadUsuario = await this.usuarioRepo.findOne({
+      where: { email },
+    });
+    if (respuesta) {
       const newUser: Usuario = Usuario.crearUsuario(
-        new nombreUsuario(respuesta.nombre),
-        new apellidoUsuario(respuesta.apellido),
-        new emailUsuario(respuesta.email),
-        new claveUsuario(respuesta.clave),
+        respuesta.nombre,
+        respuesta.apellido,
+        respuesta.email,
+        respuesta.clave,
         respuesta.suscripcion,
         respuesta.id,
       );
-
-      return Either.makeLeft(newUser);
-    } catch (error) {
-      return Either.makeRight(error);
+      return Either.makeLeft<Usuario, Error>(newUser);
+    } else {
+      return Either.makeRight<Usuario, Error>(
+        new Error('Usuario no encontrado'),
+      );
     }
   }
 
   //Buscar usuario por id
   async buscarUsuarioId(id: string): Promise<Either<Usuario, Error>> {
-    try {
-      const respuesta: EntidadUsuario = await this.usuarioRepo.findOne({
-        where: { id },
-      });
+    const respuesta: EntidadUsuario = await this.usuarioRepo.findOne({
+      where: { id },
+    });
+    if (respuesta) {
       const newUser: Usuario = Usuario.crearUsuario(
-        new nombreUsuario(respuesta.nombre),
-        new apellidoUsuario(respuesta.apellido),
-        new emailUsuario(respuesta.email),
-        new claveUsuario(respuesta.clave),
+        respuesta.nombre,
+        respuesta.apellido,
+        respuesta.email,
+        respuesta.clave,
         respuesta.suscripcion,
         respuesta.id,
       );
-
-      return Either.makeLeft(newUser);
-    } catch (error) {
-      return Either.makeRight(error);
+      return Either.makeLeft<Usuario, Error>(newUser);
+    } else {
+      return Either.makeRight<Usuario, Error>(
+        new Error('Usuario no encontrado'),
+      );
     }
   }
 
   async editarUsuario(info: EditarUsuarioPO): Promise<Either<Usuario, Error>> {
-    try {
-      const usuario = await this.usuarioRepo.findOneBy({ id: info.id });
+    let encontro: boolean;
+    const usuario = await this.usuarioRepo.findOneBy({ id: info.id });
+
+    if (usuario) {
       await this.usuarioRepo.merge(usuario, info.payload);
-      await this.usuarioRepo.save(usuario);
-      const usuarioEditado: Usuario = Usuario.crearUsuario(
-        new nombreUsuario(usuario.nombre),
-        new apellidoUsuario(usuario.apellido),
-        new emailUsuario(usuario.email),
-        new claveUsuario(usuario.clave),
-        usuario.suscripcion,
-        usuario.id,
+      const resultado = await this.usuarioRepo.save(usuario);
+      if (resultado) {
+        const usuarioEditado: Usuario = Usuario.crearUsuario(
+          usuario.nombre,
+          usuario.apellido,
+          usuario.email,
+          usuario.clave,
+          usuario.suscripcion,
+          usuario.id,
+        );
+        return Either.makeLeft<Usuario, Error>(usuarioEditado);
+      } else {
+        return Either.makeRight<Usuario, Error>(
+          new Error('Error al editar usuario'),
+        );
+      }
+    } else {
+      return Either.makeRight<Usuario, Error>(
+        new Error('No se encontro usuario con id' + info.id),
       );
-      return Either.makeLeft(usuarioEditado);
-    } catch (error) {
-      return Either.makeRight(error);
     }
   }
 
   async eliminarUsuario(id: string): Promise<Either<string, Error>> {
-    try {
-      const usuarioAEliminar: EntidadUsuario = await this.usuarioRepo.findOne({
-        where: { id },
-      });
-      await this.usuarioRepo.delete(usuarioAEliminar);
-      return Either.makeLeft(`Usuario de id #${id} ha sido eliminado`);
-    } catch (error) {
-      return Either.makeRight(error);
+    const usuarioAEliminar: EntidadUsuario = await this.usuarioRepo.findOne({
+      where: { id },
+    });
+    if (usuarioAEliminar) {
+      //primero validamos que el id proporcionado exista
+      const resultado = await this.usuarioRepo.delete(usuarioAEliminar);
+      if (resultado) {
+        return Either.makeLeft<string, Error>(
+          `Usuario de id #${id} ha sido eliminado`,
+        );
+      } else {
+        return Either.makeRight<string, Error>(
+          new Error('Error al eliminar usuario'),
+        );
+      }
+    } else {
+      return Either.makeRight<string, Error>(
+        new Error('No se encontro usuario para eliminar'),
+      );
     }
-    return undefined;
+  }
+
+  async loguearUsuario(s: loguearUsuarioDTO): Promise<Either<Usuario, Error>> {
+    const usuario = await this.usuarioRepo.findOne({
+      where: { email: s.email },
+    });
+    if (usuario) {
+      if (usuario.clave === s.clave) {
+        const usuarioLogueado: Usuario = Usuario.crearUsuario(
+          usuario.nombre,
+          usuario.apellido,
+          usuario.email,
+          usuario.clave,
+          usuario.suscripcion,
+          usuario.id,
+        );
+        return Either.makeLeft<Usuario, Error>(usuarioLogueado);
+      } else {
+        return Either.makeRight<Usuario, Error>(new Error('Clave incorrecta'));
+      }
+    } else {
+      return Either.makeRight<Usuario, Error>(
+        new Error('Usuario no encontrado'),
+      );
+    }
   }
 
   save(usuario: Usuario): void {}

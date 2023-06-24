@@ -1,16 +1,16 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { Either } from 'src/utils/either';
-import { Injectable, Inject } from '@nestjs/common';
+import { Either } from 'src/Utils/Either';
+import { Inject } from '@nestjs/common';
 
-import { Etiqueta } from '../dominio/AgregadoEtiqueta';
-import { RepositorioEtiqueta } from '../Dominio/RepositorioEtiqueta';
-import { repositorioEtiquetaImp } from '../Infraestructura/repository/RepositorioEtiquetaImp';
+import { Etiqueta } from 'src/Etiqueta/Dominio/AgregadoEtiqueta';
+import { RepositorioEtiqueta } from 'src/Etiqueta/Dominio/RepositorioEtiqueta';
 
 export class buscarEtiquetasService implements IAplicationService<string, Iterable<Etiqueta>> {
+
   private readonly repositorioEtiqueta: RepositorioEtiqueta;
 
   constructor(
-    @Inject(repositorioEtiquetaImp)
+    @Inject('RepositorioEtiqueta')
     repositorioEtiq: RepositorioEtiqueta,
   ) {
     this.repositorioEtiqueta = repositorioEtiq;

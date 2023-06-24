@@ -3,8 +3,12 @@ import { ValueObject } from 'src/core/domain/value_objects/ValueObject';
 export class apellidoUsuario implements ValueObject<string> {
   private readonly apellido: string;
 
-  constructor(apellido: string) {
+  private constructor(apellido: string) {
     this.apellido = apellido;
+  }
+
+  static crearApellidoUsuario(apellido: string): apellidoUsuario{
+    return new apellidoUsuario(apellido);
   }
 
   isValid(): boolean {

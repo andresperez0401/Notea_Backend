@@ -13,6 +13,7 @@ import {
 import { Either } from 'src/Utils/Either';
 import { Etiqueta } from 'src/Etiqueta/Dominio/AgregadoEtiqueta';
 
+
 import { crearEtiquetaService } from '../../Aplicacion/crearEtiqueta.service';
 import { crearEtiquetaDto } from '../../Aplicacion/dto/crearEtiqueta.dto';
 
@@ -38,6 +39,7 @@ export class EtiquetaController {
     this.BuscarEtiquetasService = BuscarEtiquetasService;
   }
 
+
   @Get('/:idUsuario/all')
 async buscarEtiquetas(
   @Res() response,
@@ -49,20 +51,20 @@ async buscarEtiquetas(
     return response.status(200).json(result.getLeft());
   } else {
     return response.status(404).json(result.getRight().message);
+
   }
 }
   @Post()
   async crearEtiqueta(
+    @Res() response,
     @Body() etiqueta: crearEtiquetaDto,
   ): Promise<Either<Etiqueta, Error>> {
     const result = await this.CrearEtiquetaService.execute(etiqueta);
 
     if (result.isLeft()) {
-      return result;
+      return response.status(200).json(result.getLeft());
     } else {
-      return Either.makeRight<Etiqueta, Error>(
-        new Error('Error al crear la etiqueta'),
-      );
+      return response.status(404).json(result.getRight().message);
     }
   }
   @Patch()

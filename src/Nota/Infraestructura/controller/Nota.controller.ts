@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Inject, Post,Get,Delete, Param,Patch} from "@nestjs/common";
-import { Nota } from "src/nota/dominio/AgregadoNota";
+import { Body, Controller, Inject, Post,Get,Delete, Param,Patch, Res, UseInterceptors, UploadedFile, UploadedFiles} from "@nestjs/common";
+import { Nota } from "src/Nota/Dominio/AgregadoNota";
 import { CrearNotaService } from "../../Aplicacion/CrearNota.service";
 import { CrearNotaDto } from "../../Aplicacion/dto/CrearNota.dto";
 import { Either } from "src/Utils/Either";
@@ -10,6 +10,9 @@ import { EliminarNotaDto } from "src/Nota/Aplicacion/dto/EliminarNota.dto";
 import { ModificarNotaDto } from "src/Nota/Aplicacion/dto/ModificarNota.dto";
 import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service";
 import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
+import { moverNotaGrupo } from "src/Nota/Aplicacion/dto/moverNotaGrupoDto";
+import { cambiarGrupoNota } from "src/Nota/Aplicacion/cambiarGrupoNota.service";
+import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express/multer";
 
 
 @Controller('nota')
@@ -23,62 +26,110 @@ export class NotaController {
         private readonly crearNotaService : CrearNotaService,
         private readonly eliminarNotaService : EliminarNotaService,
         private readonly ModificarNotaService : ModificarNotaService,
+        private readonly moverNotaGrupoService : cambiarGrupoNota,
         private readonly buscarNotasService : BuscarNotas){
            
-            
             this.crearNotaService = crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
             this.ModificarNotaService = ModificarNotaService;
-            this.buscarNotasService = buscarNotasService
-
+            this.buscarNotasService = buscarNotasService;
+            this.moverNotaGrupoService = moverNotaGrupoService
         };
 
     @Get('/all')
-    async buscarNotas(): Promise<Either<Iterable<Nota>, Error>>{
+    async buscarNotas(@Res() response): Promise<Either<Iterable<Nota>, Error>>{
         console.log('Get All Notas');
         const n = await this.buscarNotasService.execute(null);
         
-        if (n.isLeft()){ //validamos que el resultado sea correcto
-            return n;
-        }else{
-            return Either.makeRight<Iterable<Nota>,Error>(new Error('Error al obtener las notas'));
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
         }
     }
     
     @Post()
-    async crearNota(@Body() nota:CrearNotaDto): Promise<Either<Nota,Error>>{
+    @UseInterceptors(FilesInterceptor('imagenes', 5))
+    async crearNota(@Res() response, @Body() nota:CrearNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
+        
+        nota.imagenes = [];
+        if (files.length > 5) {
+            return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
+        }
+        if (files.length != 0) {
+            const imagenes = files.map((file) => {
+                return {
+                    nombre: file.originalname,
+                    buffer: file.buffer,
+                }});
+                
+                nota.imagenes = imagenes; // se le asigna las imagenes a la nota
+        }
+
         const  n =  await this.crearNotaService.execute(nota);
 
-        if (n.isLeft()){ //validamos que el resultado sea correcto
-            return n;
-        }else{
-            return Either.makeRight<Nota,Error>(new Error('Error al crear la nota'));
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
         }
     }
     
     @Delete()
-    async eliminarNota(@Body() id :EliminarNotaDto){
+    async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){
         console.log('Delete  Nota');
-        const eliminar = this.eliminarNotaService.execute(id);
-        if ((await eliminar).isLeft){ //validamos que el resultado sea correcto
-            return eliminar;
-        }else{
-            return Either.makeRight<string,Error>(new Error('Error al eliminar la nota'));
+        const n = await this.eliminarNotaService.execute(id);
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
         }
     }
 
     @Patch()
-    async update(@Body() notaMod: ModificarNotaDto): Promise<Either<string,Error>> {
+    @UseInterceptors(FilesInterceptor('imagenes', 5))
+    async update(@Res() response, @Body() notaMod: ModificarNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<string,Error>> {
         console.log('Mod  Nota');
-        const modificar =  this.ModificarNotaService.execute(notaMod)
-        if ((await modificar).isLeft){ //validamos que el resultado sea correcto
-            return modificar;
-        }else{
-            return Either.makeRight<string,Error>(new Error('Error al eliminar la nota'));
+
+                notaMod.imagenes = [];
+        if (files.length > 5) {
+            return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
+        }
+        if (files.length != 0) {
+            const imagenes = files.map((file) => {
+                return {
+                    nombre: file.originalname,
+                    buffer: file.buffer,
+                }});
+                
+            notaMod.imagenes = imagenes; // se le asigna las imagenes a la nota
+        }
+
+        const n =  await this.ModificarNotaService.execute(notaMod)
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
         }
          
     }
 
+    @Patch('/moverNota')
+    async moveNote(@Res() response, @Body() notamove: moverNotaGrupo): Promise<Either<string,Error>> {
+        console.log('Mod  Nota');
+        const n =  await this.moverNotaGrupoService.execute(notamove)
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
+        }
+         
+    }
 
 }

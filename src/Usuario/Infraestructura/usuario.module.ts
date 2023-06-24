@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntidadUsuario } from './entities/EntidadUsuario';
-import { UsuarioController } from './controller/Usuario.controller';
+import { UsuarioController } from './controller/usuario.controller';
 import { RepositorioUsuarioImp } from './repository/RepositorioUsuarioImp';
 import { CrearUsuarioService } from '../Aplicacion/CrearUsuario.service';
 import { BuscarUsuariosService } from '../Aplicacion/BuscarUsuarios.service';
@@ -9,6 +9,7 @@ import { EncontrarPorEmailService } from '../Aplicacion/EncontrarPorEmail.servic
 import { EncontrarPorIdService } from '../Aplicacion/EncontrarPorId.service';
 import { EliminarUsuarioService } from '../Aplicacion/EliminarUsuario.service';
 import { EditarUsuarioService } from '../Aplicacion/EditarUsuario.service';
+import { LoguearUsuarioService } from '../Aplicacion/LoguearUsuario.service';
 
 import { EventPublisherImpl } from './events/EventPublisherImpl';
 

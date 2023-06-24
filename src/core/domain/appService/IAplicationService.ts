@@ -1,4 +1,4 @@
-import { Either } from 'src/utils/either';
+import { Either } from 'src/Utils/Either';
 
 export interface IAplicationService<V, T> {
   execute(s: V): Promise<Either<T, Error>>;
