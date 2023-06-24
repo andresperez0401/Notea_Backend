@@ -6,10 +6,7 @@ import { Etiqueta } from '../dominio/AgregadoEtiqueta';
 import { RepositorioEtiqueta } from '../Dominio/RepositorioEtiqueta';
 import { repositorioEtiquetaImp } from '../Infraestructura/repository/RepositorioEtiquetaImp';
 
-@Injectable()
-export class buscarEtiquetasService
-  implements IAplicationService<null, Iterable<Etiqueta>>
-{
+export class buscarEtiquetasService implements IAplicationService<string, Iterable<Etiqueta>> {
   private readonly repositorioEtiqueta: RepositorioEtiqueta;
 
   constructor(
@@ -19,7 +16,8 @@ export class buscarEtiquetasService
     this.repositorioEtiqueta = repositorioEtiq;
   }
 
-  async execute(s: null): Promise<Either<Iterable<Etiqueta>, Error>> {
-    return await this.repositorioEtiqueta.buscarEtiquetas();
+  async execute(idUsuario: string): Promise<Either<Iterable<Etiqueta>, Error>> {
+    return await this.repositorioEtiqueta.buscarEtiquetas(idUsuario);
   }
 }
+

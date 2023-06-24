@@ -2,10 +2,10 @@ import { Inject, Injectable } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { crearEtiquetaDto } from './dto/crearEtiqueta.dto';
 import { Either } from 'src/Utils/Either';
-import { Etiqueta } from '../dominio/AgregadoEtiqueta';
-import { RepositorioEtiqueta } from '../dominio/RepositorioEtiqueta';
+import { Etiqueta } from '../Dominio/AgregadoEtiqueta';
+import { RepositorioEtiqueta } from '../Dominio/RepositorioEtiqueta';
 import { repositorioEtiquetaImp } from '../Infraestructura/repository/RepositorioEtiquetaImp';
-import { colorEtiqueta } from '../Dominio/ValueObjectsEtiqueta/colorEtiqueta';
+
 
 @Injectable()
 export class crearEtiquetaService
@@ -20,9 +20,8 @@ export class crearEtiquetaService
   }
 
   async execute(s: crearEtiquetaDto): Promise<Either<Etiqueta, Error>> {
-    const color = colorEtiqueta.AMARILLO;
-
-    const etiqueta = Etiqueta.crearEtiqueta(s.nombre, color);
+    
+    const etiqueta = Etiqueta.crearEtiqueta(s.nombre, s.color, s.idUsuario);
 
     return await this.repositorioEtiqueta.crearEtiqueta(etiqueta);
   }

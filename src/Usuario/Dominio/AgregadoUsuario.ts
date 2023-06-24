@@ -4,6 +4,8 @@ import { claveUsuario } from './value_objects/claveUsuario';
 import { emailUsuario } from './value_objects/emailUsuario';
 import { idUsuario } from './value_objects/idUsuario';
 import { nombreUsuario } from './value_objects/nombreUsuario';
+import { UsuarioCreadoEvent } from './eventos/UsuarioCreadoEvent';
+import { EventPublisher } from 'src/core/domain/events/EventPublisher';
 
 export class Usuario {
   private id?: idUsuario;
@@ -12,6 +14,7 @@ export class Usuario {
   private email: emailUsuario;
   private clave: claveUsuario;
   private suscripcion: boolean;
+  private events: UsuarioCreadoEvent[];
 
   private constructor(
     nombre: nombreUsuario,
@@ -27,6 +30,12 @@ export class Usuario {
     this.email = email;
     this.clave = clave;
     this.suscripcion = suscripcion;
+    this.events = [];
+    this.events.push(new UsuarioCreadoEvent(
+    this.id ? this.id.getValue() : '',
+
+    ));
+    
   }
 
   static crearUsuario(
@@ -40,8 +49,12 @@ export class Usuario {
     return new Usuario(nombre, apellido, email, clave, suscripcion, idUsuario.crearIdUsuario(id));
   }
 
-  public getId(): string {
-    //getters del usuario
+  public getEvents(): UsuarioCreadoEvent[] {
+    return this.events;
+  }
+
+
+  public getId(): string {          //getters del usuario 
     return this.id.getValue();
   }
 
@@ -64,4 +77,5 @@ export class Usuario {
   public getClave(): string {
     return this.clave.getValue();
   }
+
 }

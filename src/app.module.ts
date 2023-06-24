@@ -9,6 +9,17 @@ import { EtiquetaModule } from './Etiqueta/Infraestructura/etiqueta.module';
 
 @Module({
   imports: [DatabaseModule, NotaModule, UsuarioModule,EtiquetaModule], //aca debemos importar todos los modulos que vayamos creando
+import { GrupoModule } from './Grupo/Infraestructura/grupo.module';
+import { CqrsModule } from '@nestjs/cqrs';
+@Module({
+  imports: [
+    DatabaseModule,
+    NotaModule,
+    UsuarioModule,
+    EtiquetaModule,
+    GrupoModule,
+    CqrsModule,
+  ], // Importa tus módulos aquí
   controllers: [AppController],
   providers: [AppService],
 

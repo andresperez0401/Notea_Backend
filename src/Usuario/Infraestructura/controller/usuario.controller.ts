@@ -4,6 +4,7 @@ import {
   Controller,
   Delete,
   Get,
+  Inject,
   Param,
   Post,
   Put,
@@ -17,6 +18,11 @@ import { EncontrarPorIdService } from 'src/Usuario/Aplicacion/EncontrarPorId.ser
 import { EliminarUsuarioService } from 'src/Usuario/Aplicacion/EliminarUsuario.service';
 import { EditarUsuarioPO } from '../../Aplicacion/dto/editarUsuarioPO';
 import { EditarUsuarioService } from 'src/Usuario/Aplicacion/EditarUsuario.service';
+import { RepositorioNotaImp } from 'src/Nota/Infraestructura/repository/RepositorioNotaImp';
+import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto';
+import { LoguearUsuarioService } from 'src/Usuario/Aplicacion/LoguearUsuario.service';
+import { RepositorioUsuario } from 'src/Usuario/Dominio/RepositorioUsuario';
+import { EventPublisher } from 'src/core/domain/events/EventPublisher';
 
 @Controller('usuarios')
 export class UsuarioController {
@@ -27,7 +33,11 @@ export class UsuarioController {
     private readonly buscarUsuariosIdService: EncontrarPorIdService,
     private readonly eliminarUsuarioService: EliminarUsuarioService,
     private readonly editarUsuarioService: EditarUsuarioService,
-  ) {}
+    @Inject('RepositorioUsuario') private readonly repoUsuario: RepositorioUsuario,
+    @Inject('EventPublisher') private readonly eventPublisher: EventPublisher,
+  ) {
+    this.usuarioService = new CrearUsuarioService(this.repoUsuario,eventPublisher);
+  }
 
   @Post()
   crearUsuario(@Body() payload: CrearUsuarioDto) {
