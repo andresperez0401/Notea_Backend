@@ -13,10 +13,10 @@ import { LoguearUsuarioService } from '../Aplicacion/LoguearUsuario.service';
 
 import { EventPublisherImpl } from './events/EventPublisherImpl';
 
-import { UsuarioCreadoEventHandler } from '../Aplicacion/eventHandlers/UsuarioCreadoHandler';
+import { UsuarioCreadoEventHandler } from 'src/Usuario/Aplicacion/eventHandlers/UsuarioCreadoHandler';
 
 import { EtiquetaModule } from 'src/Etiqueta/Infraestructura/etiqueta.module';
-import { CqrsModule, EventPublisher } from '@nestjs/cqrs';
+import { CqrsModule } from '@nestjs/cqrs';
 
 @Module({
   imports: [
@@ -26,15 +26,14 @@ import { CqrsModule, EventPublisher } from '@nestjs/cqrs';
   ],
   controllers: [UsuarioController],
   providers: [
-    //RepositorioUsuarioImp,
     CrearUsuarioService,
     BuscarUsuariosService,
     EncontrarPorEmailService,
     EncontrarPorIdService,
     EliminarUsuarioService,
     EditarUsuarioService,
-    RepositorioUsuarioImp,
     LoguearUsuarioService,
+    UsuarioCreadoEventHandler,
     {
       provide: 'RepositorioUsuario',
       useClass: RepositorioUsuarioImp,
