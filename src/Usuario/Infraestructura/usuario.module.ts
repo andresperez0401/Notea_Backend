@@ -15,11 +15,8 @@ import { EventPublisherImpl } from './events/EventPublisherImpl';
 
 import { UsuarioCreadoEventHandler } from '../Aplicacion/eventHandlers/UsuarioCreadoHandler';
 
-
-
-import { EtiquetaModule } from 'src/Etiqueta/Infraestructura/etiqueta.module'; 
-import { CqrsModule } from '@nestjs/cqrs';
-
+import { EtiquetaModule } from 'src/Etiqueta/Infraestructura/etiqueta.module';
+import { CqrsModule, EventPublisher } from '@nestjs/cqrs';
 
 @Module({
   imports: [
@@ -41,6 +38,10 @@ import { CqrsModule } from '@nestjs/cqrs';
     {
       provide: 'RepositorioUsuario',
       useClass: RepositorioUsuarioImp,
+    },
+    {
+      provide: 'EventPublisher',
+      useClass: EventPublisherImpl,
     },
   ],
 })

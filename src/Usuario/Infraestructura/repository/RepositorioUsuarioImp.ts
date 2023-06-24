@@ -11,7 +11,6 @@ import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto
 import { EventPublisher } from 'src/core/domain/events/EventPublisher';
 import { Inject } from '@nestjs/common';
 
-
 export class RepositorioUsuarioImp implements RepositorioUsuario {
 
   constructor(

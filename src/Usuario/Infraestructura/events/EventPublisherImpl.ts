@@ -8,11 +8,8 @@ export class EventPublisherImpl implements EventPublisher {
   constructor(private readonly eventBus: EventBus) {}
 
   public publish(usuario: Usuario): void {
-   
     const events = usuario.getEvents();
 
     events.forEach((event) => this.eventBus.publish(event));
   }
 }
-
-
