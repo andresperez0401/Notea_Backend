@@ -10,6 +10,7 @@ import { EliminarNotaDto } from "src/Nota/Aplicacion/dto/EliminarNota.dto";
 import { ModificarNotaDto } from "src/Nota/Aplicacion/dto/ModificarNota.dto";
 import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service";
 import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
+import { buscarNotasDeGrupoService } from "src/Nota/Aplicacion/BuscarNotaDeGrupoService";
 
 
 @Controller('nota')
@@ -23,7 +24,9 @@ export class NotaController {
         private readonly crearNotaService : CrearNotaService,
         private readonly eliminarNotaService : EliminarNotaService,
         private readonly ModificarNotaService : ModificarNotaService,
-        private readonly buscarNotasService : BuscarNotas){
+        private readonly buscarNotasService : BuscarNotas,
+        private readonly buscarNotasDeGrupoService : buscarNotasDeGrupoService
+        ){
            
             this.crearNotaService = crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
@@ -81,7 +84,18 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-         
+    }
+
+    @Get('/grupo/:idGrupo')
+    async buscarGruposUsuario(@Res() response, @Param('idGrupo') id: string) {
+      const respuesta = await this.buscarNotasDeGrupoService.execute(id);
+  
+      if(respuesta.isLeft()){
+        return response.status(200).json(respuesta.getLeft());
+      }
+      else{
+        return response.status(404).json(respuesta.getRight().message);
+      }
     }
 
 

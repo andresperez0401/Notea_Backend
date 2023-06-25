@@ -90,20 +90,36 @@ export class RepositorioNotaImp implements RepositorioNota{
 
     async eliminarNota(id: string): Promise<Either<string,Error>>{
         console.log('EliminarNota RepoImp');
-        
-        
-            const notaAEliminar = await this.repositorio.findOne({where: {id}});
-            if (notaAEliminar){
-            const respuesta =  await this.repositorio.delete(notaAEliminar);
-                if (respuesta){
-                    return Either.makeLeft<string,Error>('La nota '+ id +' ha sido eliminada');
-                }
-                else{
-                    return Either.makeRight<string,Error>(new Error('no se pudo eliminar la nota'));
-                }
-            }else {
-                return Either.makeRight(new Error('No se encontro usuario con id' + id));
+        const notaAEliminar = await this.repositorio.findOne({where: {id}});
+        if (notaAEliminar){
+        const respuesta =  await this.repositorio.delete(notaAEliminar);
+            if (respuesta){
+                return Either.makeLeft<string,Error>('La nota '+ id +' ha sido eliminada');
             }
-        
+            else{
+                return Either.makeRight<string,Error>(new Error('no se pudo eliminar la nota'));
+            }
+        }else {
+            return Either.makeRight(new Error('No se encontro usuario con id' + id));
+        }
     }
+
+    async buscarNotasDeGrupo(
+        idGrupo: string,
+      ): Promise<Either<Iterable<Nota>, Error>> {
+        const respuesta: EntidadNota[] = await this.repositorio.find({
+          where: { grupo: idGrupo },
+        });
+        if (respuesta) {
+          const notas: Nota[] = respuesta.map((n) =>
+            //Transformamos el iterable de EntidadGrupo(infraestrutura) a Grupo(dominio)
+            Nota.crearNota(n.titulo, n.contenido, n.fechaCreacion, EstadoEnum[n.estado], n.ubicacion.latitud, n.ubicacion.longitud, n.grupo, n.id),
+          );
+          return Either.makeLeft<Iterable<Nota>, Error>(notas);
+        } else {
+          return Either.makeRight<Iterable<Nota>, Error>(
+            new Error(`Error al obtener los notas del usuario ${idGrupo}`),
+          );
+        }
+      }
 }

@@ -109,23 +109,4 @@ import { buscarGruposDeUsuarioService } from 'src/Grupo/Aplicacion/buscarGruposD
         return response.status(404).json(respuesta.getRight().message);
       }
     }*/
-
-
-
-
-
-
-  // http://localhost:3000/grupo/usuario/$idUsuarioDueno
-  //Buscar los grupos de un usuario en especifico
-  @Get('/usuario/:idUsuarioDueno')
-  async buscarGruposUsuario(@Res() response, @Param('idUsuarioDueno') id: string) {
-    const respuesta = await this.buscarGruposDeUsuarioService.execute(id);
-
-    if(respuesta.isLeft()){
-      return response.status(200).json(respuesta.getLeft());
-    }
-    else{
-      return response.status(404).json(respuesta.getRight().message);
-    }
-  }
 }

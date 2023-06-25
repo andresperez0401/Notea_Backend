@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Either } from "src/Utils/Either";
 import { Nota } from "./AgregadoNota";
-import { EntidadNota } from "../Infraestructura/entities/EntidadNota";
 import { ModificarNotaDto } from "../Aplicacion/dto/ModificarNota.dto";
 
 export interface RepositorioNota {
@@ -13,4 +12,7 @@ export interface RepositorioNota {
     // buscarNotasPorEstado(estado: string): Promise<Either<Nota[],Error>>;
     // buscarNotasPorKeyword(keyword: string): Promise<Either<Nota[],Error>>;
     // buscarNotasPorFecha(fecha: Date): Promise<Either<Nota[],Error>>;
+    buscarNotasDeGrupo(
+        idGrupo: string,
+      ): Promise<Either<Iterable<Nota>, Error>>;
 }
