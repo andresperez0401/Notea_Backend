@@ -13,11 +13,11 @@ import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
 import { moverNotaGrupo } from "src/Nota/Aplicacion/dto/moverNotaGrupoDto";
 import { cambiarGrupoNota } from "src/Nota/Aplicacion/cambiarGrupoNota.service";
 import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express/multer";
+import { buscarNotasDeGrupoService } from "src/Nota/Aplicacion/BuscarNotaDeGrupoService";
 
 
 @Controller('nota')
 export class NotaController {
-
     constructor(
         @Inject(CrearNotaService)
         @Inject(EliminarNotaService)
@@ -27,8 +27,9 @@ export class NotaController {
         private readonly eliminarNotaService : EliminarNotaService,
         private readonly ModificarNotaService : ModificarNotaService,
         private readonly moverNotaGrupoService : cambiarGrupoNota,
-        private readonly buscarNotasService : BuscarNotas){
-           
+        private readonly buscarNotasService : BuscarNotas,
+        private readonly buscarNotasDeGrupoService : buscarNotasDeGrupoService
+        ){
             this.crearNotaService = crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
             this.ModificarNotaService = ModificarNotaService;
@@ -40,7 +41,6 @@ export class NotaController {
     async buscarNotas(@Res() response): Promise<Either<Iterable<Nota>, Error>>{
         console.log('Get All Notas');
         const n = await this.buscarNotasService.execute(null);
-        
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
         }
@@ -48,12 +48,11 @@ export class NotaController {
             return response.status(404).json(n.getRight().message);
         }
     }
-    
+
     @Post()
     @UseInterceptors(FilesInterceptor('imagenes', 5))
     async crearNota(@Res() response, @Body() nota:CrearNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
-        
         nota.imagenes = [];
         if (files.length > 5) {
             return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
@@ -63,13 +62,11 @@ export class NotaController {
                 return {
                     nombre: file.originalname,
                     buffer: file.buffer,
-                }});
-                
-                nota.imagenes = imagenes; // se le asigna las imagenes a la nota
+                }
+            });
+            nota.imagenes = imagenes; // se le asigna las imagenes a la nota
         }
-
         const  n =  await this.crearNotaService.execute(nota);
-
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
         }
@@ -77,7 +74,6 @@ export class NotaController {
             return response.status(404).json(n.getRight().message);
         }
     }
-    
     @Delete()
     async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){
         console.log('Delete  Nota');
@@ -105,7 +101,6 @@ export class NotaController {
                     nombre: file.originalname,
                     buffer: file.buffer,
                 }});
-                
             notaMod.imagenes = imagenes; // se le asigna las imagenes a la nota
         }
 
@@ -116,7 +111,17 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-         
+    }
+
+    @Get('/grupo/:idGrupo')
+    async buscarGruposUsuario(@Res() response, @Param('idGrupo') id: string) {
+        const respuesta = await this.buscarNotasDeGrupoService.execute(id);
+        if(respuesta.isLeft()){
+            return response.status(200).json(respuesta.getLeft());
+        }
+        else{
+            return response.status(404).json(respuesta.getRight().message);
+        }
     }
 
     @Patch('/moverNota')
@@ -129,7 +134,6 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-         
     }
 
 }
