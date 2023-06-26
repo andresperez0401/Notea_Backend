@@ -8,7 +8,7 @@ import { Either } from 'src/Utils/Either';
 import { EntidadNota } from '../entities/EntidadNota';
 import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
 import { ModificarNotaDto } from 'src/Nota/Aplicacion/dto/ModificarNota.dto';
-import { moverNotaGrupo } from 'src/Nota/Aplicacion/dto/moverNotaGrupoDto';
+
 import EntidadImagen from '../entities/EntidadImagen';
 import { VOImagen } from 'src/Nota/Dominio/ValueObjectsNota/VOImagen';
 import { Optional } from 'src/Utils/Opcional';
@@ -119,24 +119,12 @@ export class RepositorioNotaImp implements RepositorioNota{
                 return Either.makeRight(new Error('Error al modificar nota'));
             }
         }else {
-            return Either.makeRight(new Error('No se encontro usuario con id' + infoNota.id));
+            return Either.makeRight(new Error('No se encontro nota con id' + infoNota.id));
         }
     }
-    async moverNota(moveNota : moverNotaGrupo): Promise<Either<string,Error>>{
-
-        const nota =  await this.repositorio.findOneBy({id : moveNota.id});
-        if (nota){
-            const responde = this.repositorio.merge(nota, moveNota)
-            if (responde){
-                await this.repositorio.save(nota)
-                return Either.makeLeft("Nota actualizada");
-            }else{ 
-                return Either.makeRight(new Error('Error al modificar nota'));
-            }
-        }else {
-            return Either.makeRight(new Error('No se encontro usuario con id' + moveNota.id));
-        }
-    }
+    
+    
+    
     
     // async buscarNota(id: string): Promise<Either<Nota,Error>>{
     //     console.log('BuscarNota RepoImp');
