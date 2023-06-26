@@ -40,11 +40,16 @@ export class Nota{
     
     //Los constructores estaticos son una alternativa a los Factories
         static crearNota(titulo: string, contenido: string, fechaCreacion: Date,  estado: EstadoEnum
-            , /*tareas?: Array<string>,*/ grupoId: string, latitud?:number, longitud?: number, 
+            , /*tareas?: Array<string>,*/ grupoId: string, latitud: Optional<number>, longitud: Optional<number>, 
             id?: string, imagenes?: Array<VOImagen>): Nota{
                 
-                const opUbicacion = new Optional<VOubicacionNota>(VOubicacionNota.crearUbicacionNota(latitud, longitud));
                 const opImagenes = new Optional<Array<VOImagen>>(imagenes);
+
+                let opUbicacion = new Optional<VOubicacionNota>();
+
+                if (latitud.hasvalue() && longitud.hasvalue())
+                    opUbicacion = new Optional<VOubicacionNota>(VOubicacionNota.crearUbicacionNota(latitud.getValue(), longitud.getValue()));
+                    
 
                 return new Nota(
                     VOTituloNota.crearTituloNota(titulo),
@@ -90,10 +95,13 @@ export class Nota{
         }
     
         public getUbicacion(): Map<string, number>{
+            if (!this.ubicacion.hasvalue())
+                return new Map<string, number>();
             return new Map<string, number>([
                 ['latitud', this.ubicacion.getValue().getLatitud()],
                 ['longitud', this.ubicacion.getValue().getLongitud()]
             ]);
+            
         }
 
         public existenImagenes(): boolean{
