@@ -15,7 +15,7 @@ export class Usuario {
   private email: emailUsuario;
   private clave: claveUsuario;
   private suscripcion: boolean;
-  private events: UsuarioCreadoEvent[];
+
 
   private constructor(
     nombre: nombreUsuario,
@@ -31,11 +31,8 @@ export class Usuario {
     this.email = email;
     this.clave = clave;
     this.suscripcion = suscripcion;
-    this.events = [];
-    this.events.push(new UsuarioCreadoEvent(
-    this.id ? this.id.getValue() : '',
 
-    ));
+;
     
   }
 
@@ -46,20 +43,17 @@ export class Usuario {
     clave: string,
     suscripcion: boolean,
     id?: string,
-  ) {
+  ): Usuario {
     return new Usuario(
       nombreUsuario.crearNombreUsuario(nombre),
       apellidoUsuario.crearApellidoUsuario(apellido),
       emailUsuario.crearEmail(email),
       claveUsuario.createClave(clave), 
       suscripcion, 
-      idUsuario.crearIdUsuario(id));
+      idUsuario.crearIdUsuario(id)
+    );
   }
 
-
-  public getEvents(): UsuarioCreadoEvent[] {
-    return this.events;
-  }
 
   public getId(): string {          //getters del usuario 
     return this.id.getValue();

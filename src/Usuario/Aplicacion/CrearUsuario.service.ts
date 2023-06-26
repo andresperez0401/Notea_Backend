@@ -14,9 +14,7 @@ export class CrearUsuarioService implements IAplicationService<CrearUsuarioDto, 
   private readonly repositorioUsuario: RepositorioUsuario;
   private readonly eventPublisher: EventPublisher;
 
-
   constructor(repositorioUsuario: RepositorioUsuario, eventPublisher: EventPublisher) {
-
     this.repositorioUsuario = repositorioUsuario;
     this.eventPublisher = eventPublisher;
   }
@@ -27,19 +25,18 @@ export class CrearUsuarioService implements IAplicationService<CrearUsuarioDto, 
       s.apellido,
       s.email,
       s.clave,
-
       s.suscripcion
-
     );
 
     const resultado = await this.repositorioUsuario.crearUsuario(newUser);
- 
-    if (resultado.isLeft()) {
 
-      // Publica el evento UsuarioCreadoEvent
-      this.eventPublisher.publish(newUser);
+    if (resultado.isLeft()) {
+      const eventoUsuarioCreado = new UsuarioCreadoEvent(newUser.getId());
+      this.eventPublisher.publish(eventoUsuarioCreado);
     }
 
     return resultado;
   }
 }
+
+
