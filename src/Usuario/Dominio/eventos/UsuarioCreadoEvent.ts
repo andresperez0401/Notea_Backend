@@ -1,15 +1,15 @@
-import { Usuario } from "../AgregadoUsuario";
+import { DomainEvent } from 'src/core/domain/events/DomainEvent';
 
-export class UsuarioCreadoEvent {
+export class UsuarioCreadoEvent extends DomainEvent {
   constructor(
     private readonly idUsuario: string,
+  ) {
+    super();
+  }
 
-  ) {}
-
-  // Debe tener un método getter para obtener el idUsuario
+  
   public getIdUsuario(): string {
     return this.idUsuario;
   }
-
-
 }
+
