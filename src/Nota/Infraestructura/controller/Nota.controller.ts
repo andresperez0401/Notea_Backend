@@ -10,7 +10,6 @@ import { EliminarNotaDto } from "src/Nota/Aplicacion/dto/EliminarNota.dto";
 import { ModificarNotaDto } from "src/Nota/Aplicacion/dto/ModificarNota.dto";
 import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service";
 import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
-import { moverNotaGrupo } from "src/Nota/Aplicacion/dto/moverNotaGrupoDto";
 import { cambiarGrupoNota } from "src/Nota/Aplicacion/cambiarGrupoNota.service";
 import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express/multer";
 import { buscarNotasDeGrupoService } from "src/Nota/Aplicacion/BuscarNotaDeGrupoService";
@@ -125,7 +124,7 @@ export class NotaController {
     }
 
     @Patch('/moverNota')
-    async moveNote(@Res() response, @Body() notamove: moverNotaGrupo): Promise<Either<string,Error>> {
+    async moveNote(@Res() response, @Body() notamove: ModificarNotaDto): Promise<Either<string,Error>> {
         console.log('Mod  Nota');
         const n =  await this.moverNotaGrupoService.execute(notamove)
         if (n.isLeft()) {
