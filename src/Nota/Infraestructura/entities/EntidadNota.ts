@@ -21,7 +21,7 @@ export class EntidadNota {
     @Column()
     fechaCreacion: Date;
 
-    @Column(() => EntidadUbicacion)
+    @Column({type:'json', nullable: true})
     ubicacion: EntidadUbicacion
 
     @Column({type:'enum', enum:EstadoEnum}) //el enumerado se guarda como string
