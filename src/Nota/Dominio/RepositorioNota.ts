@@ -2,7 +2,7 @@
 import { Either } from "src/Utils/Either";
 import { Nota } from "./AgregadoNota";
 import { ModificarNotaDto } from "../Aplicacion/dto/ModificarNota.dto";
-import { VOImagen } from "./ValueObjectsNota/VOImagen";
+import { VOImagen } from "./Entidades/VOImagen";
 
 export interface RepositorioNota {
     crearNota(nota: Nota): Promise<Either<Nota,Error>>;

@@ -8,8 +8,8 @@ export class VOubicacionNota {
   }
 
   static crearUbicacionNota(
-    latitud: number,
-    longitud: number,
+    latitud?: number,
+    longitud?: number,
   ): VOubicacionNota {
     return new VOubicacionNota(latitud, longitud);
   }

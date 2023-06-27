@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Either } from 'src/Utils/Either';
-import { VOImagen } from 'src/Nota/Dominio/ValueObjectsNota/VOImagen';
+import { VOImagen } from 'src/Nota/Dominio/Entidades/VOImagen';
 import { RepositorioImagen } from 'src/Nota/Dominio/RepositorioImagen';
 import EntidadImagen from '../entities/EntidadImagen';
 

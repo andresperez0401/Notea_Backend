@@ -2,7 +2,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Optional } from 'src/Utils/Opcional';
 
-export class IdTarea {
+export class IdContenidoNota {
   private id: string;
 
   constructor(id: Optional<string>) {
@@ -14,8 +14,8 @@ export class IdTarea {
     }
   }
 
-  static crearIdTarea(id?: string): IdTarea {
-    return new IdTarea(new Optional<string>(id));
+  static crearIdContenidoNota(id?: string): IdContenidoNota {
+    return new IdContenidoNota(new Optional<string>(id));
   }
 
   isValid(): boolean {
@@ -30,4 +30,3 @@ export class IdTarea {
     return this.id;
   }
 }
-

@@ -5,7 +5,7 @@ import { Inject } from "@nestjs/common";
 import { Either } from "src/Utils/Either";
 import { RepositorioNota } from "../Dominio/RepositorioNota";
 import { ModificarNotaDto } from "./dto/ModificarNota.dto";
-import { VOImagen } from "../Dominio/ValueObjectsNota/VOImagen";
+import { VOImagen } from "../Dominio/Entidades/VOImagen";
 
 
 export class ModificarNotaService implements IAplicationService<ModificarNotaDto,string>{

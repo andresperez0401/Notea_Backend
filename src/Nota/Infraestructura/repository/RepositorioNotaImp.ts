@@ -1,17 +1,15 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { In, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { RepositorioNota } from '../../Dominio/RepositorioNota';
 import { Nota } from '../../Dominio/AgregadoNota';
 import { Either } from 'src/Utils/Either';
 import { EntidadNota } from '../entities/EntidadNota';
 import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
 import { ModificarNotaDto } from 'src/Nota/Aplicacion/dto/ModificarNota.dto';
-
+import { VOImagen } from 'src/Nota/Dominio/Entidades/VOImagen';
 import EntidadImagen from '../entities/EntidadImagen';
-import { VOImagen } from 'src/Nota/Dominio/ValueObjectsNota/VOImagen';
-import { Optional } from 'src/Utils/Opcional';
 import { EntidadUbicacion } from '../entities/EntidadUbicacion';
 
 @Injectable()
@@ -143,14 +141,14 @@ export class RepositorioNotaImp implements RepositorioNota{
         const notas: Nota[] = respuesta.map((nota) =>
             Nota.crearNota(
             nota.titulo,
-            nota.contenido,
             nota.fechaCreacion,
             EstadoEnum[nota.estado],
             nota.grupo,
-            new Optional<number>(nota.ubicacion.latitud),
-            new Optional<number>(nota.ubicacion.latitud),
+            nota.ubicacion.latitud,
+            nota.ubicacion.latitud,
+            nota.contenido,
             nota.id,
-            nota.imagenes.map(imagen => {return VOImagen.crearImagenNota(imagen.nombre, imagen.buffer);}),
+            //nota.imagenes.map(imagen => {return VOImagen.crearImagenNota(imagen.nombre, imagen.buffer);}),
             ),
         );
 
@@ -185,12 +183,13 @@ export class RepositorioNotaImp implements RepositorioNota{
         if (respuesta) {
             const notas: Nota[] = respuesta.map((n) =>
                 //Transformamos el iterable de EntidadGrupo(infraestrutura) a Grupo(dominio)
-                Nota.crearNota(n.titulo, n.contenido, 
+                Nota.crearNota(n.titulo, 
                     n.fechaCreacion, 
                     EstadoEnum[n.estado],
                     n.grupo, 
-                    new Optional<number>(n.ubicacion.latitud), 
-                    new Optional<number>(n.ubicacion.latitud), 
+                    n.ubicacion.latitud, 
+                    n.ubicacion.latitud, 
+                    n.contenido, 
                     n.id),
             );
             return Either.makeLeft<Iterable<Nota>, Error>(notas);

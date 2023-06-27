@@ -1,68 +1,60 @@
 /* eslint-disable prettier/prettier */
-import { error } from "console";
 import { EstadoEnum } from "./ValueObjectsNota/EstadoEnum";
 import { IdNota } from "./ValueObjectsNota/IdNota";
-import { VOContenidoNota } from "./ValueObjectsNota/VOContenidoNota";
 import { VOTituloNota } from "./ValueObjectsNota/VOTituloNota";
 import { VOubicacionNota } from "./ValueObjectsNota/VOUbicacionNota";
-import { Tarea } from "./Entidades/EntidadTarea";
 import { idGrupo } from "src/Grupo/Dominio/ValueObjectsGrupo/idGrupo";
-import { VOImagen } from "./ValueObjectsNota/VOImagen";
 import { Optional } from "src/Utils/Opcional";
+import { EntidadContenidoNota } from "./Entidades/EntidadContenidoNota";
 
 export class Nota{
 
     private id: IdNota;
     private titulo: VOTituloNota;
-    private contenido: VOContenidoNota;
+    private contenido: Optional<Array<EntidadContenidoNota>>;
     private fechaCreacion: Date;
     private ubicacion: Optional<VOubicacionNota>; 
     private estado: EstadoEnum;
-    //private tareas : Optional<Array<Tarea>>
-    private imagenes: Optional<Array<VOImagen>>
     private grupo: idGrupo;
 
-    private constructor(titulo: VOTituloNota, contenido: VOContenidoNota,
+    private constructor(titulo: VOTituloNota, contenido: Optional<Array<EntidadContenidoNota>>,
         fechaCreacion: Date, estado: EstadoEnum,
-        ubicacion: Optional<VOubicacionNota>, /*tareas?: Optional<Array<Tarea>>,*/ grupoId: idGrupo,
-        id: IdNota, imagenes: Optional<Array<VOImagen>>){
-
+        ubicacion: Optional<VOubicacionNota>, grupoId: idGrupo,
+        id: IdNota){
             this.id = id;
             this.titulo = titulo;
             this.contenido = contenido;
             this.fechaCreacion = fechaCreacion;
             this.estado = estado;
             this.ubicacion = ubicacion;
-            //this.tareas = tareas;
             this.grupo = grupoId;
-            this.imagenes = imagenes;
         }
     
     //Los constructores estaticos son una alternativa a los Factories
-        static crearNota(titulo: string, contenido: string, fechaCreacion: Date,  estado: EstadoEnum
-            , /*tareas?: Array<string>,*/ grupoId: string, latitud: Optional<number>, longitud: Optional<number>, 
-            id?: string, imagenes?: Array<VOImagen>): Nota{
+    //la nota crea tambien la entidad ContenidoNota?
+        static crearNota(titulo: string, fechaCreacion: Date,  estado: EstadoEnum
+            ,  grupoId: string, latitud?: number, longitud?:  number, contenido?: Array<EntidadContenidoNota>, 
+            id?: string): Nota{
                 
-                const opImagenes = new Optional<Array<VOImagen>>(imagenes);
+                const opContenido = new Optional<Array<EntidadContenidoNota>>(contenido);
+
+                const opLatitud = new Optional<number>(latitud);
+                const opLongitud = new Optional<number>(longitud);
 
                 let opUbicacion = new Optional<VOubicacionNota>();
 
-                if (latitud.hasvalue() && longitud.hasvalue())
-                    opUbicacion = new Optional<VOubicacionNota>(VOubicacionNota.crearUbicacionNota(latitud.getValue(), longitud.getValue()));
-                    
+                if (opLatitud.hasvalue() && opLongitud.hasvalue())
+                    opUbicacion = new Optional<VOubicacionNota>(VOubicacionNota.crearUbicacionNota(opLatitud.getValue(), opLongitud.getValue()));
 
                 return new Nota(
                     VOTituloNota.crearTituloNota(titulo),
-                    VOContenidoNota.crearContenidoNota(contenido),
+                    opContenido,
                     fechaCreacion, 
                     EstadoEnum[estado], 
                     opUbicacion,
-                    //tareas?.map(tarea => Tarea.crearTarea(tarea)),
                     idGrupo.crearIdGrupo(grupoId),
                     IdNota.crearIdNota(id),
-                    opImagenes
                     );
-
         }
     
         //los get deben retornar primitivos, no objetos
@@ -75,8 +67,8 @@ export class Nota{
             return this.titulo.getTituloNota();
         }
     
-        public getContenido(): string{
-            return this.contenido.getContenidoNota();
+        public getContenido(): EntidadContenidoNota[]{
+            return this.contenido.getValue();
         }
     
         public getFechaCreacion(): Date{
@@ -103,14 +95,6 @@ export class Nota{
             ]);
             
         }
-
-        public existenImagenes(): boolean{
-            return this.imagenes.hasvalue();
-        }
-
-        public getImagenes(): Array<VOImagen>{
-            return this.imagenes.getValue();
-        }
     
         public setEstado(estado: EstadoEnum): void{
             this.estado = estado;
@@ -120,7 +104,7 @@ export class Nota{
             this.titulo = titulo;
         }
     
-        public setContenido(contenido: VOContenidoNota): void{
-            this.contenido = contenido;
+        public setContenido(contenido: Array<EntidadContenidoNota>): void{
+            this.contenido = new Optional<Array<EntidadContenidoNota>>(contenido);
         }
     }

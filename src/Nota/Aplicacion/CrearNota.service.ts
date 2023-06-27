@@ -7,7 +7,8 @@ import { Nota } from '../Dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
 import { Optional } from 'src/Utils/Opcional';
-import { VOImagen } from '../Dominio/ValueObjectsNota/VOImagen';
+import { VOImagen } from '../Dominio/Entidades/VOImagen';
+
 
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
 
@@ -35,14 +36,13 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
 
     const nota =  Nota.crearNota( //factory agregado
       s.titulo,
-      s.contenido,
       s.fechaCreacion,
       estado,
       s.grupo,
+      s.contenido,
       opLatitud,
       opLongitud,
       null,
-      im
     );
     
     const notacreada = await this.repositorioNota.crearNota(nota);
