@@ -13,7 +13,7 @@ export class UsuarioCreadoEventHandler implements IEventHandler<UsuarioCreadoEve
   ) {}
 
   async handle(event: UsuarioCreadoEvent) {
-    // Ahora accedemos a los campos directamente, no a través de 'event.usuario'
+   
     const idUsuario = event.getIdUsuario();
 
     // Creamos las etiquetas por defecto

@@ -9,7 +9,7 @@ async function bootstrap() {
 
   // Configurar opciones de CORS
   const corsOptions: cors.CorsOptions = {
-    origin: 'http://localhost:9999', // Reemplaza con el origen de tu aplicación Flutter hay un problema
+    
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   };
