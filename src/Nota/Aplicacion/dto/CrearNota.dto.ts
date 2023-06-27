@@ -17,6 +17,5 @@ export class CrearNotaDto {
   @IsString()
   @IsNotEmpty()
   grupo: string;
-
   imagenes: { nombre: string, buffer: Buffer }[]; 
 }

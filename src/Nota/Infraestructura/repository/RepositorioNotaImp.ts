@@ -8,9 +8,11 @@ import { Either } from 'src/Utils/Either';
 import { EntidadNota } from '../entities/EntidadNota';
 import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
 import { ModificarNotaDto } from 'src/Nota/Aplicacion/dto/ModificarNota.dto';
-import { moverNotaGrupo } from 'src/Nota/Aplicacion/dto/moverNotaGrupoDto';
-import { VOImagen } from 'src/Nota/Dominio/ValueObjectsNota/VOImagen';
+
 import EntidadImagen from '../entities/EntidadImagen';
+import { VOImagen } from 'src/Nota/Dominio/ValueObjectsNota/VOImagen';
+import { Optional } from 'src/Utils/Opcional';
+import { EntidadUbicacion } from '../entities/EntidadUbicacion';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
@@ -25,14 +27,23 @@ export class RepositorioNotaImp implements RepositorioNota{
     async crearNota(nota: Nota): Promise<Either<Nota,Error>>{
 
         //let im = null
+
+        console.log();
+
+        let ub;
+        if (nota.existeUbicacion()) {
+            ub = new EntidadUbicacion();
+            ub.latitud = nota.getUbicacion().get('latitud')
+            ub.longitud = nota.getUbicacion().get('longitud');
+        }
+
         const entidadNota : EntidadNota = {
             id: nota.getId(),
             titulo: nota.getTitulo(),
             contenido: nota.getContenido(),
             fechaCreacion: nota.getFechaCreacion(),
             estado: nota.getEstado(),
-            ubicacion: { latitud: nota.getUbicacion().get('latitud'),
-            longitud: nota.getUbicacion().get('longitud'), },
+            ubicacion: ub,
             grupo: nota.getIdGrupo(),
             imagenes: []
         }
@@ -108,24 +119,12 @@ export class RepositorioNotaImp implements RepositorioNota{
                 return Either.makeRight(new Error('Error al modificar nota'));
             }
         }else {
-            return Either.makeRight(new Error('No se encontro usuario con id' + infoNota.id));
+            return Either.makeRight(new Error('No se encontro nota con id' + infoNota.id));
         }
     }
-    async moverNota(moveNota : moverNotaGrupo): Promise<Either<string,Error>>{
-
-        const nota =  await this.repositorio.findOneBy({id : moveNota.id});
-        if (nota){
-            const responde = this.repositorio.merge(nota, moveNota)
-            if (responde){
-                await this.repositorio.save(nota)
-                return Either.makeLeft("Nota actualizada");
-            }else{ 
-                return Either.makeRight(new Error('Error al modificar nota'));
-            }
-        }else {
-            return Either.makeRight(new Error('No se encontro usuario con id' + moveNota.id));
-        }
-    }
+    
+    
+    
     
     // async buscarNota(id: string): Promise<Either<Nota,Error>>{
     //     console.log('BuscarNota RepoImp');
@@ -148,8 +147,8 @@ export class RepositorioNotaImp implements RepositorioNota{
             nota.fechaCreacion,
             EstadoEnum[nota.estado],
             nota.grupo,
-            nota.ubicacion.latitud,
-            nota.ubicacion.longitud,
+            new Optional<number>(nota.ubicacion.latitud),
+            new Optional<number>(nota.ubicacion.latitud),
             nota.id,
             nota.imagenes.map(imagen => {return VOImagen.crearImagenNota(imagen.nombre, imagen.buffer);}),
             ),
@@ -186,7 +185,13 @@ export class RepositorioNotaImp implements RepositorioNota{
         if (respuesta) {
             const notas: Nota[] = respuesta.map((n) =>
                 //Transformamos el iterable de EntidadGrupo(infraestrutura) a Grupo(dominio)
-                Nota.crearNota(n.titulo, n.contenido, n.fechaCreacion, EstadoEnum[n.estado],n.grupo, n.ubicacion.latitud, n.ubicacion.longitud, n.id),
+                Nota.crearNota(n.titulo, n.contenido, 
+                    n.fechaCreacion, 
+                    EstadoEnum[n.estado],
+                    n.grupo, 
+                    new Optional<number>(n.ubicacion.latitud), 
+                    new Optional<number>(n.ubicacion.latitud), 
+                    n.id),
             );
             return Either.makeLeft<Iterable<Nota>, Error>(notas);
         } else {

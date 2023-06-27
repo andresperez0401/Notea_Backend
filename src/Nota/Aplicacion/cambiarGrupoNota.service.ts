@@ -2,10 +2,10 @@
 import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Either } from 'src/Utils/Either';
-import { moverNotaGrupo } from './dto/moverNotaGrupoDto';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
+import { ModificarNotaDto } from './dto/ModificarNota.dto';
 
-export class cambiarGrupoNota implements IAplicationService<moverNotaGrupo, string> {
+export class cambiarGrupoNota implements IAplicationService<ModificarNotaDto, string> {
 
   private readonly repositorioNota: RepositorioNota;
 
@@ -14,8 +14,8 @@ export class cambiarGrupoNota implements IAplicationService<moverNotaGrupo, stri
         this.repositorioNota = repositorioNota;
     }
   
-  async execute(moverNotaGrupo: moverNotaGrupo): Promise<Either<string, Error>> {
+  async execute(moverNotaGrupo: ModificarNotaDto): Promise<Either<string, Error>> {
     
-    return await this.repositorioNota.moverNota(moverNotaGrupo)
+    return await this.repositorioNota.updateNota(moverNotaGrupo)
   }
 }
