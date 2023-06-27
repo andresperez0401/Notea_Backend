@@ -17,8 +17,10 @@ export class UsuarioCreadoEventHandler implements IEventHandler<UsuarioCreadoEve
     const idUsuario = event.getIdUsuario();
 
     // Creamos las etiquetas por defecto
-    for (let i = 0; i < 4; i++) {
-      await this.etiquetaService.execute({ idUsuario, nombre: `Etiqueta ${i + 1}`, color: colorEtiqueta.ROJO });
+    for (const color in colorEtiqueta) {
+      if (colorEtiqueta.hasOwnProperty(color)) {
+        await this.etiquetaService.execute({ idUsuario, nombre: `Etiqueta ${color}`, color: colorEtiqueta[color as keyof typeof colorEtiqueta] });
+      }
     }
   }
 }
