@@ -8,6 +8,9 @@ import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
 import { Optional } from 'src/Utils/Opcional';
 import { VOImagen } from '../Dominio/ValueObjectsNota/VOImagen';
+import { JsonContains } from 'typeorm';
+import { json } from 'stream/consumers';
+import { stringify } from 'querystring';
 
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
 
@@ -30,7 +33,6 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       return VOImagen.crearImagenNota(i.nombre, i.buffer); 
       });
     }
-    console.log(s.imagenes);
 
     let ncheck;
     let ntitulos;
@@ -42,14 +44,20 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
     //     print(titulo);
     //   }
 
-    if (s.tareas){
-       ncheck = s.tareas.map((t) => {
-        return t.check;
-      });
+    // if (s.tareas){
+    //    ncheck = s.tareas.map((t) => {
+    //     return t.check;
+    //   });
 
-       ntitulos = s.tareas.map((t) => {
-        return t.titulo;
-      });
+    //    ntitulos = s.tareas.map((t) => {
+    //     return t.titulo;
+    //   });
+    // }
+
+    if (s.tareas){
+      ntitulos = [s.tareas.titulo]
+      ncheck = [s.tareas.check]
+      console.log(ncheck);
     }
 
     const opLatitud = new Optional<number>(s.latitud);
