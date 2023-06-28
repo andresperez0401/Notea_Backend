@@ -1,18 +1,32 @@
+/* eslint-disable prettier/prettier */
 import { v4 as uuidv4 } from 'uuid';
+import { Optional } from 'src/Utils/Opcional';
 
 export class IdTarea {
   private id: string;
 
-  private constructor() {
-    //debe tener optional
-    this.id = uuidv4();
+  constructor(id: Optional<string>) {
+    if (id.hasvalue()){
+      this.id = id.getValue();
+    }
+    else{
+      this.id = uuidv4();
+    }
   }
 
-  static crearIdTarea(): IdTarea {
-    return new IdTarea();
+  static crearIdTarea(id?: string): IdTarea {
+    return new IdTarea(new Optional<string>(id));
   }
 
-  getId(): string {
+  isValid(): boolean {
+    return this.id.length > 0;
+  }
+
+  equals(vo: this): boolean {
+    return this.id === vo.id;
+  }
+
+  getValue(): string {
     return this.id;
   }
 }

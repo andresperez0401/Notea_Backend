@@ -5,10 +5,10 @@ import { IdNota } from "./ValueObjectsNota/IdNota";
 import { VOContenidoNota } from "./ValueObjectsNota/VOContenidoNota";
 import { VOTituloNota } from "./ValueObjectsNota/VOTituloNota";
 import { VOubicacionNota } from "./ValueObjectsNota/VOUbicacionNota";
-import { Tarea } from "./Entidades/EntidadTarea";
 import { idGrupo } from "src/Grupo/Dominio/ValueObjectsGrupo/idGrupo";
 import { VOImagen } from "./ValueObjectsNota/VOImagen";
 import { Optional } from "src/Utils/Opcional";
+import { EntidadTarea } from "./Entidades/EntidadTarea";
 
 export class Nota{
 
@@ -18,13 +18,13 @@ export class Nota{
     private fechaCreacion: Date;
     private ubicacion: Optional<VOubicacionNota>; 
     private estado: EstadoEnum;
-    //private tareas : Optional<Array<Tarea>>
+    private tareas : Optional<Array<EntidadTarea>>
     private imagenes: Optional<Array<VOImagen>>
     private grupo: idGrupo;
 
     private constructor(titulo: VOTituloNota, contenido: VOContenidoNota,
         fechaCreacion: Date, estado: EstadoEnum,
-        ubicacion: Optional<VOubicacionNota>, /*tareas?: Optional<Array<Tarea>>,*/ grupoId: idGrupo,
+        ubicacion: Optional<VOubicacionNota>, tareas: Optional<Array<EntidadTarea>>, grupoId: idGrupo,
         id: IdNota, imagenes: Optional<Array<VOImagen>>){
 
             this.id = id;
@@ -33,31 +33,34 @@ export class Nota{
             this.fechaCreacion = fechaCreacion;
             this.estado = estado;
             this.ubicacion = ubicacion;
-            //this.tareas = tareas;
+            this.tareas = tareas;
             this.grupo = grupoId;
             this.imagenes = imagenes;
         }
     
     //Los constructores estaticos son una alternativa a los Factories
-        static crearNota(titulo: string, contenido: string, fechaCreacion: Date,  estado: EstadoEnum
-            , /*tareas?: Array<string>,*/ grupoId: string, latitud: Optional<number>, longitud: Optional<number>, 
-            id?: string, imagenes?: Array<VOImagen>): Nota{
-                
+        static crearNota(titulo: string, contenido: string, fechaCreacion: Date,  estado: EstadoEnum,
+            grupoId: string, 
+            latitud: Optional<number>, longitud: Optional<number>, 
+            tareas: Optional<Array<string>>, checks: Optional<Array<boolean>>, idTareas: Optional<Array<string>>,
+            id?: string, 
+            imagenes?: Array<VOImagen>): Nota{
+
+                const tareasCreadas = EntidadTarea.crearTareasNota(tareas, checks, idTareas);
+
                 const opImagenes = new Optional<Array<VOImagen>>(imagenes);
 
-                let opUbicacion = new Optional<VOubicacionNota>();
-
+                let opUbicacion = new Optional<VOubicacionNota>(); //deberia ser un factory
                 if (latitud.hasvalue() && longitud.hasvalue())
                     opUbicacion = new Optional<VOubicacionNota>(VOubicacionNota.crearUbicacionNota(latitud.getValue(), longitud.getValue()));
                     
-
                 return new Nota(
                     VOTituloNota.crearTituloNota(titulo),
                     VOContenidoNota.crearContenidoNota(contenido),
                     fechaCreacion, 
                     EstadoEnum[estado], 
                     opUbicacion,
-                    //tareas?.map(tarea => Tarea.crearTarea(tarea)),
+                    tareasCreadas,
                     idGrupo.crearIdGrupo(grupoId),
                     IdNota.crearIdNota(id),
                     opImagenes
@@ -104,12 +107,33 @@ export class Nota{
             
         }
 
+        public existeTareas(): boolean{
+            return this.tareas.hasvalue();
+        }
+
         public existenImagenes(): boolean{
             return this.imagenes.hasvalue();
         }
 
+        public getTareas(): Array<EntidadTarea>{
+            return new Array<EntidadTarea>();
+        }
+
         public getImagenes(): Array<VOImagen>{
             return this.imagenes.getValue();
+        }
+
+        public getTareasCompletadas(): number{
+            let completadas = 0;
+            this.tareas.getValue().forEach(tarea => {
+                if (tarea.getCheck())
+                    completadas++;
+            });
+            return completadas;
+        }
+
+        public setTareas(tareas: Array<EntidadTarea>): void{
+            this.tareas = new Optional<Array<EntidadTarea>>(tareas);
         }
     
         public setEstado(estado: EstadoEnum): void{

@@ -22,11 +22,33 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
 
     const estado = EstadoEnum.GUARDADO;
     
-    let im: VOImagen[] = [];
+    let im;
 
-    if (s.imagenes.length >= 1) {
+    if (s.imagenes) {
+      console.log("entra");
       im = s.imagenes.map((i) => {
       return VOImagen.crearImagenNota(i.nombre, i.buffer); 
+      });
+    }
+    console.log(s.imagenes);
+
+    let ncheck;
+    let ntitulos;
+
+
+    // List<dynamic> tareasJson = JSON.parse(s.tareas);
+    //   for (var tareaJson in tareasJson) {
+    //     String titulo = tareaJson['titulo'];
+    //     print(titulo);
+    //   }
+
+    if (s.tareas){
+       ncheck = s.tareas.map((t) => {
+        return t.check;
+      });
+
+       ntitulos = s.tareas.map((t) => {
+        return t.titulo;
       });
     }
 
@@ -41,14 +63,17 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       s.grupo,
       opLatitud,
       opLongitud,
+      new Optional(ntitulos),
+      new Optional(ncheck),
+      new Optional(),
       null,
-      im
+      im,
     );
     
     const notacreada = await this.repositorioNota.crearNota(nota);
-    if (notacreada.isLeft()) {
-     await this.repositorioNota.guardarImagenes(nota.getId(), im);
-    }
+    // if (notacreada.isLeft()) {
+    //  await this.repositorioNota.guardarImagenes(nota.getId(), im);
+    // }
 
     return notacreada;
 
