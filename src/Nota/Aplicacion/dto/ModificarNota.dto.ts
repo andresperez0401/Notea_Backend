@@ -6,6 +6,7 @@ export class ModificarNotaDto {
   titulo?: string;
   @IsString()
   contenido?: string;
-
+  @IsString()
+  grupo: string
   imagenes?: { nombre: string; buffer: Buffer }[];
 }
