@@ -116,7 +116,7 @@ export class Nota{
         }
 
         public getTareas(): Array<EntidadTarea>{
-            return new Array<EntidadTarea>();
+            return this.tareas.getValue();
         }
 
         public getImagenes(): Array<VOImagen>{
