@@ -8,6 +8,9 @@ import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
 import { Optional } from 'src/Utils/Opcional';
 import { VOImagen } from '../Dominio/ValueObjectsNota/VOImagen';
+import { JsonContains } from 'typeorm';
+import { json } from 'stream/consumers';
+import { stringify } from 'querystring';
 
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
 
@@ -22,12 +25,39 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
 
     const estado = EstadoEnum.GUARDADO;
     
-    let im: VOImagen[] = [];
+    let im;
 
-    if (s.imagenes.length >= 1) {
+    if (s.imagenes) {
+      console.log("entra");
       im = s.imagenes.map((i) => {
       return VOImagen.crearImagenNota(i.nombre, i.buffer); 
       });
+    }
+
+    let ncheck;
+    let ntitulos;
+
+
+    // List<dynamic> tareasJson = JSON.parse(s.tareas);
+    //   for (var tareaJson in tareasJson) {
+    //     String titulo = tareaJson['titulo'];
+    //     print(titulo);
+    //   }
+
+    // if (s.tareas){
+    //    ncheck = s.tareas.map((t) => {
+    //     return t.check;
+    //   });
+
+    //    ntitulos = s.tareas.map((t) => {
+    //     return t.titulo;
+    //   });
+    // }
+
+    if (s.tareas){
+      ntitulos = [s.tareas.titulo]
+      ncheck = [s.tareas.check]
+      console.log(ncheck);
     }
 
     const opLatitud = new Optional<number>(s.latitud);
@@ -41,14 +71,17 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       s.grupo,
       opLatitud,
       opLongitud,
+      new Optional(ntitulos),
+      new Optional(ncheck),
+      new Optional(),
       null,
-      im
+      im,
     );
     
     const notacreada = await this.repositorioNota.crearNota(nota);
-    if (notacreada.isLeft()) {
-     await this.repositorioNota.guardarImagenes(nota.getId(), im);
-    }
+    // if (notacreada.isLeft()) {
+    //  await this.repositorioNota.guardarImagenes(nota.getId(), im);
+    // }
 
     return notacreada;
 

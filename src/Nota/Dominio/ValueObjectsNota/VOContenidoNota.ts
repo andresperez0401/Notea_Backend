@@ -1,5 +1,5 @@
 export class VOContenidoNota {
-  private contenido: string; //html
+  private contenido: string;
 
   private constructor(contenido: string) {
     this.contenido = contenido;

@@ -11,7 +11,7 @@ import { ModificarNotaDto } from "src/Nota/Aplicacion/dto/ModificarNota.dto";
 import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service";
 import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
 import { cambiarGrupoNota } from "src/Nota/Aplicacion/cambiarGrupoNota.service";
-import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express/multer";
+import {  FilesInterceptor } from "@nestjs/platform-express/multer";
 import { buscarNotasDeGrupoService } from "src/Nota/Aplicacion/BuscarNotaDeGrupoService";
 
 
@@ -52,19 +52,22 @@ export class NotaController {
     @UseInterceptors(FilesInterceptor('imagenes', 5))
     async crearNota(@Res() response, @Body() nota:CrearNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
-        nota.imagenes = [];
-        if (files.length > 5) {
+
+        if (files) {
+            if (files.length > 5)
             return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
+            
+            if (files.length != 0) {
+                const imagenes = files.map((file) => {
+                    return {
+                        nombre: file.originalname,
+                        buffer: file.buffer,
+                    }
+                });
+                nota.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
+            }                               //ya que las imagenes se pasan por separado del dto
         }
-        if (files.length != 0) {
-            const imagenes = files.map((file) => {
-                return {
-                    nombre: file.originalname,
-                    buffer: file.buffer,
-                }
-            });
-            nota.imagenes = imagenes; // se le asigna las imagenes a la nota
-        }
+
         const  n =  await this.crearNotaService.execute(nota);
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
@@ -73,6 +76,7 @@ export class NotaController {
             return response.status(404).json(n.getRight().message);
         }
     }
+
     @Delete()
     async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){
         console.log('Delete  Nota');

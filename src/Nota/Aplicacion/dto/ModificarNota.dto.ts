@@ -7,6 +7,8 @@ export class ModificarNotaDto {
   @IsString()
   contenido?: string;
   @IsString()
-  grupo: string
+  grupo: string;
+
+  tareas?: { titulo: string; check: boolean; id: string }[];
   imagenes?: { nombre: string; buffer: Buffer }[];
 }

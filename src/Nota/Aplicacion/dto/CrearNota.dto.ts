@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsJSON, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { json } from 'stream/consumers';
 
 export class CrearNotaDto {
   @IsString()
@@ -17,5 +19,8 @@ export class CrearNotaDto {
   @IsString()
   @IsNotEmpty()
   grupo: string;
-  imagenes: { nombre: string, buffer: Buffer }[]; 
+  
+  tareas?: { titulo: string, check: boolean }; 
+
+  imagenes?: { nombre: string, buffer: Buffer }[]; 
 }

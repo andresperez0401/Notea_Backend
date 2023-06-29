@@ -2,9 +2,10 @@
 //model
 
 import { EstadoEnum } from "src/Nota/Dominio/ValueObjectsNota/EstadoEnum";
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 import { EntidadUbicacion } from "./EntidadUbicacion";
 import EntidadImagen from "./EntidadImagen";
+import { EntidadTarea } from "./EntidadTarea";
 
 @Entity('nota')
 export class EntidadNota {
@@ -27,7 +28,10 @@ export class EntidadNota {
     @Column({type:'enum', enum:EstadoEnum}) //el enumerado se guarda como string
     estado: string;
 
-    @OneToMany(() => EntidadImagen, (imagen) => imagen.nota, {cascade: ['remove'], eager: true, nullable: true})
+    @OneToMany(() => EntidadTarea, (tarea) => tarea.nota, {cascade: ['remove', 'insert', 'update'], eager: true, nullable: true})
+    tareas: EntidadTarea[];
+
+    @OneToMany(() => EntidadImagen, (imagen) => imagen.nota, {cascade: ['remove', 'insert', 'update'], eager: true, nullable: true})
     imagenes: EntidadImagen[];
 
     @Column()
