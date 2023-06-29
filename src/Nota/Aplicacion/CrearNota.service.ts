@@ -6,6 +6,7 @@ import { Either } from 'src/Utils/Either';
 import { Nota } from '../Dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
+import { Optional } from 'src/Utils/Opcional';
 import { VOImagen } from '../Dominio/ValueObjectsNota/VOImagen';
 
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
@@ -29,14 +30,17 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       });
     }
 
+    const opLatitud = new Optional<number>(s.latitud);
+    const opLongitud = new Optional<number>(s.longitud);
+
     const nota =  Nota.crearNota( //factory agregado
       s.titulo,
       s.contenido,
       s.fechaCreacion,
       estado,
       s.grupo,
-      s.latitud,
-      s.longitud,
+      opLatitud,
+      opLongitud,
       null,
       im
     );
