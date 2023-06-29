@@ -37,8 +37,6 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
     let ncheck;
     let ntitulos;
 
-    console.log(s.tareas);
-
     if (s.tareas){
        ncheck = s.tareas.map((t) => {
         return t.check;
@@ -49,8 +47,6 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       });
     }
 
-    console.log(ntitulos);
-    console.log(ncheck);
 
     //si hacemos un multipart las tareas se mandan como un string y hay que parsearlo
 
@@ -71,9 +67,6 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       null,
       im,
     );
-    
-      console.log(nota.existeTareas());
-      console.log(nota.getTareas()[0].getTitulo());
 
     const notacreada = await this.repositorioNota.crearNota(nota);
     // if (notacreada.isLeft()) {

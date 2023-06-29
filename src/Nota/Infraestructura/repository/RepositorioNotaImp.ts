@@ -44,8 +44,6 @@ export class RepositorioNotaImp implements RepositorioNota{
         entidadNota.grupo = nota.getIdGrupo();
         entidadNota.imagenes = [];
 
-        console.log(nota.getTareas());
-
         let tareas : EntidadTarea[];
         if (nota.existeTareas()) { //puedo hacer lo mismo con las imagenes
             tareas = nota.getTareas().map(tarea => {
