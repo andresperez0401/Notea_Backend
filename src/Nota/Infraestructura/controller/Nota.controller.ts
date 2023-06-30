@@ -95,16 +95,19 @@ export class NotaController {
         console.log('Mod  Nota');
 
                 notaMod.imagenes = [];
-        if (files.length > 5) {
-            return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
-        }
-        if (files.length != 0) {
-            const imagenes = files.map((file) => {
-                return {
-                    nombre: file.originalname,
-                    buffer: file.buffer,
-                }});
-            notaMod.imagenes = imagenes; // se le asigna las imagenes a la nota
+
+        if (files){
+            if (files.length > 5) {
+                return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
+            }
+            if (files.length != 0) {
+                const imagenes = files.map((file) => {
+                    return {
+                        nombre: file.originalname,
+                        buffer: file.buffer,
+                    }});
+                notaMod.imagenes = imagenes; // se le asigna las imagenes a la nota
+            }
         }
 
         const n =  await this.ModificarNotaService.execute(notaMod)
