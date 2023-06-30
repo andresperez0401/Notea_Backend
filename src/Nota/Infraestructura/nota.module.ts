@@ -8,10 +8,11 @@ import { CrearNotaService } from '../Aplicacion/CrearNota.service';
 import { EliminarNotaService } from '../Aplicacion/EliminarNota.service';
 import { ModificarNotaService } from '../Aplicacion/ModificarNota.service';
 import { BuscarNotas } from '../Aplicacion/BuscarNotas.service';
-import { cambiarGrupoNota } from '../Aplicacion/cambiarGrupoNota.service';
+import { cambiarGrupoNotaService } from '../Aplicacion/cambiarGrupoNota.service';
 import EntidadImagen from './entities/EntidadImagen';
 import EntidadTarea from './entities/EntidadTarea';
 import { buscarNotasDeGrupoService } from '../Aplicacion/BuscarNotaDeGrupoService';
+import { cambiarEstadoNotaService } from '../Aplicacion/cambiarEstadoNota.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea])],
@@ -20,9 +21,10 @@ import { buscarNotasDeGrupoService } from '../Aplicacion/BuscarNotaDeGrupoServic
     CrearNotaService,
     EliminarNotaService,
     ModificarNotaService,
-    cambiarGrupoNota,
     BuscarNotas,
     buscarNotasDeGrupoService,
+    cambiarGrupoNotaService,
+    cambiarEstadoNotaService,
     { // Aqui se agregan los repositorios, se debe especificar la clase que implementa la interfaz
       provide: 'RepositorioNota',
       useClass: RepositorioNotaImp

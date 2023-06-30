@@ -8,6 +8,8 @@ export class ModificarNotaDto {
   contenido?: string;
   @IsString()
   grupo: string;
+  latitud?: number;
+  longitud?: number;
 
   tareas?: { titulo: string; check: boolean; id: string }[];
   imagenes?: { nombre: string; buffer: Buffer }[];
