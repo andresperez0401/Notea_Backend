@@ -12,7 +12,6 @@ import { EventPublisher } from 'src/core/domain/events/EventPublisher';
 import { Inject } from '@nestjs/common';
 
 export class RepositorioUsuarioImp implements RepositorioUsuario {
-
   constructor(
     @InjectRepository(EntidadUsuario)
     private readonly usuarioRepo: Repository<EntidadUsuario>,
@@ -70,7 +69,7 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
   //Buscar usuario por email (es unico)
   async buscarUsuario(email: string): Promise<Either<Usuario, Error>> {
     const respuesta: EntidadUsuario = await this.usuarioRepo.findOne({
-      where: { email },
+      where: { email: email },
     });
     if (respuesta) {
       const newUser: Usuario = Usuario.crearUsuario(
@@ -190,5 +189,3 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
 
   save(usuario: Usuario): void {}
 }
-
-

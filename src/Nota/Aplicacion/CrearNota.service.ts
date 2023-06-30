@@ -37,28 +37,18 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
     let ncheck;
     let ntitulos;
 
-
-    // List<dynamic> tareasJson = JSON.parse(s.tareas);
-    //   for (var tareaJson in tareasJson) {
-    //     String titulo = tareaJson['titulo'];
-    //     print(titulo);
-    //   }
-
-    // if (s.tareas){
-    //    ncheck = s.tareas.map((t) => {
-    //     return t.check;
-    //   });
-
-    //    ntitulos = s.tareas.map((t) => {
-    //     return t.titulo;
-    //   });
-    // }
-
     if (s.tareas){
-      ntitulos = [s.tareas.titulo]
-      ncheck = [s.tareas.check]
-      console.log(ncheck);
+       ncheck = s.tareas.map((t) => {
+        return t.check;
+      });
+
+       ntitulos = s.tareas.map((t) => {
+        return t.titulo;
+      });
     }
+
+
+    //si hacemos un multipart las tareas se mandan como un string y hay que parsearlo
 
     const opLatitud = new Optional<number>(s.latitud);
     const opLongitud = new Optional<number>(s.longitud);
@@ -77,7 +67,7 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       null,
       im,
     );
-    
+
     const notacreada = await this.repositorioNota.crearNota(nota);
     // if (notacreada.isLeft()) {
     //  await this.repositorioNota.guardarImagenes(nota.getId(), im);

@@ -19,7 +19,7 @@ export class EntidadNota {
     @Column()
     contenido: string;
 
-    @Column()
+    @Column({nullable: true})
     fechaCreacion: Date;
 
     @Column({type:'json', nullable: true})
