@@ -39,7 +39,7 @@ export class NotaController {
     @Get('/all')
     async buscarNotas(@Res() response): Promise<Either<Iterable<Nota>, Error>>{
         console.log('Get All Notas');
-        const n = await this.buscarNotasService.execute(null);
+        const n = await this.buscarNotasService.execute(null); //hay que validar si la locacion es null
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
         }
@@ -56,7 +56,7 @@ export class NotaController {
         if (files) {
             if (files.length > 5)
             return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
-            
+
             if (files.length != 0) {
                 const imagenes = files.map((file) => {
                     return {
