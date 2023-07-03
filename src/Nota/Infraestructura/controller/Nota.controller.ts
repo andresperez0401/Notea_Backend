@@ -16,6 +16,8 @@ import { buscarNotasDeGrupoService } from "src/Nota/Aplicacion/BuscarNotaDeGrupo
 import { CambiarEstadoNotaDto } from "src/Nota/Aplicacion/dto/CambiarEstadoNota.dto";
 import { cambiarEstadoNotaService } from "src/Nota/Aplicacion/cambiarEstadoNota.service";
 import { CambiarGrupoNotaDto } from "src/Nota/Aplicacion/dto/CambiarGrupoNota.dto";
+import { BuscarNotasDeGruposService} from "src/Nota/Aplicacion/BuscarNotasGruposService";
+import { RepositorioNotaImp } from "../repository/RepositorioNotaImp";
 
 
 @Controller('nota')
@@ -34,9 +36,12 @@ export class NotaController {
         private readonly moverNotaGrupoService : cambiarGrupoNotaService,
         private readonly buscarNotasService : BuscarNotas,
         private readonly buscarNotasDeGrupoService : buscarNotasDeGrupoService,
-        private readonly cambiarEstadoNotaService : cambiarEstadoNotaService
+        private readonly cambiarEstadoNotaService : cambiarEstadoNotaService,
+        private buscarNotasDeGruposService: BuscarNotasDeGruposService,
+        private repositorio: RepositorioNotaImp,
         ){
-            this.crearNotaService = crearNotaService;
+            this.buscarNotasDeGruposService = new BuscarNotasDeGruposService(this.repositorio);
+            this.crearNotaService =  crearNotaService;
             this.eliminarNotaService = eliminarNotaService;
             this.ModificarNotaService = ModificarNotaService;
             this.buscarNotasService = buscarNotasService;
@@ -89,6 +94,18 @@ export class NotaController {
     async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){
         console.log('Delete  Nota');
         const n = await this.eliminarNotaService.execute(id);
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
+        }
+    }
+
+    @Get('/grupos')
+    async buscarNotasDeGrupos(@Res() response , @Body() grupos :Iterable<string>){
+        console.log('Grupos');
+        const n = await this.buscarNotasDeGruposService.execute(grupos);
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
         }

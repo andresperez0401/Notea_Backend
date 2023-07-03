@@ -13,6 +13,7 @@ import EntidadImagen from './entities/EntidadImagen';
 import EntidadTarea from './entities/EntidadTarea';
 import { buscarNotasDeGrupoService } from '../Aplicacion/BuscarNotaDeGrupoService';
 import { cambiarEstadoNotaService } from '../Aplicacion/cambiarEstadoNota.service';
+import { BuscarNotasDeGruposService } from '../Aplicacion/BuscarNotasGruposService';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea])],
@@ -25,6 +26,8 @@ import { cambiarEstadoNotaService } from '../Aplicacion/cambiarEstadoNota.servic
     buscarNotasDeGrupoService,
     cambiarGrupoNotaService,
     cambiarEstadoNotaService,
+    BuscarNotasDeGruposService,
+    RepositorioNotaImp,
     { // Aqui se agregan los repositorios, se debe especificar la clase que implementa la interfaz
       provide: 'RepositorioNota',
       useClass: RepositorioNotaImp

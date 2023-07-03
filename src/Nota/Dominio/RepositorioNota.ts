@@ -19,4 +19,7 @@ export interface RepositorioNota {
     buscarNotasDeGrupo(
         idGrupo: string,
     ): Promise<Either<Iterable<Nota>, Error>>;
+    buscarNotasDeGrupos(
+        grupos: Iterable<string>,
+    ): Promise<Either<Iterable<Nota>, Error>>;
 }
