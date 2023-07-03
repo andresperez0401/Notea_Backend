@@ -11,9 +11,9 @@ import { BuscarNotas } from '../Aplicacion/BuscarNotas.service';
 import { cambiarGrupoNotaService } from '../Aplicacion/cambiarGrupoNota.service';
 import EntidadImagen from './entities/EntidadImagen';
 import EntidadTarea from './entities/EntidadTarea';
-import { buscarNotasDeGrupoService } from '../Aplicacion/BuscarNotaDeGrupoService';
+import { buscarNotasDeGrupoService } from '../Aplicacion/BuscarNotaDeGrupo.service';
 import { cambiarEstadoNotaService } from '../Aplicacion/cambiarEstadoNota.service';
-import { BuscarNotasDeGruposService } from '../Aplicacion/BuscarNotasGruposService';
+import { BuscarNotasDeGruposService } from '../Aplicacion/BuscarNotasGrupos.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea])],
