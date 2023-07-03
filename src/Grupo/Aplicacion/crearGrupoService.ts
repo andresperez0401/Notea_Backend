@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { CrearGrupoDto } from './dto/CrearGrupo.dto';
 import { Either } from 'src/Utils/Either';
@@ -10,7 +8,6 @@ export class CrearGrupoService implements IAplicationService<CrearGrupoDto, Grup
 
   private readonly repositorioGrupo: RepositorioGrupo;
   constructor(
-    @Inject('RepositorioGrupo')
     repositorioGrupo: RepositorioGrupo) {
     this.repositorioGrupo = repositorioGrupo;
   }

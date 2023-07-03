@@ -15,6 +15,7 @@ import { actualizarEtiquetaService } from '../Aplicacion/actualizarEtiqueta.serv
     crearEtiquetaService,
     actualizarEtiquetaService,
     buscarEtiquetasService,
+    repositorioEtiquetaImp,
     {
 
       provide: 'RepositorioEtiqueta',

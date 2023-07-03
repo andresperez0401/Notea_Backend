@@ -21,6 +21,7 @@ import { actualizarEtiquetaDto } from 'src/Etiqueta/Aplicacion/dto/actualizarEti
 import { actualizarEtiquetaService } from 'src/Etiqueta/Aplicacion/actualizarEtiqueta.service';
 
 import { buscarEtiquetasService } from 'src/Etiqueta/Aplicacion/buscarEtiquetas.service';
+import { repositorioEtiquetaImp } from '../repository/repositorioEtiquetaImp';
 
 
 
@@ -30,13 +31,14 @@ export class EtiquetaController {
     @Inject(crearEtiquetaService)
     @Inject(actualizarEtiquetaService)
     @Inject(buscarEtiquetasService)
-    private readonly CrearEtiquetaService: crearEtiquetaService,
-    private readonly ActualizarEtiquetaService: actualizarEtiquetaService,
-    private readonly BuscarEtiquetasService: buscarEtiquetasService,
+    private CrearEtiquetaService: crearEtiquetaService,
+    private ActualizarEtiquetaService: actualizarEtiquetaService,
+    private BuscarEtiquetasService: buscarEtiquetasService,
+    private repositorio: repositorioEtiquetaImp,
   ) {
-    this.CrearEtiquetaService = CrearEtiquetaService;
-    this.ActualizarEtiquetaService = ActualizarEtiquetaService;
-    this.BuscarEtiquetasService = BuscarEtiquetasService;
+    this.CrearEtiquetaService = new crearEtiquetaService(this.repositorio);
+    this.ActualizarEtiquetaService = new actualizarEtiquetaService(this.repositorio);
+    this.BuscarEtiquetasService = new buscarEtiquetasService(this.repositorio);
   }
 
 

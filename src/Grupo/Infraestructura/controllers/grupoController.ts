@@ -25,16 +25,20 @@ import { buscarGrupoPorIdService } from 'src/Grupo/Aplicacion/buscarGrupoPorIdSe
 @Controller('grupo')
 export class GrupoController {
   constructor(
-    private readonly crearGrupoService: CrearGrupoService,
-    private readonly buscarGruposService: buscarGruposService,
-    private readonly eliminarGrupoService: eliminarGrupoService,
-    private readonly buscarGrupoPorUsuario: buscarGruposDeUsuarioService,
+    private crearGrupoService: CrearGrupoService,
+    private buscarGrupoAllService: buscarGruposService,
+    private deleteGrupoService: eliminarGrupoService,
+    private buscarGrupoPorUsuario: buscarGruposDeUsuarioService,
     private editarGrupoService:EditarGrupoService,
     private buscarPorIdService: buscarGrupoPorIdService,
     private repositorioGrupo: RepositorioGrupoImp
   ) {
     this.editarGrupoService = new EditarGrupoService(this.repositorioGrupo);
     this.buscarPorIdService = new buscarGrupoPorIdService(this.repositorioGrupo);
+    this.crearGrupoService = new CrearGrupoService(this.repositorioGrupo);
+    this.buscarGrupoAllService = new buscarGruposService(this.repositorioGrupo);
+    this.deleteGrupoService = new eliminarGrupoService(this.repositorioGrupo);
+    this.buscarGrupoPorUsuario = new buscarGruposDeUsuarioService(this.repositorioGrupo);
   }
 
   @Post()
@@ -52,7 +56,7 @@ export class GrupoController {
   //buscar todos los grupos
   @Get('/all')
   async buscarGrupos(@Res() response) {
-    const respuesta = await this.buscarGruposService.execute();
+    const respuesta = await this.buscarGrupoAllService.execute();
 
     if(respuesta.isLeft()){
       return response.status(200).json(respuesta.getLeft());
@@ -65,7 +69,7 @@ export class GrupoController {
   //Eliminar grupo
   @Delete(':id')
   async eliminarGrupo(@Res() response, @Param('id') id: string) {
-    const respuesta = await this.eliminarGrupoService.execute(id);
+    const respuesta = await this.deleteGrupoService.execute(id);
 
     if(respuesta.isLeft()){
       return response.status(200).json(respuesta.getLeft());

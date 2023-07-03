@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Either } from 'src/Utils/Either';
 import { Grupo } from '../Dominio/AgregadoGrupo';
@@ -9,7 +7,6 @@ export class buscarGruposDeUsuarioService implements IAplicationService<null, It
 
   private readonly repositorioGrupo: RepositorioGrupo;
   constructor( 
-    @Inject('RepositorioGrupo')
     repositorioGrupo: RepositorioGrupo) {
     this.repositorioGrupo = repositorioGrupo;
   }
