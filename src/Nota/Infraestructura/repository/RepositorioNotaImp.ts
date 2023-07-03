@@ -11,6 +11,8 @@ import { ModificarNotaDto } from 'src/Nota/Aplicacion/dto/ModificarNota.dto';
 import { VOImagen } from 'src/Nota/Dominio/Entidades/VOImagen';
 import EntidadImagen from '../entities/EntidadImagen';
 import { EntidadUbicacion } from '../entities/EntidadUbicacion';
+import EntidadTarea from '../entities/EntidadTarea';
+import { Optional } from 'src/Utils/Opcional';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
@@ -24,10 +26,6 @@ export class RepositorioNotaImp implements RepositorioNota{
 
     async crearNota(nota: Nota): Promise<Either<Nota,Error>>{
 
-        //let im = null
-
-        console.log();
-
         let ub;
         if (nota.existeUbicacion()) {
             ub = new EntidadUbicacion();
@@ -35,29 +33,40 @@ export class RepositorioNotaImp implements RepositorioNota{
             ub.longitud = nota.getUbicacion().get('longitud');
         }
 
-        const entidadNota : EntidadNota = {
-            id: nota.getId(),
-            titulo: nota.getTitulo(),
-            contenido: nota.getContenido(),
-            fechaCreacion: nota.getFechaCreacion(),
-            estado: nota.getEstado(),
-            ubicacion: ub,
-            grupo: nota.getIdGrupo(),
-            imagenes: []
+        const entidadNota = new EntidadNota();
+        entidadNota.id = nota.getId();
+        entidadNota.titulo = nota.getTitulo();
+        entidadNota.contenido = nota.getContenido();
+        entidadNota.fechaCreacion = nota.getFechaCreacion();
+        entidadNota.estado = nota.getEstado();
+        entidadNota.ubicacion = ub;
+        entidadNota.grupo = nota.getIdGrupo();
+
+        let tareas : EntidadTarea[];
+        if (nota.existeTareas()) { //puedo hacer lo mismo con las imagenes
+            tareas = nota.getTareas().map(tarea => {
+                const t = new EntidadTarea();
+                t.id = tarea.getId();
+                t.titulo = tarea.getTitulo();
+                t.check = tarea.getCheck();
+                t.nota = entidadNota;
+                return t;
+            })
         }
-        //  const img = new EntidadImagen();
-        //  img.nombre = nota.getImagenes()[0].getNombreImagen();
-        //  img.buffer = nota.getImagenes()[0].getBufferImagen();
-        //  img.nota = entidadNota;
+        entidadNota.tareas = tareas;
 
-        //     im = nota.getImagenes().map(imagen => {
-        //         return {nombre: imagen.getNombreImagen(), 
-        //                 buffer: imagen.getBufferImagen(),
-        //                 nota : entidadNota,}
-        //     })
+         let imagenes : EntidadImagen[];
+        if (nota.existenImagenes()) { //puedo hacer lo mismo con las imagenes
+            imagenes = nota.getImagenes().map(imagen => {
+                const im = new EntidadImagen();
+                im.nombre = imagen.getNombreImagen();
+                im.buffer = imagen.getBufferImagen();
+                im.nota = entidadNota;
+                return im;
+            })
+        }  
+        entidadNota.imagenes = imagenes;
         
-        // entidadNota.imagenes.push(img);
-
         const response = await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
         if (response){
             return Either.makeLeft<Nota,Error>(nota);
@@ -105,24 +114,80 @@ export class RepositorioNotaImp implements RepositorioNota{
         // }
     }
     
-    async updateNota(infoNota : ModificarNotaDto): Promise<Either<string,Error>>{
+    async updateNota(nota : Nota): Promise<Either<string,Error>>{
 
-        const nota =  await this.repositorio.findOneBy({id : infoNota.id});
-        if (nota){
-            const responde = this.repositorio.merge(nota, infoNota)
+        let ub;
+        if (nota.existeUbicacion()) {
+            ub = new EntidadUbicacion();
+            ub.latitud = nota.getUbicacion().get('latitud')
+            ub.longitud = nota.getUbicacion().get('longitud');
+        }
+
+        const entidadNota = new EntidadNota();
+        entidadNota.id = nota.getId();
+        entidadNota.titulo = nota.getTitulo();
+        entidadNota.contenido = nota.getContenido();
+        entidadNota.fechaCreacion = nota.getFechaCreacion();
+        entidadNota.estado = nota.getEstado();
+        entidadNota.ubicacion = ub;
+        entidadNota.grupo = nota.getIdGrupo();
+
+        let tareas : EntidadTarea[];
+        if (nota.existeTareas()) { //puedo hacer lo mismo con las imagenes
+            tareas = nota.getTareas().map(tarea => {
+                const t = new EntidadTarea();
+                t.id = tarea.getId();
+                t.titulo = tarea.getTitulo();
+                t.check = tarea.getCheck();
+                t.nota = entidadNota;
+                return t;
+            })
+        }
+        entidadNota.tareas = tareas;
+
+         let imagenes : EntidadImagen[];
+        if (nota.existenImagenes()) { //puedo hacer lo mismo con las imagenes
+            imagenes = nota.getImagenes().map(imagen => {
+                const im = new EntidadImagen();
+                im.nombre = imagen.getNombreImagen();
+                im.buffer = imagen.getBufferImagen();
+                im.nota = entidadNota;
+                return im;
+            })
+        }  
+        entidadNota.imagenes = imagenes;
+
+            const responde = await this.repositorio.save(entidadNota)
             if (responde){
-                await this.repositorio.save(nota)
+                //await this.repositorio.save(nota)
                 return Either.makeLeft("Nota actualizada");
             }else{ 
                 return Either.makeRight(new Error('Error al modificar nota'));
             }
-        }else {
-            return Either.makeRight(new Error('No se encontro nota con id' + infoNota.id));
-        }
+    
     }
     
     
-    
+    async cambiarEstadoNota(id: string, estado: string): Promise<Either<string, Error>> {
+            const response = await this.repositorio.update(id, {estado: estado});
+            if (response.affected > 0){
+                return Either.makeLeft("Estado actualizado");
+            }else{
+                return Either.makeRight(new Error('La nota no existe'));
+            }
+    }
+
+    async cambiarGrupoNota(id: string, idGrupo:string): Promise<Either<string,Error>> {
+         const response = await this.repositorio.update(id, {grupo: idGrupo});
+            if (response.affected > 0){
+                return Either.makeLeft("Estado actualizado");
+            }else{
+                return Either.makeRight(new Error('La nota no existe'));
+            }
+    }
+
+
+
     
     // async buscarNota(id: string): Promise<Either<Nota,Error>>{
     //     console.log('BuscarNota RepoImp');
@@ -137,6 +202,7 @@ export class RepositorioNotaImp implements RepositorioNota{
 
     async buscarNotas(): Promise<Either<Iterable<Nota>,Error>>{
         const respuesta: EntidadNota[] = await this.repositorio.find();
+
         if (respuesta) {
         const notas: Nota[] = respuesta.map((nota) =>
             Nota.crearNota(
@@ -144,9 +210,11 @@ export class RepositorioNotaImp implements RepositorioNota{
             nota.fechaCreacion,
             EstadoEnum[nota.estado],
             nota.grupo,
-            nota.ubicacion.latitud,
-            nota.ubicacion.latitud,
-            nota.contenido,
+            new Optional<number>(nota.ubicacion.latitud),
+            new Optional<number>(nota.ubicacion.longitud),
+            new Optional(nota.tareas.map(tarea => {return tarea.titulo})),
+            new Optional(nota.tareas.map(tarea => {return tarea.check})),
+            new Optional(nota.tareas.map(tarea => {return tarea.id})),
             nota.id,
             //nota.imagenes.map(imagen => {return VOImagen.crearImagenNota(imagen.nombre, imagen.buffer);}),
             ),
@@ -160,18 +228,13 @@ export class RepositorioNotaImp implements RepositorioNota{
 
     async eliminarNota(id: string): Promise<Either<string,Error>>{
         console.log('EliminarNota RepoImp');
-        const notaAEliminar = await this.repositorio.findOne({where: {id}});
-        if (notaAEliminar){
-        const respuesta =  await this.repositorio.delete(notaAEliminar);
+        const respuesta =  await this.repositorio.delete(id);
             if (respuesta){
                 return Either.makeLeft<string,Error>('La nota '+ id +' ha sido eliminada');
             }
             else{
                 return Either.makeRight<string,Error>(new Error('no se pudo eliminar la nota'));
             }
-        }else {
-            return Either.makeRight(new Error('No se encontro usuario con id' + id));
-        }
     }
 
     async buscarNotasDeGrupo(
@@ -181,22 +244,79 @@ export class RepositorioNotaImp implements RepositorioNota{
             where: { grupo: idGrupo },
         });
         if (respuesta) {
-            const notas: Nota[] = respuesta.map((n) =>
-                //Transformamos el iterable de EntidadGrupo(infraestrutura) a Grupo(dominio)
-                Nota.crearNota(n.titulo, 
-                    n.fechaCreacion, 
-                    EstadoEnum[n.estado],
-                    n.grupo, 
-                    n.ubicacion.latitud, 
-                    n.ubicacion.latitud, 
-                    n.contenido, 
-                    n.id),
+
+            const notas: Nota[] = respuesta.map((nota) =>
+            Nota.crearNota(
+            nota.titulo,
+            nota.contenido,
+            nota.fechaCreacion,
+            EstadoEnum[nota.estado],
+            nota.grupo,
+            new Optional<number>(nota.ubicacion.latitud),
+            new Optional<number>(nota.ubicacion.longitud),
+            new Optional(nota.tareas.map(tarea => {return tarea.titulo})),
+            new Optional(nota.tareas.map(tarea => {return tarea.check})),
+            new Optional(nota.tareas.map(tarea => {return tarea.id})),
+            nota.id,
+            nota.imagenes.map(imagen => {return VOImagen.crearImagenNota(imagen.nombre, imagen.buffer);}),
+            ),
+
             );
+
             return Either.makeLeft<Iterable<Nota>, Error>(notas);
-        } else {
+        } 
+        else {
             return Either.makeRight<Iterable<Nota>, Error>(
                 new Error(`Error al obtener los notas del usuario ${idGrupo}`),
             );
         }
+    }
+
+
+    async buscarNotasDeGrupos(
+        grupos: Iterable<string>,
+        ): Promise<Either<Iterable<Nota>, Error>> {
+
+         const listaGrupos : string[] = [...grupos];
+         const listaNotas : Nota[] = [];
+
+        for (let grupo of listaGrupos){
+            const respuesta: EntidadNota[] = await this.repositorio.find({
+                where: { grupo: grupo },
+            });
+
+            if (respuesta) {
+                const notas: Nota[] = respuesta.map((nota) =>
+                Nota.crearNota(
+                nota.titulo,
+                nota.contenido,
+                nota.fechaCreacion,
+                EstadoEnum[nota.estado],
+                nota.grupo,
+                new Optional<number>(nota.ubicacion.latitud),
+                new Optional<number>(nota.ubicacion.longitud),
+                new Optional(nota.tareas.map(tarea => {return tarea.titulo})),
+                new Optional(nota.tareas.map(tarea => {return tarea.check})),
+                new Optional(nota.tareas.map(tarea => {return tarea.id})),
+                nota.id,
+                nota.imagenes.map(imagen => {return VOImagen.crearImagenNota(imagen.nombre, imagen.buffer);}),
+                ),
+             );
+
+            listaNotas.push(...notas);          
+                
+            } 
+        }
+
+        if(listaNotas.length > 0){
+            return Either.makeLeft<Iterable<Nota>, Error>(listaNotas);
+        }
+        
+        else{
+            return Either.makeRight<Iterable<Nota>, Error>(
+                new Error(`Error al obtener los notas del usuario`),
+            );
+        }
+        
     }
 }

@@ -27,6 +27,7 @@ export class Nota{
             this.fechaCreacion = fechaCreacion;
             this.estado = estado;
             this.ubicacion = ubicacion;
+            //this.tareas = tareas;
             this.grupo = grupoId;
         }
     

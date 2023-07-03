@@ -7,8 +7,10 @@ import { Nota } from '../Dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
 import { Optional } from 'src/Utils/Opcional';
+import { JsonContains } from 'typeorm';
+import { json } from 'stream/consumers';
+import { stringify } from 'querystring';
 import { VOImagen } from '../Dominio/Entidades/VOImagen';
-
 
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
 
@@ -23,13 +25,30 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
 
     const estado = EstadoEnum.GUARDADO;
     
-    let im: VOImagen[] = [];
+    let im;
 
-    if (s.imagenes.length >= 1) {
+    if (s.imagenes) {
+      console.log("entra");
       im = s.imagenes.map((i) => {
       return VOImagen.crearImagenNota(i.nombre, i.buffer); 
       });
     }
+
+    let ncheck;
+    let ntitulos;
+
+    if (s.tareas){
+       ncheck = s.tareas.map((t) => {
+        return t.check;
+      });
+
+       ntitulos = s.tareas.map((t) => {
+        return t.titulo;
+      });
+    }
+
+
+    //si hacemos un multipart las tareas se mandan como un string y hay que parsearlo
 
     const opLatitud = new Optional<number>(s.latitud);
     const opLongitud = new Optional<number>(s.longitud);
@@ -42,13 +61,17 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       s.contenido,
       opLatitud,
       opLongitud,
+      new Optional(ntitulos),
+      new Optional(ncheck),
+      new Optional(),
       null,
+      im,
     );
-    
+
     const notacreada = await this.repositorioNota.crearNota(nota);
-    if (notacreada.isLeft()) {
-     await this.repositorioNota.guardarImagenes(nota.getId(), im);
-    }
+    // if (notacreada.isLeft()) {
+    //  await this.repositorioNota.guardarImagenes(nota.getId(), im);
+    // }
 
     return notacreada;
 

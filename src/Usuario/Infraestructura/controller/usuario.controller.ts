@@ -49,13 +49,20 @@ export class UsuarioController {
   @Post()
   async crearUsuario(@Res() response, @Body() payload: CrearUsuarioDto) {
 
-    const respuesta = await this.usuarioService.execute(payload);
+    const email = await this.buscarUsuariosEmailService.execute(payload.email);
 
-    if(respuesta.isLeft()){
-      return response.status(200).json(respuesta.getLeft());
-    }
-    else{
-      return response.status(404).json(respuesta.getRight().message);
+    if(email.isRight()){
+
+      const respuesta = await this.usuarioService.execute(payload);
+
+      if(respuesta.isLeft()){
+        return response.status(200).json(respuesta.getLeft());
+      }
+      else{
+        return response.status(404).json(respuesta.getRight().message);
+      }
+    } else {
+      return response.status(404).json({message: 'El email ya existe'});
     }
   }
 
@@ -99,6 +106,7 @@ export class UsuarioController {
   //Loguear usuario
   @Post('/login')
   async loguearUsuario(@Res() response, @Body() payload: loguearUsuarioDTO) {
+    console.log("loguear");
     const respuesta = await this.loguearUsuarioService.execute(payload);
 
     if(respuesta.isLeft()){

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsJSON, IsNotEmpty, IsString } from 'class-validator';
 
 export class CrearNotaDto {
   @IsString()
@@ -10,12 +10,15 @@ export class CrearNotaDto {
   contenido: string;
   @IsNotEmpty()
   fechaCreacion: Date;
-  @IsNumber()
+  
   latitud?: number;
-  @IsNumber()
+
   longitud?: number;
   @IsString()
   @IsNotEmpty()
   grupo: string;
-  imagenes: { nombre: string, buffer: Buffer }[]; 
+  
+  tareas?: { titulo: string, check: boolean }[]; 
+
+  imagenes?: { nombre: string, buffer: Buffer }[]; //realmente no se usa jeje
 }
