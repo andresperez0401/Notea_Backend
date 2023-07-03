@@ -12,11 +12,11 @@ import { ModificarNotaService } from "src/Nota/Aplicacion/ModificarNota.service"
 import { BuscarNotas } from "src/Nota/Aplicacion/BuscarNotas.service";
 import { cambiarGrupoNotaService } from "src/Nota/Aplicacion/cambiarGrupoNota.service";
 import {  FilesInterceptor } from "@nestjs/platform-express/multer";
-import { buscarNotasDeGrupoService } from "src/Nota/Aplicacion/BuscarNotaDeGrupoService";
+import { buscarNotasDeGrupoService } from "src/Nota/Aplicacion/BuscarNotaDeGrupo.service";
 import { CambiarEstadoNotaDto } from "src/Nota/Aplicacion/dto/CambiarEstadoNota.dto";
 import { cambiarEstadoNotaService } from "src/Nota/Aplicacion/cambiarEstadoNota.service";
 import { CambiarGrupoNotaDto } from "src/Nota/Aplicacion/dto/CambiarGrupoNota.dto";
-import { BuscarNotasDeGruposService} from "src/Nota/Aplicacion/BuscarNotasGruposService";
+import { BuscarNotasDeGruposService} from "src/Nota/Aplicacion/BuscarNotasGrupos.service";
 import { RepositorioNotaImp } from "../repository/RepositorioNotaImp";
 
 
