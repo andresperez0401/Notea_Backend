@@ -32,17 +32,23 @@ import { EventPublisher } from 'src/core/domain/events/EventPublisher';
 export class UsuarioController {
   constructor(
     private usuarioService: CrearUsuarioService,
-    private readonly buscarUsuariosService: BuscarUsuariosService,
-    private readonly buscarUsuariosEmailService: EncontrarPorEmailService,
-    private readonly buscarUsuariosIdService: EncontrarPorIdService,
-    private readonly eliminarUsuarioService: EliminarUsuarioService,
-    private readonly loguearUsuarioService: LoguearUsuarioService,
-    private readonly editarUsuarioService: EditarUsuarioService,
+    private buscarUsuariosService: BuscarUsuariosService,
+    private buscarUsuariosEmailService: EncontrarPorEmailService,
+    private buscarUsuariosIdService: EncontrarPorIdService,
+    private eliminarUsuarioService: EliminarUsuarioService,
+    private loguearUsuarioService: LoguearUsuarioService,
+    private editarUsuarioService: EditarUsuarioService,
 
     @Inject('RepositorioUsuario') private readonly repoUsuario: RepositorioUsuario,
     @Inject('EventPublisher') private readonly eventPublisher: EventPublisher,
   ) {
     this.usuarioService = new CrearUsuarioService(this.repoUsuario,eventPublisher);
+    this.buscarUsuariosService =  new BuscarUsuariosService(this.repoUsuario);
+    this.buscarUsuariosEmailService = new EncontrarPorEmailService(this.repoUsuario);
+    this.buscarUsuariosIdService = new EncontrarPorIdService(this.repoUsuario);
+    this.eliminarUsuarioService = new EliminarUsuarioService(this.repoUsuario);
+    this.loguearUsuarioService = new LoguearUsuarioService(this.repoUsuario);
+    this.editarUsuarioService = new EditarUsuarioService(this.repoUsuario);
 
   }
 
