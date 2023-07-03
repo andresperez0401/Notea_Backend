@@ -1,4 +1,3 @@
-
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Either } from 'src/Utils/Either';
 import { Grupo } from '../Dominio/AgregadoGrupo';
