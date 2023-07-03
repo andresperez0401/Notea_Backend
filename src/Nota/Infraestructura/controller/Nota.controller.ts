@@ -30,23 +30,24 @@ export class NotaController {
         @Inject(cambiarGrupoNotaService)
         @Inject(buscarNotasDeGrupoService)
         @Inject(cambiarEstadoNotaService)
-        private readonly crearNotaService : CrearNotaService,
-        private readonly eliminarNotaService : EliminarNotaService,
-        private readonly ModificarNotaService : ModificarNotaService,
-        private readonly moverNotaGrupoService : cambiarGrupoNotaService,
-        private readonly buscarNotasService : BuscarNotas,
-        private readonly buscarNotasDeGrupoService : buscarNotasDeGrupoService,
-        private readonly cambiarEstadoNotaService : cambiarEstadoNotaService,
+        private crearNotaService : CrearNotaService,
+        private eliminarNotaService : EliminarNotaService,
+        private modificarNotaService : ModificarNotaService,
+        private moverNotaGrupoService : cambiarGrupoNotaService,
+        private buscarNotasService : BuscarNotas,
+        private buscarNotasDeUnGrupoService : buscarNotasDeGrupoService,
+        private cambiarEstadoDeNotaService : cambiarEstadoNotaService,
         private buscarNotasDeGruposService: BuscarNotasDeGruposService,
         private repositorio: RepositorioNotaImp,
         ){
             this.buscarNotasDeGruposService = new BuscarNotasDeGruposService(this.repositorio);
-            this.crearNotaService =  crearNotaService;
-            this.eliminarNotaService = eliminarNotaService;
-            this.ModificarNotaService = ModificarNotaService;
-            this.buscarNotasService = buscarNotasService;
-            this.moverNotaGrupoService = moverNotaGrupoService
-            this.buscarNotasDeGrupoService = buscarNotasDeGrupoService;
+            this.crearNotaService =  new CrearNotaService(this.repositorio);
+            this.eliminarNotaService = new EliminarNotaService(this.repositorio);
+            this.modificarNotaService = new ModificarNotaService(this.repositorio);
+            this.buscarNotasService = new BuscarNotas(this.repositorio);
+            this.moverNotaGrupoService = new cambiarGrupoNotaService(this.repositorio);
+            this.buscarNotasDeUnGrupoService = new buscarNotasDeGrupoService(this.repositorio);
+            this.cambiarEstadoDeNotaService =  new cambiarEstadoNotaService(this.repositorio);
         };
 
     @Get('/all')
@@ -134,7 +135,7 @@ export class NotaController {
             }                               //ya que las imagenes se pasan por separado del dto
         }
 
-        const n =  await this.ModificarNotaService.execute(notaMod)
+        const n =  await this.modificarNotaService.execute(notaMod)
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
         }
@@ -145,7 +146,7 @@ export class NotaController {
 
     @Get('/grupo/:idGrupo')
     async buscarGruposUsuario(@Res() response, @Param('idGrupo') id: string) {
-        const respuesta = await this.buscarNotasDeGrupoService.execute(id);
+        const respuesta = await this.buscarNotasDeUnGrupoService.execute(id);
         if(respuesta.isLeft()){
             return response.status(200).json(respuesta.getLeft());
         }
@@ -169,7 +170,7 @@ export class NotaController {
     @Patch('/cambiarEstado')
     async cambiarEstado(@Res() response, @Body() nota: CambiarEstadoNotaDto): Promise<Either<string,Error>> {
         console.log('Cambiar Estado Nota');
-        const n =  await this.cambiarEstadoNotaService.execute(nota)
+        const n =  await this.cambiarEstadoDeNotaService.execute(nota)
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
         }
