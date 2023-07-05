@@ -7,9 +7,6 @@ import { Nota } from '../Dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
 import { Optional } from 'src/Utils/Opcional';
-import { JsonContains } from 'typeorm';
-import { json } from 'stream/consumers';
-import { stringify } from 'querystring';
 import { VOImagen } from '../Dominio/Entidades/VOImagen';
 
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
@@ -27,28 +24,20 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
     
     let im;
 
+    let contenido = new Optional<any>();
+    if (s.contenido){
+      const auxcontenido = JSON.stringify(s.contenido);
+      contenido = new Optional<any>(JSON.parse(auxcontenido)); 
+       //si hacemos un multipart el contenido se mandan como un string y hay que parsearlo
+       //a pesar de ser inestable, es la unica forma de mandar un array de objetos distintos
+       //pido disculpas
+    }
+
     if (s.imagenes) {
-      console.log("entra");
       im = s.imagenes.map((i) => {
       return VOImagen.crearImagenNota(i.nombre, i.buffer); 
       });
     }
-
-    let ncheck;
-    let ntitulos;
-
-    if (s.tareas){
-       ncheck = s.tareas.map((t) => {
-        return t.check;
-      });
-
-       ntitulos = s.tareas.map((t) => {
-        return t.titulo;
-      });
-    }
-
-
-    //si hacemos un multipart las tareas se mandan como un string y hay que parsearlo
 
     const opLatitud = new Optional<number>(s.latitud);
     const opLongitud = new Optional<number>(s.longitud);
@@ -58,14 +47,9 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
       s.fechaCreacion,
       estado,
       s.grupo,
-      s.contenido,
       opLatitud,
       opLongitud,
-      new Optional(ntitulos),
-      new Optional(ncheck),
-      new Optional(),
-      null,
-      im,
+      contenido,
     );
 
     const notacreada = await this.repositorioNota.crearNota(nota);

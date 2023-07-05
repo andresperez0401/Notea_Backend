@@ -27,35 +27,30 @@ export class Nota{
             this.fechaCreacion = fechaCreacion;
             this.estado = estado;
             this.ubicacion = ubicacion;
-            //this.tareas = tareas;
             this.grupo = grupoId;
         }
     
     //Los constructores estaticos son una alternativa a los Factories
     //la nota crea tambien la entidad ContenidoNota?
-        static crearNota(titulo: string, fechaCreacion: Date,  estado: EstadoEnum
-            ,  grupoId: string, latitud?: number, longitud?:  number, contenido?: Array<EntidadContenidoNota>, 
+        static crearNota(titulo: string, fechaCreacion: Date,  estado: EstadoEnum,
+            grupoId: string, 
+            latitud: Optional<number>, longitud:  Optional<number>,
+            contenido: Optional<any>, 
             id?: string): Nota{
-                
-                const opContenido = new Optional<Array<EntidadContenidoNota>>(contenido);
 
-                const opLatitud = new Optional<number>(latitud);
-                const opLongitud = new Optional<number>(longitud);
+            const opUbicacion = VOubicacionNota.crearUbicacionNota(latitud, longitud);
 
-                let opUbicacion = new Optional<VOubicacionNota>();
+            const opContenido = EntidadContenidoNota.crearContenidoNotaFromJson(contenido);
 
-                if (opLatitud.hasvalue() && opLongitud.hasvalue())
-                    opUbicacion = new Optional<VOubicacionNota>(VOubicacionNota.crearUbicacionNota(opLatitud.getValue(), opLongitud.getValue()));
-
-                return new Nota(
-                    VOTituloNota.crearTituloNota(titulo),
-                    opContenido,
-                    fechaCreacion, 
-                    EstadoEnum[estado], 
-                    opUbicacion,
-                    idGrupo.crearIdGrupo(grupoId),
-                    IdNota.crearIdNota(id),
-                    );
+            return new Nota(
+                VOTituloNota.crearTituloNota(titulo),
+                opContenido,
+                fechaCreacion, 
+                EstadoEnum[estado], 
+                opUbicacion,
+                idGrupo.crearIdGrupo(grupoId),
+                IdNota.crearIdNota(id),
+                );
         }
     
         //los get deben retornar primitivos, no objetos
@@ -68,7 +63,7 @@ export class Nota{
             return this.titulo.getTituloNota();
         }
     
-        public getContenido(): EntidadContenidoNota[]{
+        public getContenido(): Iterable<EntidadContenidoNota>{
             return this.contenido.getValue();
         }
     
@@ -85,6 +80,10 @@ export class Nota{
 
         public existeUbicacion(): boolean{
             return this.ubicacion.hasvalue();
+        }
+
+        public existeContenido(): boolean{
+            return this.contenido.hasvalue();
         }
     
         public getUbicacion(): Map<string, number>{

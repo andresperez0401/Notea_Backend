@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
-import { EntidadNota } from './EntidadNota';
+import EntidadContenido from './EntidadContenido';
 
 @Entity('tarea')
 export class EntidadTarea {
@@ -12,12 +12,12 @@ export class EntidadTarea {
   @Column()
   check: boolean;
 
-  @ManyToOne(() => EntidadNota, (nota) => nota.tareas, {
+  @ManyToOne(() => EntidadContenido, (contenido) => contenido.tareas, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     nullable: true,
   })
-  nota: EntidadNota;
+  contenido: EntidadContenido;
 }
 
 export default EntidadTarea;

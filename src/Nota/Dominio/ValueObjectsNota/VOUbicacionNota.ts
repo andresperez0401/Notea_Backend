@@ -1,3 +1,5 @@
+import { Optional } from 'src/Utils/Opcional';
+
 export class VOubicacionNota {
   private latitud: number;
   private longitud: number;
@@ -8,10 +10,12 @@ export class VOubicacionNota {
   }
 
   static crearUbicacionNota(
-    latitud?: number,
-    longitud?: number,
-  ): VOubicacionNota {
-    return new VOubicacionNota(latitud, longitud);
+    latitud: Optional<number>,
+    longitud: Optional<number>,
+  ): Optional<VOubicacionNota> {
+    return new Optional<VOubicacionNota>(
+      new VOubicacionNota(latitud.getValue(), longitud.getValue()),
+    );
   }
 
   getLatitud(): number {

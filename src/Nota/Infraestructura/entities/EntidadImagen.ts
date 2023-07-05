@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { EntidadNota } from './EntidadNota';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import EntidadContenido from './EntidadContenido';
 
 @Entity('imagen')
 export class EntidadImagen {
@@ -15,8 +15,9 @@ export class EntidadImagen {
   })
   buffer: Buffer;
 
-  @ManyToOne( () => EntidadNota, (nota) => nota.imagenes, {onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true})
-  nota: EntidadNota;
+  @OneToOne( () => EntidadContenido, (contenido) => contenido.Imagen, {cascade: ["insert", "update"], onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true})
+  @JoinColumn()
+  contenido: EntidadContenido;
 }
 
 export default EntidadImagen;

@@ -1,16 +1,11 @@
-import { IsString } from 'class-validator';
-
 export class ModificarNotaDto {
-  id: string;
-  @IsString()
-  titulo?: string;
-  @IsString()
-  contenido?: string;
-  @IsString()
-  grupo: string;
+  titulo: string;
+  fechaCreacion: Date;
   latitud?: number;
   longitud?: number;
+  grupo: string;
 
-  tareas?: { titulo: string; check: boolean; id: string }[];
-  imagenes?: { nombre: string; buffer: Buffer }[];
+  contenido: string;
+
+  imagenes?: { nombre: string; buffer: Buffer; orden: number }[];
 }

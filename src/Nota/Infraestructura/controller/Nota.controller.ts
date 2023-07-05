@@ -62,24 +62,23 @@ export class NotaController {
     }
 
     @Post()
-    @UseInterceptors(FilesInterceptor('imagenes', 5))
+    @UseInterceptors(FilesInterceptor('imagenes'))
     async crearNota(@Res() response, @Body() nota:CrearNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
 
-        if (files) {
-            if (files.length > 5)
-            return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
-
-            if (files.length != 0) {
-                const imagenes = files.map((file) => {
-                    return {
-                        nombre: file.originalname,
-                        buffer: file.buffer,
-                    }
-                });
-                nota.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
-            }                               //ya que las imagenes se pasan por separado del dto
-        }
+        //si logramos pasar las imagenes por el body, esto no es necesario
+        
+        // if (files) { 
+        //     if (files.length != 0) {
+        //         const imagenes = files.map((file) => {
+        //             return {
+        //                 nombre: file.originalname,
+        //                 buffer: file.buffer,
+        //             }
+        //         });
+        //         nota.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
+        //     }                               //ya que las imagenes se pasan por separado del dto
+        // }
 
         const  n =  await this.crearNotaService.execute(nota);
         if (n.isLeft()) {
@@ -119,20 +118,17 @@ export class NotaController {
     async update(@Res() response, @Body() notaMod: ModificarNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<string,Error>> {
         console.log('Mod  Nota');
 
-        if (files) {
-            if (files.length > 5)
-            return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
-            
-            if (files.length != 0) {
-                const imagenes = files.map((file) => {
-                    return {
-                        nombre: file.originalname,
-                        buffer: file.buffer,
-                    }
-                });
-                notaMod.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
-            }                               //ya que las imagenes se pasan por separado del dto
-        }
+        // if (files) {            
+        //     if (files.length != 0) {
+        //         const imagenes = files.map((file) => {
+        //             return {
+        //                 nombre: file.originalname,
+        //                 buffer: file.buffer,
+        //             }
+        //         });
+        //         notaMod.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
+        //     }                               //ya que las imagenes se pasan por separado del dto
+        // }
 
         const n =  await this.ModificarNotaService.execute(notaMod)
         if (n.isLeft()) {

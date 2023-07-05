@@ -1,6 +1,0 @@
-export enum EstiloEnum {
-  NEGRITA = 'NEGRITA',
-  CURSIVA = 'CURSIVA',
-  TACHADO = 'TACHADO',
-  SUBRAYADO = 'SUBRAYADO',
-}

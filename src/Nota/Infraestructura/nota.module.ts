@@ -14,9 +14,11 @@ import EntidadTarea from './entities/EntidadTarea';
 import { buscarNotasDeGrupoService } from '../Aplicacion/BuscarNotaDeGrupo.service';
 import { cambiarEstadoNotaService } from '../Aplicacion/cambiarEstadoNota.service';
 import { BuscarNotasDeGruposService } from '../Aplicacion/BuscarNotasGrupos.service';
+import EntidadContenido from './entities/EntidadContenido';
+import EntidadTexto from './entities/EntidadTexto';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea])],
+  imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea, EntidadContenido, EntidadTexto])],
   controllers: [NotaController],
   providers: [ // Aqui se agregan los servicios
     CrearNotaService,
