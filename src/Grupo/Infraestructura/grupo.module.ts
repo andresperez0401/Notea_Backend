@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntidadGrupo } from './entities/EntidadGrupo';
 import { RepositorioGrupoImp } from './repository/RepositorioGrupoImpl';
@@ -9,9 +9,11 @@ import { eliminarGrupoService } from '../Aplicacion/eliminarGrupoService';
 import { buscarGruposDeUsuarioService } from '../Aplicacion/buscarGruposDeUsuarioService';
 import { EditarGrupoService } from '../Aplicacion/editarGrupoService';
 import { buscarGrupoPorIdService } from '../Aplicacion/buscarGrupoPorIdService';
+import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module';
+import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EntidadGrupo])],
+  imports: [TypeOrmModule.forFeature([EntidadGrupo]),forwardRef(() => DecoratorModule)],
   controllers: [GrupoController],
   providers: [
     //RepositorioUsuarioImp,
@@ -22,6 +24,7 @@ import { buscarGrupoPorIdService } from '../Aplicacion/buscarGrupoPorIdService';
     EditarGrupoService,
     buscarGrupoPorIdService,
     RepositorioGrupoImp,
+    ILoggerImplementation,
     {
       provide: 'RepositorioGrupo',
       useClass: RepositorioGrupoImp,

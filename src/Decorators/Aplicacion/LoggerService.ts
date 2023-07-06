@@ -7,24 +7,23 @@ import { ServiceDecorator } from './ServiceDecorator';
 export class LoggerService<V,T> extends ServiceDecorator<V,T>{
 
     private logger : ILogger;
+    private mensaje: string;
 
-    constructor(logger: ILogger, service : IAplicationService<V,T>) {
+    constructor(logger: ILogger, service : IAplicationService<V,T>, mensaje: string) {
         super(service);
         this.logger = logger;
+        this.mensaje = mensaje;
     }
 
     async execute(s: V): Promise<Either<T, Error>> {
         
         const response = await super.execute(s);
         
-        if (response.isLeft){
-        const mandar = response.getLeft.toString();
-        this.loggear(mandar);
-
+        if (response.isLeft()){
+            const mandar = this.mensaje +  response.getLeft().toString();
+            this.loggear(mandar);
         }
-
-        return response;
-        
+        return response; 
     }
 
      loggear(s:string): void {

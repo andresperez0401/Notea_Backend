@@ -21,6 +21,8 @@ import { EditarGrupoDto } from 'src/Grupo/Aplicacion/dto/EditarGrupo.dto';
 import { EditarGrupoService } from 'src/Grupo/Aplicacion/editarGrupoService';
 import { RepositorioGrupoImp } from '../repository/RepositorioGrupoImpl';
 import { buscarGrupoPorIdService } from 'src/Grupo/Aplicacion/buscarGrupoPorIdService';
+import { LoggerService } from 'src/Decorators/Aplicacion/LoggerService';
+import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
   
 @Controller('grupo')
 export class GrupoController {
@@ -31,8 +33,10 @@ export class GrupoController {
     private buscarGrupoPorUsuario: buscarGruposDeUsuarioService,
     private editarGrupoService:EditarGrupoService,
     private buscarPorIdService: buscarGrupoPorIdService,
-    private repositorioGrupo: RepositorioGrupoImp
+    private repositorioGrupo: RepositorioGrupoImp,
+    private logger: ILoggerImplementation,
   ) {
+    this.logger = new ILoggerImplementation();
     this.editarGrupoService = new EditarGrupoService(this.repositorioGrupo);
     this.buscarPorIdService = new buscarGrupoPorIdService(this.repositorioGrupo);
     this.crearGrupoService = new CrearGrupoService(this.repositorioGrupo);
@@ -43,7 +47,9 @@ export class GrupoController {
 
   @Post()
   async crearGrupo(@Res() response, @Body() payload: CrearGrupoDto) {
-    const respuesta = await this.crearGrupoService.execute(payload);
+
+    const decorator = new LoggerService<CrearGrupoDto,Grupo>(this.logger,this.crearGrupoService,"Grupo creado");
+    const respuesta = await decorator.execute(payload);
 
     if(respuesta.isLeft()){
       return response.status(200).json(respuesta.getLeft());
