@@ -10,6 +10,8 @@ export class EntidadContenidoNota {
   private texto: Optional<EntidadTextoNota>;
   private tareas: Optional<Array<EntidadTareaNota>>;
   private imagen: Optional<VOImagen>;
+  //se puede usar una interfaz en comun para los 3 tipos de contenido
+  //y asi no tener que usar 3 atributos, sino uno solo
   private orden: number;
   private isImagen = false;
   private isTareas = false;
@@ -48,12 +50,12 @@ export class EntidadContenidoNota {
     id?: string,
   ): EntidadContenidoNota {
 
-    let entidadTN = new Optional<EntidadTextoNota>();
+    let entidadTextoNota = new Optional<EntidadTextoNota>();
     let entidadTareas = new Optional<Array<EntidadTareaNota>>();
     let entidadImagen = new Optional<VOImagen>();
 
     if (contenidoTexto.hasvalue()) { //dependiendo de que tenga valor, se crea el objeto correspondiente
-      entidadTN = new Optional(EntidadTextoNota.crearTextoNota(contenidoTexto.getValue(), idTextoNota.getValue()));
+      entidadTextoNota = new Optional(EntidadTextoNota.crearTextoNota(contenidoTexto.getValue(), idTextoNota.getValue()));
     } else if (contenidoTareas.hasvalue()) {
       const tareas = new Array<EntidadTareaNota>();
       for (let i = 0; i < contenidoTareas.getValue().length; i++) {
@@ -66,7 +68,7 @@ export class EntidadContenidoNota {
 
     return new EntidadContenidoNota(
       IdContenidoNota.crearIdContenidoNota(id),
-      entidadTN,
+      entidadTextoNota,
       entidadTareas,
       entidadImagen,
       orden,
@@ -76,52 +78,51 @@ export class EntidadContenidoNota {
 
   static crearContenidoNotaFromJson(contenido: any): Optional<Array<EntidadContenidoNota>> {
 
-    let opContenido = new Optional<Array<EntidadContenidoNota>>();
+    let opContenido = new Optional<Array<EntidadContenidoNota>>(); 
     let contenidoAux: Array<EntidadContenidoNota>;
     if (contenido.hasvalue()) {
-      console.log("tiene value");
       contenidoAux = new Array<EntidadContenidoNota>();
 
       contenido.getValue().value.forEach(contenido => {
-        let entidadTN = new Optional<EntidadTextoNota>(); //inicializamos los objetos vacios
+        let entidadTextoNota = new Optional<EntidadTextoNota>(); //inicializamos los objetos vacios
         let entidadTareas = new Optional<Array<EntidadTareaNota>>();
         let entidadImagen = new Optional<VOImagen>();
 
         if (contenido.texto) { //agregamos el valor si tiene
           if (contenido.texto.id)
-            entidadTN = new Optional(EntidadTextoNota.crearTextoNota(contenido.texto.cuerpo, contenido.texto.id.id));
+            entidadTextoNota = new Optional(EntidadTextoNota.crearTextoNota(contenido.texto.cuerpo, contenido.texto.id.id));
           else
-            entidadTN = new Optional(EntidadTextoNota.crearTextoNota(contenido.texto.cuerpo));
+            entidadTextoNota = new Optional(EntidadTextoNota.crearTextoNota(contenido.texto.cuerpo));
         }
         if (contenido.tarea) {
           const tareas = new Array<EntidadTareaNota>();
           for (let i = 0; i < contenido.tarea.value.length; i++) {
             tareas.push(EntidadTareaNota.crearTareaNota(contenido.tarea.value[i].titulo, contenido.tarea.value[i].check, contenido.tarea.value[i].id.id));
           }
-          entidadTareas = new Optional(tareas);
+          entidadTareas = new Optional<Array<EntidadTareaNota>>(tareas);
         }
         if (contenido.imagen) {
           entidadImagen = new Optional(VOImagen.crearImagenNota(contenido.imagen.nombre, contenido.imagen.buffer));
         }
 
         ////////////
-        let id: string; //ARREGLAR
+        let id: string; //id de la entidadContenidoNota
         if (contenido.id) {
           id = contenido.id.id;
-        } else {
-          id = undefined;
         }
 
         contenidoAux.push(new EntidadContenidoNota( //agregamos el objeto al array
-          IdContenidoNota.crearIdContenidoNota(contenido.id),
-          entidadTN,
+          IdContenidoNota.crearIdContenidoNota(id),
+          entidadTextoNota,
           entidadTareas,
           entidadImagen,
           contenido.orden,
         ));
       });
       opContenido = new Optional<Array<EntidadContenidoNota>>(contenidoAux);
-    } 
+    } else {
+      opContenido = new Optional<Array<EntidadContenidoNota>>(contenidoAux);
+    }
 
     return opContenido;
   }

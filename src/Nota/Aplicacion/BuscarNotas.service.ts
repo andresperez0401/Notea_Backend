@@ -6,7 +6,7 @@ import { Inject } from "@nestjs/common";
 import { Either } from "src/Utils/Either";
 import { RepositorioNota } from "../Dominio/RepositorioNota";
 
-export class BuscarNotas implements IAplicationService<null, Iterable<Nota>>{
+export class BuscarNotas implements IAplicationService<null, string>{
 
     private readonly repositorioNota: RepositorioNota;
 
@@ -15,7 +15,7 @@ export class BuscarNotas implements IAplicationService<null, Iterable<Nota>>{
         this.repositorioNota = repositorioNota;
     }
 
-    async execute(s: null): Promise<Either<Iterable<Nota>, Error>> {
+    async execute(s: null): Promise<Either<string, Error>> {
         return await this.repositorioNota.buscarNotas();
     }
 }

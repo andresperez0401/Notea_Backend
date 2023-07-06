@@ -40,7 +40,8 @@ export class Nota{
 
             const opUbicacion = VOubicacionNota.crearUbicacionNota(latitud, longitud);
 
-            const opContenido = EntidadContenidoNota.crearContenidoNotaFromJson(contenido);
+            const opContenido = EntidadContenidoNota.crearContenidoNotaFromJson(contenido); 
+            //convertimos el json (contenido) a un arreglo de tipo EntidadContenidoNota
 
             return new Nota(
                 VOTituloNota.crearTituloNota(titulo),

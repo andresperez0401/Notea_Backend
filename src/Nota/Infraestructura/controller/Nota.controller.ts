@@ -50,9 +50,9 @@ export class NotaController {
         };
 
     @Get('/all')
-    async buscarNotas(@Res() response): Promise<Either<Iterable<Nota>, Error>>{
+    async buscarNotas(@Res() response): Promise<Either<any, Error>>{
         console.log('Get All Notas');
-        const n = await this.buscarNotasService.execute(null); //hay que validar si la locacion es null
+        const n = await this.buscarNotasService.execute(null); 
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
         }

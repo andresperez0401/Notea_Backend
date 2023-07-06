@@ -10,7 +10,7 @@ export interface RepositorioNota {
     cambiarEstadoNota(id: string, estado:string): Promise<Either<string,Error>>;
     cambiarGrupoNota(id: string, idGrupo:string): Promise<Either<string,Error>>;
      // buscarNota(id: string): Promise<Either<Nota,Error>>;
-    buscarNotas(): Promise<Either<Iterable<Nota>,Error>>;
+    buscarNotas(): Promise<Either<string,Error>>;
     eliminarNota(id: string): Promise<Either<string,Error>>;
     // buscarNotasPorEstado(estado: string): Promise<Either<Nota[],Error>>;
     // buscarNotasPorKeyword(keyword: string): Promise<Either<Nota[],Error>>;

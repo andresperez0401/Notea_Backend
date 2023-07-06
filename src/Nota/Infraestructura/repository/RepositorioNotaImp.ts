@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RepositorioNota } from '../../Dominio/RepositorioNota';
@@ -18,6 +18,10 @@ import { EntidadContenidoNota } from 'src/Nota/Dominio/Entidades/EntidadContenid
 import EntidadContenido from '../entities/EntidadContenido';
 import EntidadTexto from '../entities/EntidadTexto';
 import { EntidadTareaNota } from 'src/Nota/Dominio/Entidades/EntidadTarea';
+import { AggNotaToEntityService } from '../servicios/AggNotaToEntity.Service';
+import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
+import { EntityToAggNotaService } from '../servicios/EntityToAggNota.service';
+import { EntityToStringService } from '../servicios/EntityToString.service';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
@@ -27,92 +31,19 @@ export class RepositorioNotaImp implements RepositorioNota{
         private readonly repositorio: Repository<EntidadNota>,
         @InjectRepository(EntidadImagen)
         private readonly repositorioImagen: Repository<EntidadImagen>,
+        @Inject(AggNotaToEntityService)
+        private readonly AggNotaToEntity: IInfraestructureService<Nota,EntidadNota>,
+        @Inject(EntityToAggNotaService)
+        private readonly EntityToAggNota: IInfraestructureService<Array<EntidadNota>, Array<Nota>>,
+        @Inject(EntityToStringService)
+        private readonly EntityToString: IInfraestructureService<Array<EntidadNota>, string>,
     ){}
 
     async crearNota(nota: Nota): Promise<Either<Nota,Error>>{
 
-        let ub;
-        if (nota.existeUbicacion()) {
-            ub = new EntidadUbicacion();
-            ub.latitud = nota.getUbicacion().get('latitud')
-            ub.longitud = nota.getUbicacion().get('longitud');
-        }
-
-        const entidadNota = new EntidadNota();
-        entidadNota.id = nota.getId();
-        entidadNota.titulo = nota.getTitulo();
-        //entidadNota.contenidos = nota.getContenido();
-        entidadNota.fechaCreacion = nota.getFechaCreacion();
-        entidadNota.estado = nota.getEstado();
-        entidadNota.ubicacion = ub;
-        entidadNota.grupo = nota.getIdGrupo();
-
-        const contenido = nota.getContenido() as Array<EntidadContenidoNota>;
-
-        //parseamos los conentidos del agregado Nota a el entity del orm
-        const auxcontenido = contenido.map(contenido => {
-            const c = new EntidadContenido();
-            c.id = contenido.getId().getValue();
-            
-            //este parseo debe ser un servicio
-            if (contenido.isTexto()){
-                const t = new EntidadTexto();
-                t.texto = contenido.getTexto().getTexto();
-                t.id = contenido.getTexto().getId();
-                t.contenido = c;
-                c.texto = t;
-            }
-            if (contenido.isTareass()){
-                const caux = contenido.getTareas() as Array<EntidadTareaNota>; 
-                const entTareas = caux.map(tarea => {
-                    const t = new EntidadTarea();
-                    t.id = tarea.getId();
-                    t.titulo = tarea.getTitulo();
-                    t.check = tarea.getCheck();
-                    t.contenido = c;
-                    return t;
-                });
-                c.tareas = entTareas;
-            }
-            if (contenido.isImagenn()){
-                const t = new EntidadImagen();
-                t.nombre = contenido.getImagen().getNombreImagen();
-                t.buffer = contenido.getImagen().getBufferImagen();
-                t.contenido = c;
-                c.Imagen = t;
-            }
-            c.nota = entidadNota;
-            return c;
-
-        });
-        entidadNota.contenidos = auxcontenido;
-
-        // let tareas : EntidadTarea[];
-        // if (nota.existeTareas()) { //puedo hacer lo mismo con las imagenes
-        //     tareas = nota.getTareas().map(tarea => {
-        //         const t = new EntidadTarea();
-        //         t.id = tarea.getId();
-        //         t.titulo = tarea.getTitulo();
-        //         t.check = tarea.getCheck();
-        //         t.nota = entidadNota;
-        //         return t;
-        //     })
-        // }
-        // entidadNota.tareas = tareas;
-
-        //  let imagenes : EntidadImagen[];
-        // if (nota.existenImagenes()) { //puedo hacer lo mismo con las imagenes
-        //     imagenes = nota.getImagenes().map(imagen => {
-        //         const im = new EntidadImagen();
-        //         im.nombre = imagen.getNombreImagen();
-        //         im.buffer = imagen.getBufferImagen();
-        //         im.nota = entidadNota;
-        //         return im;
-        //     })
-        // }  
-        // entidadNota.imagenes = imagenes;
+        const entidadNota = this.AggNotaToEntity.execute(nota);
         
-        const response = await this.repositorio.save(entidadNota); //guardar en la base de datos usando TypeORM
+        const response = await this.repositorio.save(entidadNota.getLeft()); //guardar en la base de datos usando TypeORM
         if (response){
             return Either.makeLeft<Nota,Error>(nota);
         }else{
@@ -209,10 +140,10 @@ export class RepositorioNotaImp implements RepositorioNota{
         //     }else{ 
         //         return Either.makeRight(new Error('Error al modificar nota'));
         //     }
+
         return null;
     
     }
-    
     
     async cambiarEstadoNota(id: string, estado: string): Promise<Either<string, Error>> {
             const response = await this.repositorio.update(id, {estado: estado});
@@ -232,27 +163,16 @@ export class RepositorioNotaImp implements RepositorioNota{
             }
     }
 
-    async buscarNotas(): Promise<Either<Iterable<Nota>,Error>>{
+    async buscarNotas(): Promise<Either<string,Error>>{
         const respuesta: EntidadNota[] = await this.repositorio.find();
 
         if (respuesta) {
-        // const notas: Nota[] = respuesta.map((nota) =>
-        //     Nota.crearNota(
-        //     nota.titulo,
-        //     nota.fechaCreacion,
-        //     EstadoEnum[nota.estado],
-        //     nota.grupo,
-        //     new Optional<number>(nota.ubicacion.latitud),
-        //     new Optional<number>(nota.ubicacion.longitud),
-        //     new Optional(nota.tareas.map(tarea => {return tarea.titulo})),
-        //     new Optional(nota.tareas.map(tarea => {return tarea.check})),
-        //     new Optional(nota.tareas.map(tarea => {return tarea.id})),
-        //     nota.id,
-        //     ),
-        // );
-
-        //return Either.makeLeft(notas);
-        return Either.makeLeft(null);//cambiar obvio
+            const notas = this.EntityToString.execute(respuesta);
+            if (notas.isLeft()) 
+                return Either.makeLeft(notas.getLeft());
+            else 
+                return Either.makeRight(new Error('Error al buscar las notas'));
+            
     } else {
         return Either.makeRight(new Error('Error al buscar las notas'));
     }

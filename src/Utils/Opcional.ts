@@ -18,7 +18,7 @@ export class Optional<T>{
 
     getValue(): T {
         if(!this.assigned){
-            throw new Error("This is an example exception.");
+            throw new Error("El objeto no tiene valor asignado");
         } 
         else{
             return <T>this.value;
