@@ -16,8 +16,8 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
     private readonly repoUsuario: Repository<EntidadUsuario>,
   ) {}
 
+                                          //crear grupo dado un nombre y un id de usuario
   async creargrupo(grupo: Grupo): Promise<Either<Grupo, Error>> {
-
     const resp: EntidadUsuario = await this.repoUsuario.findOne({
       where: { id: grupo.getIdUsuario() },
     });
@@ -41,7 +41,7 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
     }
 
   }
-
+                                                    //buscar todos los grupos 
   async buscarGrupos(): Promise<Either<Iterable<Grupo>, Error>> {
     const respuesta: EntidadGrupo[] = await this.grupoRepo.find();
 
@@ -57,7 +57,7 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
       );
     }
   }
-
+                                                      //eliminar un grupo dado un id grupo
   async eliminarGrupo(id: string): Promise<Either<string, Error>> {
     const grupoAEliminar: EntidadGrupo = await this.grupoRepo.findOne({
       where: { id },
