@@ -37,7 +37,7 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
     }
 
     else{
-      return Either.makeRight<Grupo,Error>(new Error("El grupo: " + grupo.getNombre() + " el usuario no existe"));
+      return Either.makeRight<Grupo,Error>(new Error("El grupo: " + grupo.getNombre() + " no pudo ser creado, el usuario no existe"));
     }
 
   }
