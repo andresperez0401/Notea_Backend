@@ -48,7 +48,7 @@ export class GrupoController {
   @Post()
   async crearGrupo(@Res() response, @Body() payload: CrearGrupoDto) {
 
-    const decorator = new LoggerService<CrearGrupoDto,Grupo>(this.logger,this.crearGrupoService,"Grupo creado");
+    const decorator = new LoggerService<CrearGrupoDto,Grupo>(this.logger,this.crearGrupoService,"El grupo: " + payload.nombre + " ha sido creado con exito");
     const respuesta = await decorator.execute(payload);
 
     if(respuesta.isLeft()){

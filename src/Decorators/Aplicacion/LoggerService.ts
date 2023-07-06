@@ -20,7 +20,12 @@ export class LoggerService<V,T> extends ServiceDecorator<V,T>{
         const response = await super.execute(s);
         
         if (response.isLeft()){
-            const mandar = this.mensaje +  response.getLeft().toString();
+            const mandar = this.mensaje;
+            this.loggear(mandar);
+        }
+
+        else{
+            const mandar = response.getRight().message;
             this.loggear(mandar);
         }
         return response; 

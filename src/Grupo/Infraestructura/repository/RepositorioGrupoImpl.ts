@@ -13,17 +13,18 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
   ) {}
 
   async creargrupo(grupo: Grupo): Promise<Either<Grupo, Error>> {
-    const grupoEntidad = new EntidadGrupo();
-    grupoEntidad.id = grupo.getId();
-    grupoEntidad.nombre = grupo.getNombre();
-    grupoEntidad.idUsuario = grupo.getIdUsuario();
-    const respuesta = await this.grupoRepo.save(grupoEntidad);
 
-    if (respuesta) {
-      return Either.makeLeft<Grupo, Error>(grupo);
-    } else {
-      return Either.makeRight<Grupo, Error>(new Error('Grupo no creado'));
-    }
+      const grupoEntidad = new EntidadGrupo();
+      grupoEntidad.id = grupo.getId();
+      grupoEntidad.nombre = grupo.getNombre();
+      grupoEntidad.idUsuario = grupo.getIdUsuario();
+      const respuesta = await this.grupoRepo.save(grupoEntidad);
+
+      if (respuesta) {
+        return Either.makeLeft<Grupo, Error>(grupo);
+      } else {
+        return Either.makeRight<Grupo, Error>(new Error("El grupo " + grupo.getNombre() + " no pudo ser creado"));
+      }
   }
 
   async buscarGrupos(): Promise<Either<Iterable<Grupo>, Error>> {

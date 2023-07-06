@@ -14,7 +14,7 @@ export class ILoggerImplementation implements ILogger {
    async execute(message: string): Promise<Either<string, Error>>{
         
         const currentTime = new Date().toLocaleTimeString();
-        const fileContent = `${currentTime}: ${message}\n`;
+        const fileContent = `${currentTime}: ${message}\n` + '\n';
     
         if (fs.existsSync(this.filePath)) {
          
