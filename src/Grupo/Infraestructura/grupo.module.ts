@@ -11,9 +11,10 @@ import { EditarGrupoService } from '../Aplicacion/editarGrupoService';
 import { buscarGrupoPorIdService } from '../Aplicacion/buscarGrupoPorIdService';
 import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module';
 import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
+import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsuario';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EntidadGrupo]),forwardRef(() => DecoratorModule)],
+  imports: [TypeOrmModule.forFeature([EntidadGrupo]),TypeOrmModule.forFeature([EntidadUsuario]),forwardRef(() => DecoratorModule)],
   controllers: [GrupoController],
   providers: [
     //RepositorioUsuarioImp,

@@ -5,15 +5,24 @@ import { Repository } from 'typeorm';
 import { Grupo } from 'src/Grupo/Dominio/AgregadoGrupo';
 import { Either } from 'src/Utils/Either';
 import { EditarGrupoDto } from 'src/Grupo/Aplicacion/dto/EditarGrupo.dto';
+import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsuario';
 
 export class RepositorioGrupoImp implements RepositorioGrupo {
   constructor(
     @InjectRepository(EntidadGrupo)
     private readonly grupoRepo: Repository<EntidadGrupo>,
+
+    @InjectRepository(EntidadUsuario)
+    private readonly repoUsuario: Repository<EntidadUsuario>,
   ) {}
 
   async creargrupo(grupo: Grupo): Promise<Either<Grupo, Error>> {
 
+    const resp: EntidadUsuario = await this.repoUsuario.findOne({
+      where: { id: grupo.getIdUsuario() },
+    });
+
+    if(resp){
       const grupoEntidad = new EntidadGrupo();
       grupoEntidad.id = grupo.getId();
       grupoEntidad.nombre = grupo.getNombre();
@@ -23,8 +32,14 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
       if (respuesta) {
         return Either.makeLeft<Grupo, Error>(grupo);
       } else {
-        return Either.makeRight<Grupo, Error>(new Error("El grupo " + grupo.getNombre() + " no pudo ser creado"));
+        return Either.makeRight<Grupo, Error>(new Error("El grupo: " + grupo.getNombre() + " no pudo ser creado"));
       }
+    }
+
+    else{
+      return Either.makeRight<Grupo,Error>(new Error("El grupo: " + grupo.getNombre() + " el usuario no existe"));
+    }
+
   }
 
   async buscarGrupos(): Promise<Either<Iterable<Grupo>, Error>> {
