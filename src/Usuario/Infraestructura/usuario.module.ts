@@ -13,16 +13,22 @@ import { LoguearUsuarioService } from '../Aplicacion/LoguearUsuario.service';
 
 import { EventPublisherImpl } from './events/EventPublisherImpl';
 
-import { UsuarioCreadoEventHandler } from 'src/Usuario/Aplicacion/eventHandlers/UsuarioCreadoHandler';
+import { UsuarioCreadoEventHandler } from 'src/Usuario/Infraestructura/events/UsuarioCreadoHandler';
+
+
 
 import { EtiquetaModule } from 'src/Etiqueta/Infraestructura/etiqueta.module';
+import { GrupoModule } from 'src/Grupo/Infraestructura/grupo.module';
+import { NotaModule } from 'src/Nota/Infraestructura/nota.module';
 import { CqrsModule } from '@nestjs/cqrs';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([EntidadUsuario]),
     CqrsModule,
-    EtiquetaModule, // Añade esta línea para importar el módulo de Etiqueta
+    EtiquetaModule,
+    NotaModule,
+    GrupoModule, 
   ],
   controllers: [UsuarioController],
   providers: [
@@ -34,6 +40,7 @@ import { CqrsModule } from '@nestjs/cqrs';
     EditarUsuarioService,
     LoguearUsuarioService,
     UsuarioCreadoEventHandler,
+
     {
       provide: 'RepositorioUsuario',
       useClass: RepositorioUsuarioImp,
