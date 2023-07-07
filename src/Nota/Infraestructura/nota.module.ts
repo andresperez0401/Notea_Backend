@@ -33,5 +33,7 @@ import { BuscarNotasDeGruposService } from '../Aplicacion/BuscarNotasGrupos.serv
       useClass: RepositorioNotaImp
     }
   ],
+  exports: [CrearNotaService,RepositorioNotaImp], 
+
 })
 export class NotaModule {}

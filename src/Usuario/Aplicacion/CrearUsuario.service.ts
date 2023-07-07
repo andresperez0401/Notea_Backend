@@ -28,8 +28,9 @@ export class CrearUsuarioService implements IAplicationService<CrearUsuarioDto, 
     const resultado = await this.repositorioUsuario.crearUsuario(newUser);
 
     if (resultado.isLeft()) {
-      const eventoUsuarioCreado = new UsuarioCreadoEvent(newUser.getId());
-      this.eventPublisher.publish(eventoUsuarioCreado);
+      const events = newUser.getUncommittedEvents();
+      events.forEach((event) => this.eventPublisher.publish(event));
+      newUser.clearEvents();
     }
 
     return resultado;

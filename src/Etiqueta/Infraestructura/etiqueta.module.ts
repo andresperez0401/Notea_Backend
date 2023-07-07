@@ -11,7 +11,6 @@ import { actualizarEtiquetaService } from '../Aplicacion/actualizarEtiqueta.serv
   imports: [TypeOrmModule.forFeature([entidadEtiqueta])],
   controllers: [EtiquetaController],
   providers: [
-    //repositorioEtiquetaImp,
     crearEtiquetaService,
     actualizarEtiquetaService,
     buscarEtiquetasService,
@@ -21,13 +20,9 @@ import { actualizarEtiquetaService } from '../Aplicacion/actualizarEtiqueta.serv
       provide: 'RepositorioEtiqueta',
       useClass: repositorioEtiquetaImp,
     },
-    {
-      provide: 'crearEtiquetaService',
-      useClass: crearEtiquetaService,
-    },
 
   ],
-  exports: ['crearEtiquetaService'], // Añade esta línea para exportar el servicio
+  exports: [crearEtiquetaService,repositorioEtiquetaImp], // Añade esta línea para exportar el servicio
 })
 export class EtiquetaModule {}
 

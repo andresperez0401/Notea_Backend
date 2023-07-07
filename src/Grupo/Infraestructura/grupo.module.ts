@@ -17,7 +17,6 @@ import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsua
   imports: [TypeOrmModule.forFeature([EntidadGrupo]),TypeOrmModule.forFeature([EntidadUsuario]),forwardRef(() => DecoratorModule)],
   controllers: [GrupoController],
   providers: [
-    //RepositorioUsuarioImp,
     CrearGrupoService,
     buscarGruposService,
     eliminarGrupoService,
@@ -31,5 +30,6 @@ import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsua
       useClass: RepositorioGrupoImp,
     },
   ],
+  exports: [CrearGrupoService,RepositorioGrupoImp], 
 })
 export class GrupoModule {}
