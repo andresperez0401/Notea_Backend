@@ -20,3 +20,13 @@
 
  7/13/2023 - 11:07:07 AM: No se encontro grupo para eliminar
 
+7/13/2023 - 11:18:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b32
+
+7/13/2023 - 11:18:39 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 3aa4a4a4-3e7e-405b-a6f8-a20663167b32
+
+7/13/2023 - 11:19:21 AM: Grupo no encontrado
+
+7/13/2023 - 11:19:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 3aa4a4a4-3e7e-405b-a6f8-a20663167b32
+
+7/13/2023 - 11:24:40 AM: Error al obtener los grupos del usuario 3aa4a4a4-3e7e-405b-a6f8-a20663167b32
+

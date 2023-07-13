@@ -128,7 +128,11 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
     const respuesta: EntidadGrupo[] = await this.grupoRepo.find({
       where: { idUsuario: idUsuarioDueno },
     });
-    if (respuesta) {
+
+    const resp: EntidadUsuario = await this.repoUsuario.findOne({
+      where: { id: idUsuarioDueno },
+    });
+    if ((respuesta.length>0) && resp) {
       const grupos: Grupo[] = respuesta.map((group) =>
         //Transformamos el iterable de EntidadGrupo(infraestrutura) a Grupo(dominio)
         Grupo.crearGrupo(group.nombre, group.idUsuario, group.id),

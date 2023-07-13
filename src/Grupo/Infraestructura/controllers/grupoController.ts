@@ -85,6 +85,7 @@ export class GrupoController {
     }
   }*/
 
+  /*
   @Get('/usuario/:idUsuarioDueno')
   async buscarGruposUsuario(@Res() response, @Param('idUsuarioDueno') id: string) {
     const respuesta = await this.buscarGrupoPorUsuario.execute(id);
@@ -95,7 +96,7 @@ export class GrupoController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
   @Put(':id')
   async editargrupo(
