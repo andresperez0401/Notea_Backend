@@ -62,15 +62,20 @@ export class EntityToStringService implements IInfraestructureService<Array<Enti
                 contenidoMapeado = auxContenido;
             }
 
+            let ubicacion;
+            if (nota.ubicacion) {
+                    ubicacion = {
+                        latitud: nota.ubicacion.latitud,
+                        longitud: nota.ubicacion.longitud,
+                    };
+            }
+
             const nuevaNota = {
                 titulo: nota.titulo,
                 fechaCreacion: nota.fechaCreacion,
                 estado: EstadoEnum[nota.estado],
                 grupo: nota.grupo,
-                ubicacion: {
-                    latitud: nota.ubicacion.latitud,
-                    longitud: nota.ubicacion.longitud,
-                },
+                ubicacion,
                 contenido: contenidoMapeado,
                 id: nota.id,
             }

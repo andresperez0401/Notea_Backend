@@ -13,9 +13,13 @@ export class VOubicacionNota {
     latitud: Optional<number>,
     longitud: Optional<number>,
   ): Optional<VOubicacionNota> {
-    return new Optional<VOubicacionNota>(
-      new VOubicacionNota(latitud.getValue(), longitud.getValue()),
-    );
+    if (latitud.hasvalue() && longitud.hasvalue()) {
+      return new Optional<VOubicacionNota>(
+        new VOubicacionNota(latitud.getValue(), longitud.getValue()),
+      );
+    } else {
+      return new Optional<VOubicacionNota>();
+    }
   }
 
   getLatitud(): number {

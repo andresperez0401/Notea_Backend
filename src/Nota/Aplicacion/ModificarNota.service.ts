@@ -29,7 +29,8 @@ export class ModificarNotaService implements IAplicationService<ModificarNotaDto
 
       let contenido = new Optional<any>();
       if (s.contenido) {
-        contenido = new Optional<any>(JSON.parse(s.contenido));
+        const auxcontenido = JSON.stringify(s.contenido);
+        contenido = new Optional<any>(JSON.parse(auxcontenido));
         //si hacemos un multipart el contenido se mandan como un string y hay que parsearlo
         //a pesar de ser inestable, es la unica forma de mandar un array de objetos distintos
         //pido disculpas
@@ -52,8 +53,8 @@ export class ModificarNotaService implements IAplicationService<ModificarNotaDto
         opLatitud,
         opLongitud,
         contenido,
+        s.id,
       );
-
 
         return await this.repositorioNota.updateNota(nota);
     }

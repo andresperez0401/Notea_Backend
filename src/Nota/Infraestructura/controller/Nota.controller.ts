@@ -101,18 +101,6 @@ export class NotaController {
         }
     }
 
-    @Get('/grupos')
-    async buscarNotasDeGrupos(@Res() response , @Body() grupos :Iterable<string>){
-        console.log('Grupos');
-        const n = await this.buscarNotasDeGruposService.execute(grupos);
-        if (n.isLeft()) {
-            return response.status(200).json(n.getLeft());
-        }
-        else {
-            return response.status(404).json(n.getRight().message);
-        }
-    }
-
     @Patch()
     @UseInterceptors(FilesInterceptor('imagenes', 5))
     async update(@Res() response, @Body() notaMod: ModificarNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<string,Error>> {
@@ -139,8 +127,20 @@ export class NotaController {
         }
     }
 
+    @Get('/grupos')
+    async buscarNotasDeGrupos(@Res() response, @Body() grupos: Iterable<string>) {
+        console.log('Grupos');
+        const n = await this.buscarNotasDeGruposService.execute(grupos);
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
+        }
+    }
+
     @Get('/grupo/:idGrupo')
-    async buscarGruposUsuario(@Res() response, @Param('idGrupo') id: string) {
+    async buscarNotasDeGrupo(@Res() response, @Param('idGrupo') id: string) {
         const respuesta = await this.buscarNotasDeGrupoService.execute(id);
         if(respuesta.isLeft()){
             return response.status(200).json(respuesta.getLeft());

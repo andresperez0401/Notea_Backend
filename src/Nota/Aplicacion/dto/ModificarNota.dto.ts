@@ -1,4 +1,5 @@
 export class ModificarNotaDto {
+  id: string;
   titulo: string;
   fechaCreacion: Date;
   latitud?: number;

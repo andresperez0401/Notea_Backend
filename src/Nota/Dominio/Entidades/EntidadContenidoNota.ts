@@ -90,7 +90,7 @@ export class EntidadContenidoNota {
 
         if (contenido.texto) { //agregamos el valor si tiene
           if (contenido.texto.id)
-            entidadTextoNota = new Optional(EntidadTextoNota.crearTextoNota(contenido.texto.cuerpo, contenido.texto.id.id));
+            entidadTextoNota = new Optional(EntidadTextoNota.crearTextoNota(contenido.texto.cuerpo, contenido.texto.id));
           else
             entidadTextoNota = new Optional(EntidadTextoNota.crearTextoNota(contenido.texto.cuerpo));
         }
@@ -108,7 +108,7 @@ export class EntidadContenidoNota {
         ////////////
         let id: string; //id de la entidadContenidoNota
         if (contenido.id) {
-          id = contenido.id.id;
+          id = contenido.id;
         }
 
         contenidoAux.push(new EntidadContenidoNota( //agregamos el objeto al array

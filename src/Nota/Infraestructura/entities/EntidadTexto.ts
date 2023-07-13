@@ -10,7 +10,7 @@ export class EntidadTexto {
   @Column()
   texto: string;
 
-  @OneToOne( () => EntidadContenido, (contenido) => contenido.texto, {cascade: ["insert", "update"], onDelete: 'CASCADE', nullable: true})
+  @OneToOne( () => EntidadContenido, (contenido) => contenido.texto, { onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true})
   @JoinColumn()
   contenido: EntidadContenido;
 }

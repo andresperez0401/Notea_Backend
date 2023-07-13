@@ -24,7 +24,8 @@ export class EntidadNota {
     @Column({type:'enum', enum:EstadoEnum}) //el enumerado se guarda como string
     estado: string;
 
-    @OneToMany(() => EntidadContenido, (contenido) => contenido.nota, {cascade: ['remove', 'insert', 'update'], eager: true, nullable: true})
+    @OneToMany(() => EntidadContenido, (contenido) => contenido.nota, { cascade: true, 
+        onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: false, nullable: true})
     contenidos: EntidadContenido[];
 
     @Column()

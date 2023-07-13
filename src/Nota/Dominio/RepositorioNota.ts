@@ -18,8 +18,8 @@ export interface RepositorioNota {
     guardarImagenes(id: string, imagenes: VOImagen[]): Promise<Either<string,Error>>;
     buscarNotasDeGrupo(
         idGrupo: string,
-    ): Promise<Either<Iterable<Nota>, Error>>;
+    ): Promise<Either<string, Error>>;
     buscarNotasDeGrupos(
         grupos: Iterable<string>,
-    ): Promise<Either<Iterable<Nota>, Error>>;
+    ): Promise<Either<string, Error>>;
 }
