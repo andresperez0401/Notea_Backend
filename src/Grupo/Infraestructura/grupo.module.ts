@@ -17,6 +17,7 @@ import { crearGrupoController } from './controllers/crearGrupoController';
 import { buscarGruposController } from './controllers/buscarGruposController';
 import { eliminarGrupoController } from './controllers/eliminarGrupoController';
 import { buscarGrupoUsuarioController } from './controllers/buscarGrupoUsuarioController';
+import { EditarGrupoController } from './controllers/editarGrupoController';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadGrupo]),TypeOrmModule.forFeature([EntidadUsuario]),forwardRef(() => DecoratorModule)],
@@ -26,6 +27,7 @@ import { buscarGrupoUsuarioController } from './controllers/buscarGrupoUsuarioCo
                 buscarGruposController,
                 eliminarGrupoController,
                 buscarGrupoUsuarioController,
+                EditarGrupoController,
               ],
   providers: [
     CrearGrupoService,

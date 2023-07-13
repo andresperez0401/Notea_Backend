@@ -98,7 +98,7 @@ export class GrupoController {
     }
   }*/
 
-  @Put(':id')
+  /*@Put(':id')
   async editargrupo(
     @Res() response,
     @Param('id') id: string,
@@ -115,7 +115,7 @@ export class GrupoController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
   //Buscar por id
  /* @Get('id/:id')
