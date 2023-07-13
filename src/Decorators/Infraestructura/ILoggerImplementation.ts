@@ -14,7 +14,6 @@ export class ILoggerImplementation implements ILogger {
 
    async execute(message: string): Promise<Either<string, Error>>{
         
-        console.log(__dirname);
         const currentTime = new Date().toLocaleTimeString();
         const fileContent = `${currentTime}: ${message}\n` + '\n';
     

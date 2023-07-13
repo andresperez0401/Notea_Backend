@@ -43,7 +43,7 @@ export class GrupoController {
     this.buscarGrupoAllService = new buscarGruposService(this.repositorioGrupo);
     this.deleteGrupoService = new eliminarGrupoService(this.repositorioGrupo);
     this.buscarGrupoPorUsuario = new buscarGruposDeUsuarioService(this.repositorioGrupo);
-  }
+  }/*
 
   @Post()
   async crearGrupo(@Res() response, @Body() payload: CrearGrupoDto) {
@@ -57,7 +57,7 @@ export class GrupoController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
   //buscar todos los grupos
   @Get('/all')
