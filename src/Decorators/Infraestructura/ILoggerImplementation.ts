@@ -9,17 +9,19 @@ import { Either } from "src/Utils/Either";
 export class ILoggerImplementation implements ILogger {
 
     private readonly fileName = 'ArchivoLog.txt';
-    private readonly filePath = path.resolve(__dirname, '..', '..', this.fileName);
+    private readonly filePath = path.join(__dirname, '../../../..');
+    
 
    async execute(message: string): Promise<Either<string, Error>>{
         
+        console.log(__dirname);
         const currentTime = new Date().toLocaleTimeString();
         const fileContent = `${currentTime}: ${message}\n` + '\n';
     
-        if (fs.existsSync(this.filePath)) {
+        if (fs.existsSync(this.fileName)) {
          
          try {
-            fs.appendFileSync(this.filePath, fileContent);
+            fs.appendFileSync(this.fileName, fileContent);
             return Either.makeLeft<string, Error>("Archivo guardado exitosamente");
 
          } catch (error) {
@@ -28,7 +30,7 @@ export class ILoggerImplementation implements ILogger {
         } else {
 
             try {
-                fs.writeFileSync(this.filePath, fileContent);
+                fs.appendFileSync(this.fileName, fileContent);
                 return Either.makeLeft<string, Error>("Archivo creado y guardado exitosamente");
 
             } catch (error) {

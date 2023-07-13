@@ -1,0 +1,6 @@
+10:24:50 PM: BuscarGrupoPorIdService: se ha buscado el grupo de id: 01d26733-5af1-44f6-8565-1d2239c3d27c
+
+10:25:01 PM: BuscarGrupoPorIdService: se ha buscado el grupo de id: 01d26733-5af1-44f6-8565-1d2239c3d27c
+
+10:25:01 PM: BuscarGrupoPorIdService: se ha buscado el grupo de id: 01d26733-5af1-44f6-8565-1d2239c3d27c
+

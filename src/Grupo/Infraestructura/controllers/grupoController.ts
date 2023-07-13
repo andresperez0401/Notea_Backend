@@ -117,7 +117,7 @@ export class GrupoController {
   }
 
   //Buscar por id
-  @Get('id/:id')
+ /* @Get('id/:id')
   async buscarGrupoPorId(@Res() response, @Param('id') id: string) {
     const respuesta = await this.buscarPorIdService.execute(id);
 
@@ -127,5 +127,5 @@ export class GrupoController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 }

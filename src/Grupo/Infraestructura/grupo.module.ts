@@ -12,10 +12,11 @@ import { buscarGrupoPorIdService } from '../Aplicacion/buscarGrupoPorIdService';
 import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module';
 import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
 import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsuario';
+import { buscarGrupoPorIdController } from './controllers/buscarGrupoPorIdController';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadGrupo]),TypeOrmModule.forFeature([EntidadUsuario]),forwardRef(() => DecoratorModule)],
-  controllers: [GrupoController],
+  controllers: [GrupoController,buscarGrupoPorIdController],
   providers: [
     CrearGrupoService,
     buscarGruposService,
