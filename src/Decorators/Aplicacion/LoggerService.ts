@@ -7,9 +7,8 @@ import { ServiceDecorator } from './ServiceDecorator';
 export class LoggerService<V,T> extends ServiceDecorator<V,T>{
 
     private logger : ILogger;
-    private mensaje: string;
 
-    constructor(logger: ILogger, service : IAplicationService<V,T>, mensaje: string) {
+    constructor(logger: ILogger, service : IAplicationService<V,T>, private mensaje: string) {
         super(service);
         this.logger = logger;
         this.mensaje = mensaje;
