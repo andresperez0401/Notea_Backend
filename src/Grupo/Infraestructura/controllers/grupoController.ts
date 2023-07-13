@@ -60,7 +60,7 @@ export class GrupoController {
   }*/
 
   //buscar todos los grupos
-  @Get('/all')
+ /* @Get('/all')
   async buscarGrupos(@Res() response) {
     const respuesta = await this.buscarGrupoAllService.execute();
 
@@ -70,7 +70,7 @@ export class GrupoController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
   //Eliminar grupo
   @Delete(':id')

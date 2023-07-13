@@ -14,10 +14,14 @@ import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImp
 import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsuario';
 import { buscarGrupoPorIdController } from './controllers/buscarGrupoPorIdController';
 import { crearGrupoController } from './controllers/crearGrupoController';
+import { buscarGruposController } from './controllers/buscarGruposController';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadGrupo]),TypeOrmModule.forFeature([EntidadUsuario]),forwardRef(() => DecoratorModule)],
-  controllers: [GrupoController,buscarGrupoPorIdController,crearGrupoController],
+  controllers: [GrupoController,
+                buscarGrupoPorIdController,
+                crearGrupoController,
+                buscarGruposController],
   providers: [
     CrearGrupoService,
     buscarGruposService,

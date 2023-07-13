@@ -6,3 +6,11 @@
 
 10:36:42 AM: El grupo: grupoLoggerPrueba2 ha sido creado con exito
 
+10:47:32 AM: Buscar todos los grupos service: se han buscado todos los grupos 
+
+ Thu Jul 13 2023 10:53:18 GMT-0400 (Venezuela Time) - 10:53:18 AM: Buscar todos los grupos service: se han buscado todos los grupos 
+
+ 13 - 10:54:03 AM: Buscar todos los grupos service: se han buscado todos los grupos 
+
+ 7/13/2023 - 10:54:52 AM: Buscar todos los grupos service: se han buscado todos los grupos 
+
