@@ -30,9 +30,9 @@ export class buscarGruposController {
 
   @Get('/all')
   async buscarGrupos(@Res() response) {
-    const decorator = new LoggerService<null,Iterable<Grupo>>(this.logger,this.buscarGrupoAllService,"Buscar todos los grupos service: se han buscado todos los grupos ");
+    const decorator = new LoggerService<string,Iterable<Grupo>>(this.logger,this.buscarGrupoAllService,"Buscar todos los grupos service: se han buscado todos los grupos ");
 
-    const respuesta = await decorator.execute(null);
+    const respuesta = await decorator.execute("");
 
     if(respuesta.isLeft()){
       return response.status(200).json(respuesta.getLeft());

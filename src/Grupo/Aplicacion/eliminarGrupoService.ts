@@ -4,7 +4,7 @@ import { Either } from 'src/Utils/Either';
 import { Grupo } from '../Dominio/AgregadoGrupo';
 import { RepositorioGrupo } from '../Dominio/RepositorioGrupo';
 
-export class eliminarGrupoService implements IAplicationService<null, string> {
+export class eliminarGrupoService implements IAplicationService<string, string> {
 
   private readonly repositorioGrupo: RepositorioGrupo;
   constructor( 

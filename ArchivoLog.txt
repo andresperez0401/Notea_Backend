@@ -14,3 +14,9 @@
 
  7/13/2023 - 10:54:52 AM: Buscar todos los grupos service: se han buscado todos los grupos 
 
+ 7/13/2023 - 11:05:48 AM: No se encontro grupo para eliminar
+
+ 7/13/2023 - 11:05:55 AM: Eliminar Grupo Service: El grupo de id: 5fe55850-128e-4aeb-979d-a5fcacdc86ed ha sido eliminado con exito
+
+ 7/13/2023 - 11:07:07 AM: No se encontro grupo para eliminar
+

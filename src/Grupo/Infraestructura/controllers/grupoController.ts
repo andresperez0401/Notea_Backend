@@ -73,7 +73,7 @@ export class GrupoController {
   }*/
 
   //Eliminar grupo
-  @Delete(':id')
+  /*@Delete(':id')
   async eliminarGrupo(@Res() response, @Param('id') id: string) {
     const respuesta = await this.deleteGrupoService.execute(id);
 
@@ -83,7 +83,7 @@ export class GrupoController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
   @Get('/usuario/:idUsuarioDueno')
   async buscarGruposUsuario(@Res() response, @Param('idUsuarioDueno') id: string) {

@@ -15,13 +15,15 @@ import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsua
 import { buscarGrupoPorIdController } from './controllers/buscarGrupoPorIdController';
 import { crearGrupoController } from './controllers/crearGrupoController';
 import { buscarGruposController } from './controllers/buscarGruposController';
+import { eliminarGrupoController } from './controllers/eliminarGrupoController';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadGrupo]),TypeOrmModule.forFeature([EntidadUsuario]),forwardRef(() => DecoratorModule)],
   controllers: [GrupoController,
                 buscarGrupoPorIdController,
                 crearGrupoController,
-                buscarGruposController],
+                buscarGruposController,
+                eliminarGrupoController],
   providers: [
     CrearGrupoService,
     buscarGruposService,
