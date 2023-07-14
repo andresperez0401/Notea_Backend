@@ -24,6 +24,7 @@ import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module
 import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
 import { EntidadGrupo } from 'src/Grupo/Infraestructura/entities/EntidadGrupo';
 import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEtiqueta';
+import { loguearUsuarioController } from './controller/loguearUsuarioController';
 
 @Module({
   imports: [
@@ -37,7 +38,8 @@ import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEt
     forwardRef(() => NotaModule),
   ],
   controllers: [UsuarioController,
-                editarUsuarioController],
+                editarUsuarioController,
+                loguearUsuarioController],
   providers: [
     CrearUsuarioService,
     BuscarUsuariosService,

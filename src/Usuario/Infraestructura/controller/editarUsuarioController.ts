@@ -46,7 +46,7 @@ export class editarUsuarioController {
     const editarPO = new EditarUsuarioPO();
     editarPO.id = id;
     editarPO.payload = payload;
-    const decorator = new LoggerService<EditarUsuarioPO,Usuario>(this.logger,this.editarUsuarioService,"El usuario: " + payload.nombre + " ha sido editado con exito");
+    const decorator = new LoggerService<EditarUsuarioPO,Usuario>(this.logger,this.editarUsuarioService,"Editar Usuario Service: El usuario: " + payload.nombre + " ha sido editado con exito");
     const respuesta = await decorator.execute(editarPO);
 
     if(respuesta.isLeft()){

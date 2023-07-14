@@ -110,7 +110,7 @@ export class UsuarioController {
     }
   }
 
-  //Loguear usuario
+ /* //Loguear usuario
   @Post('/login')
   async loguearUsuario(@Res() response, @Body() payload: loguearUsuarioDTO) {
     console.log("loguear");
@@ -122,7 +122,7 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
   //Eliminar usuario
   @Delete(':id')
