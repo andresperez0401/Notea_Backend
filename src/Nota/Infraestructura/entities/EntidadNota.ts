@@ -25,7 +25,7 @@ export class EntidadNota {
     estado: string;
 
     @OneToMany(() => EntidadContenido, (contenido) => contenido.nota, { cascade: true, 
-        onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: false, nullable: true})
+        onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: true, nullable: true})
     contenidos: EntidadContenido[];
 
     @Column()

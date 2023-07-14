@@ -6,6 +6,9 @@ export class VOTituloNota {
   }
 
   static crearTituloNota(titulo: string): VOTituloNota {
+    if (titulo.length > 20) {
+      titulo = titulo.substring(0, 20);
+    }
     return new VOTituloNota(titulo);
   }
 

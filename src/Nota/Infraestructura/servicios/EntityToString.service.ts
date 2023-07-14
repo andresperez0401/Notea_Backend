@@ -19,19 +19,20 @@ export class EntityToStringService implements IInfraestructureService<Array<Enti
 
                 const auxContenido = nota.contenidos.map((contenido) => {
 
+                    const auxc = JSON.parse(JSON.stringify(contenido.contenido));
+                    
                     //mapeamos lo que viene de la base de datos a los objetos de dominio
-                    if (contenido.texto) {
+                    if (auxc.texto) {
                         return {
-                            texto: {
-                                cuerpo: contenido.texto.texto,
-                                id: contenido.texto.id, //texto puede dejar de ser una Entidad y pasar a ser un ValueObject
-                                                        //por lo tanto puede dejar de tener id
-                            },
                             id: contenido.id,
+                            orden: contenido.orden,
+                            texto: {
+                                cuerpo: auxc.texto,
+                            },
                         }
                     }
-                    if (contenido.tareas.length > 0) {
-                        const tareas = contenido.tareas.map((tarea) => {
+                    if (auxc.tareas) {
+                        const tareas = auxc.tareas.map((tarea) => {
                             return {
                                 titulo: tarea.titulo,
                                 check: tarea.check,
@@ -41,19 +42,21 @@ export class EntityToStringService implements IInfraestructureService<Array<Enti
                             };
                         });
                         return {
-                            tarea: {
+                            id: contenido.id,
+                            orden: contenido.orden,
+                            tareas: {
                                 value: tareas
                             },
-                            id: contenido.id,
                         };
                     }
-                    if (contenido.Imagen) {
+                    if (auxc.Imagen) {
                         return {
-                            imagen: {
-                                nombre: contenido.Imagen.nombre,
-                                buffer: contenido.Imagen.buffer.toString(),
-                            },
                             id: contenido.id,
+                            orden: contenido.orden,
+                            imagen: {
+                                nombre: auxc.Imagen.nombre,
+                                buffer: auxc.Imagen.buffer.toString(),
+                            },
                         };
                     }
                     return contenido;
@@ -82,7 +85,6 @@ export class EntityToStringService implements IInfraestructureService<Array<Enti
             
             return JSON.parse(JSON.stringify(nuevaNota));
         });
-        console.log(notas);
 
         return Either.makeLeft(notas);
     }

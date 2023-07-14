@@ -22,22 +22,21 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
 
     const estado = EstadoEnum.GUARDADO;
     
-    let im;
-
     let contenido = new Optional<any>();
     if (s.contenido){
       const auxcontenido = JSON.stringify(s.contenido);
       contenido = new Optional<any>(JSON.parse(auxcontenido)); 
-       //si hacemos un multipart el contenido se mandan como un string y hay que parsearlo
-       //a pesar de ser inestable, es la unica forma de mandar un array de objetos distintos
-       //pido disculpas
+      //si hacemos un multipart el contenido se mandan como un string y hay que parsearlo
+      //a pesar de ser inestable, es la unica forma de mandar un array de objetos distintos
+      //pido disculpas
     }
-
-    if (s.imagenes) {
-      im = s.imagenes.map((i) => {
-      return VOImagen.crearImagenNota(i.nombre, i.buffer); 
-      });
-    }
+    
+    //let im;
+    // if (s.imagenes) {
+    //   im = s.imagenes.map((i) => {
+    //   return VOImagen.crearImagenNota(i.nombre, i.buffer); 
+    //   });
+    // }
 
     const opLatitud = new Optional<number>(s.latitud);
     const opLongitud = new Optional<number>(s.longitud);

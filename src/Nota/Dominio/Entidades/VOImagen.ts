@@ -1,5 +1,4 @@
 export class VOImagen {
-  //no se si hay que guardar el id
   private nombre: string;
   private buffer: Buffer;
 

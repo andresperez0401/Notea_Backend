@@ -6,18 +6,20 @@ import { VOubicacionNota } from "./ValueObjectsNota/VOUbicacionNota";
 import { idGrupo } from "src/Grupo/Dominio/ValueObjectsGrupo/idGrupo";
 import { Optional } from "src/Utils/Opcional";
 import { EntidadContenidoNota } from "./Entidades/EntidadContenidoNota";
+import { FabricaContenido, IContenidoNota } from "./Entidades/IContenidoNota";
 
 export class Nota{
 
     private id: IdNota;
     private titulo: VOTituloNota;
-    private contenido: Optional<Array<EntidadContenidoNota>>;
+    private contenido: Optional<Array<IContenidoNota>>;
     private fechaCreacion: Date;
     private ubicacion: Optional<VOubicacionNota>; 
     private estado: EstadoEnum;
     private grupo: idGrupo;
 
-    private constructor(titulo: VOTituloNota, contenido: Optional<Array<EntidadContenidoNota>>,
+
+    private constructor(titulo: VOTituloNota, contenido: Optional<Array<IContenidoNota>>,
         fechaCreacion: Date, estado: EstadoEnum,
         ubicacion: Optional<VOubicacionNota>, grupoId: idGrupo,
         id: IdNota){
@@ -40,9 +42,11 @@ export class Nota{
 
             const opUbicacion = VOubicacionNota.crearUbicacionNota(latitud, longitud);
 
-            const opContenido = EntidadContenidoNota.crearContenidoNotaFromJson(contenido); 
+            //const opContenido = EntidadContenidoNota.crearContenidoNotaFromJson(contenido); 
             //convertimos el json (contenido) a un arreglo de tipo EntidadContenidoNota
 
+            const opContenido = FabricaContenido.crearContenidoNotaFromJson(contenido)
+                
             return new Nota(
                 VOTituloNota.crearTituloNota(titulo),
                 opContenido,
@@ -64,7 +68,7 @@ export class Nota{
             return this.titulo.getTituloNota();
         }
     
-        public getContenido(): Iterable<EntidadContenidoNota>{
+        public getContenido(): Iterable<IContenidoNota>{
             return this.contenido.getValue();
         }
     
@@ -105,7 +109,7 @@ export class Nota{
             this.titulo = titulo;
         }
     
-        public setContenido(contenido: Array<EntidadContenidoNota>): void{
-            this.contenido = new Optional<Array<EntidadContenidoNota>>(contenido);
+        public setContenido(contenido: Array<IContenidoNota>): void{
+            this.contenido = new Optional<Array<IContenidoNota>>(contenido);
         }
     }

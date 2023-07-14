@@ -106,7 +106,6 @@ export class UsuarioController {
   //Loguear usuario
   @Post('/login')
   async loguearUsuario(@Res() response, @Body() payload: loguearUsuarioDTO) {
-    console.log("loguear");
     const respuesta = await this.loguearUsuarioService.execute(payload);
 
     if(respuesta.isLeft()){

@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+// eslint-disable-next-line prettier/prettier
+import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 import EntidadContenido from './EntidadContenido';
 
 @Entity('tarea')
@@ -12,12 +13,12 @@ export class EntidadTarea {
   @Column()
   check: boolean;
 
-  @ManyToOne(() => EntidadContenido, (contenido) => contenido.tareas, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-    nullable: true,
-  })
-  contenido: EntidadContenido;
+  // @ManyToOne(() => EntidadContenido, (contenido) => contenido.tareas, {
+  //   onDelete: 'CASCADE',
+  //   onUpdate: 'CASCADE',
+  //   nullable: true,
+  // })
+  // contenido: EntidadContenido;
 }
 
 export default EntidadTarea;

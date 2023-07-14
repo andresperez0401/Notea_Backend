@@ -11,74 +11,75 @@ export class EntityToAggNotaService implements IInfraestructureService<Array<Ent
     
     execute(respuesta: Array<EntidadNota>): Either<Array<Nota>, Error> {
         
-        const notas: Nota[] = respuesta.map((nota) => {
+        // const notas: Nota[] = respuesta.map((nota) => {
 
-            let contenidoMapeado = new Optional<string>();
+        //     let contenidoMapeado = new Optional<string>();
 
-            if (nota.contenidos.length > 0) {
+        //     if (nota.contenidos.length > 0) {
 
-                const auxContenido = nota.contenidos.map((contenido) => {
+        //         const auxContenido = nota.contenidos.map((contenido) => {
 
-                    //mapeamos lo que viene de la base de datos a los objetos de dominio
-                    if (contenido.texto) {
-                        return {
-                            texto: {
-                                cuerpo: contenido.texto.texto,
-                                id: contenido.texto.id,
-                            },
-                            id: contenido.id,
-                        }
-                    }
-                    if (contenido.tareas.length > 0) {
-                        const tareas = contenido.tareas.map((tarea) => {
-                            return{
-                                    titulo: tarea.titulo,
-                                    check: tarea.check,
-                                    id: { 
-                                        id : tarea.id
-                                        },
-                                };
-                        });
-                        return  {
-                            tarea : {
-                                value: tareas
-                            },
-                            id: contenido.id,
-                        };
-                    }
-                    if (contenido.Imagen){
-                        return {
-                            imagen: {
-                                nombre: contenido.Imagen.nombre,
-                                buffer: contenido.Imagen.buffer.toString(),
-                            },
-                            id: contenido.id,
-                        };
-                    }
-                    return contenido;
-                });
+        //             //mapeamos lo que viene de la base de datos a los objetos de dominio
+        //             if (contenido.texto) {
+        //                 return {
+        //                     texto: {
+        //                         cuerpo: contenido.texto.texto,
+        //                         id: contenido.texto.id,
+        //                     },
+        //                     id: contenido.id,
+        //                 }
+        //             }
+        //             if (contenido.tareas.length > 0) {
+        //                 const tareas = contenido.tareas.map((tarea) => {
+        //                     return{
+        //                             titulo: tarea.titulo,
+        //                             check: tarea.check,
+        //                             id: { 
+        //                                 id : tarea.id
+        //                                 },
+        //                         };
+        //                 });
+        //                 return  {
+        //                     tarea : {
+        //                         value: tareas
+        //                     },
+        //                     id: contenido.id,
+        //                 };
+        //             }
+        //             if (contenido.Imagen){
+        //                 return {
+        //                     imagen: {
+        //                         nombre: contenido.Imagen.nombre,
+        //                         buffer: contenido.Imagen.buffer.toString(),
+        //                     },
+        //                     id: contenido.id,
+        //                 };
+        //             }
+        //             return contenido;
+        //         });
 
-                const auxContenido2 = {
-                    value: auxContenido,
-                }
+        //         const auxContenido2 = {
+        //             value: auxContenido,
+        //         }
 
-                contenidoMapeado = new Optional<any>(JSON.parse(JSON.stringify(auxContenido2)));
-            }
+        //         contenidoMapeado = new Optional<any>(JSON.parse(JSON.stringify(auxContenido2)));
+        //     }
 
-            const nuevaNota = Nota.crearNota(
-                    nota.titulo,
-                    nota.fechaCreacion,
-                    EstadoEnum[nota.estado],
-                    nota.grupo,
-                    new Optional<number>(nota.ubicacion.latitud),
-                    new Optional<number>(nota.ubicacion.longitud),
-                    contenidoMapeado,
-                    nota.id,
-                );
-            return nuevaNota; 
-        }
-        );
+        //     const nuevaNota = Nota.crearNota(
+        //             nota.titulo,
+        //             nota.fechaCreacion,
+        //             EstadoEnum[nota.estado],
+        //             nota.grupo,
+        //             new Optional<number>(nota.ubicacion.latitud),
+        //             new Optional<number>(nota.ubicacion.longitud),
+        //             contenidoMapeado,
+        //             nota.id,
+        //         );
+        //     return nuevaNota; 
+        // }
+        // );
 
-        return Either.makeLeft(notas);
+        // return Either.makeLeft(notas);
+        return Either.makeLeft(new Array<Nota>());
     }
 }

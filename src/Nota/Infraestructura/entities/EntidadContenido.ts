@@ -10,20 +10,23 @@ export class EntidadContenido {
   @PrimaryColumn()
   id: string;
 
-  @OneToOne(() => EntidadTexto, (texto) => texto.contenido, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: true, nullable: true})
-  texto: EntidadTexto;
+  // @OneToOne(() => EntidadTexto, (texto) => texto.contenido, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: true, nullable: true})
+  // texto: EntidadTexto;
 
-  @OneToMany(() => EntidadTarea, (tarea) => tarea.contenido, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: true, nullable: true})
-  tareas: EntidadTarea[];
+  // @OneToMany(() => EntidadTarea, (tarea) => tarea.contenido, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: true, nullable: true})
+  // tareas: EntidadTarea[];
 
-  @OneToOne( () => EntidadImagen, (imagen) => imagen.contenido, {cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: true, nullable: true})
-  Imagen: EntidadImagen;
+  // @OneToOne( () => EntidadImagen, (imagen) => imagen.contenido, {cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: true, nullable: true})
+  // Imagen: EntidadImagen;
+
+  @Column({type: 'json', nullable: true})
+  contenido: EntidadImagen | EntidadTexto | EntidadTarea[] | any;
 
   @ManyToOne( () => EntidadNota, (nota) => nota.contenidos, {onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true})
   nota: EntidadNota;
 
-  // @Column()
-  // orden : number;
+  @Column()
+  orden : number;
 }
 
 export default EntidadContenido;

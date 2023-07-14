@@ -10,6 +10,7 @@ import { EntidadTareaNota } from 'src/Nota/Dominio/Entidades/EntidadTarea';
 import { Nota } from 'src/Nota/Dominio/AgregadoNota';
 import { EntidadUbicacion } from '../entities/EntidadUbicacion';
 import { EntidadNota } from '../entities/EntidadNota';
+import { IContenidoNota } from 'src/Nota/Dominio/Entidades/IContenidoNota';
 
 
 export class AggNotaToEntityService implements IInfraestructureService<Nota, EntidadNota>
@@ -34,39 +35,44 @@ export class AggNotaToEntityService implements IInfraestructureService<Nota, Ent
 
         if (nota.existeContenido()) {
 
-            const contenido = nota.getContenido() as Array<EntidadContenidoNota>;
+            const contenido = nota.getContenido() as Array<IContenidoNota>;
 
             //parseamos los contenidos del agregado Nota a el entity del orm
             const auxcontenido = contenido.map((contenido) => {
                 const c = new EntidadContenido();
-                c.id = contenido.getId().getValue();
+                const contenidoAux = JSON.parse(contenido.toJSON());
 
                 //este parseo debe ser un servicio aparte || De agregado a entity
-                if (contenido.isTexto()) {
+                if (contenidoAux.texto) {
                     const t = new EntidadTexto();
-                    t.texto = contenido.getTexto().getTexto();
-                    t.id = contenido.getTexto().getId();
-                    t.contenido = c;
-                    c.texto = t;
+                    const txt = {"texto": contenidoAux.texto.texto}
+                    t.texto = JSON.stringify(txt);
+                    c.orden = contenidoAux.orden;
+                    c.id = contenidoAux.id;
+                    c.contenido = txt;
                 }
-                if (contenido.isTareass()) {
-                    const caux = contenido.getTareas() as Array<EntidadTareaNota>;
-                    const entTareas = caux.map((tarea) => {
-                        const t = new EntidadTarea();
-                        t.id = tarea.getId();
-                        t.titulo = tarea.getTitulo();
-                        t.check = tarea.getCheck();
-                        t.contenido = c;
-                        return t;
-                    });
-                    c.tareas = entTareas;
+                if (contenidoAux.tareas) {
+                    const t = new Array<EntidadTarea>();
+                    for (const tarea of contenidoAux.tareas) {
+                        const ta = new EntidadTarea();
+                        ta.titulo = tarea.titulo.titulo;
+                        ta.check = tarea.check;
+                        ta.id = tarea.id;
+                        t.push(ta);
+                    }
+                    const auxtarea = {"tareas": t};
+                    c.orden = contenidoAux.orden;
+                    c.id = contenidoAux.id;
+                    c.contenido = auxtarea;
                 }
-                if (contenido.isImagenn()) {
+                if (contenidoAux.imagen) {
                     const i = new EntidadImagen();
-                    i.nombre = contenido.getImagen().getNombreImagen();
-                    i.buffer = contenido.getImagen().getBufferImagen();
-                    i.contenido = c;
-                    c.Imagen = i;
+                    i.nombre = contenidoAux.imagen.nombre;
+                    i.buffer = contenidoAux.imagen.buffer;
+                    c.orden = contenidoAux.orden;
+                    c.id = contenidoAux.id;
+                    const auximagen = {"Imagen": i};
+                    c.contenido = auximagen;
                 }
                 c.nota = entidadNota;
                 return c;
