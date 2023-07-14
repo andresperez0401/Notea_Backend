@@ -56,7 +56,7 @@ async buscarEtiquetas(
 
   }
 }*/
-  @Post()
+  /*@Post()
   async crearEtiqueta(
     @Res() response,
     @Body() etiqueta: crearEtiquetaDto,
@@ -68,7 +68,7 @@ async buscarEtiquetas(
     } else {
       return response.status(404).json(result.getRight().message);
     }
-  }
+  }*/
  /* @Patch()
   async actualizarEtiqueta(@Res() response, @Body() notaMod: actualizarEtiquetaDto): Promise<Either<string,Error>> {
  

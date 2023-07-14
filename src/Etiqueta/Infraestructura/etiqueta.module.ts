@@ -10,6 +10,7 @@ import { actualizarEtiquetaController } from './controller/actualizarEtiquetaCon
 import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module';
 import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
 import { buscarEtiquetasController } from './controller/buscarEtiquetasController';
+import { crearEtiquetaController } from './controller/crearEtiquetaController';
 
 @Module({
   imports: [TypeOrmModule.forFeature([entidadEtiqueta]),
@@ -17,7 +18,8 @@ import { buscarEtiquetasController } from './controller/buscarEtiquetasControlle
             
   controllers: [EtiquetaController,
                 actualizarEtiquetaController,
-                 buscarEtiquetasController],
+                buscarEtiquetasController,
+                crearEtiquetaController],
   providers: [
     crearEtiquetaService,
     actualizarEtiquetaService,
