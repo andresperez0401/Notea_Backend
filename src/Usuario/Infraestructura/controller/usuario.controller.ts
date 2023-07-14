@@ -53,7 +53,7 @@ export class UsuarioController {
 
   }
 
-  @Post()
+ /* @Post()
   async crearUsuario(@Res() response, @Body() payload: CrearUsuarioDto) {
 
     const email = await this.buscarUsuariosEmailService.execute(payload.email);
@@ -71,7 +71,7 @@ export class UsuarioController {
     } else {
       return response.status(404).json({message: 'El email ya existe'});
     }
-  }
+  }*/
 
   //buscar todos los usuarios
   /*@Get('/all')

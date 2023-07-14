@@ -44,3 +44,5 @@
 
 7/13/2023 - 11:41:13 PM: Buscar Todos los Usuarios Service: Se han buscado todos los usuarios
 
+7/13/2023 - 11:56:36 PM: Crear Usuario Service: El usuario: luis ha sido creado con exito
+

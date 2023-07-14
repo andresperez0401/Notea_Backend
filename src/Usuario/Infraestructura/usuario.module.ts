@@ -29,6 +29,7 @@ import { eliminarUsuarioController } from './controller/eliminarUsuarioControlle
 import { buscarUsuarioPorIdController } from './controller/buscarUsuarioPorIdController';
 import { buscarUsuarioPorEmailController } from './controller/buscarUsuarioPorEmailController';
 import { buscarUsuariosController } from './controller/buscarUsuariosController';
+import { crearUsuarioController } from './controller/crearUsuarioController';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { buscarUsuariosController } from './controller/buscarUsuariosController'
                 buscarUsuarioPorIdController,
                 buscarUsuarioPorEmailController,
                 buscarUsuariosController,
+                crearUsuarioController,
                 ],
   providers: [
     CrearUsuarioService,
