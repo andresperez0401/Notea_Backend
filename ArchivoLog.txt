@@ -46,3 +46,9 @@
 
 7/13/2023 - 11:56:36 PM: Crear Usuario Service: El usuario: luis ha sido creado con exito
 
+7/14/2023 - 12:32:47 PM: Actualizar Etiqueta Service: La etiqueta de id: 0a1d87c6-8747-41d7-8361-1786c95846b3 ha sido actualizada.
+
+7/14/2023 - 12:40:05 PM: Buscar Etiquetas Servcie: Se han buscado todas las etiquetas del usuario de id: b5ac8be1-8a4c-45df-a2b2-aa2e6425d4cc
+
+7/14/2023 - 12:50:34 PM: Crear Etiqueta Service: La etiqueta: Etiqueta Prueba Log, del usuario de id: feeec6f9-dbea-48f1-bd8f-aa01737b2e6d ha sido creada
+

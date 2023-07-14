@@ -42,7 +42,7 @@ export class EtiquetaController {
   }
 
 
-  @Get('/:idUsuario/all')
+ /* @Get('/:idUsuario/all')
 async buscarEtiquetas(
   @Res() response,
   @Param('idUsuario') idUsuario: string
@@ -55,8 +55,8 @@ async buscarEtiquetas(
     return response.status(404).json(result.getRight().message);
 
   }
-}
-  @Post()
+}*/
+  /*@Post()
   async crearEtiqueta(
     @Res() response,
     @Body() etiqueta: crearEtiquetaDto,
@@ -68,8 +68,8 @@ async buscarEtiquetas(
     } else {
       return response.status(404).json(result.getRight().message);
     }
-  }
-  @Patch()
+  }*/
+ /* @Patch()
   async actualizarEtiqueta(@Res() response, @Body() notaMod: actualizarEtiquetaDto): Promise<Either<string,Error>> {
  
       const result =  await this.ActualizarEtiquetaService.execute(notaMod)
@@ -80,5 +80,5 @@ async buscarEtiquetas(
           return response.status(404).json(result.getRight().message);
       }
        
-  }
+  }*/
 }
