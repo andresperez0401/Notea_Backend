@@ -48,3 +48,5 @@
 
 7/14/2023 - 12:32:47 PM: Actualizar Etiqueta Service: La etiqueta de id: 0a1d87c6-8747-41d7-8361-1786c95846b3 ha sido actualizada.
 
+7/14/2023 - 12:40:05 PM: Buscar Etiquetas Servcie: Se han buscado todas las etiquetas del usuario de id: b5ac8be1-8a4c-45df-a2b2-aa2e6425d4cc
+

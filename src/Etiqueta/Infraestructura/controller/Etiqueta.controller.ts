@@ -42,7 +42,7 @@ export class EtiquetaController {
   }
 
 
-  @Get('/:idUsuario/all')
+ /* @Get('/:idUsuario/all')
 async buscarEtiquetas(
   @Res() response,
   @Param('idUsuario') idUsuario: string
@@ -55,7 +55,7 @@ async buscarEtiquetas(
     return response.status(404).json(result.getRight().message);
 
   }
-}
+}*/
   @Post()
   async crearEtiqueta(
     @Res() response,

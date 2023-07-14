@@ -9,13 +9,15 @@ import { actualizarEtiquetaService } from '../Aplicacion/actualizarEtiqueta.serv
 import { actualizarEtiquetaController } from './controller/actualizarEtiquetaController';
 import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module';
 import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
+import { buscarEtiquetasController } from './controller/buscarEtiquetasController';
 
 @Module({
   imports: [TypeOrmModule.forFeature([entidadEtiqueta]),
             forwardRef(() => DecoratorModule)],
             
   controllers: [EtiquetaController,
-                actualizarEtiquetaController],
+                actualizarEtiquetaController,
+                 buscarEtiquetasController],
   providers: [
     crearEtiquetaService,
     actualizarEtiquetaService,
