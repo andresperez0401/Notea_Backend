@@ -44,6 +44,8 @@ export class ModificarNotaService implements IAplicationService<ModificarNotaDto
 
       const opLatitud = new Optional<number>(s.latitud);
       const opLongitud = new Optional<number>(s.longitud);
+      const opEtiquetas = new Optional<string[]>(s.etiquetas);
+
 
       const nota = Nota.crearNota( //factory agregado
         s.titulo,
@@ -53,6 +55,7 @@ export class ModificarNotaService implements IAplicationService<ModificarNotaDto
         opLatitud,
         opLongitud,
         contenido,
+        opEtiquetas,
         s.id,
       );
 

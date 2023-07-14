@@ -2,9 +2,10 @@
 //model
 
 import { EstadoEnum } from "src/Nota/Dominio/ValueObjectsNota/EstadoEnum";
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryColumn } from "typeorm";
 import { EntidadUbicacion } from "./EntidadUbicacion";
 import EntidadContenido from "./EntidadContenido";
+import { entidadEtiqueta } from "src/Etiqueta/Infraestructura/entities/entidadEtiqueta";
 
 @Entity('nota')
 export class EntidadNota {
@@ -30,4 +31,9 @@ export class EntidadNota {
 
     @Column()
     grupo: string
+
+    @ManyToMany(() => entidadEtiqueta, (etiqueta) => etiqueta.notas, { cascade: true,
+        onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true, eager: true})
+    @JoinTable()
+    etiquetas: entidadEtiqueta[];
 }

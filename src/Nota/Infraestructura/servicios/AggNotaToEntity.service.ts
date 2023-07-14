@@ -11,6 +11,8 @@ import { Nota } from 'src/Nota/Dominio/AgregadoNota';
 import { EntidadUbicacion } from '../entities/EntidadUbicacion';
 import { EntidadNota } from '../entities/EntidadNota';
 import { IContenidoNota } from 'src/Nota/Dominio/Entidades/IContenidoNota';
+import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEtiqueta';
+import { buscarEtiquetasService } from 'src/Etiqueta/Aplicacion/buscarEtiquetas.service';
 
 
 export class AggNotaToEntityService implements IInfraestructureService<Nota, EntidadNota>
@@ -24,6 +26,16 @@ export class AggNotaToEntityService implements IInfraestructureService<Nota, Ent
             ub.latitud = nota.getUbicacion().get('latitud')
             ub.longitud = nota.getUbicacion().get('longitud');
         }
+        let etiquetas;
+        if (nota.existeEtiquetas()) {
+            etiquetas = nota.getEtiquetas().map((etiqueta) => {
+                const e = new entidadEtiqueta();
+                e.id = etiqueta
+                return e;
+            });
+        }
+        //al ser una relacion muchos a muchos con etiquetas debemos buscar las etiquetas en la base de datos
+        //let servicio = new buscarEtiquetasService();
 
         const entidadNota = new EntidadNota(); //entity del orm
         entidadNota.id = nota.getId();
@@ -31,6 +43,7 @@ export class AggNotaToEntityService implements IInfraestructureService<Nota, Ent
         entidadNota.fechaCreacion = nota.getFechaCreacion();
         entidadNota.estado = nota.getEstado();
         entidadNota.ubicacion = ub;
+        entidadNota.etiquetas = etiquetas;
         entidadNota.grupo = nota.getIdGrupo();
 
         if (nota.existeContenido()) {

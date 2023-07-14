@@ -72,6 +72,12 @@ export class EntityToStringService implements IInfraestructureService<Array<Enti
                         longitud: nota.ubicacion.longitud,
                     };
             }
+            let etiquetas;
+            if (nota.etiquetas) {
+                etiquetas = nota.etiquetas.map((etiqueta) => {
+                    return etiqueta.id;
+                });
+            }
 
             const nuevaNota = {
                 titulo: nota.titulo,
@@ -79,6 +85,7 @@ export class EntityToStringService implements IInfraestructureService<Array<Enti
                 estado: EstadoEnum[nota.estado],
                 grupo: nota.grupo,
                 ubicacion,
+                etiquetas,
                 contenido: contenidoMapeado,
                 id: nota.id,
             }

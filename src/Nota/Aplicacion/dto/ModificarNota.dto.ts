@@ -5,6 +5,7 @@ export class ModificarNotaDto {
   latitud?: number;
   longitud?: number;
   grupo: string;
+  etiquetas?: string[];
 
   contenido: string;
 

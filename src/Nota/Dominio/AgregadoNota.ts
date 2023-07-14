@@ -7,6 +7,7 @@ import { idGrupo } from "src/Grupo/Dominio/ValueObjectsGrupo/idGrupo";
 import { Optional } from "src/Utils/Opcional";
 import { EntidadContenidoNota } from "./Entidades/EntidadContenidoNota";
 import { FabricaContenido, IContenidoNota } from "./Entidades/IContenidoNota";
+import { idEtiqueta } from "src/Etiqueta/Dominio/ValueObjectsEtiqueta/idEtiqueta";
 
 export class Nota{
 
@@ -17,11 +18,12 @@ export class Nota{
     private ubicacion: Optional<VOubicacionNota>; 
     private estado: EstadoEnum;
     private grupo: idGrupo;
+    private etiquetas: Optional<Array<idEtiqueta>>;
 
 
     private constructor(titulo: VOTituloNota, contenido: Optional<Array<IContenidoNota>>,
         fechaCreacion: Date, estado: EstadoEnum,
-        ubicacion: Optional<VOubicacionNota>, grupoId: idGrupo,
+        ubicacion: Optional<VOubicacionNota>, grupoId: idGrupo, etiquetas: Optional<Array<idEtiqueta>>,
         id: IdNota){
             this.id = id;
             this.titulo = titulo;
@@ -30,6 +32,7 @@ export class Nota{
             this.estado = estado;
             this.ubicacion = ubicacion;
             this.grupo = grupoId;
+            this.etiquetas = etiquetas;
         }
     
     //Los constructores estaticos son una alternativa a los Factories
@@ -38,9 +41,16 @@ export class Nota{
             grupoId: string, 
             latitud: Optional<number>, longitud:  Optional<number>,
             contenido: Optional<any>, 
+            etiquetas: Optional<Array<string>>,
             id?: string): Nota{
 
             const opUbicacion = VOubicacionNota.crearUbicacionNota(latitud, longitud);
+
+            let idEtiquetas;
+            if (etiquetas.hasvalue()){
+                console.log(etiquetas.getValue());
+                idEtiquetas = etiquetas.getValue().map((etiqueta) => idEtiqueta.crearIdEtiqueta(etiqueta));
+            }
 
             //const opContenido = EntidadContenidoNota.crearContenidoNotaFromJson(contenido); 
             //convertimos el json (contenido) a un arreglo de tipo EntidadContenidoNota
@@ -54,6 +64,7 @@ export class Nota{
                 EstadoEnum[estado], 
                 opUbicacion,
                 idGrupo.crearIdGrupo(grupoId),
+                new Optional<Array<idEtiqueta>>(idEtiquetas),
                 IdNota.crearIdNota(id),
                 );
         }
@@ -90,6 +101,10 @@ export class Nota{
         public existeContenido(): boolean{
             return this.contenido.hasvalue();
         }
+
+        public existeEtiquetas(): boolean{
+            return this.etiquetas.hasvalue();
+        }
     
         public getUbicacion(): Map<string, number>{
             if (!this.ubicacion.hasvalue())
@@ -98,7 +113,12 @@ export class Nota{
                 ['latitud', this.ubicacion.getValue().getLatitud()],
                 ['longitud', this.ubicacion.getValue().getLongitud()]
             ]);
-            
+        }
+
+        public getEtiquetas(): Array<string>{
+            if (!this.etiquetas.hasvalue())
+                return new Array<string>();
+            return this.etiquetas.getValue().map((etiqueta) => etiqueta.getValue());
         }
     
         public setEstado(estado: EstadoEnum): void{

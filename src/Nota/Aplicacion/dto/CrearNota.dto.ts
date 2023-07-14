@@ -6,6 +6,7 @@ export class CrearNotaDto {
   latitud?: number;
   longitud?: number;
   grupo: string;
+  etiquetas?: string[];
   
   contenido: string;
  

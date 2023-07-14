@@ -2,7 +2,6 @@ import { IsNotEmpty, IsString, IsEnum } from 'class-validator';
 import { colorEtiqueta } from 'src/Etiqueta/Dominio/ValueObjectsEtiqueta/colorEtiqueta';
 
 export class actualizarEtiquetaDto {
-
   id: string;
 
   @IsString()
