@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntidadUsuario } from './entities/EntidadUsuario';
 import { UsuarioController } from './controller/usuario.controller';
@@ -19,16 +19,25 @@ import { EtiquetaModule } from 'src/Etiqueta/Infraestructura/etiqueta.module';
 import { NotaModule } from 'src/Nota/Infraestructura/nota.module';
 import { GrupoModule } from 'src/Grupo/Infraestructura/grupo.module';
 import { CqrsModule } from '@nestjs/cqrs';
+import { editarUsuarioController } from './controller/editarUsuarioController';
+import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module';
+import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
+import { EntidadGrupo } from 'src/Grupo/Infraestructura/entities/EntidadGrupo';
+import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEtiqueta';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([EntidadGrupo]),
+    TypeOrmModule.forFeature([entidadEtiqueta]),
     TypeOrmModule.forFeature([EntidadUsuario]),
-    CqrsModule,
-    EtiquetaModule,
-    GrupoModule,
-    NotaModule, 
+    forwardRef(() => DecoratorModule),
+    forwardRef(() => CqrsModule),
+    forwardRef(() => EtiquetaModule),
+    forwardRef(() => GrupoModule),
+    forwardRef(() => NotaModule),
   ],
-  controllers: [UsuarioController],
+  controllers: [UsuarioController,
+                editarUsuarioController],
   providers: [
     CrearUsuarioService,
     BuscarUsuariosService,
@@ -38,13 +47,17 @@ import { CqrsModule } from '@nestjs/cqrs';
     EditarUsuarioService,
     LoguearUsuarioService,
     UsuarioCreadoEventHandler,
-    {
-      provide: 'RepositorioUsuario',
-      useClass: RepositorioUsuarioImp,
-    },
+    RepositorioUsuarioImp,
+    EventPublisherImpl,
+    ILoggerImplementation,
     {
       provide: 'EventPublisher',
       useClass: EventPublisherImpl,
+    },
+
+    {
+      provide: 'RepositorioUsuario',
+      useClass: RepositorioUsuarioImp,
     },
   ],
 })

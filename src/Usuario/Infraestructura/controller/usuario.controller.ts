@@ -26,6 +26,7 @@ import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto
 import { LoguearUsuarioService } from 'src/Usuario/Aplicacion/LoguearUsuario.service';
 import { RepositorioUsuario } from 'src/Usuario/Dominio/RepositorioUsuario';
 import { EventPublisher } from 'src/core/domain/events/EventPublisher';
+import { RepositorioUsuarioImp } from '../repository/RepositorioUsuarioImp';
 
 
 @Controller('usuario')
@@ -38,8 +39,8 @@ export class UsuarioController {
     private eliminarUsuarioService: EliminarUsuarioService,
     private loguearUsuarioService: LoguearUsuarioService,
     private editarUsuarioService: EditarUsuarioService,
-
-    @Inject('RepositorioUsuario') private readonly repoUsuario: RepositorioUsuario,
+    private repoUsuario: RepositorioUsuarioImp,
+   // @Inject('RepositorioUsuario') private readonly repoUsuario: RepositorioUsuario,
     @Inject('EventPublisher') private readonly eventPublisher: EventPublisher,
   ) {
     this.usuarioService = new CrearUsuarioService(this.repoUsuario,eventPublisher);
@@ -136,7 +137,7 @@ export class UsuarioController {
     }
   }
   //Editar usuario
-  @Put(':id')
+ /* @Put(':id')
   async editarUsuario(
     @Res() response,
     @Param('id') id: string,
@@ -153,5 +154,5 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 }
