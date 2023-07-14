@@ -98,7 +98,7 @@ export class UsuarioController {
     }
   }
   //Buscar por id
-  @Get('id/:id')
+  /*@Get('id/:id')
   async buscarUsuarioPorId(@Res() response, @Param('id') id: string) {
     const respuesta = await this.buscarUsuariosIdService.execute(id);
 
@@ -108,7 +108,7 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
  /* //Loguear usuario
   @Post('/login')

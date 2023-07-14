@@ -26,6 +26,7 @@ import { EntidadGrupo } from 'src/Grupo/Infraestructura/entities/EntidadGrupo';
 import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEtiqueta';
 import { loguearUsuarioController } from './controller/loguearUsuarioController';
 import { eliminarUsuarioController } from './controller/eliminarUsuarioController';
+import { buscarUsuarioPorIdController } from './controller/buscarUsuarioPorIdController';
 
 @Module({
   imports: [
@@ -41,7 +42,8 @@ import { eliminarUsuarioController } from './controller/eliminarUsuarioControlle
   controllers: [UsuarioController,
                 editarUsuarioController,
                 loguearUsuarioController,
-                eliminarUsuarioController],
+                eliminarUsuarioController,
+                buscarUsuarioPorIdController],
   providers: [
     CrearUsuarioService,
     BuscarUsuariosService,
