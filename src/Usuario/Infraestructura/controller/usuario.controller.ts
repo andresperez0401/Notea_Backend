@@ -86,7 +86,7 @@ export class UsuarioController {
     }
   }
   //Buscar por email
-  @Get('email/:email')
+  /*@Get('email/:email')
   async buscarUsuarioPorEmail(@Res() response, @Param('email') email: string) {
     const respuesta = await this.buscarUsuariosEmailService.execute(email)
   
@@ -96,7 +96,7 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
   //Buscar por id
   /*@Get('id/:id')
   async buscarUsuarioPorId(@Res() response, @Param('id') id: string) {

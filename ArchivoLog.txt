@@ -40,3 +40,5 @@
 
 7/13/2023 - 11:24:07 PM: Buscar Usuario por Id Service: Se ha buscado el usuario de id: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
 
+7/13/2023 - 11:33:01 PM: Buscar Usuario por email Service: Se ha buscado el usuario de email: andres@gmail.com
+

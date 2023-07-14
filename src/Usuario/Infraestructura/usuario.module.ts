@@ -27,6 +27,7 @@ import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEt
 import { loguearUsuarioController } from './controller/loguearUsuarioController';
 import { eliminarUsuarioController } from './controller/eliminarUsuarioController';
 import { buscarUsuarioPorIdController } from './controller/buscarUsuarioPorIdController';
+import { buscarUsuarioPorEmailController } from './controller/buscarUsuarioPorEmailController';
 
 @Module({
   imports: [
@@ -43,7 +44,8 @@ import { buscarUsuarioPorIdController } from './controller/buscarUsuarioPorIdCon
                 editarUsuarioController,
                 loguearUsuarioController,
                 eliminarUsuarioController,
-                buscarUsuarioPorIdController],
+                buscarUsuarioPorIdController,
+                buscarUsuarioPorEmailController],
   providers: [
     CrearUsuarioService,
     BuscarUsuariosService,
