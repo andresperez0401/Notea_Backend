@@ -28,6 +28,7 @@ import { loguearUsuarioController } from './controller/loguearUsuarioController'
 import { eliminarUsuarioController } from './controller/eliminarUsuarioController';
 import { buscarUsuarioPorIdController } from './controller/buscarUsuarioPorIdController';
 import { buscarUsuarioPorEmailController } from './controller/buscarUsuarioPorEmailController';
+import { buscarUsuariosController } from './controller/buscarUsuariosController';
 
 @Module({
   imports: [
@@ -45,7 +46,9 @@ import { buscarUsuarioPorEmailController } from './controller/buscarUsuarioPorEm
                 loguearUsuarioController,
                 eliminarUsuarioController,
                 buscarUsuarioPorIdController,
-                buscarUsuarioPorEmailController],
+                buscarUsuarioPorEmailController,
+                buscarUsuariosController,
+                ],
   providers: [
     CrearUsuarioService,
     BuscarUsuariosService,

@@ -3,7 +3,7 @@ import { Either } from "src/Utils/Either";
 import { Usuario } from "../Dominio/AgregadoUsuario";
 import { RepositorioUsuario } from "../Dominio/RepositorioUsuario";
 
-export class BuscarUsuariosService implements IAplicationService<null, Iterable<Usuario>>{
+export class BuscarUsuariosService implements IAplicationService<string, Iterable<Usuario>>{
 
     private readonly repositorioUsuario: RepositorioUsuario;
 

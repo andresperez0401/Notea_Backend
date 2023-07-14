@@ -74,7 +74,7 @@ export class UsuarioController {
   }
 
   //buscar todos los usuarios
-  @Get('/all')
+  /*@Get('/all')
   async buscarUsuarios(@Res() response) {
     const respuesta = await this.buscarUsuariosService.execute();
 
@@ -84,7 +84,7 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
   //Buscar por email
   /*@Get('email/:email')
   async buscarUsuarioPorEmail(@Res() response, @Param('email') email: string) {

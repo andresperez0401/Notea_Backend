@@ -42,3 +42,5 @@
 
 7/13/2023 - 11:33:01 PM: Buscar Usuario por email Service: Se ha buscado el usuario de email: andres@gmail.com
 
+7/13/2023 - 11:41:13 PM: Buscar Todos los Usuarios Service: Se han buscado todos los usuarios
+
