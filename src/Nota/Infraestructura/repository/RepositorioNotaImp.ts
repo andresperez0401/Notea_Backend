@@ -273,50 +273,37 @@ export class RepositorioNotaImp implements RepositorioNota{
     }
 
 
-    async buscarNotasDeGrupos(
-        grupos: Iterable<string>,
-        ): Promise<Either<Iterable<Nota>, Error>> {
-
-         const listaGrupos : string[] = [...grupos];
-         const listaNotas : Nota[] = [];
-
-        for (let grupo of listaGrupos){
-            const respuesta: EntidadNota[] = await this.repositorio.find({
+    async buscarNotasDeGrupos(grupos: Iterable<string>): Promise<Either<Iterable<Nota>, Error>> {
+        try {
+            const listaGrupos: string[] = [...grupos];
+            const listaNotas: Nota[] = [];
+            for (let grupo of listaGrupos) {
+                const respuesta: EntidadNota[] = await this.repositorio.find({
                 where: { grupo: grupo },
-            });
-
-            if (respuesta) {
+                });
+                if (respuesta) {
                 const notas: Nota[] = respuesta.map((nota) =>
-                Nota.crearNota(
-                nota.titulo,
-                nota.contenido,
-                nota.fechaCreacion,
-                EstadoEnum[nota.estado],
-                nota.grupo,
-                new Optional<number>(nota.ubicacion.latitud),
-                new Optional<number>(nota.ubicacion.longitud),
-                new Optional(nota.tareas.map(tarea => {return tarea.titulo})),
-                new Optional(nota.tareas.map(tarea => {return tarea.check})),
-                new Optional(nota.tareas.map(tarea => {return tarea.id})),
-                nota.id,
-                nota.imagenes.map(imagen => {return VOImagen.crearImagenNota(imagen.nombre, imagen.buffer);}),
-                ),
-             );
-
-            listaNotas.push(...notas);          
-                
-            } 
-        }
-
-        if(listaNotas.length > 0){
+                    Nota.crearNota(
+                    nota.titulo,
+                    nota.contenido,
+                    nota.fechaCreacion,
+                    EstadoEnum[nota.estado],
+                    nota.grupo,
+                    new Optional<number>(nota.ubicacion.latitud),
+                    new Optional<number>(nota.ubicacion.longitud),
+                    new Optional(nota.tareas.map(tarea => tarea.titulo)),
+                    new Optional(nota.tareas.map(tarea => tarea.check)),
+                    new Optional(nota.tareas.map(tarea => tarea.id)),
+                    nota.id,
+                    nota.imagenes.map(imagen => VOImagen.crearImagenNota(imagen.nombre, imagen.buffer)),
+                    ),
+                );
+                listaNotas.push(...notas);
+                }
+            }
             return Either.makeLeft<Iterable<Nota>, Error>(listaNotas);
+        } catch (error) {
+            return Either.makeRight<Iterable<Nota>, Error>(error as Error);
         }
-        
-        else{
-            return Either.makeRight<Iterable<Nota>, Error>(
-                new Error(`Error al obtener los notas del usuario`),
-            );
-        }
-        
     }
 }
