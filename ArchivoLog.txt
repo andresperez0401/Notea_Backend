@@ -46,3 +46,5 @@
 
 7/13/2023 - 11:56:36 PM: Crear Usuario Service: El usuario: luis ha sido creado con exito
 
+7/14/2023 - 12:32:47 PM: Actualizar Etiqueta Service: La etiqueta de id: 0a1d87c6-8747-41d7-8361-1786c95846b3 ha sido actualizada.
+

@@ -69,7 +69,7 @@ async buscarEtiquetas(
       return response.status(404).json(result.getRight().message);
     }
   }
-  @Patch()
+ /* @Patch()
   async actualizarEtiqueta(@Res() response, @Body() notaMod: actualizarEtiquetaDto): Promise<Either<string,Error>> {
  
       const result =  await this.ActualizarEtiquetaService.execute(notaMod)
@@ -80,5 +80,5 @@ async buscarEtiquetas(
           return response.status(404).json(result.getRight().message);
       }
        
-  }
+  }*/
 }
