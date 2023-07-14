@@ -36,3 +36,5 @@
 
 7/13/2023 - 10:56:25 PM: Loguear Usuario Service: El usuario: andres@gmail.com ha hecho login
 
+7/13/2023 - 11:10:17 PM: Eliminar Usuario Service: El usuario de id: feeec6f9-dbea-48f1-bd8f-aa01737b2e6d ha sido eliminado con exito
+

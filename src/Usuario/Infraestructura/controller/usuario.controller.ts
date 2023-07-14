@@ -124,7 +124,7 @@ export class UsuarioController {
     }
   }*/
 
-  //Eliminar usuario
+ /* //Eliminar usuario
   @Delete(':id')
   async eliminarUsuario(@Res() response, @Param('id') id: string) {
     const respuesta = await this.eliminarUsuarioService.execute(id);
@@ -135,7 +135,7 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
   //Editar usuario
  /* @Put(':id')
   async editarUsuario(

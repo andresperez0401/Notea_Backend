@@ -25,6 +25,7 @@ import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImp
 import { EntidadGrupo } from 'src/Grupo/Infraestructura/entities/EntidadGrupo';
 import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEtiqueta';
 import { loguearUsuarioController } from './controller/loguearUsuarioController';
+import { eliminarUsuarioController } from './controller/eliminarUsuarioController';
 
 @Module({
   imports: [
@@ -39,7 +40,8 @@ import { loguearUsuarioController } from './controller/loguearUsuarioController'
   ],
   controllers: [UsuarioController,
                 editarUsuarioController,
-                loguearUsuarioController],
+                loguearUsuarioController,
+                eliminarUsuarioController],
   providers: [
     CrearUsuarioService,
     BuscarUsuariosService,
