@@ -3,36 +3,33 @@ import { Either } from 'src/Utils/Either';
 import { ILogger } from './ILogger';
 import { ServiceDecorator } from './ServiceDecorator';
 
+export class LoggerService<V, T> extends ServiceDecorator<V, T> {
+  private logger: ILogger;
 
-export class LoggerService<V,T> extends ServiceDecorator<V,T>{
+  constructor(
+    logger: ILogger,
+    service: IAplicationService<V, T>,
+    private mensaje: string,
+  ) {
+    super(service);
+    this.logger = logger;
+    this.mensaje = mensaje;
+  }
 
-    private logger : ILogger;
+  async execute(s: V): Promise<Either<T, Error>> {
+    const response = await super.execute(s);
 
-    constructor(logger: ILogger, service : IAplicationService<V,T>, private mensaje: string) {
-        super(service);
-        this.logger = logger;
-        this.mensaje = mensaje;
+    if (response.isLeft()) {
+      const mandar = this.mensaje;
+      this.loggear(mandar);
+    } else {
+      const mandar = response.getRight().message;
+      this.loggear(mandar);
     }
+    return response;
+  }
 
-    async execute(s: V): Promise<Either<T, Error>> {
-        
-        const response = await super.execute(s);
-        
-        if (response.isLeft()){
-            const mandar = this.mensaje;
-            this.loggear(mandar);
-        }
-
-        else{
-            const mandar = response.getRight().message;
-            this.loggear(mandar);
-        }
-        return response; 
-    }
-
-     loggear(s:string): void {
-        this.logger.execute(s);
-    }
+  loggear(s: string): void {
+    this.logger.execute(s);
+  }
 }
-
-

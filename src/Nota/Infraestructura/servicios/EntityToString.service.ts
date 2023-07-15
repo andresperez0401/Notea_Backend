@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Nota } from 'src/Nota/Dominio/AgregadoNota';
-import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
 import { EntidadNota } from '../entities/EntidadNota';
 import { Either } from 'src/Utils/Either';
 import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
 import { Optional } from 'src/Utils/Opcional';
+import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
 
 export class EntityToStringService implements IInfraestructureService<Array<EntidadNota>, Array<string>> {
 

@@ -1,8 +1,5 @@
-import { Either } from "src/Utils/Either";
-
+import { Either } from 'src/Utils/Either';
 
 export interface ILogger {
-
- execute(message: string): Promise<Either<string, Error>>;
-
+  execute(message: string): Promise<Either<string, Error>>;
 }
