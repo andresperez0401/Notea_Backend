@@ -276,3 +276,27 @@
 
 7/15/2023 - 10:54:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
 
+15/7/2023 - 12:47:49 p. m.: Crear Usuario Service: El usuario: italo de email: a@gmail.comha sido creado con exito
+
+15/7/2023 - 12:48:46 p. m.: Crear Usuario Service: El usuario: italo de email: a@gmail.comha sido creado con exito
+
+15/7/2023 - 12:51:01 p. m.: Crear Usuario Service: El usuario: italo de email: aa@gmail.comha sido creado con exito
+
+15/7/2023 - 12:51:31 p. m.: Crear Usuario Service: El usuario: italo de email: aaa@gmail.comha sido creado con exito
+
+15/7/2023 - 12:53:38 p. m.: Crear Usuario Service: El usuario: italo de email: aaaa@gmail.comha sido creado con exito
+
+15/7/2023 - 12:56:37 p. m.: Crear Usuario Service: El usuario: italo de email: aaada@gmail.comha sido creado con exito
+
+15/7/2023 - 12:57:15 p. m.: Crear Usuario Service: El usuario: italo de email: aasda@gmail.comha sido creado con exito
+
+15/7/2023 - 12:59:29 p. m.: Crear Usuario Service: El usuario: italo de email: afffasda@gmail.comha sido creado con exito
+
+15/7/2023 - 1:04:49 p. m.: Crear Usuario Service: El usuario: italo de email: afaasdasda@gmail.comha sido creado con exito
+
+15/7/2023 - 1:05:28 p. m.: Crear Usuario Service: El usuario: italo de email: ahfaasdasda@gmail.comha sido creado con exito
+
+15/7/2023 - 1:10:44 p. m.: Crear Usuario Service: El usuario: italo de email: a@gmail.comha sido creado con exito
+
+15/7/2023 - 1:14:24 p. m.: Crear Usuario Service: El usuario: italo de email: aff@gmail.comha sido creado con exito
+

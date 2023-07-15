@@ -2,7 +2,7 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn, PrimaryGeneratedColumn, } from 'typeorm';
 import EntidadContenido from './EntidadContenido';
 
-@Entity('texto')
+
 export class EntidadTexto {
   @PrimaryGeneratedColumn()
   id: string;
