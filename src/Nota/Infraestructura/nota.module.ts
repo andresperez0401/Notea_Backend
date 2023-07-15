@@ -24,12 +24,13 @@ import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImp
 import { LoggerService } from 'src/Decorators/Aplicacion/LoggerService';
 import { buscarNotasController } from './controller/buscarNotasController';
 import { cambiarEstadoNotaController } from './controller/cambiarEstadoNotaController';
-import { moverNotaGrupoontroller } from './controller/moverNotaGrupoController';
+import { moverNotaGrupoController } from './controller/moverNotaGrupoController';
+import { buscarNotasDeGrupoController } from './controller/buscarNotasDeGrupoController';
 
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea, EntidadContenido, EntidadTexto]),forwardRef(() => DecoratorModule)],
-  controllers: [NotaController,buscarNotasController,cambiarEstadoNotaController,moverNotaGrupoontroller],
+  controllers: [NotaController,buscarNotasController,cambiarEstadoNotaController,moverNotaGrupoController, buscarNotasDeGrupoController],
   providers: [ // Aqui se agregan los servicios
     CrearNotaService,
     EliminarNotaService,

@@ -140,7 +140,7 @@ export class NotaController {
         }
     }
 
-    @Get('/grupo/:idGrupo')
+   /* @Get('/grupo/:idGrupo')
     async buscarGruposUsuario(@Res() response, @Param('idGrupo') id: string) {
         const respuesta = await this.buscarNotasDeUnGrupoService.execute(id);
         if(respuesta.isLeft()){
@@ -149,7 +149,7 @@ export class NotaController {
         else{
             return response.status(404).json(respuesta.getRight().message);
         }
-    }
+    }*/
 
     /*@Patch('/moverNota')
     async moveNote(@Res() response, @Body() notamove: CambiarGrupoNotaDto): Promise<Either<string,Error>> {

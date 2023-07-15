@@ -282,3 +282,5 @@
 
 7/15/2023 - 12:46:38 PM: Cambiar grupo de Nota Service: El nuevo grupo de la nota de id: 35f6b35a-791e-4995-a086-dac67df608a8, es el grupo de id: f8048717-dd30-4435-b2f5-f909d55616a9
 
+7/15/2023 - 12:58:19 PM: Buscar Notas De Un Grupo Service: se han buscado las notas del grupo de id: bfa35288-30c1-4382-b647-65e572d85a85
+
