@@ -122,7 +122,7 @@ export class RepositorioNotaImp implements RepositorioNota{
     async cambiarGrupoNota(id: string, idGrupo:string): Promise<Either<string,Error>> {
          const response = await this.repositorio.update(id, {grupo: idGrupo});
             if (response.affected > 0){
-                return Either.makeLeft("Estado actualizado");
+                return Either.makeLeft("Nuevo grupo de la nota actualizado");
             }else{
                 return Either.makeRight(new Error('La nota no existe'));
             }

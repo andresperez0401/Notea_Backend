@@ -280,3 +280,5 @@
 
 7/15/2023 - 12:37:20 PM: Cambiar Estado Nota Service: el nuevo estado de la nota: 35f6b35a-791e-4995-a086-dac67df608a8 es: PAPELERA
 
+7/15/2023 - 12:46:38 PM: Cambiar grupo de Nota Service: El nuevo grupo de la nota de id: 35f6b35a-791e-4995-a086-dac67df608a8, es el grupo de id: f8048717-dd30-4435-b2f5-f909d55616a9
+

@@ -151,7 +151,7 @@ export class NotaController {
         }
     }
 
-    @Patch('/moverNota')
+    /*@Patch('/moverNota')
     async moveNote(@Res() response, @Body() notamove: CambiarGrupoNotaDto): Promise<Either<string,Error>> {
         console.log('Cambiar Grupo Nota');
         const n =  await this.moverNotaGrupoService.execute(notamove)
@@ -161,7 +161,7 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
    /* @Patch('/cambiarEstado')
     async cambiarEstado(@Res() response, @Body() nota: CambiarEstadoNotaDto): Promise<Either<string,Error>> {
