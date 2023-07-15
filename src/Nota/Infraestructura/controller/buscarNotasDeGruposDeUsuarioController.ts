@@ -15,7 +15,7 @@ export class buscarNotasDeUsuarioController {
            this.buscarNotasDeUsuarioService =  new BuscarNotasDeGruposService(this.repositorio);
         };
 
-        @Post('/grupos')
+        @Patch('/grupos')
         async buscarNotasDeGrupos(@Res() response, @Body() grupos: Iterable<string>) {
             const decorator = new LoggerService<Iterable<string>, string>(this.logger, this.buscarNotasDeUsuarioService, "Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: " + grupos);
             const n = await decorator.execute(grupos);
