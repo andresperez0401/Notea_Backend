@@ -50,7 +50,7 @@ export class NotaController {
             this.cambiarEstadoDeNotaService =  new cambiarEstadoNotaService(this.repositorio);
         };
 
-    @Get('/all')
+    /*@Get('/all')
     async buscarNotas(@Res() response): Promise<Either<any, Error>>{
         console.log('Get All Notas');
         const n = await this.buscarNotasService.execute(null); 
@@ -60,7 +60,7 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
     @Post()
     @UseInterceptors(FilesInterceptor('imagenes'))

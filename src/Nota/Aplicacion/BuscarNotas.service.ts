@@ -3,7 +3,7 @@ import { Nota } from '../Dominio/AgregadoNota';
 import { Either } from 'src/Utils/Either';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
 
-export class BuscarNotas implements IAplicationService<null, string> {
+export class BuscarNotas implements IAplicationService<string, string> {
   private readonly repositorioNota: RepositorioNota;
 
   constructor(repositorioNota: RepositorioNota) {

@@ -276,3 +276,5 @@
 
 7/15/2023 - 10:54:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
 
+7/15/2023 - 12:29:03 PM: Buscar Notas Service: Se han buscado todas las notas
+
