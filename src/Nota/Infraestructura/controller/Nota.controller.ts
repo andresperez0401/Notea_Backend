@@ -50,7 +50,7 @@ export class NotaController {
             this.cambiarEstadoDeNotaService =  new cambiarEstadoNotaService(this.repositorio);
         };
 
-    @Get('/all')
+    /*@Get('/all')
     async buscarNotas(@Res() response): Promise<Either<any, Error>>{
         console.log('Get All Notas');
         const n = await this.buscarNotasService.execute(null); 
@@ -60,9 +60,9 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Post()
+    /*@Post()
     @UseInterceptors(FilesInterceptor('imagenes'))
     async crearNota(@Res() response, @Body() nota:CrearNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
@@ -88,9 +88,9 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Delete()
+    /*@Delete()
     async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){
         console.log('Delete  Nota');
         const n = await this.eliminarNotaService.execute(id);
@@ -100,9 +100,9 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Patch()
+   /* @Patch()
     @UseInterceptors(FilesInterceptor('imagenes', 5))
     async update(@Res() response, @Body() notaMod: ModificarNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<string,Error>> {
         console.log('Mod  Nota');
@@ -126,9 +126,10 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Patch('/grupos')
+    
+   /* @Get('/grupos')
     async buscarNotasDeGrupos(@Res() response, @Body() grupos: Iterable<string>) {
         console.log('Grupos');
         const n = await this.buscarNotasDeGruposService.execute(grupos);
@@ -138,9 +139,9 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Get('/grupo/:idGrupo')
+   /* @Get('/grupo/:idGrupo')
     async buscarGruposUsuario(@Res() response, @Param('idGrupo') id: string) {
         const respuesta = await this.buscarNotasDeUnGrupoService.execute(id);
         if(respuesta.isLeft()){
@@ -149,9 +150,9 @@ export class NotaController {
         else{
             return response.status(404).json(respuesta.getRight().message);
         }
-    }
+    }*/
 
-    @Patch('/moverNota')
+    /*@Patch('/moverNota')
     async moveNote(@Res() response, @Body() notamove: CambiarGrupoNotaDto): Promise<Either<string,Error>> {
         console.log('Cambiar Grupo Nota');
         const n =  await this.moverNotaGrupoService.execute(notamove)
@@ -161,9 +162,9 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Patch('/cambiarEstado')
+   /* @Patch('/cambiarEstado')
     async cambiarEstado(@Res() response, @Body() nota: CambiarEstadoNotaDto): Promise<Either<string,Error>> {
         console.log('Cambiar Estado Nota');
         const n =  await this.cambiarEstadoDeNotaService.execute(nota)
@@ -173,6 +174,6 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
 }
