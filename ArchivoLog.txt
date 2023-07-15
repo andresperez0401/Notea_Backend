@@ -8,3 +8,5 @@
 
 7/15/2023 - 1:38:31 PM: Modificar Nota Service: La nota de id: e931add9-e80e-417a-93d0-1f1436081ae2 ha sido modificada
 
+7/15/2023 - 1:53:00 PM: Eliminar nota service: se ha eliminado la nota de id: [object Object]
+

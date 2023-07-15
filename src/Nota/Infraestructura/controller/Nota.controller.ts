@@ -90,7 +90,7 @@ export class NotaController {
         }
     }
 
-    @Delete()
+    /*@Delete()
     async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){
         console.log('Delete  Nota');
         const n = await this.eliminarNotaService.execute(id);
@@ -100,7 +100,7 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
    /* @Patch()
     @UseInterceptors(FilesInterceptor('imagenes', 5))
