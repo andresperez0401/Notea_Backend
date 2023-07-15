@@ -52,3 +52,119 @@
 
 7/14/2023 - 12:50:34 PM: Crear Etiqueta Service: La etiqueta: Etiqueta Prueba Log, del usuario de id: feeec6f9-dbea-48f1-bd8f-aa01737b2e6d ha sido creada
 
+7/15/2023 - 9:15:45 AM: Crear Usuario Service: El usuario: angelito de email: angel@gmail.comha sido creado con exito
+
+7/15/2023 - 9:15:46 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:15:46 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:15:46 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:15:46 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:15:46 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:15:46 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:16:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:16:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:19:23 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:19:23 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:19:23 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:19:23 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:24:46 AM: Loguear Usuario Service: El usuario: angel@gmail.com ha hecho login
+
+7/15/2023 - 9:24:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:24:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:24:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:24:54 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:25:44 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:25:44 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 84bb2f99-8ac7-4026-9aa2-5aa5c21c8d0b
+
+7/15/2023 - 9:57:54 AM: Loguear Usuario Service: El usuario: qwer@gmail.com ha hecho login
+
+7/15/2023 - 9:57:55 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:57:55 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:57:55 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:58:04 AM: Loguear Usuario Service: El usuario: qwer@gmail.com ha hecho login
+
+7/15/2023 - 9:58:04 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:58:04 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:58:04 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:58:49 AM: Loguear Usuario Service: El usuario: qwer@gmail.com ha hecho login
+
+7/15/2023 - 9:58:49 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:58:49 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:58:49 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:58:56 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:58:56 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: c3ee8937-1c77-4f8a-bc36-1b2f983f6877
+
+7/15/2023 - 9:59:31 AM: Usuario no encontrado
+
+7/15/2023 - 10:03:46 AM: Crear Usuario Service: El usuario: angel de email: qwer@gmail.comha sido creado con exito
+
+7/15/2023 - 10:03:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:03:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:03:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:03:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:03:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:03:47 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:03:55 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:03:55 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:04:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:04:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:04:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:04:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:06:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:06:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:07:04 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:07:04 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:07:04 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:07:04 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:17:39 AM: Loguear Usuario Service: El usuario: qwer@gmail.com ha hecho login
+
+7/15/2023 - 10:17:40 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:17:40 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:17:40 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+

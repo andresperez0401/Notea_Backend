@@ -18,10 +18,10 @@ import { EntidadContenidoNota } from 'src/Nota/Dominio/Entidades/EntidadContenid
 import EntidadContenido from '../entities/EntidadContenido';
 import EntidadTexto from '../entities/EntidadTexto';
 import { EntidadTareaNota } from 'src/Nota/Dominio/Entidades/EntidadTarea';
-import { AggNotaToEntityService } from '../servicios/AggNotaToEntity.Service';
+import { AggNotaToEntityService } from '../servicios/AggNotaToEntityService';
 import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
-import { EntityToAggNotaService } from '../servicios/EntityToAggNota.service';
-import { EntityToStringService } from '../servicios/EntityToString.service';
+import { EntityToAggNotaService } from '../servicios/EntityToAggNotaService';
+import { EntityToStringService } from '../servicios/EntityToStringService';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
