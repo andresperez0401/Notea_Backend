@@ -10,3 +10,5 @@
 
 7/15/2023 - 1:53:00 PM: Eliminar nota service: se ha eliminado la nota de id: [object Object]
 
+7/15/2023 - 2:00:59 PM: Crear Nota Service: la nota: CreateNotaLOg, ha sido creada
+

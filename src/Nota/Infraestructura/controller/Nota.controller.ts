@@ -62,7 +62,7 @@ export class NotaController {
         }
     }*/
 
-    @Post()
+    /*@Post()
     @UseInterceptors(FilesInterceptor('imagenes'))
     async crearNota(@Res() response, @Body() nota:CrearNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
@@ -88,7 +88,7 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
     /*@Delete()
     async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){

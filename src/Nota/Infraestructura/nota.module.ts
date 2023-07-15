@@ -29,11 +29,12 @@ import { buscarNotasDeGrupoController } from './controller/buscarNotasDeGrupoCon
 import { buscarNotasDeUsuarioController } from './controller/buscarNotasDeGruposDeUsuarioController';
 import { upadateNotaController } from './controller/updateNotaController';
 import { eliminarNotaController } from './controller/eliminarNotaController';
+import { crearNotaController } from './controller/crearNotaController';
 
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea, EntidadContenido, EntidadTexto]),forwardRef(() => DecoratorModule)],
-  controllers: [NotaController,buscarNotasController,cambiarEstadoNotaController,moverNotaGrupoController, buscarNotasDeGrupoController,buscarNotasDeUsuarioController,upadateNotaController,eliminarNotaController],
+  controllers: [NotaController,buscarNotasController,cambiarEstadoNotaController,moverNotaGrupoController, buscarNotasDeGrupoController,buscarNotasDeUsuarioController,upadateNotaController,eliminarNotaController,crearNotaController],
   providers: [ // Aqui se agregan los servicios
     CrearNotaService,
     EliminarNotaService,
