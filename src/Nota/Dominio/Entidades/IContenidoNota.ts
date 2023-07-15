@@ -170,13 +170,15 @@ export { EntidadImagenNotaa };
 
 class FabricaContenido {
     static crearContenidoNotaFromJson(contenido: any): Optional<Array<IContenidoNota>> {
-        console.log('hola');
+        console.log('CreandoContenidoNoaFronJson');
+        console.log(contenido.getValue());
 
         let opContenido = new Optional<Array<IContenidoNota>>();
+
         let contenidoAux: Array<IContenidoNota>;
         if (contenido.hasvalue()) {
             contenidoAux = new Array<IContenidoNota>();
-            contenido.getValue().value.forEach(contenido => {
+            contenido.getValue().contenido.forEach(contenido => {
 
                 if (contenido.texto) { //agregamos el valor si tiene
                     if (contenido.id)

@@ -168,3 +168,111 @@
 
 7/15/2023 - 10:17:40 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
 
+7/15/2023 - 10:31:26 AM: Loguear Usuario Service: El usuario: qwer@gmail.com ha hecho login
+
+7/15/2023 - 10:31:27 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:31:27 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:31:27 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:35:57 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:36:17 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:36:17 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:36:17 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:36:57 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:37:18 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:37:18 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:37:18 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:02 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:02 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:02 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:02 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:02 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:24 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:24 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:24 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:38:56 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:13 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:14 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:14 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:45 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:45 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:39:45 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:41:13 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:41:45 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:42:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:42:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:42:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:47:42 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:48:03 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:48:03 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:48:03 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:49:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:50:10 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:50:10 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:50:10 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:51:17 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:51:40 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:51:40 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:51:40 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:53:19 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:54:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:54:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
+7/15/2023 - 10:54:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: dd2ad382-b9a1-463d-904e-3cb785c2568e
+
