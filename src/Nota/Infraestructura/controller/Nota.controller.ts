@@ -163,7 +163,7 @@ export class NotaController {
         }
     }
 
-    @Patch('/cambiarEstado')
+   /* @Patch('/cambiarEstado')
     async cambiarEstado(@Res() response, @Body() nota: CambiarEstadoNotaDto): Promise<Either<string,Error>> {
         console.log('Cambiar Estado Nota');
         const n =  await this.cambiarEstadoDeNotaService.execute(nota)
@@ -173,6 +173,6 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
 }

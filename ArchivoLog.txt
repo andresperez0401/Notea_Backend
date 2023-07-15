@@ -278,3 +278,5 @@
 
 7/15/2023 - 12:29:03 PM: Buscar Notas Service: Se han buscado todas las notas
 
+7/15/2023 - 12:37:20 PM: Cambiar Estado Nota Service: el nuevo estado de la nota: 35f6b35a-791e-4995-a086-dac67df608a8 es: PAPELERA
+
