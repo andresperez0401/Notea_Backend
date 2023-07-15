@@ -128,7 +128,7 @@ export class NotaController {
         }
     }
 
-    @Get('/grupos')
+    @Patch('/grupos')
     async buscarNotasDeGrupos(@Res() response, @Body() grupos: Iterable<string>) {
         console.log('Grupos');
         const n = await this.buscarNotasDeGruposService.execute(grupos);
