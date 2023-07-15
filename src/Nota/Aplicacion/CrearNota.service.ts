@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { CrearNotaDto } from './dto/CrearNota.dto';
 import { Either } from 'src/Utils/Either';

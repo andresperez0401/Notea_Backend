@@ -172,8 +172,8 @@ export class RepositorioNotaImp implements RepositorioNota{
     async buscarNotasDeGrupos(grupos: Iterable<string>,): 
         Promise<Either<string, Error>> {
 
-         const listaGrupos : string[] = [...grupos];
-         const listaNotas : string[] = [];
+            const listaGrupos : string[] = [...grupos];
+            let listaNotas : Optional<string[]> = new Optional<string[]>();
 
         for (const grupo of listaGrupos){
             const respuesta: EntidadNota[] = await this.repositorio.find({
@@ -184,12 +184,14 @@ export class RepositorioNotaImp implements RepositorioNota{
                 const notas = this.EntityToString.execute(respuesta);
 
                 if (notas.isLeft())
-                    listaNotas.push(...notas.getLeft());          
+                    if (!listaNotas.hasvalue())
+                        listaNotas = new Optional<string[]>([...notas.getLeft()]);
+                    listaNotas.getValue().push(...notas.getLeft());          
             } 
         }
 
-        if(listaNotas.length > 0){
-            const nuevaLista = JSON.parse(JSON.stringify(listaNotas));
+        if(listaNotas.hasvalue()){
+            const nuevaLista = JSON.parse(JSON.stringify(listaNotas.getValue()));
             return Either.makeLeft<string, Error>(nuevaLista);
         }
         else{

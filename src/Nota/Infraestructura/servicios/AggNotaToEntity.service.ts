@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
 import EntidadContenido from '../entities/EntidadContenido';
 import { Either } from 'src/Utils/Either';
 import { EntidadContenidoNota } from 'src/Nota/Dominio/Entidades/EntidadContenidoNota';
@@ -13,6 +12,7 @@ import { EntidadNota } from '../entities/EntidadNota';
 import { IContenidoNota } from 'src/Nota/Dominio/Entidades/IContenidoNota';
 import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEtiqueta';
 import { buscarEtiquetasService } from 'src/Etiqueta/Aplicacion/buscarEtiquetas.service';
+import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
 
 
 export class AggNotaToEntityService implements IInfraestructureService<Nota, EntidadNota>
