@@ -183,10 +183,14 @@ export class RepositorioNotaImp implements RepositorioNota{
             if (respuesta) {
                 const notas = this.EntityToString.execute(respuesta);
 
-                if (notas.isLeft())
-                    if (!listaNotas.hasvalue())
+                if (notas.isLeft()){
+                    if (!listaNotas.hasvalue()){
                         listaNotas = new Optional<string[]>([...notas.getLeft()]);
-                    listaNotas.getValue().push(...notas.getLeft());          
+                    }
+                    else{
+                    listaNotas.getValue().push(...notas.getLeft());
+                   }
+                }          
             } 
         }
 

@@ -128,7 +128,7 @@ export class NotaController {
         }
     }
 
-    @Get('/grupos')
+   /* @Get('/grupos')
     async buscarNotasDeGrupos(@Res() response, @Body() grupos: Iterable<string>) {
         console.log('Grupos');
         const n = await this.buscarNotasDeGruposService.execute(grupos);
@@ -138,7 +138,7 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
    /* @Get('/grupo/:idGrupo')
     async buscarGruposUsuario(@Res() response, @Param('idGrupo') id: string) {
