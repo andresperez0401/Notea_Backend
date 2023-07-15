@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Either } from 'src/Utils/Either';
 import { Nota } from '../Dominio/AgregadoNota';
@@ -9,7 +7,6 @@ export class buscarNotasDeGrupoService implements IAplicationService<string, str
 
   private readonly repositorioNota: RepositorioNota;
   constructor( 
-    @Inject('RepositorioNota')
     repositorioNota: RepositorioNota) {
     this.repositorioNota = repositorioNota;
   }

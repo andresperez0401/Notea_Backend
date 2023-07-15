@@ -1,0 +1,54 @@
+10:24:50 PM: BuscarGrupoPorIdService: se ha buscado el grupo de id: 01d26733-5af1-44f6-8565-1d2239c3d27c
+
+10:25:01 PM: BuscarGrupoPorIdService: se ha buscado el grupo de id: 01d26733-5af1-44f6-8565-1d2239c3d27c
+
+10:25:01 PM: BuscarGrupoPorIdService: se ha buscado el grupo de id: 01d26733-5af1-44f6-8565-1d2239c3d27c
+
+10:36:42 AM: El grupo: grupoLoggerPrueba2 ha sido creado con exito
+
+10:47:32 AM: Buscar todos los grupos service: se han buscado todos los grupos 
+
+ Thu Jul 13 2023 10:53:18 GMT-0400 (Venezuela Time) - 10:53:18 AM: Buscar todos los grupos service: se han buscado todos los grupos 
+
+ 13 - 10:54:03 AM: Buscar todos los grupos service: se han buscado todos los grupos 
+
+ 7/13/2023 - 10:54:52 AM: Buscar todos los grupos service: se han buscado todos los grupos 
+
+ 7/13/2023 - 11:05:48 AM: No se encontro grupo para eliminar
+
+ 7/13/2023 - 11:05:55 AM: Eliminar Grupo Service: El grupo de id: 5fe55850-128e-4aeb-979d-a5fcacdc86ed ha sido eliminado con exito
+
+ 7/13/2023 - 11:07:07 AM: No se encontro grupo para eliminar
+
+7/13/2023 - 11:18:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b32
+
+7/13/2023 - 11:18:39 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 3aa4a4a4-3e7e-405b-a6f8-a20663167b32
+
+7/13/2023 - 11:19:21 AM: Grupo no encontrado
+
+7/13/2023 - 11:19:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 3aa4a4a4-3e7e-405b-a6f8-a20663167b32
+
+7/13/2023 - 11:24:40 AM: Error al obtener los grupos del usuario 3aa4a4a4-3e7e-405b-a6f8-a20663167b32
+
+7/13/2023 - 11:33:01 AM: Editar Grupo Service: El grupo: GRUPOACTUALIZADO2 ha sido editado con exito
+
+7/13/2023 - 10:46:14 PM: El usuario: Luis ha sido editado con exito
+
+7/13/2023 - 10:56:25 PM: Loguear Usuario Service: El usuario: andres@gmail.com ha hecho login
+
+7/13/2023 - 11:10:17 PM: Eliminar Usuario Service: El usuario de id: feeec6f9-dbea-48f1-bd8f-aa01737b2e6d ha sido eliminado con exito
+
+7/13/2023 - 11:24:07 PM: Buscar Usuario por Id Service: Se ha buscado el usuario de id: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
+
+7/13/2023 - 11:33:01 PM: Buscar Usuario por email Service: Se ha buscado el usuario de email: andres@gmail.com
+
+7/13/2023 - 11:41:13 PM: Buscar Todos los Usuarios Service: Se han buscado todos los usuarios
+
+7/13/2023 - 11:56:36 PM: Crear Usuario Service: El usuario: luis ha sido creado con exito
+
+7/14/2023 - 12:32:47 PM: Actualizar Etiqueta Service: La etiqueta de id: 0a1d87c6-8747-41d7-8361-1786c95846b3 ha sido actualizada.
+
+7/14/2023 - 12:40:05 PM: Buscar Etiquetas Servcie: Se han buscado todas las etiquetas del usuario de id: b5ac8be1-8a4c-45df-a2b2-aa2e6425d4cc
+
+7/14/2023 - 12:50:34 PM: Crear Etiqueta Service: La etiqueta: Etiqueta Prueba Log, del usuario de id: feeec6f9-dbea-48f1-bd8f-aa01737b2e6d ha sido creada
+

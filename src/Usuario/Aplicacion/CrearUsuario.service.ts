@@ -1,11 +1,8 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-
-
 import { Either } from 'src/Utils/Either';
 import { CrearUsuarioDto } from './dto/CrearUsuario.dto';
 import { Usuario } from '../Dominio/AgregadoUsuario';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
-
 import { EventPublisher } from 'src/core/domain/events/EventPublisher';
 import { UsuarioCreadoEvent } from '../Dominio/eventos/UsuarioCreadoEvent'; // Importa el evento
 
@@ -31,8 +28,9 @@ export class CrearUsuarioService implements IAplicationService<CrearUsuarioDto, 
     const resultado = await this.repositorioUsuario.crearUsuario(newUser);
 
     if (resultado.isLeft()) {
-      const eventoUsuarioCreado = new UsuarioCreadoEvent(newUser.getId());
-      this.eventPublisher.publish(eventoUsuarioCreado);
+      const events = newUser.getUncommittedEvents();
+      events.forEach((event) => this.eventPublisher.publish(event));
+      newUser.clearEvents();
     }
 
     return resultado;

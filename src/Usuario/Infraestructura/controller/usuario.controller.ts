@@ -26,27 +26,34 @@ import { loguearUsuarioDTO } from 'src/Usuario/Aplicacion/dto/LoguearUsuario.dto
 import { LoguearUsuarioService } from 'src/Usuario/Aplicacion/LoguearUsuario.service';
 import { RepositorioUsuario } from 'src/Usuario/Dominio/RepositorioUsuario';
 import { EventPublisher } from 'src/core/domain/events/EventPublisher';
+import { RepositorioUsuarioImp } from '../repository/RepositorioUsuarioImp';
 
 
 @Controller('usuario')
 export class UsuarioController {
   constructor(
     private usuarioService: CrearUsuarioService,
-    private readonly buscarUsuariosService: BuscarUsuariosService,
-    private readonly buscarUsuariosEmailService: EncontrarPorEmailService,
-    private readonly buscarUsuariosIdService: EncontrarPorIdService,
-    private readonly eliminarUsuarioService: EliminarUsuarioService,
-    private readonly loguearUsuarioService: LoguearUsuarioService,
-    private readonly editarUsuarioService: EditarUsuarioService,
-
-    @Inject('RepositorioUsuario') private readonly repoUsuario: RepositorioUsuario,
+    private buscarUsuariosService: BuscarUsuariosService,
+    private buscarUsuariosEmailService: EncontrarPorEmailService,
+    private buscarUsuariosIdService: EncontrarPorIdService,
+    private eliminarUsuarioService: EliminarUsuarioService,
+    private loguearUsuarioService: LoguearUsuarioService,
+    private editarUsuarioService: EditarUsuarioService,
+    private repoUsuario: RepositorioUsuarioImp,
+   // @Inject('RepositorioUsuario') private readonly repoUsuario: RepositorioUsuario,
     @Inject('EventPublisher') private readonly eventPublisher: EventPublisher,
   ) {
     this.usuarioService = new CrearUsuarioService(this.repoUsuario,eventPublisher);
+    this.buscarUsuariosService =  new BuscarUsuariosService(this.repoUsuario);
+    this.buscarUsuariosEmailService = new EncontrarPorEmailService(this.repoUsuario);
+    this.buscarUsuariosIdService = new EncontrarPorIdService(this.repoUsuario);
+    this.eliminarUsuarioService = new EliminarUsuarioService(this.repoUsuario);
+    this.loguearUsuarioService = new LoguearUsuarioService(this.repoUsuario);
+    this.editarUsuarioService = new EditarUsuarioService(this.repoUsuario);
 
   }
 
-  @Post()
+ /* @Post()
   async crearUsuario(@Res() response, @Body() payload: CrearUsuarioDto) {
 
     const email = await this.buscarUsuariosEmailService.execute(payload.email);
@@ -64,10 +71,10 @@ export class UsuarioController {
     } else {
       return response.status(404).json({message: 'El email ya existe'});
     }
-  }
+  }*/
 
   //buscar todos los usuarios
-  @Get('/all')
+  /*@Get('/all')
   async buscarUsuarios(@Res() response) {
     const respuesta = await this.buscarUsuariosService.execute();
 
@@ -77,9 +84,9 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
   //Buscar por email
-  @Get('email/:email')
+  /*@Get('email/:email')
   async buscarUsuarioPorEmail(@Res() response, @Param('email') email: string) {
     const respuesta = await this.buscarUsuariosEmailService.execute(email)
   
@@ -89,9 +96,9 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
   //Buscar por id
-  @Get('id/:id')
+  /*@Get('id/:id')
   async buscarUsuarioPorId(@Res() response, @Param('id') id: string) {
     const respuesta = await this.buscarUsuariosIdService.execute(id);
 
@@ -101,9 +108,9 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
-  //Loguear usuario
+ /* //Loguear usuario
   @Post('/login')
   async loguearUsuario(@Res() response, @Body() payload: loguearUsuarioDTO) {
     const respuesta = await this.loguearUsuarioService.execute(payload);
@@ -114,9 +121,9 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 
-  //Eliminar usuario
+ /* //Eliminar usuario
   @Delete(':id')
   async eliminarUsuario(@Res() response, @Param('id') id: string) {
     const respuesta = await this.eliminarUsuarioService.execute(id);
@@ -127,9 +134,9 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
   //Editar usuario
-  @Put(':id')
+ /* @Put(':id')
   async editarUsuario(
     @Res() response,
     @Param('id') id: string,
@@ -146,5 +153,5 @@ export class UsuarioController {
     else{
       return response.status(404).json(respuesta.getRight().message);
     }
-  }
+  }*/
 }

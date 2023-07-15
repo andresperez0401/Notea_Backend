@@ -1,6 +1,5 @@
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Either } from 'src/Utils/Either';
-import { Inject } from '@nestjs/common';
 
 import { Etiqueta } from 'src/Etiqueta/Dominio/AgregadoEtiqueta';
 import { RepositorioEtiqueta } from 'src/Etiqueta/Dominio/RepositorioEtiqueta';
@@ -11,7 +10,6 @@ export class buscarEtiquetasService
   private readonly repositorioEtiqueta: RepositorioEtiqueta;
 
   constructor(
-    @Inject('RepositorioEtiqueta')
     repositorioEtiq: RepositorioEtiqueta,
   ) {
     this.repositorioEtiqueta = repositorioEtiq;

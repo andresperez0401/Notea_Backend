@@ -1,4 +1,3 @@
-import { Inject } from '@nestjs/common';
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { actualizarEtiquetaDto } from './dto/actualizarEtiqueta.dto';
 import { Either } from 'src/Utils/Either';
@@ -10,10 +9,7 @@ export class actualizarEtiquetaService
 {
   private readonly repositorio: RepositorioEtiqueta;
 
-  constructor(
-    @Inject('RepositorioEtiqueta')
-    repositorioEtiqueta: RepositorioEtiqueta,
-  ) {
+  constructor(repositorioEtiqueta: RepositorioEtiqueta) {
     this.repositorio = repositorioEtiqueta;
   }
 

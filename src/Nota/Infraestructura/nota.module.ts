@@ -42,5 +42,7 @@ import { EntityToStringService } from './servicios/EntityToString.service';
       useClass: RepositorioNotaImp
     }
   ],
+  exports: [CrearNotaService,RepositorioNotaImp], 
+
 })
 export class NotaModule {}

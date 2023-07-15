@@ -1,10 +1,10 @@
 export enum colorEtiqueta {
-    ROJO = 'ROJO',
-    AZUL = 'AZUL',
-    VERDE = 'VERDE',
-    AMARILLO = 'AMARILLO',
-    MORADO = 'MORADO',
-    NARANJA = 'NARANJA',
-    CELESTE = 'CELESTE',
-    GRIS = 'GRIS'
-  }
+  AMBER = 'AMBER',
+  BLUE = 'BLUE',
+  GREEN = 'GREEN',
+  ORANGE = 'ORANGE',
+  PURPLE = 'PURPLE',
+  RED = 'RED',
+  BLACK = 'BLACK',
+  INDIGO = 'INDIGO',
+}
