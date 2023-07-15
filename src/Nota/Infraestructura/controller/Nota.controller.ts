@@ -102,7 +102,7 @@ export class NotaController {
         }
     }
 
-    @Patch()
+   /* @Patch()
     @UseInterceptors(FilesInterceptor('imagenes', 5))
     async update(@Res() response, @Body() notaMod: ModificarNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<string,Error>> {
         console.log('Mod  Nota');
@@ -126,7 +126,7 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
    /* @Get('/grupos')
     async buscarNotasDeGrupos(@Res() response, @Body() grupos: Iterable<string>) {

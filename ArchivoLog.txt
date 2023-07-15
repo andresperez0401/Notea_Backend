@@ -6,3 +6,5 @@
 
 7/15/2023 - 1:20:41 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: bfa35288-30c1-4382-b647-65e572d85a85,18df76e6-14be-4e3e-97c2-ff26a7c1b611
 
+7/15/2023 - 1:38:31 PM: Modificar Nota Service: La nota de id: e931add9-e80e-417a-93d0-1f1436081ae2 ha sido modificada
+
