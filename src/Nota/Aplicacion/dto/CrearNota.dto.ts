@@ -8,7 +8,7 @@ export class CrearNotaDto {
   grupo: string;
   etiquetas?: string[];
   
-  contenido: string;
+  contenido: any;
  
   imagenes?: { nombre: string, buffer: Buffer, orden: number}[];
 }

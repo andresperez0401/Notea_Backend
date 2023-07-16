@@ -48,7 +48,6 @@ export class Nota{
 
             let idEtiquetas;
             if (etiquetas.hasvalue()){
-                console.log(etiquetas.getValue());
                 idEtiquetas = etiquetas.getValue().map((etiqueta) => idEtiqueta.crearIdEtiqueta(etiqueta));
             }
 

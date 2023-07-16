@@ -170,8 +170,6 @@ export { EntidadImagenNotaa };
 
 class FabricaContenido {
     static crearContenidoNotaFromJson(contenido: any): Optional<Array<IContenidoNota>> {
-        console.log('CreandoContenidoNoaFronJson');
-        console.log(contenido.getValue());
 
         let opContenido = new Optional<Array<IContenidoNota>>();
 

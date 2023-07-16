@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntidadNota } from './entities/EntidadNota';
 import { NotaController } from './controller/Nota.controller';
@@ -19,11 +19,22 @@ import EntidadTexto from './entities/EntidadTexto';
 import { AggNotaToEntityService } from './servicios/AggNotaToEntityService'
 import { EntityToAggNotaService } from './servicios/EntityToAggNotaService';
 import { EntityToStringService } from './servicios/EntityToStringService';
+import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module';
+import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
+import { LoggerService } from 'src/Decorators/Aplicacion/LoggerService';
+import { buscarNotasController } from './controller/buscarNotasController';
+import { cambiarEstadoNotaController } from './controller/cambiarEstadoNotaController';
+import { moverNotaGrupoController } from './controller/moverNotaGrupoController';
+import { buscarNotasDeGrupoController } from './controller/buscarNotasDeGrupoController';
+import { buscarNotasDeUsuarioController } from './controller/buscarNotasDeGruposDeUsuarioController';
+import { upadateNotaController } from './controller/updateNotaController';
+import { eliminarNotaController } from './controller/eliminarNotaController';
+import { crearNotaController } from './controller/crearNotaController';
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea, EntidadContenido, EntidadTexto])],
-  controllers: [NotaController],
+  imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea, EntidadContenido, EntidadTexto]),forwardRef(() => DecoratorModule)],
+  controllers: [NotaController,buscarNotasController,cambiarEstadoNotaController,moverNotaGrupoController, buscarNotasDeGrupoController,buscarNotasDeUsuarioController,upadateNotaController,eliminarNotaController,crearNotaController],
   providers: [ // Aqui se agregan los servicios
     CrearNotaService,
     EliminarNotaService,
@@ -37,6 +48,8 @@ import { EntityToStringService } from './servicios/EntityToStringService';
     AggNotaToEntityService,
     EntityToAggNotaService,
     EntityToStringService,
+    ILoggerImplementation,
+    LoggerService,
     { // Aqui se agregan los repositorios, se debe especificar la clase que implementa la interfaz
       provide: 'RepositorioNota',
       useClass: RepositorioNotaImp

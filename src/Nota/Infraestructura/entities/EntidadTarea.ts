@@ -2,7 +2,6 @@
 import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 import EntidadContenido from './EntidadContenido';
 
-@Entity('tarea')
 export class EntidadTarea {
   @PrimaryColumn()
   id: string;
