@@ -36,3 +36,13 @@
 
 15/7/2023 - 1:14:24 p. m.: Crear Usuario Service: El usuario: italo de email: aff@gmail.comha sido creado con exito
 
+15/7/2023 - 2:42:01 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 3123123
+
+15/7/2023 - 2:44:45 p. m.: Buscar Todos los Usuarios Service: Se han buscado todos los usuarios
+
+15/7/2023 - 10:08:07 p. m.: Crear Nota Service: la nota: probando, ha sido creada
+
+15/7/2023 - 10:08:35 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+15/7/2023 - 10:09:05 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 3123123
+
