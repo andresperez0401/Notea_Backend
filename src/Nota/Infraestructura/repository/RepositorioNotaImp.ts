@@ -186,7 +186,8 @@ export class RepositorioNotaImp implements RepositorioNota{
                 if (notas.isLeft())
                     if (!listaNotas.hasvalue())
                         listaNotas = new Optional<string[]>([...notas.getLeft()]);
-                    listaNotas.getValue().push(...notas.getLeft());          
+                    else
+                        listaNotas.getValue().push(...notas.getLeft());
             } 
         }
 
