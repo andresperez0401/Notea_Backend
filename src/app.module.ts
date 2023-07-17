@@ -8,6 +8,7 @@ import { EtiquetaModule } from './Etiqueta/Infraestructura/etiqueta.module';
 import { GrupoModule } from './Grupo/Infraestructura/grupo.module';
 import { CqrsModule } from '@nestjs/cqrs';
 import { DecoratorModule } from './Decorators/Infraestructura/decorator.module';
+import { SuscripcionModule } from './Suscripcion/Infraestructura/suscripcion.module';
 @Module({
   imports: [
     DatabaseModule,
@@ -17,6 +18,7 @@ import { DecoratorModule } from './Decorators/Infraestructura/decorator.module';
     GrupoModule,
     CqrsModule,
     DecoratorModule,
+    SuscripcionModule,
   ], // Importa tus módulos aquí
   controllers: [AppController],
   providers: [AppService],

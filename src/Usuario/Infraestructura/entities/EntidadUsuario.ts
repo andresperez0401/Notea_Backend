@@ -16,9 +16,6 @@ export class EntidadUsuario {
 
   @Column()
   clave: string;
-
-  @Column()
-  suscripcion: boolean;
 }
 
 // @CreateDateColumn({

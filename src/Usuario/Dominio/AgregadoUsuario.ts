@@ -14,7 +14,6 @@ export class Usuario extends AggregateRoot {
   private apellido: apellidoUsuario;
   private email: emailUsuario;
   private clave: claveUsuario;
-  private suscripcion: boolean;
 
 
   private constructor(
@@ -22,7 +21,6 @@ export class Usuario extends AggregateRoot {
     apellido: apellidoUsuario,
     email: emailUsuario,
     clave: claveUsuario,
-    suscripcion: boolean,
     id?: idUsuario,
   ) {
     super()
@@ -31,9 +29,6 @@ export class Usuario extends AggregateRoot {
     this.apellido = apellido;
     this.email = email;
     this.clave = clave;
-    this.suscripcion = suscripcion;
-
-;
     
   }
 
@@ -42,7 +37,6 @@ export class Usuario extends AggregateRoot {
     apellido: string,
     email: string,
     clave: string,
-    suscripcion: boolean,
     id?: string,
   ): Usuario {
     const usuario=new Usuario(
@@ -50,7 +44,6 @@ export class Usuario extends AggregateRoot {
       apellidoUsuario.crearApellidoUsuario(apellido),
       emailUsuario.crearEmail(email),
       claveUsuario.createClave(clave), 
-      suscripcion, 
       idUsuario.crearIdUsuario(id)
     );
     const usuarioCreadoEvent = new UsuarioCreadoEvent(usuario.getId());
@@ -74,10 +67,6 @@ export class Usuario extends AggregateRoot {
 
   public getEmail() : string {
     return this.email.getValue();
-  }
-
-  public isSuscribed() : boolean {
-    return this.suscripcion;
   }
 
   public getClave() : string {

@@ -13,7 +13,7 @@ export class Suscripcion{
     private tipo: TipoSuscripcionEnum;
     private idUsuario: idUsuario;
 
-    constructor(fechaInicio: Date, tipo: TipoSuscripcionEnum, idUsuario: idUsuario, id: idSuscripcion, fechaFin?: Optional<Date>){
+    constructor(fechaInicio: Date, tipo: TipoSuscripcionEnum, idUsuario: idUsuario, id: idSuscripcion, fechaFin: Optional<Date>){
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.tipo = tipo;
@@ -21,14 +21,38 @@ export class Suscripcion{
         this.fechaFin = fechaFin;
     }
 
-    static crearSuscripcion(fechaInicio: Date, tipo: TipoSuscripcionEnum, idUser: string, id?: string, fechaFin?: Date): Suscripcion{
+    static crearSuscripcion(fechaInicio: Date, tipo: TipoSuscripcionEnum, idUser: string,fechaFin: Optional<Date>, id?: string,): Suscripcion{
         
         return new Suscripcion(
             fechaInicio,
             TipoSuscripcionEnum[tipo],
             idUsuario.crearIdUsuario(idUser),
             idSuscripcion.crearIdSuscripcion(id),
-            new Optional<Date>(fechaFin),
+            fechaFin,
         );
+    }
+
+    public getId(): string{
+        return this.id.getValue();
+    }
+    public getFechaInicio(): Date{  
+        return this.fechaInicio;
+    }
+    public getFechaFin(): Optional<Date>{
+        return this.fechaFin;
+    }
+    public getTipo(): string{
+        return this.tipo.toString();;
+    }
+    public getIdUsuario(): string{
+        return this.idUsuario.getValue();
+    }
+
+    public setFechaFin(fechaFin: Date): void{
+        this.fechaFin = new Optional<Date>(fechaFin);
+    }
+
+    public setTipo(tipo: TipoSuscripcionEnum): void{
+        this.tipo = tipo;
     }
 }

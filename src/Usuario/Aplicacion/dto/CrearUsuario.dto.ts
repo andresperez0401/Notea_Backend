@@ -9,8 +9,6 @@ export class CrearUsuarioDto {
   email: string;
 
   clave: string;
-
-  suscripcion: boolean;
 }
 export class UpdateUsuarioDto extends PartialType(CrearUsuarioDto) {}
 
