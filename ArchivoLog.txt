@@ -46,3 +46,17 @@
 
 15/7/2023 - 10:09:05 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 3123123
 
+7/17/2023 - 6:50:36 PM: Crear Usuario Service: El usuario: Andres de email: andresperez0401@gmail.comha sido creado con exito
+
+7/17/2023 - 6:57:37 PM: Crear Usuario Service: El usuario: Andres de email: andresperez0401@gmail.comha sido creado con exito
+
+7/17/2023 - 7:10:14 PM: Crear Suscripcion Service: El usuario de id c602b17b-cf22-48a9-8f6e-ec707bf45881 se ha suscrito con exito
+
+7/17/2023 - 7:20:37 PM: El usuario no existe
+
+7/17/2023 - 7:23:09 PM: Crear Usuario Service: El usuario: Andres de email: andresperez0401@gmail.comha sido creado con exito
+
+7/17/2023 - 7:23:38 PM: El usuario no existe
+
+7/17/2023 - 7:23:42 PM: Crear Suscripcion Service: El usuario de id 252c4b05-8bcd-437e-a0b0-39c781ecb36d se ha suscrito con exito
+
