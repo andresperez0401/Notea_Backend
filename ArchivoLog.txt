@@ -60,3 +60,5 @@
 
 7/17/2023 - 7:23:42 PM: Crear Suscripcion Service: El usuario de id 252c4b05-8bcd-437e-a0b0-39c781ecb36d se ha suscrito con exito
 
+7/17/2023 - 7:36:56 PM: Crear Usuario Service: El usuario: Luisiana de email: luisianameliane@gmail.comha sido creado con exito
+

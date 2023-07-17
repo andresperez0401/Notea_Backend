@@ -20,7 +20,7 @@ import { CrearSuscripcionService } from '../Aplicacion/crearSuscripcionService';
     LoggerService,
     
   ],
-  exports: [], 
+  exports: [CrearSuscripcionService, RepositorioSuscripcionImp], 
 
 })
 export class SuscripcionModule {}

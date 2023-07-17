@@ -30,6 +30,9 @@ import { buscarUsuarioPorIdController } from './controller/buscarUsuarioPorIdCon
 import { buscarUsuarioPorEmailController } from './controller/buscarUsuarioPorEmailController';
 import { buscarUsuariosController } from './controller/buscarUsuariosController';
 import { crearUsuarioController } from './controller/crearUsuarioController';
+import { SuscripcionModule } from 'src/Suscripcion/Infraestructura/suscripcion.module';
+import { CrearSuscripcionDto } from 'src/Suscripcion/Aplicacion/dto/CrearSuscripcion.dto';
+import { CrearSuscripcionService } from 'src/Suscripcion/Aplicacion/crearSuscripcionService';
 
 @Module({
   imports: [
@@ -41,6 +44,7 @@ import { crearUsuarioController } from './controller/crearUsuarioController';
     forwardRef(() => EtiquetaModule),
     forwardRef(() => GrupoModule),
     forwardRef(() => NotaModule),
+    forwardRef(() => SuscripcionModule),
   ],
   controllers: [UsuarioController,
                 editarUsuarioController,

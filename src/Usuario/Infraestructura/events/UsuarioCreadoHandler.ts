@@ -14,6 +14,8 @@ import { RepositorioGrupoImp } from 'src/Grupo/Infraestructura/repository/Reposi
 import { RepositorioNotaImp } from 'src/Nota/Infraestructura/repository/RepositorioNotaImp';
 import { CrearNotaDto } from 'src/Nota/Aplicacion/dto/CrearNota.dto';
 import { IdContenidoNota } from 'src/Nota/Dominio/Entidades/ValueObjectsContenido/IdContenidoNota';
+import { RepositorioSuscripcionImp } from 'src/Suscripcion/Infraestructura/RepositorioSuscripcionImpl';
+import { CrearSuscripcionService } from 'src/Suscripcion/Aplicacion/crearSuscripcionService';
 
 @EventsHandler(UsuarioCreadoEvent)
 export class UsuarioCreadoEventHandler
@@ -23,16 +25,20 @@ export class UsuarioCreadoEventHandler
     @Inject(crearEtiquetaService)
     @Inject(CrearGrupoService)
     @Inject(CrearNotaService)
+    @Inject(CrearSuscripcionService)
     private etiquetaService: crearEtiquetaService,
     private grupoService: CrearGrupoService,
     private notaService: CrearNotaService,
+    private suscripcionService: CrearSuscripcionService,
     private repositorioEtiqueta: repositorioEtiquetaImp,
     private repositorioNota: RepositorioNotaImp,
     private repositorioGrupo: RepositorioGrupoImp,
+    private repositorioSuscripcion: RepositorioSuscripcionImp,
   ) {
     this.etiquetaService = new crearEtiquetaService(this.repositorioEtiqueta);
     this.grupoService = new CrearGrupoService(this.repositorioGrupo);
     this.notaService = new CrearNotaService(this.repositorioNota);
+    this.suscripcionService = new CrearSuscripcionService(this.repositorioSuscripcion);
   }
 
   async handle(event: UsuarioCreadoEvent) {
@@ -75,6 +81,13 @@ export class UsuarioCreadoEventHandler
       contenido: contenido,
       grupo: result.getLeft().getId(),
     });
+
+
+    //creamos la suscripcion del usuario
+    await this.suscripcionService.execute({
+      idUsuario,
+    });
+
 
   }
 }
