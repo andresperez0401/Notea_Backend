@@ -4,8 +4,9 @@ import { Either } from 'src/Utils/Either';
 import { Etiqueta } from 'src/Etiqueta/Dominio/AgregadoEtiqueta';
 import { RepositorioEtiqueta } from 'src/Etiqueta/Dominio/RepositorioEtiqueta';
 
-export class buscarEtiquetasService implements IAplicationService<string, Iterable<Etiqueta>> {
-
+export class buscarEtiquetasService
+  implements IAplicationService<string, Iterable<Etiqueta>>
+{
   private readonly repositorioEtiqueta: RepositorioEtiqueta;
 
   constructor(
@@ -18,4 +19,3 @@ export class buscarEtiquetasService implements IAplicationService<string, Iterab
     return await this.repositorioEtiqueta.buscarEtiquetas(idUsuario);
   }
 }
-

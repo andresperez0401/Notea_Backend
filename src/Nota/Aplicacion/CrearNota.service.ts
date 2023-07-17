@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { CrearNotaDto } from './dto/CrearNota.dto';
 import { Either } from 'src/Utils/Either';
@@ -5,10 +6,7 @@ import { Nota } from '../Dominio/AgregadoNota';
 import { RepositorioNota } from '../Dominio/RepositorioNota';
 import { EstadoEnum } from '../Dominio/ValueObjectsNota/EstadoEnum';
 import { Optional } from 'src/Utils/Opcional';
-import { VOImagen } from '../Dominio/ValueObjectsNota/VOImagen';
-import { JsonContains } from 'typeorm';
-import { json } from 'stream/consumers';
-import { stringify } from 'querystring';
+import { VOImagen } from '../Dominio/Entidades/VOImagen';
 
 export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> {
 
@@ -22,47 +20,26 @@ export class CrearNotaService implements IAplicationService<CrearNotaDto, Nota> 
 
     const estado = EstadoEnum.GUARDADO;
     
-    let im;
-
-    if (s.imagenes) {
-      console.log("entra");
-      im = s.imagenes.map((i) => {
-      return VOImagen.crearImagenNota(i.nombre, i.buffer); 
-      });
+    let contenido = new Optional<any>();
+    if (s.contenido){
+      const auxcontenido = JSON.stringify(s.contenido);
+      contenido = new Optional<any>(JSON.parse(auxcontenido)); 
+      //como el contenido puede tener varios tipos de datos, lo pasamos a string y luego lo parseamos
     }
-
-    let ncheck;
-    let ntitulos;
-
-    if (s.tareas){
-       ncheck = s.tareas.map((t) => {
-        return t.check;
-      });
-
-       ntitulos = s.tareas.map((t) => {
-        return t.titulo;
-      });
-    }
-
-
-    //si hacemos un multipart las tareas se mandan como un string y hay que parsearlo
 
     const opLatitud = new Optional<number>(s.latitud);
     const opLongitud = new Optional<number>(s.longitud);
+    const opEtiquetas = new Optional<string[]>(s.etiquetas);
 
     const nota =  Nota.crearNota( //factory agregado
       s.titulo,
-      s.contenido,
       s.fechaCreacion,
       estado,
       s.grupo,
       opLatitud,
       opLongitud,
-      new Optional(ntitulos),
-      new Optional(ncheck),
-      new Optional(),
-      null,
-      im,
+      contenido,
+      opEtiquetas,
     );
 
     const notacreada = await this.repositorioNota.crearNota(nota);

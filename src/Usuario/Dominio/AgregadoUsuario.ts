@@ -5,10 +5,10 @@ import { emailUsuario } from './value_objects/emailUsuario';
 import { idUsuario } from './value_objects/idUsuario';
 import { nombreUsuario } from './value_objects/nombreUsuario';
 import { UsuarioCreadoEvent } from './eventos/UsuarioCreadoEvent';
-import { EventPublisher } from 'src/core/domain/events/EventPublisher';
+import { AggregateRoot } from 'src/core/domain/agregados/AggregateRoot';
 
 
-export class Usuario {
+export class Usuario extends AggregateRoot {
   private id?: idUsuario;
   private nombre: nombreUsuario;
   private apellido: apellidoUsuario;
@@ -25,6 +25,7 @@ export class Usuario {
     suscripcion: boolean,
     id?: idUsuario,
   ) {
+    super()
     this.id = id;
     this.nombre = nombre;
     this.apellido = apellido;
@@ -44,7 +45,7 @@ export class Usuario {
     suscripcion: boolean,
     id?: string,
   ): Usuario {
-    return new Usuario(
+    const usuario=new Usuario(
       nombreUsuario.crearNombreUsuario(nombre),
       apellidoUsuario.crearApellidoUsuario(apellido),
       emailUsuario.crearEmail(email),
@@ -52,6 +53,10 @@ export class Usuario {
       suscripcion, 
       idUsuario.crearIdUsuario(id)
     );
+    const usuarioCreadoEvent = new UsuarioCreadoEvent(usuario.getId());
+    usuario.addDomainEvent(usuarioCreadoEvent);
+    
+    return usuario;
   }
 
 

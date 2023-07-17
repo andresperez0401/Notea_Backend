@@ -6,6 +6,9 @@ export class VOTituloTarea {
   }
 
   static crearTituloTarea(titulo: string): VOTituloTarea {
+    if (titulo.length > 30) {
+      titulo = titulo.substring(0, 30);
+    }
     return new VOTituloTarea(titulo);
   }
 

@@ -3,7 +3,7 @@ import { Either } from 'src/Utils/Either';
 import { RepositorioUsuario } from '../Dominio/RepositorioUsuario';
 
 export class EliminarUsuarioService
-  implements IAplicationService<null, string>
+  implements IAplicationService<string, string>
 {
   private readonly repositorioUsuario: RepositorioUsuario;
 

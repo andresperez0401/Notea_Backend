@@ -3,7 +3,7 @@ import { Nota } from "../Dominio/AgregadoNota";
 import { Either } from "src/Utils/Either";
 import { RepositorioNota } from "../Dominio/RepositorioNota";
 import { ModificarNotaDto } from "./dto/ModificarNota.dto";
-import { VOImagen } from "../Dominio/ValueObjectsNota/VOImagen";
+import { VOImagen } from "../Dominio/Entidades/VOImagen";
 import { EstadoEnum } from "../Dominio/ValueObjectsNota/EstadoEnum";
 import { Optional } from "src/Utils/Opcional";
 
@@ -20,55 +20,41 @@ export class ModificarNotaService implements IAplicationService<ModificarNotaDto
 
     async execute(s: ModificarNotaDto): Promise<Either<string,Error>> {      
         
-       const estado = EstadoEnum.GUARDADO;
-    
-    let im;
+      const estado = EstadoEnum.GUARDADO;
 
-    if (s.imagenes) {
-      console.log("entra");
-      im = s.imagenes.map((i) => {
-      return VOImagen.crearImagenNota(i.nombre, i.buffer); 
-      });
-    }
+      let im;
 
-    let ncheck;
-    let ntitulos;
-    let nids;
+      let contenido = new Optional<any>();
+      if (s.contenido) {
+        const auxcontenido = JSON.stringify(s.contenido);
+        contenido = new Optional<any>(JSON.parse(auxcontenido));
+        //si hacemos un multipart el contenido se mandan como un string y hay que parsearlo
+        //a pesar de ser inestable, es la unica forma de mandar un array de objetos distintos
+        //pido disculpas
+      }
 
-    if (s.tareas){
-       ncheck = s.tareas.map((t) => {
-        return t.check;
-      });
+      if (s.imagenes) {
+        im = s.imagenes.map((i) => {
+          return VOImagen.crearImagenNota(i.nombre, i.buffer);
+        });
+      }
 
-       ntitulos = s.tareas.map((t) => {
-        return t.titulo;
-      });
-      nids = s.tareas.map((t) => {
-        return t.id;
-      });
-    }
+      const opLatitud = new Optional<number>(s.latitud);
+      const opLongitud = new Optional<number>(s.longitud);
+      const opEtiquetas = new Optional<string[]>(s.etiquetas);
 
 
-    //si hacemos un multipart las tareas se mandan como un string y hay que parsearlo
-
-    const opLatitud = new Optional<number>(s.latitud);
-    const opLongitud = new Optional<number>(s.longitud);
-
-    const nota =  Nota.crearNota( //factory agregado
-      s.titulo,
-      s.contenido,
-      null,
-      estado,
-      s.grupo,
-      opLatitud,
-      opLongitud,
-      new Optional(ntitulos),
-      new Optional(ncheck),
-      new Optional(nids),
-      s.id,
-      im,
-    );
-
+      const nota = Nota.crearNota( //factory agregado
+        s.titulo,
+        s.fechaCreacion,
+        estado,
+        s.grupo,
+        opLatitud,
+        opLongitud,
+        contenido,
+        opEtiquetas,
+        s.id,
+      );
 
         return await this.repositorioNota.updateNota(nota);
     }

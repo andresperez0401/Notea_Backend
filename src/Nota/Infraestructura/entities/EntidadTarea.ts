@@ -1,7 +1,7 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
-import { EntidadNota } from './EntidadNota';
+// eslint-disable-next-line prettier/prettier
+import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import EntidadContenido from './EntidadContenido';
 
-@Entity('tarea')
 export class EntidadTarea {
   @PrimaryColumn()
   id: string;
@@ -12,12 +12,12 @@ export class EntidadTarea {
   @Column()
   check: boolean;
 
-  @ManyToOne(() => EntidadNota, (nota) => nota.tareas, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-    nullable: true,
-  })
-  nota: EntidadNota;
+  // @ManyToOne(() => EntidadContenido, (contenido) => contenido.tareas, {
+  //   onDelete: 'CASCADE',
+  //   onUpdate: 'CASCADE',
+  //   nullable: true,
+  // })
+  // contenido: EntidadContenido;
 }
 
 export default EntidadTarea;

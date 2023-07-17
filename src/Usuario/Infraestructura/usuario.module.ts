@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntidadUsuario } from './entities/EntidadUsuario';
 import { UsuarioController } from './controller/usuario.controller';
@@ -13,18 +13,44 @@ import { LoguearUsuarioService } from '../Aplicacion/LoguearUsuario.service';
 
 import { EventPublisherImpl } from './events/EventPublisherImpl';
 
-import { UsuarioCreadoEventHandler } from 'src/Usuario/Aplicacion/eventHandlers/UsuarioCreadoHandler';
+import { UsuarioCreadoEventHandler } from 'src/Usuario/Infraestructura/events/UsuarioCreadoHandler';
 
 import { EtiquetaModule } from 'src/Etiqueta/Infraestructura/etiqueta.module';
+import { NotaModule } from 'src/Nota/Infraestructura/nota.module';
+import { GrupoModule } from 'src/Grupo/Infraestructura/grupo.module';
 import { CqrsModule } from '@nestjs/cqrs';
+import { editarUsuarioController } from './controller/editarUsuarioController';
+import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module';
+import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
+import { EntidadGrupo } from 'src/Grupo/Infraestructura/entities/EntidadGrupo';
+import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEtiqueta';
+import { loguearUsuarioController } from './controller/loguearUsuarioController';
+import { eliminarUsuarioController } from './controller/eliminarUsuarioController';
+import { buscarUsuarioPorIdController } from './controller/buscarUsuarioPorIdController';
+import { buscarUsuarioPorEmailController } from './controller/buscarUsuarioPorEmailController';
+import { buscarUsuariosController } from './controller/buscarUsuariosController';
+import { crearUsuarioController } from './controller/crearUsuarioController';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([EntidadGrupo]),
+    TypeOrmModule.forFeature([entidadEtiqueta]),
     TypeOrmModule.forFeature([EntidadUsuario]),
-    CqrsModule,
-    EtiquetaModule, // Añade esta línea para importar el módulo de Etiqueta
+    forwardRef(() => DecoratorModule),
+    forwardRef(() => CqrsModule),
+    forwardRef(() => EtiquetaModule),
+    forwardRef(() => GrupoModule),
+    forwardRef(() => NotaModule),
   ],
-  controllers: [UsuarioController],
+  controllers: [UsuarioController,
+                editarUsuarioController,
+                loguearUsuarioController,
+                eliminarUsuarioController,
+                buscarUsuarioPorIdController,
+                buscarUsuarioPorEmailController,
+                buscarUsuariosController,
+                crearUsuarioController,
+                ],
   providers: [
     CrearUsuarioService,
     BuscarUsuariosService,
@@ -34,13 +60,17 @@ import { CqrsModule } from '@nestjs/cqrs';
     EditarUsuarioService,
     LoguearUsuarioService,
     UsuarioCreadoEventHandler,
-    {
-      provide: 'RepositorioUsuario',
-      useClass: RepositorioUsuarioImp,
-    },
+    RepositorioUsuarioImp,
+    EventPublisherImpl,
+    ILoggerImplementation,
     {
       provide: 'EventPublisher',
       useClass: EventPublisherImpl,
+    },
+
+    {
+      provide: 'RepositorioUsuario',
+      useClass: RepositorioUsuarioImp,
     },
   ],
 })

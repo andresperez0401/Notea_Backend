@@ -1,0 +1,48 @@
+7/15/2023 - 1:09:41 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611
+
+7/15/2023 - 1:10:09 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: bfa35288-30c1-4382-b647-65e572d85a85
+
+7/15/2023 - 1:20:06 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: bfa35288-30c1-4382-b647-65e572d85a85
+
+7/15/2023 - 1:20:41 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: bfa35288-30c1-4382-b647-65e572d85a85,18df76e6-14be-4e3e-97c2-ff26a7c1b611
+
+7/15/2023 - 1:38:31 PM: Modificar Nota Service: La nota de id: e931add9-e80e-417a-93d0-1f1436081ae2 ha sido modificada
+
+7/15/2023 - 1:53:00 PM: Eliminar nota service: se ha eliminado la nota de id: [object Object]
+
+7/15/2023 - 2:00:59 PM: Crear Nota Service: la nota: CreateNotaLOg, ha sido creada
+
+15/7/2023 - 12:47:49 p. m.: Crear Usuario Service: El usuario: italo de email: a@gmail.comha sido creado con exito
+
+15/7/2023 - 12:48:46 p. m.: Crear Usuario Service: El usuario: italo de email: a@gmail.comha sido creado con exito
+
+15/7/2023 - 12:51:01 p. m.: Crear Usuario Service: El usuario: italo de email: aa@gmail.comha sido creado con exito
+
+15/7/2023 - 12:51:31 p. m.: Crear Usuario Service: El usuario: italo de email: aaa@gmail.comha sido creado con exito
+
+15/7/2023 - 12:53:38 p. m.: Crear Usuario Service: El usuario: italo de email: aaaa@gmail.comha sido creado con exito
+
+15/7/2023 - 12:56:37 p. m.: Crear Usuario Service: El usuario: italo de email: aaada@gmail.comha sido creado con exito
+
+15/7/2023 - 12:57:15 p. m.: Crear Usuario Service: El usuario: italo de email: aasda@gmail.comha sido creado con exito
+
+15/7/2023 - 12:59:29 p. m.: Crear Usuario Service: El usuario: italo de email: afffasda@gmail.comha sido creado con exito
+
+15/7/2023 - 1:04:49 p. m.: Crear Usuario Service: El usuario: italo de email: afaasdasda@gmail.comha sido creado con exito
+
+15/7/2023 - 1:05:28 p. m.: Crear Usuario Service: El usuario: italo de email: ahfaasdasda@gmail.comha sido creado con exito
+
+15/7/2023 - 1:10:44 p. m.: Crear Usuario Service: El usuario: italo de email: a@gmail.comha sido creado con exito
+
+15/7/2023 - 1:14:24 p. m.: Crear Usuario Service: El usuario: italo de email: aff@gmail.comha sido creado con exito
+
+15/7/2023 - 2:42:01 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 3123123
+
+15/7/2023 - 2:44:45 p. m.: Buscar Todos los Usuarios Service: Se han buscado todos los usuarios
+
+15/7/2023 - 10:08:07 p. m.: Crear Nota Service: la nota: probando, ha sido creada
+
+15/7/2023 - 10:08:35 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+15/7/2023 - 10:09:05 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 3123123
+

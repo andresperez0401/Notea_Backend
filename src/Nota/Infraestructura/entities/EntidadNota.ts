@@ -2,10 +2,10 @@
 //model
 
 import { EstadoEnum } from "src/Nota/Dominio/ValueObjectsNota/EstadoEnum";
-import { Column, Entity, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryColumn } from "typeorm";
 import { EntidadUbicacion } from "./EntidadUbicacion";
-import EntidadImagen from "./EntidadImagen";
-import { EntidadTarea } from "./EntidadTarea";
+import EntidadContenido from "./EntidadContenido";
+import { entidadEtiqueta } from "src/Etiqueta/Infraestructura/entities/entidadEtiqueta";
 
 @Entity('nota')
 export class EntidadNota {
@@ -16,9 +16,6 @@ export class EntidadNota {
     @Column()
     titulo: string;
 
-    @Column()
-    contenido: string;
-
     @Column({nullable: true})
     fechaCreacion: Date;
 
@@ -28,12 +25,15 @@ export class EntidadNota {
     @Column({type:'enum', enum:EstadoEnum}) //el enumerado se guarda como string
     estado: string;
 
-    @OneToMany(() => EntidadTarea, (tarea) => tarea.nota, {cascade: ['remove', 'insert', 'update'], eager: true, nullable: true})
-    tareas: EntidadTarea[];
-
-    @OneToMany(() => EntidadImagen, (imagen) => imagen.nota, {cascade: ['remove', 'insert', 'update'], eager: true, nullable: true})
-    imagenes: EntidadImagen[];
+    @OneToMany(() => EntidadContenido, (contenido) => contenido.nota, { cascade: true, 
+        onDelete: 'CASCADE', onUpdate: 'CASCADE', eager: true, nullable: true})
+    contenidos: EntidadContenido[];
 
     @Column()
     grupo: string
+
+    @ManyToMany(() => entidadEtiqueta, (etiqueta) => etiqueta.notas, { cascade: true,
+        onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true, eager: true})
+    @JoinTable()
+    etiquetas: entidadEtiqueta[];
 }

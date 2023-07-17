@@ -50,37 +50,36 @@ export class NotaController {
             this.cambiarEstadoDeNotaService =  new cambiarEstadoNotaService(this.repositorio);
         };
 
-    @Get('/all')
-    async buscarNotas(@Res() response): Promise<Either<Iterable<Nota>, Error>>{
+    /*@Get('/all')
+    async buscarNotas(@Res() response): Promise<Either<any, Error>>{
         console.log('Get All Notas');
-        const n = await this.buscarNotasService.execute(null); //hay que validar si la locacion es null
+        const n = await this.buscarNotasService.execute(null); 
         if (n.isLeft()) {
             return response.status(200).json(n.getLeft());
         }
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Post()
-    @UseInterceptors(FilesInterceptor('imagenes', 5))
+    /*@Post()
+    @UseInterceptors(FilesInterceptor('imagenes'))
     async crearNota(@Res() response, @Body() nota:CrearNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<Nota,Error>>{
         console.log('Post Nota');
 
-        if (files) {
-            if (files.length > 5)
-            return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
-
-            if (files.length != 0) {
-                const imagenes = files.map((file) => {
-                    return {
-                        nombre: file.originalname,
-                        buffer: file.buffer,
-                    }
-                });
-                nota.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
-            }                               //ya que las imagenes se pasan por separado del dto
-        }
+        //si logramos pasar las imagenes por el body, esto no es necesario
+        
+        // if (files) { 
+        //     if (files.length != 0) {
+        //         const imagenes = files.map((file) => {
+        //             return {
+        //                 nombre: file.originalname,
+        //                 buffer: file.buffer,
+        //             }
+        //         });
+        //         nota.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
+        //     }                               //ya que las imagenes se pasan por separado del dto
+        // }
 
         const  n =  await this.crearNotaService.execute(nota);
         if (n.isLeft()) {
@@ -89,9 +88,9 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Delete()
+    /*@Delete()
     async eliminarNota(@Res() response , @Body() id :EliminarNotaDto){
         console.log('Delete  Nota');
         const n = await this.eliminarNotaService.execute(id);
@@ -101,39 +100,24 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Patch('/grupos')
-    async buscarNotasDeGrupos(@Res() response , @Body() grupos :Iterable<string>){
-        console.log('Grupos');
-        const n = await this.buscarNotasDeGruposService.execute(grupos);
-        if (n.isLeft()) {
-            return response.status(200).json(n.getLeft());
-        }
-        else {
-            return response.status(404).json(n.getRight().message);
-        }
-    }
-
-    @Patch()
+   /* @Patch()
     @UseInterceptors(FilesInterceptor('imagenes', 5))
     async update(@Res() response, @Body() notaMod: ModificarNotaDto, @UploadedFiles() files: Express.Multer.File[]): Promise<Either<string,Error>> {
         console.log('Mod  Nota');
 
-        if (files) {
-            if (files.length > 5)
-            return response.status(400).json({ message: 'No se pueden subir mas de 5 imagenes' });
-            
-            if (files.length != 0) {
-                const imagenes = files.map((file) => {
-                    return {
-                        nombre: file.originalname,
-                        buffer: file.buffer,
-                    }
-                });
-                notaMod.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
-            }                               //ya que las imagenes se pasan por separado del dto
-        }
+        // if (files) {            
+        //     if (files.length != 0) {
+        //         const imagenes = files.map((file) => {
+        //             return {
+        //                 nombre: file.originalname,
+        //                 buffer: file.buffer,
+        //             }
+        //         });
+        //         notaMod.imagenes = imagenes; // se le asigna las imagenes al dto nota, para que el servicio las guarde
+        //     }                               //ya que las imagenes se pasan por separado del dto
+        // }
 
         const n =  await this.modificarNotaService.execute(notaMod)
         if (n.isLeft()) {
@@ -142,9 +126,22 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Get('/grupo/:idGrupo')
+    
+   /* @Get('/grupos')
+    async buscarNotasDeGrupos(@Res() response, @Body() grupos: Iterable<string>) {
+        console.log('Grupos');
+        const n = await this.buscarNotasDeGruposService.execute(grupos);
+        if (n.isLeft()) {
+            return response.status(200).json(n.getLeft());
+        }
+        else {
+            return response.status(404).json(n.getRight().message);
+        }
+    }*/
+
+   /* @Get('/grupo/:idGrupo')
     async buscarGruposUsuario(@Res() response, @Param('idGrupo') id: string) {
         const respuesta = await this.buscarNotasDeUnGrupoService.execute(id);
         if(respuesta.isLeft()){
@@ -153,9 +150,9 @@ export class NotaController {
         else{
             return response.status(404).json(respuesta.getRight().message);
         }
-    }
+    }*/
 
-    @Patch('/moverNota')
+    /*@Patch('/moverNota')
     async moveNote(@Res() response, @Body() notamove: CambiarGrupoNotaDto): Promise<Either<string,Error>> {
         console.log('Cambiar Grupo Nota');
         const n =  await this.moverNotaGrupoService.execute(notamove)
@@ -165,9 +162,9 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
-    @Patch('/cambiarEstado')
+   /* @Patch('/cambiarEstado')
     async cambiarEstado(@Res() response, @Body() nota: CambiarEstadoNotaDto): Promise<Either<string,Error>> {
         console.log('Cambiar Estado Nota');
         const n =  await this.cambiarEstadoDeNotaService.execute(nota)
@@ -177,6 +174,6 @@ export class NotaController {
         else {
             return response.status(404).json(n.getRight().message);
         }
-    }
+    }*/
 
 }

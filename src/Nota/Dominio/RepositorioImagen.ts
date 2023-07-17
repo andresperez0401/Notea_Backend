@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Either } from "src/Utils/Either";
-import { VOImagen } from "./ValueObjectsNota/VOImagen";
+import { VOImagen } from "./Entidades/VOImagen";
 
 export interface RepositorioImagen {
     subirImagen(imagen: VOImagen): Promise<Either<VOImagen,Error>>;

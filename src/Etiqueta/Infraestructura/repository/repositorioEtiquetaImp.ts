@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -15,7 +16,7 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
     private readonly repositorio: Repository<entidadEtiqueta>,
   ) {}
 
-  buscarEtiqueta(id: string): Promise<Either<String, Error>> {
+  buscarEtiqueta(id: string): Promise<Either<string, Error>> {
     throw new Error('Method not implemented.');
   }
 
@@ -24,7 +25,8 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
       id: etiqueta.getId(),
       nombre: etiqueta.getNombre(),
       color: etiqueta.getColor(),
-      usuarioId: etiqueta.getUsuarioId() // Añade esto
+      usuarioId: etiqueta.getUsuarioId(),
+      notas: null,
     };
 
 
@@ -59,8 +61,6 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
 
     }
   }
-
-  
   
 
   async actualizarEtiqueta(Etiqueta: actualizarEtiquetaDto): Promise<Either<string, Error>> {

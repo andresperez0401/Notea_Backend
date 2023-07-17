@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { colorEtiqueta } from 'src/Etiqueta/Dominio/ValueObjectsEtiqueta/colorEtiqueta';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { EntidadNota } from 'src/Nota/Infraestructura/entities/EntidadNota';
+import { Column, Entity, ManyToMany, PrimaryColumn } from 'typeorm';
 
 @Entity('etiqueta')
 export class entidadEtiqueta {
@@ -12,7 +14,14 @@ export class entidadEtiqueta {
   @Column({ type: 'enum', enum: colorEtiqueta })
   color: string;
 
-  @Column()  // Nueva columna para el ID del usuario
+  @Column()  //Deberia ser ManyToOne
   usuarioId: string;
+
+  @ManyToMany(() => EntidadNota, (nota) => nota.etiquetas, {
+    cascade: ['insert', 'update'],
+    onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true,
+    eager: false,
+  })
+  notas: EntidadNota[];
 }
 

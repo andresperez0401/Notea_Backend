@@ -13,7 +13,6 @@ import {
 import { Either } from 'src/Utils/Either';
 import { Etiqueta } from 'src/Etiqueta/Dominio/AgregadoEtiqueta';
 
-
 import { crearEtiquetaService } from '../../Aplicacion/crearEtiqueta.service';
 import { crearEtiquetaDto } from '../../Aplicacion/dto/crearEtiqueta.dto';
 
@@ -22,8 +21,6 @@ import { actualizarEtiquetaService } from 'src/Etiqueta/Aplicacion/actualizarEti
 
 import { buscarEtiquetasService } from 'src/Etiqueta/Aplicacion/buscarEtiquetas.service';
 import { repositorioEtiquetaImp } from '../repository/repositorioEtiquetaImp';
-
-
 
 @Controller('etiqueta')
 export class EtiquetaController {
@@ -41,21 +38,19 @@ export class EtiquetaController {
     this.BuscarEtiquetasService = new buscarEtiquetasService(this.repositorio);
   }
 
-
   @Get('/:idUsuario/all')
-async buscarEtiquetas(
-  @Res() response,
-  @Param('idUsuario') idUsuario: string
-): Promise<Either<Iterable<Etiqueta>, Error>> {
-  const result = await this.BuscarEtiquetasService.execute(idUsuario);
+  async buscarEtiquetas(
+    @Res() response,
+    @Param('idUsuario') idUsuario: string,
+  ): Promise<Either<Iterable<Etiqueta>, Error>> {
+    const result = await this.BuscarEtiquetasService.execute(idUsuario);
 
-  if (result.isLeft()) {
-    return response.status(200).json(result.getLeft());
-  } else {
-    return response.status(404).json(result.getRight().message);
-
+    if (result.isLeft()) {
+      return response.status(200).json(result.getLeft());
+    } else {
+      return response.status(404).json(result.getRight().message);
+    }
   }
-}
   @Post()
   async crearEtiqueta(
     @Res() response,
@@ -70,15 +65,15 @@ async buscarEtiquetas(
     }
   }
   @Patch()
-  async actualizarEtiqueta(@Res() response, @Body() notaMod: actualizarEtiquetaDto): Promise<Either<string,Error>> {
- 
-      const result =  await this.ActualizarEtiquetaService.execute(notaMod)
-      if (result.isLeft()) {
-          return response.status(200).json(result.getLeft());
-      }
-      else {
-          return response.status(404).json(result.getRight().message);
-      }
-       
+  async actualizarEtiqueta(
+    @Res() response,
+    @Body() notaMod: actualizarEtiquetaDto,
+  ): Promise<Either<string, Error>> {
+    const result = await this.ActualizarEtiquetaService.execute(notaMod);
+    if (result.isLeft()) {
+      return response.status(200).json(result.getLeft());
+    } else {
+      return response.status(404).json(result.getRight().message);
+    }
   }
 }
