@@ -36,129 +36,13 @@
 
 15/7/2023 - 1:14:24 p. m.: Crear Usuario Service: El usuario: italo de email: aff@gmail.comha sido creado con exito
 
-7/15/2023 - 6:51:08 PM: Crear Usuario Service: El usuario: luis de email: luisi@gmail.comha sido creado con exito
+15/7/2023 - 2:42:01 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 3123123
 
-7/16/2023 - 10:23:30 AM: Loguear Usuario Service: El usuario: andres@gmail.com ha hecho login
+15/7/2023 - 2:44:45 p. m.: Buscar Todos los Usuarios Service: Se han buscado todos los usuarios
 
-7/16/2023 - 10:23:30 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
+15/7/2023 - 10:08:07 p. m.: Crear Nota Service: la nota: probando, ha sido creada
 
-7/16/2023 - 10:23:30 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
+15/7/2023 - 10:08:35 p. m.: Buscar Notas Service: Se han buscado todas las notas
 
-7/16/2023 - 10:23:31 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:23:31 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:44:02 AM: Eliminar nota service: se ha eliminado la nota de id: 35f6b35a-dac67df608a8791e-4995-a086-
-
-7/16/2023 - 10:44:19 AM: Eliminar nota service: se ha eliminado la nota de id: 375b8376-1f87-45e3-84dc-32fa507dd731
-
-7/16/2023 - 10:44:55 AM: Eliminar nota service: se ha eliminado la nota de id: 6afac2a1-a5c9-4dd4-9189-f829c438add0
-
-7/16/2023 - 10:45:16 AM: Eliminar nota service: se ha eliminado la nota de id: e931add9-e80e-417a-93d0-1f1436081ae2
-
-7/16/2023 - 10:45:56 AM: Eliminar nota service: se ha eliminado la nota de id: ffdeb4b7-f587-4821-8f95-92bcc3559a71
-
-7/16/2023 - 10:46:25 AM: Eliminar nota service: se ha eliminado la nota de id: 35f6b35a-791e-4995-a086-dac67df608a8
-
-7/16/2023 - 10:47:44 AM: Loguear Usuario Service: El usuario: andres@gmail.com ha hecho login
-
-7/16/2023 - 10:47:45 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:47:45 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:47:45 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:47:45 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:47:55 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: PAPELERA
-
-7/16/2023 - 10:47:55 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:47:55 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:48:05 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:48:17 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: GUARDADO
-
-7/16/2023 - 10:48:17 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:48:36 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:48:36 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:48:36 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:48:36 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:48:42 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: PAPELERA
-
-7/16/2023 - 10:48:42 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:48:42 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:48:48 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:48:56 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: GUARDADO
-
-7/16/2023 - 10:48:56 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:49:02 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:49:03 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:49:03 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:49:03 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:49:45 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: PAPELERA
-
-7/16/2023 - 10:49:45 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:49:45 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:49:50 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:49:59 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: GUARDADO
-
-7/16/2023 - 10:49:59 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:50:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:50:28 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:50:28 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:50:28 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:51:12 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: PAPELERA
-
-7/16/2023 - 10:51:12 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:51:12 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:51:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:51:21 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:51:38 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:51:46 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: GUARDADO
-
-7/16/2023 - 10:51:46 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:51:53 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:51:53 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:51:53 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 2aa4a4a4-3e7e-405b-a6f8-a20663167b31
-
-7/16/2023 - 10:51:53 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:52:01 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: f5dd11a2-a327-4bd2-bba5-0732a843e33d, es el estado: PAPELERA
-
-7/16/2023 - 10:52:01 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:52:01 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
-
-7/16/2023 - 10:52:05 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 18df76e6-14be-4e3e-97c2-ff26a7c1b611,bfa35288-30c1-4382-b647-65e572d85a85,e4b2c819-0ede-48c2-814b-187c8c3a2881,03f40151-1e60-4b53-960b-92a2a614aa42,bbeb6237-c37a-45d7-9de8-a189fa5c6854,5f0a0ab5-8ab1-4157-8f6f-a124eb7f5fa8,a8056501-74b1-4dcd-bc10-e4ac4c744af1,ddae5ad1-17bc-475b-bfc5-61a3429eae81,f8048717-dd30-4435-b2f5-f909d55616a9,26ade39d-5fd9-4c65-b044-2f5da84079a1,01d26733-5af1-44f6-8565-1d2239c3d27c
+15/7/2023 - 10:09:05 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 3123123
 
