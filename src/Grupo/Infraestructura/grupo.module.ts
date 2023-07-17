@@ -18,17 +18,25 @@ import { buscarGruposController } from './controllers/buscarGruposController';
 import { eliminarGrupoController } from './controllers/eliminarGrupoController';
 import { buscarGrupoUsuarioController } from './controllers/buscarGrupoUsuarioController';
 import { EditarGrupoController } from './controllers/editarGrupoController';
+import { grupoAPapeleraController } from './controllers/grupoAPapeleraController';
+import { GrupoAPapeleraservice } from '../Aplicacion/grupoAPapeleraService';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EntidadGrupo]),TypeOrmModule.forFeature([EntidadUsuario]),forwardRef(() => DecoratorModule)],
-  controllers: [GrupoController,
-                buscarGrupoPorIdController,
-                crearGrupoController,
-                buscarGruposController,
-                eliminarGrupoController,
-                buscarGrupoUsuarioController,
-                EditarGrupoController,
-              ],
+  imports: [
+    TypeOrmModule.forFeature([EntidadGrupo]),
+    TypeOrmModule.forFeature([EntidadUsuario]),
+    forwardRef(() => DecoratorModule),
+  ],
+  controllers: [
+    GrupoController,
+    buscarGrupoPorIdController,
+    crearGrupoController,
+    buscarGruposController,
+    eliminarGrupoController,
+    buscarGrupoUsuarioController,
+    EditarGrupoController,
+    grupoAPapeleraController,
+  ],
   providers: [
     CrearGrupoService,
     buscarGruposService,
@@ -38,11 +46,12 @@ import { EditarGrupoController } from './controllers/editarGrupoController';
     buscarGrupoPorIdService,
     RepositorioGrupoImp,
     ILoggerImplementation,
+    GrupoAPapeleraservice,
     {
       provide: 'RepositorioGrupo',
       useClass: RepositorioGrupoImp,
     },
   ],
-  exports: [CrearGrupoService,RepositorioGrupoImp], 
+  exports: [CrearGrupoService, RepositorioGrupoImp],
 })
 export class GrupoModule {}

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { InjectRepository } from '@nestjs/typeorm';
 import { RepositorioGrupo } from 'src/Grupo/Dominio/RepositorioGrupo';
 import { EntidadGrupo } from '../entities/EntidadGrupo';
@@ -6,12 +7,15 @@ import { Grupo } from 'src/Grupo/Dominio/AgregadoGrupo';
 import { Either } from 'src/Utils/Either';
 import { EditarGrupoDto } from 'src/Grupo/Aplicacion/dto/EditarGrupo.dto';
 import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsuario';
+import { EntidadNota } from 'src/Nota/Infraestructura/entities/EntidadNota';
+import { GrupoAPapeleraDto } from 'src/Grupo/Aplicacion/dto/GrupoAPapelera.dto';
 
 export class RepositorioGrupoImp implements RepositorioGrupo {
   constructor(
     @InjectRepository(EntidadGrupo)
     private readonly grupoRepo: Repository<EntidadGrupo>,
-
+    @InjectRepository(EntidadNota)
+    private readonly notaRepo: Repository<EntidadNota>,
     @InjectRepository(EntidadUsuario)
     private readonly repoUsuario: Repository<EntidadUsuario>,
   ) {}
@@ -63,9 +67,15 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
       where: { id },
     });
     if (grupoAEliminar) {
-      //primero validamos que el id proporcionado exista
       const resultado = await this.grupoRepo.delete(grupoAEliminar);
       if (resultado) {
+
+        const general = await this.grupoRepo.findOne({where: {nombre: "General"}});
+
+        if(general){//se asignan las notas del grupo eliminado al grupo general
+          await this.notaRepo.update({grupo: id}, {grupo: general.id});
+        }
+
         return Either.makeLeft<string, Error>(
           `Grupo de id #${id} ha sido eliminado`,
         );
@@ -83,11 +93,11 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
 
   async editarGrupo(info: EditarGrupoDto): Promise<Either<Grupo, Error>> {
     const group = await this.grupoRepo.findOneBy({ id: info.id });
-
     if (group) {
       await this.grupoRepo.merge(group, info.payload);
       const resultado = await this.grupoRepo.save(group);
       if (resultado) {
+
         const grupoEditado: Grupo = Grupo.crearGrupo(
           group.nombre,
           group.idUsuario,
@@ -144,4 +154,30 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
       );
     }
   }
+
+  async grupoAPapelera(grupo: GrupoAPapeleraDto): Promise<Either<Grupo, Error>> {
+    const group = await this.grupoRepo.findOneBy({ id: grupo.id });
+    if (group) {
+      //debemos cambiar el estado de las notas del grupo a papelera
+      const notas = await this.notaRepo.update({grupo: grupo.id}, {estado: "PAPELERA"});
+      //puede dar problemas, tengo que revisar
+      if (notas) { 
+        const grupoEditado: Grupo = Grupo.crearGrupo(
+          group.nombre,
+          group.idUsuario,
+          group.id,
+        );
+        return Either.makeLeft<Grupo, Error>(grupoEditado);
+      } else {
+        return Either.makeRight<Grupo, Error>(
+          new Error('Error al mover grupo a papelera'),
+        );
+      }
+    } else {
+      return Either.makeRight<Grupo, Error>(
+        new Error('No se encontro el grupo por id' + grupo.id),
+      );
+    }
+  }
+
 }
