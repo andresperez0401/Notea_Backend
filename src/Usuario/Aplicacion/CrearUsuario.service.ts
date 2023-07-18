@@ -22,6 +22,7 @@ export class CrearUsuarioService implements IAplicationService<CrearUsuarioDto, 
       s.apellido,
       s.email,
       s.clave,
+      false
     );
 
     const resultado = await this.repositorioUsuario.crearUsuario(newUser);

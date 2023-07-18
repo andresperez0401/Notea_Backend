@@ -29,6 +29,7 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
     userEntidad.apellido = usuario.getApellido();
     userEntidad.email = usuario.getEmail();
     userEntidad.clave = usuario.getClave();
+    userEntidad.suscripcion = usuario.getSuscripcion();
     const respuesta = await this.usuarioRepo.save(userEntidad);
 
     if (respuesta) {
@@ -52,6 +53,7 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
           user.apellido,
           user.email,
           user.clave,
+          user.suscripcion,
           user.id,
         ),
       );
@@ -74,6 +76,7 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
         respuesta.apellido,
         respuesta.email,
         respuesta.clave,
+        respuesta.suscripcion,
         respuesta.id,
       );
       return Either.makeLeft<Usuario, Error>(newUser);
@@ -95,6 +98,7 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
         respuesta.apellido,
         respuesta.email,
         respuesta.clave,
+        respuesta.suscripcion,
         respuesta.id,
       );
       return Either.makeLeft<Usuario, Error>(newUser);
@@ -118,6 +122,7 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
           usuario.apellido,
           usuario.email,
           usuario.clave,
+          usuario.suscripcion,
           usuario.id,
         );
         return Either.makeLeft<Usuario, Error>(usuarioEditado);
@@ -167,6 +172,7 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
           usuario.apellido,
           usuario.email,
           usuario.clave,
+          usuario.suscripcion,
           usuario.id,
         );
         return Either.makeLeft<Usuario, Error>(usuarioLogueado);

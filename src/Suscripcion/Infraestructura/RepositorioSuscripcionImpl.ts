@@ -9,6 +9,7 @@ import { Repository } from "typeorm";
 import { TipoSuscripcionEnum } from "../Dominio/tipoSuscripcionEnum";
 import { type } from "os";
 import { cambiarTipoSuscripcionDto } from "../Aplicacion/dto/CambiarTipoSuscripcionDto";
+import { idUsuario } from "src/Usuario/Dominio/value_objects/idUsuario";
 
 
 
@@ -74,9 +75,11 @@ export class RepositorioSuscripcionImp implements RepositorioSuscripcion{
             
             if(info.tipo == "PREMIUM"){
                 susc.tipo = TipoSuscripcionEnum.PREMIUM;
+                const response = await this.repoUsuario.update(info.idUsuario, {suscripcion: true});
             }
             else{
                 susc.tipo = TipoSuscripcionEnum.FREE;
+                const response = await this.repoUsuario.update(info.idUsuario, {suscripcion: false});
             }
 
             if(opFechaFin.hasvalue()){

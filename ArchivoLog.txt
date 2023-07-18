@@ -99,3 +99,13 @@
 
 7/17/2023 - 10:32:58 PM: Buscar Suscripcion de usuario Service: la suscripcion del usuario de id: b4040347-5dfc-43d9-a845-380b3485ced2 ha sido encontrada
 
+7/17/2023 - 10:49:47 PM: Loguear Usuario Service: El usuario: andresperez0401@gmail.com ha hecho login
+
+7/17/2023 - 11:07:48 PM: Crear Usuario Service: El usuario: Luisiana de email: luisianameliane@gmail.comha sido creado con exito
+
+7/17/2023 - 11:08:46 PM: Cambiar Suscripcion Service: El usuario de id ff5b2e27-8d5d-440d-a26e-e6104d8f94fe ha cambiado su estado de suscripcion a: PREMIUM
+
+7/17/2023 - 11:09:10 PM: Cambiar Suscripcion Service: El usuario de id ff5b2e27-8d5d-440d-a26e-e6104d8f94fe ha cambiado su estado de suscripcion a: FREE
+
+7/17/2023 - 11:09:31 PM: No se consiguio el usuario
+
