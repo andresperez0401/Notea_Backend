@@ -11,13 +11,16 @@ import { crearSucripcionController } from './Controllers/crearSucripcionControll
 import { CrearSuscripcionService } from '../Aplicacion/crearSuscripcionService';
 import { cambiarSucripcionController } from './Controllers/cambiarTipoSuscripcionController';
 import { cambiarTipoSuscripcionService } from '../Aplicacion/cambiarTipoSuscripcionService';
+import { buscarSuscripcionDeUsuarioService } from '../Aplicacion/buscarPorIdUsuarioSevice';
+import { buscarSucripcionDeUsuarioController } from './Controllers/buscarSuscripcionPorUsuarioController';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadSuscripcion,EntidadUsuario]),forwardRef(() => DecoratorModule)],
-  controllers: [crearSucripcionController,cambiarSucripcionController],
+  controllers: [crearSucripcionController,cambiarSucripcionController, buscarSucripcionDeUsuarioController],
   providers: [ // Aqui se agregan los servicios
     CrearSuscripcionService,
     cambiarTipoSuscripcionService,
+    buscarSuscripcionDeUsuarioService,
     RepositorioSuscripcionImp,
     ILoggerImplementation,
     LoggerService,

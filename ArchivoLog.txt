@@ -93,3 +93,9 @@
 
 7/17/2023 - 10:00:53 PM: Cambiar Suscripcion Service: El usuario de id 252c4b05-8bcd-437e-a0b0-39c781ecb36d ha cambiado su estado de suscripcion a: FREE
 
+7/17/2023 - 10:32:32 PM: Error al buscar la suscripcion del usuario 352c4b05-8bcd-437e-a0b0-39c781ecb36d
+
+7/17/2023 - 10:32:39 PM: Buscar Suscripcion de usuario Service: la suscripcion del usuario de id: 252c4b05-8bcd-437e-a0b0-39c781ecb36d ha sido encontrada
+
+7/17/2023 - 10:32:58 PM: Buscar Suscripcion de usuario Service: la suscripcion del usuario de id: b4040347-5dfc-43d9-a845-380b3485ced2 ha sido encontrada
+

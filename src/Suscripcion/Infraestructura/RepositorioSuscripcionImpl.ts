@@ -110,9 +110,40 @@ export class RepositorioSuscripcionImp implements RepositorioSuscripcion{
     eliminarSuscripcion(id: string): Promise<Either<string, Error>> {
         throw new Error("Method not implemented.");
     }
-    buscarSuscripcionUsuario(idUsuario: string): Promise<Either<Suscripcion, Error>> {
-        throw new Error("Method not implemented.");
+    
+    async buscarSuscripcionUsuario(idUsuario: string): Promise<Either<Suscripcion, Error>> {
+        const respuesta: EntidadSuscripcion = await this.repositorio.findOne({
+            where: { idUsuario: idUsuario },
+          });
+
+          
+      
+        
+          if (respuesta) {
+                console.log("hola");
+            let type: TipoSuscripcionEnum;
+            if(respuesta.tipo == "FREE"){
+                 type =  TipoSuscripcionEnum.FREE;
+            }
+            else{
+                type = TipoSuscripcionEnum.PREMIUM;
+            }
+
+            const suscripcion: Suscripcion = 
+            Suscripcion.crearSuscripcion(
+                respuesta.fechaInicio,
+                type,
+                respuesta.idUsuario,
+                new Optional<Date>(respuesta.fechaFin),
+                respuesta.id,
+            )
+
+
+            return Either.makeLeft<Suscripcion, Error>(suscripcion);
+          } else {
+            return Either.makeRight<Suscripcion, Error>(
+              new Error(`Error al buscar la suscripcion del usuario ${idUsuario}`),
+            );
+          };
     }
-
-
 }
