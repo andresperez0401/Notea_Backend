@@ -20,12 +20,16 @@ import { buscarGrupoUsuarioController } from './controllers/buscarGrupoUsuarioCo
 import { EditarGrupoController } from './controllers/editarGrupoController';
 import { grupoAPapeleraController } from './controllers/grupoAPapeleraController';
 import { GrupoAPapeleraservice } from '../Aplicacion/grupoAPapeleraService';
+import { EntidadNota } from 'src/Nota/Infraestructura/entities/EntidadNota';
+import { AggNotaToEntityService } from 'src/Nota/Infraestructura/servicios/AggNotaToEntityService';
+import { EntityToAggNotaService } from 'src/Nota/Infraestructura/servicios/EntityToAggNotaService';
+import { EntityToStringService } from 'src/Nota/Infraestructura/servicios/EntityToStringService';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([EntidadGrupo]),
-    TypeOrmModule.forFeature([EntidadUsuario]),
+    TypeOrmModule.forFeature([EntidadGrupo, EntidadUsuario, EntidadNota]),
     forwardRef(() => DecoratorModule),
+    EntityToStringService,
   ],
   controllers: [
     GrupoController,
@@ -47,6 +51,8 @@ import { GrupoAPapeleraservice } from '../Aplicacion/grupoAPapeleraService';
     RepositorioGrupoImp,
     ILoggerImplementation,
     GrupoAPapeleraservice,
+    AggNotaToEntityService,
+    EntityToAggNotaService,
     {
       provide: 'RepositorioGrupo',
       useClass: RepositorioGrupoImp,

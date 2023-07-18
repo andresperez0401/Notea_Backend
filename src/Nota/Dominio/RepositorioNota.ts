@@ -21,6 +21,5 @@ export interface RepositorioNota {
     buscarNotasDeGrupos(
         grupos: Iterable<string>,
     ): Promise<Either<string, Error>>;
-    //guardarImagenes(id: string, imagenes: VOImagen[]): Promise<Either<string,Error>>;
 
 }

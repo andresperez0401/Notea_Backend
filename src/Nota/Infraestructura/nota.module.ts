@@ -55,7 +55,7 @@ import { crearNotaController } from './controller/crearNotaController';
       useClass: RepositorioNotaImp
     }
   ],
-  exports: [CrearNotaService,RepositorioNotaImp], 
+  exports: [CrearNotaService,RepositorioNotaImp,AggNotaToEntityService,EntityToStringService], 
 
 })
 export class NotaModule {}
