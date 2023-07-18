@@ -113,3 +113,85 @@
 
 7/17/2023 - 11:23:34 PM: Buscar Suscripcion de usuario Service: la suscripcion del usuario de id: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe ha sido encontrada
 
+17/7/2023 - 11:44:14 p. m.: Crear Nota Service: la nota: nota 2 ajaaa, ha sido creada
+
+17/7/2023 - 11:44:46 p. m.: Crear Nota Service: la nota: nota 2 ajaaa, ha sido creada
+
+17/7/2023 - 11:47:16 p. m.: Crear Nota Service: la nota: nota 2 ajaaa, ha sido creada
+
+17/7/2023 - 11:48:47 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:49:09 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:49:21 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:49:37 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:49:47 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:49:48 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:49:50 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:49:56 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:49:59 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:50:07 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:50:21 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:50:23 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:50:24 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:50:26 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:50:27 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:50:29 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:50:39 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:50:43 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:50:54 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:51:00 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:51:02 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:53:57 p. m.: Crear Nota Service: la nota: probando, ha sido creada
+
+17/7/2023 - 11:54:01 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:56:04 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:56:06 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:56:14 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:56:17 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:56:29 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:56:30 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:56:31 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:56:31 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:56:32 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:56:59 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:57:01 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:57:11 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:57:13 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 11:57:20 p. m.: Modificar Nota Service: La nota de id: 12f2d2a8-6cec-4637-948e-7888e38da7ab ha sido modificada
+
+17/7/2023 - 11:57:21 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
