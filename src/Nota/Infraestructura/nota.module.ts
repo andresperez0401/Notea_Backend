@@ -30,11 +30,13 @@ import { buscarNotasDeUsuarioController } from './controller/buscarNotasDeGrupos
 import { upadateNotaController } from './controller/updateNotaController';
 import { eliminarNotaController } from './controller/eliminarNotaController';
 import { crearNotaController } from './controller/crearNotaController';
+import { BuscarNotasPorPalabraService } from '../Aplicacion/BuscarNotasPorPalabraService';
+import { buscarNotasPorPalabraController } from './controller/buscarPorPalabraController';
 
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadNota, EntidadImagen, EntidadTarea, EntidadContenido, EntidadTexto]),forwardRef(() => DecoratorModule)],
-  controllers: [NotaController,buscarNotasController,cambiarEstadoNotaController,moverNotaGrupoController, buscarNotasDeGrupoController,buscarNotasDeUsuarioController,upadateNotaController,eliminarNotaController,crearNotaController],
+  controllers: [NotaController,buscarNotasController,cambiarEstadoNotaController,moverNotaGrupoController, buscarNotasDeGrupoController,buscarNotasDeUsuarioController,upadateNotaController,eliminarNotaController,crearNotaController, buscarNotasPorPalabraController],
   providers: [ // Aqui se agregan los servicios
     CrearNotaService,
     EliminarNotaService,
@@ -44,6 +46,7 @@ import { crearNotaController } from './controller/crearNotaController';
     cambiarGrupoNotaService,
     cambiarEstadoNotaService,
     BuscarNotasDeGruposService,
+    BuscarNotasPorPalabraService,
     RepositorioNotaImp,
     AggNotaToEntityService,
     EntityToAggNotaService,

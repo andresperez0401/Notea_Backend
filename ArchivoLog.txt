@@ -541,3 +541,7 @@
 
 7/18/2023 - 12:43:09 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
 
+7/18/2023 - 6:13:20 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 6:40:54 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra Create
+

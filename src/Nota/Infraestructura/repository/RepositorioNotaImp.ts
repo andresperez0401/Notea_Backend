@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { RepositorioNota } from '../../Dominio/RepositorioNota';
 import { Nota } from '../../Dominio/AgregadoNota';
 import { Either } from 'src/Utils/Either';
@@ -152,4 +152,46 @@ export class RepositorioNotaImp implements RepositorioNota{
             );
         }
     }
+
+
+    async buscarNotaPorPalabra(palabra:string, grupos:Iterable<string>): Promise<Either<string,Error>>{
+        const listaGrupos : string[] = [...grupos];
+        let listaNotas : Optional<string[]> = new Optional<string[]>();
+
+    for (const grupo of listaGrupos){
+        const respuesta: EntidadNota[] = await this.repositorio.find({
+            where: { grupo: grupo ,titulo: Like(`%${palabra}%`) },
+        });
+
+        const resp: EntidadNota[] = await this.repositorio.createQueryBuilder("nota")
+        .where("nota.grupo = :grupo", { grupo: grupo })
+        .andWhere("(nota.titulo LIKE :palabra)")
+        .setParameter('palabra', `%${palabra}%`)
+        .getMany();
+
+        if (respuesta) {
+            const notas = this.EntityToString.execute(respuesta);
+
+            if (notas.isLeft()){
+                if (!listaNotas.hasvalue()){
+                    listaNotas = new Optional<string[]>([...notas.getLeft()]);
+                }
+                else{
+                listaNotas.getValue().push(...notas.getLeft());
+               }
+            }          
+        } 
+    }
+
+    if(listaNotas.hasvalue()){
+        const nuevaLista = JSON.parse(JSON.stringify(listaNotas.getValue()));
+        return Either.makeLeft<string, Error>(nuevaLista);
+    }
+    else{
+        return Either.makeRight<string, Error>(
+            new Error(`Error al obtener los notas del usuario`),
+        );
+    }
+}
+    
 }

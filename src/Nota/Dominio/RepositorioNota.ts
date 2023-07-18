@@ -22,4 +22,6 @@ export interface RepositorioNota {
         grupos: Iterable<string>,
     ): Promise<Either<string, Error>>;
 
+    buscarNotaPorPalabra(palabra:string, grupos:Iterable<string>): Promise<Either<string,Error>>;
+
 }
