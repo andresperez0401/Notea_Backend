@@ -7,7 +7,7 @@ import { TipoSuscripcionEnum } from '../Dominio/tipoSuscripcionEnum';
 import { Optional } from 'src/Utils/Opcional';
 import { cambiarTipoSuscripcionDto } from './dto/CambiarTipoSuscripcionDto';
 
-export class cambiarTipoSuscripcionService implements IAplicationService<cambiarTipoSuscripcionDto, String> {
+export class cambiarTipoSuscripcionService implements IAplicationService<cambiarTipoSuscripcionDto, string> {
 
   private readonly repositorio: RepositorioSuscripcion;
   constructor(
@@ -15,7 +15,7 @@ export class cambiarTipoSuscripcionService implements IAplicationService<cambiar
     this.repositorio = repositorio;
   }
   
-  async execute(s: cambiarTipoSuscripcionDto): Promise<Either<String, Error>> {
+  async execute(s: cambiarTipoSuscripcionDto): Promise<Either<string, Error>> {
 
     return await this.repositorio.cambiarTipoSuscripcion(s);
   }

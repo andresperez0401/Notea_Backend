@@ -109,3 +109,7 @@
 
 7/17/2023 - 11:09:31 PM: No se consiguio el usuario
 
+7/17/2023 - 11:23:19 PM: Error al buscar la suscripcion del usuario b4040347-5dfc-43d9-a845-380b3485ced2
+
+7/17/2023 - 11:23:34 PM: Buscar Suscripcion de usuario Service: la suscripcion del usuario de id: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe ha sido encontrada
+

@@ -20,23 +20,40 @@ import { CrearSuscripcionDto } from 'src/Suscripcion/Aplicacion/dto/CrearSuscrip
 import { cambiarTipoSuscripcionService } from 'src/Suscripcion/Aplicacion/cambiarTipoSuscripcionService';
 import { cambiarTipoSuscripcionDto } from 'src/Suscripcion/Aplicacion/dto/CambiarTipoSuscripcionDto';
 import { buscarSuscripcionDeUsuarioService } from 'src/Suscripcion/Aplicacion/buscarPorIdUsuarioSevice';
+import { buscarSuscripcionDeUsuarioStringService } from 'src/Suscripcion/Aplicacion/buscarPorIdString';
   
 
 @Controller('suscripcion')
 export class buscarSucripcionDeUsuarioController {
   constructor(
     private buscarSuscripcionService: buscarSuscripcionDeUsuarioService,
+    private buscarPorString: buscarSuscripcionDeUsuarioStringService,
     private repositorio: RepositorioSuscripcionImp,
     private logger: ILoggerImplementation,
   ){
     this.logger = new ILoggerImplementation();
+    this.buscarPorString = new buscarSuscripcionDeUsuarioStringService(this.repositorio);
     this.buscarSuscripcionService = new buscarSuscripcionDeUsuarioService(this.repositorio);
   }
 
 @Get('/:idUsuario')
   async buscarSuscripcionUsuario(@Res() response, @Param('idUsuario') idUsuario: string) {
 
-    const decorator = new LoggerService<String,Suscripcion>(this.logger,this.buscarSuscripcionService,"Buscar Suscripcion de usuario Service: la suscripcion del usuario de id: " + idUsuario + " ha sido encontrada");
+    const decorator = new LoggerService<string,Suscripcion>(this.logger,this.buscarSuscripcionService,"Buscar Suscripcion de usuario Service: la suscripcion del usuario de id: " + idUsuario + " ha sido encontrada");
+    const respuesta = await decorator.execute(idUsuario);
+
+    if(respuesta.isLeft()){
+      return response.status(200).json(respuesta.getLeft());
+    }
+    else{
+      return response.status(404).json(respuesta.getRight().message);
+    }
+  }
+
+  @Get('/string/:idUsuario')
+  async buscarSuscripcionStringUsuario(@Res() response, @Param('idUsuario') idUsuario: string) {
+
+    const decorator = new LoggerService<string,string>(this.logger,this.buscarPorString,"Buscar Suscripcion de usuario Service: la suscripcion del usuario de id: " + idUsuario + " ha sido encontrada");
     const respuesta = await decorator.execute(idUsuario);
 
     if(respuesta.isLeft()){

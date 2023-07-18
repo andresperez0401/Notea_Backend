@@ -118,12 +118,7 @@ export class RepositorioSuscripcionImp implements RepositorioSuscripcion{
         const respuesta: EntidadSuscripcion = await this.repositorio.findOne({
             where: { idUsuario: idUsuario },
           });
-
-          
-      
-        
           if (respuesta) {
-                console.log("hola");
             let type: TipoSuscripcionEnum;
             if(respuesta.tipo == "FREE"){
                  type =  TipoSuscripcionEnum.FREE;
@@ -146,6 +141,36 @@ export class RepositorioSuscripcionImp implements RepositorioSuscripcion{
           } else {
             return Either.makeRight<Suscripcion, Error>(
               new Error(`Error al buscar la suscripcion del usuario ${idUsuario}`),
+            );
+          };
+    }
+
+    async buscarSuscripcionStringUsuario(idUsuario: string): Promise<Either<string,Error>>{
+        const respuesta: EntidadSuscripcion = await this.repositorio.findOne({
+            where: { idUsuario: idUsuario },
+          });
+          if (respuesta) {
+            let type: TipoSuscripcionEnum;
+            if(respuesta.tipo == "FREE"){
+                 type =  TipoSuscripcionEnum.FREE;
+            }
+            else{
+                type = TipoSuscripcionEnum.PREMIUM;
+            }
+
+            const suscripcion: Suscripcion = 
+            Suscripcion.crearSuscripcion(
+                respuesta.fechaInicio,
+                type,
+                respuesta.idUsuario,
+                new Optional<Date>(respuesta.fechaFin),
+                respuesta.id,
+            )
+
+
+            return Either.makeLeft<string, Error>(respuesta.tipo);
+          } else {
+            return Either.makeRight<string, Error>(new Error(`Error al buscar la suscripcion del usuario ${idUsuario}`),
             );
           };
     }
