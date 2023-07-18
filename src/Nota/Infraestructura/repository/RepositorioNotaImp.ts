@@ -6,21 +6,10 @@ import { RepositorioNota } from '../../Dominio/RepositorioNota';
 import { Nota } from '../../Dominio/AgregadoNota';
 import { Either } from 'src/Utils/Either';
 import { EntidadNota } from '../entities/EntidadNota';
-import { EstadoEnum } from 'src/Nota/Dominio/ValueObjectsNota/EstadoEnum';
-import { ModificarNotaDto } from 'src/Nota/Aplicacion/dto/ModificarNota.dto';
-import { VOImagen } from 'src/Nota/Dominio/Entidades/VOImagen';
-import EntidadImagen from '../entities/EntidadImagen';
-import { EntidadUbicacion } from '../entities/EntidadUbicacion';
-import EntidadTarea from '../entities/EntidadTarea';
 
 import { Optional } from 'src/Utils/Opcional';
-import { EntidadContenidoNota } from 'src/Nota/Dominio/Entidades/EntidadContenidoNota';
-import EntidadContenido from '../entities/EntidadContenido';
-import EntidadTexto from '../entities/EntidadTexto';
-import { EntidadTareaNota } from 'src/Nota/Dominio/Entidades/EntidadTarea';
 import { AggNotaToEntityService } from '../servicios/AggNotaToEntityService';
 import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
-import { EntityToAggNotaService } from '../servicios/EntityToAggNotaService';
 import { EntityToStringService } from '../servicios/EntityToStringService';
 
 @Injectable()
@@ -29,12 +18,10 @@ export class RepositorioNotaImp implements RepositorioNota{
     constructor(
         @InjectRepository(EntidadNota)
         private readonly repositorio: Repository<EntidadNota>,
-        @InjectRepository(EntidadImagen)
-        private readonly repositorioImagen: Repository<EntidadImagen>,
         @Inject(AggNotaToEntityService)
         private readonly AggNotaToEntity: IInfraestructureService<Nota,EntidadNota>,
-        @Inject(EntityToAggNotaService)
-        private readonly EntityToAggNota: IInfraestructureService<Array<EntidadNota>, Array<Nota>>,
+        //@Inject(EntityToAggNotaService)
+        //private readonly EntityToAggNota: IInfraestructureService<Array<EntidadNota>, Array<Nota>>,
         @Inject(EntityToStringService)
         private readonly EntityToString: IInfraestructureService<Array<EntidadNota>, string>,
     ){}
@@ -49,45 +36,6 @@ export class RepositorioNotaImp implements RepositorioNota{
         }else{
             return Either.makeRight<Nota,Error>(new Error('Error al crear la nota'));
         }
-    }
-
-    async guardarImagenes(id: string, imagenes: VOImagen[]): Promise<Either<string,Error>>{
-        const nota =  await this.repositorio.findOneBy({id : id});
-
-        if (imagenes.length >= 1) {
-
-            const im = imagenes.map(imagen => { //pasamos de VO a Entidad
-                return {nombre: imagen.getNombreImagen(),
-                        buffer: imagen.getBufferImagen(),
-                        nota : nota,
-                    }
-            })
-
-            const response = await this.repositorioImagen.save(im); //guardar en la base de datos usando TypeORM
-            if (response){
-                return Either.makeLeft("Imagenes guardadas");
-            }else{
-                return Either.makeRight(new Error('Error al guardar imagenes'));
-            }
-        } else {
-            return Either.makeLeft("No hay imagenes para guardar");
-        }
-
-        //no se si este codigo podria simplificar la subida de imagen
-        // if (nota){ //si existe la nota la actualizamos con las imagenes
-        //     const responde = this.repositorio.merge(nota, {imagenes: im})
-        //     if (responde){
-        //         await this.repositorio.save(nota)
-        //         console.log("Imagenes guardadas");
-        //         return Either.makeLeft("Imagenes guardadas");
-        //     }else{
-        //         console.log("Error al guardar imagenes");
-        //         return Either.makeRight(new Error('Error al guardar imagenes'));
-        //     }
-        // }else {
-        //     console.log("No se encontro nota con id" + id);
-        //     return Either.makeRight(new Error('No se encontro usuario con id' + id));
-        // }
     }
     
     async updateNota(nota : Nota): Promise<Either<string,Error>>{

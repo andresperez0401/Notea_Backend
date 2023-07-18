@@ -1,18 +1,19 @@
+/* eslint-disable prettier/prettier */
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
-import { CrearGrupoDto } from './dto/CrearGrupo.dto';
 import { Either } from 'src/Utils/Either';
 import { Grupo } from '../Dominio/AgregadoGrupo';
 import { RepositorioGrupo } from '../Dominio/RepositorioGrupo';
+import { GrupoAPapeleraDto } from './dto/GrupoAPapelera.dto';
 
-export class eliminarGrupoService
-  implements IAplicationService<string, string>
+export class GrupoAPapeleraservice
+  implements IAplicationService<GrupoAPapeleraDto, Grupo>
 {
   private readonly repositorioGrupo: RepositorioGrupo;
   constructor(repositorioGrupo: RepositorioGrupo) {
     this.repositorioGrupo = repositorioGrupo;
   }
 
-  async execute(s: string): Promise<Either<string, Error>> {
-    return await this.repositorioGrupo.eliminarGrupo(s);
+    async execute(s: GrupoAPapeleraDto): Promise<Either<Grupo, Error>> {
+        return await this.repositorioGrupo.grupoAPapelera(s);
   }
 }

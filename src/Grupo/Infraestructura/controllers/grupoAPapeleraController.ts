@@ -1,42 +1,34 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-  Res,
-  Response,
-} from '@nestjs/common';
+import { Body, Controller, Param, Patch, Res } from '@nestjs/common';
 
 import { Grupo } from 'src/Grupo/Dominio/AgregadoGrupo';
 import { RepositorioGrupoImp } from '../repository/RepositorioGrupoImpl';
 import { buscarGrupoPorIdService } from 'src/Grupo/Aplicacion/buscarGrupoPorIdService';
 import { LoggerService } from 'src/Decorators/Aplicacion/LoggerService';
 import { ILoggerImplementation } from 'src/Decorators/Infraestructura/ILoggerImplementation';
+import { GrupoAPapeleraservice } from 'src/Grupo/Aplicacion/grupoAPapeleraService';
+import { GrupoAPapeleraDto } from 'src/Grupo/Aplicacion/dto/GrupoAPapelera.dto';
 
 @Controller('grupo')
-export class buscarGrupoPorIdController {
+export class grupoAPapeleraController {
   constructor(
-    private buscarPorIdService: buscarGrupoPorIdService,
+    private grupoApapeleraService: GrupoAPapeleraservice,
     private repositorioGrupo: RepositorioGrupoImp,
     private logger: ILoggerImplementation,
   ) {
     this.logger = new ILoggerImplementation();
-    this.buscarPorIdService = new buscarGrupoPorIdService(
+    this.grupoApapeleraService = new GrupoAPapeleraservice(
       this.repositorioGrupo,
     );
   }
 
-  @Get('id/:id')
-  async buscarGrupoPorId(@Res() response, @Param('id') id: string) {
-    const decorator = new LoggerService<string, Grupo>(
+  @Patch('aPapelera')
+  async grupoAPapelera(@Res() response, @Body() grupo: GrupoAPapeleraDto) {
+    const decorator = new LoggerService<GrupoAPapeleraDto, Grupo>(
       this.logger,
-      this.buscarPorIdService,
-      'BuscarGrupoPorIdService: se ha buscado el grupo de id: ' + id,
+      this.grupoApapeleraService,
+      'GrupoAPapeleraService: Se ha movido hacia papelera la nota: ' + grupo.id,
     );
-    const respuesta = await decorator.execute(id);
+    const respuesta = await decorator.execute(grupo);
 
     if (respuesta.isLeft()) {
       return response.status(200).json(respuesta.getLeft());

@@ -32,6 +32,11 @@ export class EntidadNota {
     @Column()
     grupo: string
 
+    // @ManyToOne(() => EntidadGrupo, (grupo) => grupo.notas,
+    //     {onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: false})
+    // grupo: EntidadGrupo;
+
+
     @ManyToMany(() => entidadEtiqueta, (etiqueta) => etiqueta.notas, { cascade: true,
         onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true, eager: true})
     @JoinTable()

@@ -60,6 +60,25 @@
 
 7/17/2023 - 7:23:42 PM: Crear Suscripcion Service: El usuario de id 252c4b05-8bcd-437e-a0b0-39c781ecb36d se ha suscrito con exito
 
+17/7/2023 - 8:02:21 p. m.: Crear Usuario Service: El usuario: italo de email: italo@gmail.comha sido creado con exito
+
+17/7/2023 - 8:03:46 p. m.: Crear Nota Service: la nota: nota 1, ha sido creada
+
+17/7/2023 - 8:03:53 p. m.: Crear Nota Service: la nota: nota 2 ajaaa, ha sido creada
+
+17/7/2023 - 8:05:44 p. m.: GrupoAPapeleraService: Se ha movido hacia papelera la nota: 123
+
+17/7/2023 - 8:07:29 p. m.: Eliminar Grupo Service: El grupo de id: 123 ha sido eliminado con exito
+
+17/7/2023 - 8:08:16 p. m.: No se encontro el grupo por id2
+
+17/7/2023 - 8:11:14 p. m.: GrupoAPapeleraService: Se ha movido hacia papelera la nota: 2
+
+17/7/2023 - 8:21:21 p. m.: Buscar Notas Service: Se han buscado todas las notas
+
+17/7/2023 - 8:22:20 p. m.: Crear Nota Service: la nota: nota 2 ajaaa, ha sido creada
+
+17/7/2023 - 8:22:24 p. m.: Buscar Notas Service: Se han buscado todas las notas
 7/17/2023 - 7:36:56 PM: Crear Usuario Service: El usuario: Luisiana de email: luisianameliane@gmail.comha sido creado con exito
 
 7/17/2023 - 8:02:29 PM: El usuario ya tiene una suscripcion

@@ -15,11 +15,11 @@ export interface RepositorioNota {
     // buscarNotasPorEstado(estado: string): Promise<Either<Nota[],Error>>;
     // buscarNotasPorKeyword(keyword: string): Promise<Either<Nota[],Error>>;
     // buscarNotasPorFecha(fecha: Date): Promise<Either<Nota[],Error>>;
-    guardarImagenes(id: string, imagenes: VOImagen[]): Promise<Either<string,Error>>;
     buscarNotasDeGrupo(
         idGrupo: string,
     ): Promise<Either<string, Error>>;
     buscarNotasDeGrupos(
         grupos: Iterable<string>,
     ): Promise<Either<string, Error>>;
+
 }
