@@ -79,4 +79,7 @@
 17/7/2023 - 8:22:20 p. m.: Crear Nota Service: la nota: nota 2 ajaaa, ha sido creada
 
 17/7/2023 - 8:22:24 p. m.: Buscar Notas Service: Se han buscado todas las notas
+7/17/2023 - 7:36:56 PM: Crear Usuario Service: El usuario: Luisiana de email: luisianameliane@gmail.comha sido creado con exito
+
+7/17/2023 - 8:02:29 PM: El usuario ya tiene una suscripcion
 

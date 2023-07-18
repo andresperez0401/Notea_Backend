@@ -19,30 +19,42 @@ export class RepositorioSuscripcionImp implements RepositorioSuscripcion{
         @InjectRepository(EntidadUsuario)
         private readonly repoUsuario: Repository<EntidadUsuario>,
    ){}
+    cambiarEstadoSuscripcion(id: string, estado: string): Promise<Either<string, Error>> {
+        throw new Error("Method not implemented.");
+    }
     
     async crearSuscripcion(suscripcion: Suscripcion): Promise<Either<Suscripcion, Error>> {     
         const resp: EntidadUsuario = await this.repoUsuario.findOne({
             where: { id: suscripcion.getIdUsuario() },
         });
 
-        if (resp){
-            const suscripcionEntidad = new EntidadSuscripcion();
-            suscripcionEntidad.id = suscripcion.getId();
-            suscripcionEntidad.idUsuario = suscripcion.getIdUsuario();
-            suscripcionEntidad.tipo = TipoSuscripcionEnum.FREE;
-            suscripcionEntidad.fechaInicio = suscripcion.getFechaInicio();
-            
-            const opFechaFin = suscripcion.getFechaFin();
-            if(opFechaFin.hasvalue()){
-                suscripcionEntidad.fechaFin = suscripcion.getFechaFin().getValue();
-            }   
-            const respuesta = await this.repositorio.save(suscripcionEntidad);
+        const response: EntidadSuscripcion = await this.repositorio.findOne({
+            where: { idUsuario: suscripcion.getIdUsuario() },
+        });
 
-            if(respuesta){
-                return Either.makeLeft<Suscripcion,Error>(suscripcion);
-            }
+        if (resp){
+            if(!response){
+                const suscripcionEntidad = new EntidadSuscripcion();
+                suscripcionEntidad.id = suscripcion.getId();
+                suscripcionEntidad.idUsuario = suscripcion.getIdUsuario();
+                suscripcionEntidad.tipo = TipoSuscripcionEnum.FREE;
+                suscripcionEntidad.fechaInicio = suscripcion.getFechaInicio();
+                
+                const opFechaFin = suscripcion.getFechaFin();
+                if(opFechaFin.hasvalue()){
+                    suscripcionEntidad.fechaFin = suscripcion.getFechaFin().getValue();
+                }   
+                const respuesta = await this.repositorio.save(suscripcionEntidad);
+
+                if(respuesta){
+                    return Either.makeLeft<Suscripcion,Error>(suscripcion);
+                }
+                else{
+                    return Either.makeRight<Suscripcion,Error>(new Error("Error al crear la suscripcion"));
+                }
+            } 
             else{
-                return Either.makeRight<Suscripcion,Error>(new Error("Error al crear la suscripcion"));
+                return Either.makeRight<Suscripcion,Error>(new Error("El usuario ya tiene una suscripcion"));
             }
         }
         else{
@@ -54,8 +66,9 @@ export class RepositorioSuscripcionImp implements RepositorioSuscripcion{
     updateSuscripcion(Suscripcion: Suscripcion): Promise<Either<string, Error>> {
         throw new Error("Method not implemented.");
     }
-    cambiarEstadoSuscripcion(id: string, estado: string): Promise<Either<string, Error>> {
+    cambiarTipoSuscripcion(id: string, tipo: string): Promise<Either<string, Error>> {
         throw new Error("Method not implemented.");
+        
     }
     buscarSuscripciones(): Promise<Either<Iterable<Suscripcion>, Error>> {
         throw new Error("Method not implemented.");
