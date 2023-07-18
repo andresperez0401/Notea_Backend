@@ -195,3 +195,349 @@
 
 17/7/2023 - 11:57:21 p. m.: Buscar Notas Service: Se han buscado todas las notas
 
+7/18/2023 - 12:34:40 AM: Loguear Usuario Service: El usuario: luisianameliane@gmail.com ha hecho login
+
+7/18/2023 - 12:34:40 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:34:41 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:34:41 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:34:41 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:37:03 AM: Crear Nota Service: la nota: CreateNotaLOg, ha sido creada
+
+7/18/2023 - 12:37:27 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:37:27 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:37:27 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:37:28 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:37:28 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:37:35 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 6dee341f-0c73-4c2e-bbae-dab225795520, es el estado: PAPELERA
+
+7/18/2023 - 12:37:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:37:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:37:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:37:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:37:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:37:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:37:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:37:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:33 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:36 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 6dee341f-0c73-4c2e-bbae-dab225795520, es el estado: GUARDADO
+
+7/18/2023 - 12:38:36 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:39 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:39 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:39 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:39 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:39 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:39 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:42 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 6dee341f-0c73-4c2e-bbae-dab225795520, es el estado: PAPELERA
+
+7/18/2023 - 12:38:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:43 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:43 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:43 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:43 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:46 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:52 AM: Eliminar nota service: se ha eliminado la nota de id: 6dee341f-0c73-4c2e-bbae-dab225795520
+
+7/18/2023 - 12:38:53 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:56 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:56 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:56 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:56 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:38:56 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:57 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:57 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:38:57 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:01 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:01 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 040538d9-e34e-4d5e-bbf0-5328845aaa3c, es el estado: PAPELERA
+
+7/18/2023 - 12:39:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:01 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:01 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:01 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:02 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:02 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:02 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:02 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:04 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:09 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 040538d9-e34e-4d5e-bbf0-5328845aaa3c, es el estado: GUARDADO
+
+7/18/2023 - 12:39:09 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:11 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:11 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:12 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:12 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:12 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:12 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:20 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 040538d9-e34e-4d5e-bbf0-5328845aaa3c, es el estado: PAPELERA
+
+7/18/2023 - 12:39:20 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:20 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:20 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:20 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:21 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:21 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:21 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:21 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:21 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:23 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:25 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:25 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:25 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:25 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:25 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:25 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:25 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:28 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:32 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 040538d9-e34e-4d5e-bbf0-5328845aaa3c, es el estado: GUARDADO
+
+7/18/2023 - 12:39:32 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:35 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:39:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:35 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:39:45 AM: Crear Nota Service: la nota: CreateNotaLOg, ha sido creada
+
+7/18/2023 - 12:40:11 AM: No se consiguio el usuario
+
+7/18/2023 - 12:40:29 AM: Cambiar Suscripcion Service: El usuario de id ff5b2e27-8d5d-440d-a26e-e6104d8f94fe ha cambiado su estado de suscripcion a: PREMIUM
+
+7/18/2023 - 12:42:33 AM: Loguear Usuario Service: El usuario: luisianameliane@gmail.com ha hecho login
+
+7/18/2023 - 12:42:34 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:34 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:34 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:34 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:38 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:39 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:39 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:39 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:40 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:43 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 381d3d3c-3da1-44de-80d3-104ef14465c4, es el estado: PAPELERA
+
+7/18/2023 - 12:42:43 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:43 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:43 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:43 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:44 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:44 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:46 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:49 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 381d3d3c-3da1-44de-80d3-104ef14465c4, es el estado: GUARDADO
+
+7/18/2023 - 12:42:49 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:55 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:55 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:55 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:42:55 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:56 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:42:56 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:00 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 040538d9-e34e-4d5e-bbf0-5328845aaa3c, es el estado: PAPELERA
+
+7/18/2023 - 12:43:00 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:00 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:43:00 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:00 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:00 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:43:00 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:43:00 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:43:01 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:01 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:01 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:03 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:06 AM: Cambiar Estado Nota Service: el nuevo estado de la nota de id: 040538d9-e34e-4d5e-bbf0-5328845aaa3c, es el estado: GUARDADO
+
+7/18/2023 - 12:43:06 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:08 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:43:08 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:08 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:43:08 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:43:08 AM: Buscar grupos por usuario service: se han buscado los grupos del usuario: ff5b2e27-8d5d-440d-a26e-e6104d8f94fe
+
+7/18/2023 - 12:43:09 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:09 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
+7/18/2023 - 12:43:09 AM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 41b793e5-2125-4140-9933-c3adc7f084dd
+
