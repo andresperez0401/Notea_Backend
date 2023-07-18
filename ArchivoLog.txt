@@ -64,3 +64,13 @@
 
 7/17/2023 - 8:02:29 PM: El usuario ya tiene una suscripcion
 
+7/17/2023 - 9:42:16 PM: No se pudo cambiar el tipo de suscripcion
+
+7/17/2023 - 9:44:09 PM: No se pudo cambiar el tipo de suscripcion
+
+7/17/2023 - 9:59:58 PM: Cambiar Suscripcion Service: El usuario de id 252c4b05-8bcd-437e-a0b0-39c781ecb36d ha cambiado su estado de suscripcion a: PREMIUM
+
+7/17/2023 - 10:00:46 PM: Cambiar Suscripcion Service: El usuario de id 252c4b05-8bcd-437e-a0b0-39c781ecb36d ha cambiado su estado de suscripcion a: PREMIUM
+
+7/17/2023 - 10:00:53 PM: Cambiar Suscripcion Service: El usuario de id 252c4b05-8bcd-437e-a0b0-39c781ecb36d ha cambiado su estado de suscripcion a: FREE
+

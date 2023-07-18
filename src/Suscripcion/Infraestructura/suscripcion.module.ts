@@ -9,12 +9,15 @@ import { DecoratorModule } from 'src/Decorators/Infraestructura/decorator.module
 import { RepositorioSuscripcionImp } from './RepositorioSuscripcionImpl';
 import { crearSucripcionController } from './Controllers/crearSucripcionController';
 import { CrearSuscripcionService } from '../Aplicacion/crearSuscripcionService';
+import { cambiarSucripcionController } from './Controllers/cambiarTipoSuscripcionController';
+import { cambiarTipoSuscripcionService } from '../Aplicacion/cambiarTipoSuscripcionService';
 
 @Module({
   imports: [TypeOrmModule.forFeature([EntidadSuscripcion,EntidadUsuario]),forwardRef(() => DecoratorModule)],
-  controllers: [crearSucripcionController],
+  controllers: [crearSucripcionController,cambiarSucripcionController],
   providers: [ // Aqui se agregan los servicios
     CrearSuscripcionService,
+    cambiarTipoSuscripcionService,
     RepositorioSuscripcionImp,
     ILoggerImplementation,
     LoggerService,

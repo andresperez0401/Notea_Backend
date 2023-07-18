@@ -7,6 +7,8 @@ import { RepositorioSuscripcion } from "../Dominio/repositorioSuscripcion";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { TipoSuscripcionEnum } from "../Dominio/tipoSuscripcionEnum";
+import { type } from "os";
+import { cambiarTipoSuscripcionDto } from "../Aplicacion/dto/CambiarTipoSuscripcionDto";
 
 
 
@@ -19,9 +21,6 @@ export class RepositorioSuscripcionImp implements RepositorioSuscripcion{
         @InjectRepository(EntidadUsuario)
         private readonly repoUsuario: Repository<EntidadUsuario>,
    ){}
-    cambiarEstadoSuscripcion(id: string, estado: string): Promise<Either<string, Error>> {
-        throw new Error("Method not implemented.");
-    }
     
     async crearSuscripcion(suscripcion: Suscripcion): Promise<Either<Suscripcion, Error>> {     
         const resp: EntidadUsuario = await this.repoUsuario.findOne({
@@ -62,13 +61,48 @@ export class RepositorioSuscripcionImp implements RepositorioSuscripcion{
         }
     }
 
+    async cambiarTipoSuscripcion(info: cambiarTipoSuscripcionDto): Promise<Either<string, Error>> {
+        
+        const response: EntidadSuscripcion = await this.repositorio.findOne({
+            where: { idUsuario: info.idUsuario },
+        });
+
+        if(response){
+            const susc: EntidadSuscripcion = new EntidadSuscripcion();
+            const opFechaFin = new Optional<Date>(info.fechaFin);
+            susc.fechaInicio = new Date();
+            
+            if(info.tipo == "PREMIUM"){
+                susc.tipo = TipoSuscripcionEnum.PREMIUM;
+            }
+            else{
+                susc.tipo = TipoSuscripcionEnum.FREE;
+            }
+
+            if(opFechaFin.hasvalue()){
+                susc.fechaFin = opFechaFin.getValue();
+            }
+
+            await this.repositorio.merge(response, susc);
+            const resultado = await this.repositorio.save(response);
+
+            if(resultado){
+                return Either.makeLeft<string,Error>("Se actualizo la suscripcion");
+            }
+            else{
+                return Either.makeRight<string,Error>(new Error("No se actualizo la suscripcion"));
+            }
+            
+        }
+        else{
+            return Either.makeRight<string,Error>(new Error("No se consiguio el usuario"));
+        }
+    }
+        
+    
 
     updateSuscripcion(Suscripcion: Suscripcion): Promise<Either<string, Error>> {
         throw new Error("Method not implemented.");
-    }
-    cambiarTipoSuscripcion(id: string, tipo: string): Promise<Either<string, Error>> {
-        throw new Error("Method not implemented.");
-        
     }
     buscarSuscripciones(): Promise<Either<Iterable<Suscripcion>, Error>> {
         throw new Error("Method not implemented.");

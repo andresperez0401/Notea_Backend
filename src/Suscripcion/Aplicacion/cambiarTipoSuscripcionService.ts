@@ -5,8 +5,9 @@ import { Suscripcion } from '../Dominio/AgregadoSuscripcion';
 import { RepositorioSuscripcion } from '../Dominio/repositorioSuscripcion';
 import { TipoSuscripcionEnum } from '../Dominio/tipoSuscripcionEnum';
 import { Optional } from 'src/Utils/Opcional';
+import { cambiarTipoSuscripcionDto } from './dto/CambiarTipoSuscripcionDto';
 
-export class CrearSuscripcionService implements IAplicationService<CrearSuscripcionDto, Suscripcion> {
+export class cambiarTipoSuscripcionService implements IAplicationService<cambiarTipoSuscripcionDto, String> {
 
   private readonly repositorio: RepositorioSuscripcion;
   constructor(
@@ -14,16 +15,8 @@ export class CrearSuscripcionService implements IAplicationService<CrearSuscripc
     this.repositorio = repositorio;
   }
   
-  async execute(s: CrearSuscripcionDto): Promise<Either<Suscripcion, Error>> {
-     
-    const fechaActual = new Date();
-    const opFechaFin = new Optional<Date>(s.fechaFin);
-    const suscripcion =  Suscripcion.crearSuscripcion(
-        fechaActual,
-        TipoSuscripcionEnum.FREE,
-        s.idUsuario,
-        opFechaFin,
-     )
-    return await this.repositorio.crearSuscripcion(suscripcion);
+  async execute(s: cambiarTipoSuscripcionDto): Promise<Either<String, Error>> {
+
+    return await this.repositorio.cambiarTipoSuscripcion(s);
   }
 }
