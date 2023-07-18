@@ -62,3 +62,5 @@
 
 7/17/2023 - 7:36:56 PM: Crear Usuario Service: El usuario: Luisiana de email: luisianameliane@gmail.comha sido creado con exito
 
+7/17/2023 - 8:02:29 PM: El usuario ya tiene una suscripcion
+
