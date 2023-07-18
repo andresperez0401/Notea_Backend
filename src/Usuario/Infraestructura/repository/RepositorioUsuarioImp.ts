@@ -29,7 +29,7 @@ export class RepositorioUsuarioImp implements RepositorioUsuario {
     userEntidad.apellido = usuario.getApellido();
     userEntidad.email = usuario.getEmail();
     userEntidad.clave = usuario.getClave();
-    userEntidad.suscripcion = usuario.getSuscripcion();
+    userEntidad.suscripcion = usuario.isSuscribed();
     const respuesta = await this.usuarioRepo.save(userEntidad);
 
     if (respuesta) {

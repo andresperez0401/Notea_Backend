@@ -79,7 +79,7 @@ export class Usuario extends AggregateRoot {
     return this.clave.getValue();
   }
 
-  public getSuscripcion(): boolean {
+  public isSuscribed(): boolean {
     return this.suscripcion;
   }
 }
