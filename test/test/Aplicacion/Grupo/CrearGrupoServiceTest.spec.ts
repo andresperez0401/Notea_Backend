@@ -19,7 +19,7 @@ describe('CrearGrupoService', () => {
         expect(result.isLeft()).toBeTruthy();
      });
 
-    /*it('test_create_group_with_invalid_user_id', async () => {
+    it('test_create_group_with_invalid_user_id', async () => {
        //Arrange
         const crearGrupoService = CrearGrupoPrueba.crearGrupoService();
         const dto = CrearGrupoPrueba.crearGrupoDtoInvalido();
@@ -28,7 +28,7 @@ describe('CrearGrupoService', () => {
         const result = await crearGrupoService.execute(dto);
         
         //Assert
-        expect(result.isLeft()).toBeTruthy();
+        expect(result.isRight()).toBeTruthy();
     
-    });*/
+    });
 });

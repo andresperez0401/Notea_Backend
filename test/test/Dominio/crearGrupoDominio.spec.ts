@@ -1,6 +1,6 @@
 import { Grupo } from "src/Grupo/Dominio/AgregadoGrupo";
 import { RepositorioGrupoImp } from "src/Grupo/Infraestructura/repository/RepositorioGrupoImpl";
-
+import { RepositorioGrupoPruebaObjectMother } from "../ObjectMotherTest/Grupo/repositorioGrupoObjectMother";
 
 
 
@@ -8,10 +8,10 @@ import { RepositorioGrupoImp } from "src/Grupo/Infraestructura/repository/Reposi
 
 describe('CrearGrupoDominio', () => {
 
-    test('test_create_group_with_valid_user_id', async () => {
+    test('Salvar Grupo con usuario valido', async () => {
         //Arrange
-        const grupo: Grupo = Grupo.crearGrupo("test", "c87eb4cb-0d04-49de-8aec-df4abe9c345b");
-        let repo: RepositorioGrupoImp;
+        const grupo: Grupo = RepositorioGrupoPruebaObjectMother.crearGupoConIdUsuarioExistente();
+        const repo = await RepositorioGrupoPruebaObjectMother.obtenerRepositorioGrupo();
         
         //Act
         const result = repo.creargrupo(grupo);

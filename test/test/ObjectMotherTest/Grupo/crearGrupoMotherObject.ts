@@ -29,12 +29,12 @@ export class CrearGrupoPrueba {
     }
     public static crearGrupoService(): CrearGrupoService {
  
-        const repo : repositorioGrupoPrueba = new repositorioGrupoPrueba();
+        const repo : repositorioGrupoAppServicePrueba = new repositorioGrupoAppServicePrueba();
         return new CrearGrupoService(repo);
     }
 }
 
-export class repositorioGrupoPrueba implements RepositorioGrupo{
+export class repositorioGrupoAppServicePrueba implements RepositorioGrupo{
     async creargrupo(grupo: Grupo): Promise<Either<Grupo, Error>> {
         if(grupo.getIdUsuario() == "c87eb4cb-0d04-49de-8aec-df4abe9c345b"){
             return Either.makeLeft<Grupo, Error>(grupo);
