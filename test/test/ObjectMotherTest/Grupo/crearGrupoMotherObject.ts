@@ -28,15 +28,16 @@ export class CrearGrupoPrueba {
         return dto;
     }
     public static crearGrupoService(): CrearGrupoService {
- 
-        const repo : repositorioGrupoAppServicePrueba = new repositorioGrupoAppServicePrueba();
+        const repo : mockRepositorioGrupo = new mockRepositorioGrupo();
         return new CrearGrupoService(repo);
     }
 }
 
-export class repositorioGrupoAppServicePrueba implements RepositorioGrupo{
+export class mockRepositorioGrupo implements RepositorioGrupo{
+
+
     async creargrupo(grupo: Grupo): Promise<Either<Grupo, Error>> {
-        if(grupo.getIdUsuario() == "c87eb4cb-0d04-49de-8aec-df4abe9c345b"){
+        if(grupo.getIdUsuario() == CrearGrupoPrueba.crearGrupoDtoValido().idUsuario){
             return Either.makeLeft<Grupo, Error>(grupo);
         }
         else{
