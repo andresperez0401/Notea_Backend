@@ -1,3 +1,4 @@
+import { Inject } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CrearGrupoService } from "src/Grupo/Aplicacion/crearGrupoService";
 import { CrearGrupoDto } from "src/Grupo/Aplicacion/dto/CrearGrupo.dto";
@@ -11,6 +12,7 @@ import { Repository } from "typeorm";
 
 
 export class CrearGrupoPrueba {
+    @Inject(RepositorioGrupoImp)
     static repositorioGrupo: RepositorioGrupo;
 
     
