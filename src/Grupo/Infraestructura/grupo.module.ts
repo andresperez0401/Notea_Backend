@@ -24,11 +24,13 @@ import { EntidadNota } from 'src/Nota/Infraestructura/entities/EntidadNota';
 import { AggNotaToEntityService } from 'src/Nota/Infraestructura/servicios/AggNotaToEntityService';
 import { EntityToAggNotaService } from 'src/Nota/Infraestructura/servicios/EntityToAggNotaService';
 import { EntityToStringService } from 'src/Nota/Infraestructura/servicios/EntityToStringService';
+import { TestModule } from 'test/test/test.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([EntidadGrupo, EntidadUsuario, EntidadNota]),
     forwardRef(() => DecoratorModule),
+    forwardRef(() => TestModule),
     EntityToStringService,
   ],
   controllers: [
