@@ -11,6 +11,8 @@ import { Optional } from 'src/Utils/Opcional';
 import { AggNotaToEntityService } from '../servicios/AggNotaToEntityService';
 import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
 import { EntityToStringService } from '../servicios/EntityToStringService';
+import EntidadContenido from '../entities/EntidadContenido';
+import EntidadTexto from '../entities/EntidadTexto';
 
 @Injectable()
 export class RepositorioNotaImp implements RepositorioNota{
@@ -18,6 +20,8 @@ export class RepositorioNotaImp implements RepositorioNota{
     constructor(
         @InjectRepository(EntidadNota)
         private readonly repositorio: Repository<EntidadNota>,
+        @InjectRepository(EntidadContenido)
+        private readonly repositorioContenido: Repository<EntidadContenido>,
         @Inject(AggNotaToEntityService)
         private readonly AggNotaToEntity: IInfraestructureService<Nota,EntidadNota>,
         //@Inject(EntityToAggNotaService)
@@ -154,20 +158,39 @@ export class RepositorioNotaImp implements RepositorioNota{
     }
 
 
-    async buscarNotaPorPalabra(palabra:string, grupos:Iterable<string>): Promise<Either<string,Error>>{
+async buscarNotaPorPalabra(palabra:string, grupos:Iterable<string>): Promise<Either<string,Error>>{
         const listaGrupos : string[] = [...grupos];
         let listaNotas : Optional<string[]> = new Optional<string[]>();
 
     for (const grupo of listaGrupos){
+
+        
+        const notes = await this.repositorio.find({
+            where: { grupo: grupo},
+        });
+
         const respuesta: EntidadNota[] = await this.repositorio.find({
             where: { grupo: grupo ,titulo: Like(`%${palabra}%`) },
         });
 
-        const resp: EntidadNota[] = await this.repositorio.createQueryBuilder("nota")
+        for (const note of notes){
+            for (const content of note.contenidos){
+                    if(content.contenido.texto){
+                        const texto: string = content.contenido.texto
+                        if (texto.includes(palabra))
+                            respuesta.push(note);
+                        
+                    }
+            }
+        }
+
+
+
+        /*const resp: EntidadNota[] = await this.repositorio.createQueryBuilder("nota")
         .where("nota.grupo = :grupo", { grupo: grupo })
         .andWhere("(nota.titulo LIKE :palabra)")
         .setParameter('palabra', `%${palabra}%`)
-        .getMany();
+        .getMany();*/
 
         if (respuesta) {
             const notas = this.EntityToString.execute(respuesta);

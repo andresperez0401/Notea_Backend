@@ -20,7 +20,7 @@ export class EntidadContenido {
   // Imagen: EntidadImagen;
 
   @Column({type: 'json', nullable: true})
-  contenido: EntidadImagen | EntidadTexto | EntidadTarea[] | any;
+  contenido: any;
 
   @ManyToOne( () => EntidadNota, (nota) => nota.contenidos, {onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: true})
   nota: EntidadNota;
