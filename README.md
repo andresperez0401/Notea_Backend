@@ -8,18 +8,24 @@ Notea App es una app de gestion y manejo de notas. En esta app podras crear, edi
 
 Entre las funcionalidades que ofrece Notea App, se encuentran:
 - Crear notas con ubicacion actual, al crear una nota podras agregarle tu ubicacion actual.
+
 - Crear notas con imagenes, al crear una nota podras agregarle varias imagenes.
+
 - Crear Notas con tareas, si necesita colocar una lista de tareas en una nota, podras hacerlo.
+
 - Si cuentas con la suscripcion Premium, podras crear notas con herrramientas de inteligencia artificial (IA), como reconocimiento de texto en imagenes y  reconocimiento de texto en audio.
+
 - Papelera de notas, si eliminas una nota por equivocacion, No te preocupes!; podras recuperarla desde la papelera de notas.
+
 - Manejo por grupos, tus notas se organizaran en base a grupos que hayas creado para asi poder tener una mejor organizacion de las mismas.
-- Etiquetas, podras agregar etiquetas a las notas para que tengas una mejor organizacion de las mismas.
+
+- Etiquetas, podras agregar etiquetas a las notas para que tengas una mejor visualizacion de las mismas.
 
 ## Instalacion
 
 Para instalar Notea App, deberas seguir los siguientes pasos:
 
--Instalar las dependencias con el comando de Node.JS:
+- Instalar las dependencias con el comando de Node.JS:
 
 ```bash
 $ npm install
