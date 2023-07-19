@@ -12,6 +12,10 @@ import { Module, forwardRef } from "@nestjs/common";
 import { CrearGrupoService } from "src/Grupo/Aplicacion/crearGrupoService";
 import { CrearGrupoDto } from "src/Grupo/Aplicacion/dto/CrearGrupo.dto";
 import { RepositorioGrupoImp } from "src/Grupo/Infraestructura/repository/RepositorioGrupoImpl";
+import { EntidadGrupo } from "src/Grupo/Infraestructura/entities/EntidadGrupo";
+import { EntidadUsuario } from "src/Usuario/Infraestructura/entities/EntidadUsuario";
+import { EntidadNota } from "src/Nota/Infraestructura/entities/EntidadNota";
+import { RepositorioGrupoPruebaObjectMother } from "./ObjectMotherTest/Grupo/repositorioGrupoObjectMother";
 
 
 
@@ -19,21 +23,18 @@ import { RepositorioGrupoImp } from "src/Grupo/Infraestructura/repository/Reposi
 
 @Module({
     imports: [
-      DatabaseModule,
-      NotaModule,
-      UsuarioModule,
-      EtiquetaModule,
+      forwardRef(() => DatabaseModule),
+      forwardRef(() => NotaModule),
+      forwardRef(() => UsuarioModule),
+      forwardRef(() => EtiquetaModule),
       forwardRef(() =>  GrupoModule),
-      CqrsModule,
-      DecoratorModule,
-      SuscripcionModule,
+      forwardRef(() => CqrsModule),
+      forwardRef(() => DecoratorModule),
+      forwardRef(() => SuscripcionModule),
     ], // Importa tus módulos aquí
     providers: [CrearGrupoPrueba,
                 UrlCrearGrupo,
-                CrearGrupoService,
-                CrearGrupoDto,
-                RepositorioGrupoImp
-                    
+                RepositorioGrupoPruebaObjectMother,
     
     ],
     exports: [CrearGrupoPrueba],
