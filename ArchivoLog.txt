@@ -633,3 +633,21 @@
 
 7/18/2023 - 9:48:31 PM: No se encontraron notas que contengan la palabra aaaaaa en su contenido o titulo
 
+7/19/2023 - 5:49:08 PM: Crear Usuario Service: El usuario: Andres de email: andres@gmail.comha sido creado con exito
+
+7/19/2023 - 6:07:47 PM: Loguear Usuario Service: El usuario: andres@gmail.com ha hecho login
+
+7/19/2023 - 6:07:47 PM: Loguear Usuario Service: El usuario: andres@gmail.com ha hecho login
+
+7/19/2023 - 6:08:44 PM: Loguear Usuario Service: El usuario: luisianameliane@gmail.com ha hecho login
+
+7/19/2023 - 6:08:48 PM: Usuario no encontrado
+
+7/19/2023 - 6:09:57 PM: Loguear Usuario Service: El usuario: andres@gmail.com ha hecho login
+
+7/19/2023 - 6:09:57 PM: Usuario no encontrado
+
+7/19/2023 - 6:10:38 PM: Loguear Usuario Service: El usuario: andres@gmail.com ha hecho login
+
+7/19/2023 - 6:10:38 PM: Usuario no encontrado
+

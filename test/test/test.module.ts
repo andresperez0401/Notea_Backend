@@ -15,6 +15,7 @@ import { RepositorioGrupoImp } from "src/Grupo/Infraestructura/repository/Reposi
 import { EntidadGrupo } from "src/Grupo/Infraestructura/entities/EntidadGrupo";
 import { EntidadUsuario } from "src/Usuario/Infraestructura/entities/EntidadUsuario";
 import { EntidadNota } from "src/Nota/Infraestructura/entities/EntidadNota";
+import { objectMotherUsuario } from "./ObjectMotherTest/Usuario/ObjectMotherLoguearUsuario";
 
 
 
@@ -32,6 +33,7 @@ import { EntidadNota } from "src/Nota/Infraestructura/entities/EntidadNota";
     ], // Importa tus módulos aquí
     providers: [CrearGrupoPrueba,
                 UrlCrearGrupo,
+                objectMotherUsuario,
     
     ],
     exports: [CrearGrupoPrueba],
