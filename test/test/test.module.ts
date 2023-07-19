@@ -15,8 +15,6 @@ import { RepositorioGrupoImp } from "src/Grupo/Infraestructura/repository/Reposi
 import { EntidadGrupo } from "src/Grupo/Infraestructura/entities/EntidadGrupo";
 import { EntidadUsuario } from "src/Usuario/Infraestructura/entities/EntidadUsuario";
 import { EntidadNota } from "src/Nota/Infraestructura/entities/EntidadNota";
-import { RepositorioGrupoPruebaObjectMother } from "./ObjectMotherTest/Grupo/repositorioGrupoObjectMother";
-
 
 
 
@@ -34,7 +32,6 @@ import { RepositorioGrupoPruebaObjectMother } from "./ObjectMotherTest/Grupo/rep
     ], // Importa tus módulos aquí
     providers: [CrearGrupoPrueba,
                 UrlCrearGrupo,
-                RepositorioGrupoPruebaObjectMother,
     
     ],
     exports: [CrearGrupoPrueba],
