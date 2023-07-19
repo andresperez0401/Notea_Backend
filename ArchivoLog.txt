@@ -611,3 +611,25 @@
 
 7/18/2023 - 8:23:33 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra casa
 
+7/18/2023 - 9:46:32 PM: Error al obtener los notas del usuario
+
+7/18/2023 - 9:46:47 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra cualquier
+
+7/18/2023 - 9:46:56 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra T
+
+7/18/2023 - 9:47:01 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra Tus
+
+7/18/2023 - 9:47:49 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra Tus
+
+7/18/2023 - 9:47:53 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra s
+
+7/18/2023 - 9:48:02 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra aaaa
+
+7/18/2023 - 9:48:06 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra aaaaa
+
+7/18/2023 - 9:48:13 PM: No se encontraron notas que contengan la palabra aaaaaaaaaaaaaaaaaaaaa en su contenido o titulo
+
+7/18/2023 - 9:48:22 PM: Buscar Notas Por Palabra Service: se han buscado todas las notas con la palabra aaaaa
+
+7/18/2023 - 9:48:31 PM: No se encontraron notas que contengan la palabra aaaaaa en su contenido o titulo
+

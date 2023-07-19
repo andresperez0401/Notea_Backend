@@ -183,16 +183,7 @@ async buscarNotaPorPalabra(palabra:string, grupos:Iterable<string>): Promise<Eit
                     }
             }
         }
-
-
-
-        /*const resp: EntidadNota[] = await this.repositorio.createQueryBuilder("nota")
-        .where("nota.grupo = :grupo", { grupo: grupo })
-        .andWhere("(nota.titulo LIKE :palabra)")
-        .setParameter('palabra', `%${palabra}%`)
-        .getMany();*/
-
-        if (respuesta) {
+        if (respuesta.length > 0) {
             const notas = this.EntityToString.execute(respuesta);
 
             if (notas.isLeft()){
@@ -212,7 +203,7 @@ async buscarNotaPorPalabra(palabra:string, grupos:Iterable<string>): Promise<Eit
     }
     else{
         return Either.makeRight<string, Error>(
-            new Error(`Error al obtener los notas del usuario`),
+            new Error(`No se encontraron notas que contengan la palabra ${palabra} en su contenido o titulo`),
         );
     }
 }
