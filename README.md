@@ -44,7 +44,22 @@ $ npm install
 - Para instalar multer
     
 ```bash
-npm install --save multer
+$ npm install --save multer
+```
+
+## Para correr la Aplicacion
+
+Una vez instaladas las dependencias, deberas correr el siguiente comando para ejecutar la aplicacion:
+
+```bash
+#development
+$ npm run start
+
+#watch mode
+$ npm run start:dev
+
+#production mode
+$ npm run start:prod
 ```
 
 
