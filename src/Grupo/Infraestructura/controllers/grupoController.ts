@@ -1,14 +1,6 @@
 /* eslint-disable prettier/prettier */
 import {
-    Body,
     Controller,
-    Delete,
-    Get,
-    Param,
-    Post,
-    Put,
-    Res,
-    Response,
   } from '@nestjs/common';
   
   import { Grupo } from 'src/Grupo/Dominio/AgregadoGrupo';
