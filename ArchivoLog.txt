@@ -1453,3 +1453,5 @@
 
 20/7/2023 - 1:30:31: Usuario no encontrado
 
+20/7/2023 - 2:45:58 a. m.: Crear Usuario Service: El usuario: italo de email: italsddddasaso@gmail.comha sido creado con exito
+
