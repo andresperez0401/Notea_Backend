@@ -1,4 +1,4 @@
-# Notea Backend (Solid Coders Rojo)
+# Notea Backend 
 
 Aplicacion desarrollada con el framework Nest.JS, Backend de la aplicacion NoteaApp, creada por el equipo Solid Coders Rojo.
 
@@ -115,6 +115,12 @@ $ npm run start:prod
 | | 
 | | 
 
+##Diagrama de Clases
+
+![Diagrama de clases- ORIGINAL](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/assets/108308939/01477c48-f62a-424c-b1b5-5d67566fa102)
 
 
+##Diagrama Hexagonal
+
+![Diagrama Hexagonal - ORIGINAL](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/assets/108308939/1af02677-3aa9-4c21-af4a-b346aaa4397f)
 
