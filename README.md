@@ -101,9 +101,11 @@ $ npm run start:prod
 ### _José Nuñez_
 | Actividades                                                                                                            | Detalles de commit                                               |
 |----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| | 
-| | 
-
+|Eliminar nota | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/b9594ce36625f725f2172b90e55274eebeee42bf 
+|Modificar nota | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/8851e13d28505eb83a0c1d646469df60736af599
+|Buscar grupo por usuario | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/a0314c21dbedf1f5cf90d4532bb2acc78a49ba1d
+|Asignar nota a grupo| https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/f7c2b55ea9b1a8f206bf91b00126e1abd908ef80
+|Mover nota grupo | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/5abba0404031741e191a80b0f346d424417dda91
 
 
 
