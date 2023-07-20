@@ -121,12 +121,4 @@ $ npm run start:prod
 |Servicio de crear y buscar etiquetas | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/93e7db49442e32011500cb42312b5242e7eeb6c8
 |Actualizacion de los Eventos de Dominio | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/e4b4a72e0955a27e7b588c61d4587283ca665506
 
-## Diagrama de Clases
-
-![Diagrama de clases- ORIGINAL](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/assets/108308939/01477c48-f62a-424c-b1b5-5d67566fa102)
-
-
-## Diagrama Hexagonal
-
-![Diagrama Hexagonal - ORIGINAL](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/assets/108308939/1af02677-3aa9-4c21-af4a-b346aaa4397f)
-
+## [Diagrama de Clases y Diagrama Hexagonal](https://drive.google.com/drive/folders/12sFwRsS6mCNa9wvsS0POORJ74YPRQ4vd?usp=sharing)
