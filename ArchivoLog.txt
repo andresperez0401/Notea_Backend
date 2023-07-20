@@ -1449,3 +1449,7 @@
 
 20/7/2023 - 1:16:04 a. m.: Eliminar Grupo Service: El grupo de id: 0086a90d-1709-4245-97ae-a57c8847b8ff ha sido eliminado con exito
 
+20/7/2023 - 1:30:30: Usuario no encontrado
+
+20/7/2023 - 1:30:31: Usuario no encontrado
+
