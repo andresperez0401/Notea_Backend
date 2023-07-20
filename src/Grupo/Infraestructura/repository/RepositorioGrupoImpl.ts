@@ -103,6 +103,11 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
   }
 
   async editarGrupo(info: EditarGrupoDto): Promise<Either<Grupo, Error>> {
+
+    if (info.payload.nombre == "General"){
+      return Either.makeRight<Grupo, Error>(new Error("No se puede editar el nombre del grupo General"));
+    }
+
     const group = await this.grupoRepo.findOneBy({ id: info.id });
     if (group) {
       await this.grupoRepo.merge(group, info.payload);
