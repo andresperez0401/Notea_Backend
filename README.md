@@ -46,7 +46,7 @@ $ npm install
 ```bash
 $ npm install --save multer
 ```
-ccccccccc
+
 ## Para correr la Aplicacion
 
 Una vez instaladas las dependencias, deberas correr el siguiente comando para ejecutar la aplicacion:
@@ -92,9 +92,15 @@ $ npm run start:prod
 ### _Italo Visconti_
 | Actividades                                                                                                            | Detalles de commit                                               |
 |----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| | 
-| | 
-
+| Reestructuracion del Agregado Nota | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/36b08f2cd4c89d2cf7fe1f0b7bc3a39b7180012b
+| Agregado Nota Junto a sus VO | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/7520f6730dc4c6c84571af1fff7a2fd9db1e1332
+| Implementacion del Repositorio de Nota | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/130ad2d42a408e63559e018613054b7880b8eec8
+| Servicios de Aplicacion y Controller de Nota | Son muchos Commit
+| Servicios de Infraestructura | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/aa5c246b9aaf44c43164592a08d04decb41dde9e
+| Entidadeds del ORM Relacionas para un manejo mas sencillo | Son varios Commits
+| Imagenes Agregadas a la Nota en BD | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/a8e8a50579939700df4859ba0bc7a0e4756f13d7
+| Etiquetas Agregadas a la Nota | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/8d9f4033aa3a67df05dde481c578725562331185
+| Test de CrearEtiquetaService | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/cf3f76b84d1c271e11ded489b86369a1428d782f
 
 
 
