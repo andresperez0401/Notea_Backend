@@ -11,6 +11,5 @@ export class crearEtiquetaDto {
 
   @IsString()
   @IsNotEmpty()
-  idUsuario: string; 
+  idUsuario: string;
 }
-

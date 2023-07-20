@@ -659,3 +659,33 @@
 
 7/19/2023 - 6:20:52 PM: Usuario no encontrado
 
+19/7/2023 - 7:06:06 p. m.: Loguear Usuario Service: El usuario: italo@gmail.com ha hecho login
+
+19/7/2023 - 7:06:07 p. m.: Buscar grupos por usuario service: se han buscado los grupos del usuario: 7144c808-93f3-42b5-8445-7df62c719e93
+
+19/7/2023 - 7:06:07 p. m.: Buscar grupos por usuario service: se han buscado los grupos del usuario: 7144c808-93f3-42b5-8445-7df62c719e93
+
+19/7/2023 - 7:06:07 p. m.: Buscar grupos por usuario service: se han buscado los grupos del usuario: 7144c808-93f3-42b5-8445-7df62c719e93
+
+19/7/2023 - 7:06:07 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 42968479-cae9-45aa-b144-50f85d8cae22
+
+19/7/2023 - 7:06:11 p. m.: Buscar grupos por usuario service: se han buscado los grupos del usuario: 7144c808-93f3-42b5-8445-7df62c719e93
+
+19/7/2023 - 7:06:11 p. m.: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 42968479-cae9-45aa-b144-50f85d8cae22
+
+19/7/2023 - 9:44:39 p. m.: Usuario no encontrado
+
+19/7/2023 - 9:44:39 p. m.: Usuario no encontrado
+
+19/7/2023 - 9:48:28 p. m.: Usuario no encontrado
+
+19/7/2023 - 9:48:28 p. m.: Usuario no encontrado
+
+19/7/2023 - 9:55:55 p. m.: Usuario no encontrado
+
+19/7/2023 - 9:55:56 p. m.: Usuario no encontrado
+
+19/7/2023 - 9:58:43 p. m.: Usuario no encontrado
+
+19/7/2023 - 9:58:43 p. m.: Usuario no encontrado
+

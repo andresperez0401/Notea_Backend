@@ -1,7 +1,7 @@
 import { error } from 'console';
 import { colorEtiqueta } from './ValueObjectsEtiqueta/colorEtiqueta';
 import { idEtiqueta } from './ValueObjectsEtiqueta/idEtiqueta';
-import { idUsuario } from 'src/Usuario/Dominio/value_objects/idUsuario'; 
+import { idUsuario } from 'src/Usuario/Dominio/value_objects/idUsuario';
 import { nombreEtiqueta } from './ValueObjectsEtiqueta/nombreEtiqueta';
 import { Optional } from 'src/Utils/Opcional';
 
