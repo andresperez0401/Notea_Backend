@@ -1,10 +1,17 @@
+import { Inject } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CrearGrupoService } from 'src/Grupo/Aplicacion/crearGrupoService';
 import { CrearGrupoDto } from 'src/Grupo/Aplicacion/dto/CrearGrupo.dto';
 import { EditarGrupoDto } from 'src/Grupo/Aplicacion/dto/EditarGrupo.dto';
 import { GrupoAPapeleraDto } from 'src/Grupo/Aplicacion/dto/GrupoAPapelera.dto';
 import { Grupo } from 'src/Grupo/Dominio/AgregadoGrupo';
 import { RepositorioGrupo } from 'src/Grupo/Dominio/RepositorioGrupo';
+import { EntidadGrupo } from 'src/Grupo/Infraestructura/entities/EntidadGrupo';
+import { RepositorioGrupoImp } from 'src/Grupo/Infraestructura/repository/RepositorioGrupoImpl';
+import { EntidadNota } from 'src/Nota/Infraestructura/entities/EntidadNota';
+import { EntidadUsuario } from 'src/Usuario/Infraestructura/entities/EntidadUsuario';
 import { Either } from 'src/Utils/Either';
+import { Repository } from 'typeorm';
 
 export class CrearGrupoPrueba {
   public static crearGrupoDtoValido(): CrearGrupoDto {
