@@ -65,11 +65,13 @@ $ npm run start:prod
 ### _Andres Perez_
 | Actividades                                                                                                            | Detalles de commit                                               |
 |----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| | 
-| | 
+| Creacion de usuario, controller, servicio de aplicacion y infraestructura para crear usuario: | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/ed1f58192b1136cfcab56163fcb20a97cbb0ff19
+| Busqueda de usuario por email, controller, app service e implementacion del repositorio: | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/670c62c28918c3fd8a5d0a8969bafa7fe0e9a905
+| Agregado grupo, con su modelo de dominio, servicios de aplicacion y controllers| https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/18f83cf27115125a3195cb3de0adb611adb6ef0a
+
 
 ### _Angel Hernandez_
-| Actividades                                                                                                            | Detalles de commit                                               |
+| Actividades                                                                                                            | Detalles de commit                                              |
 |----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
 | Configuración de TypeORM | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/1b175a7061177a9aff0213b423bde5d0be87b1ef](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/1b175a7061177a9aff0213b423bde5d0be87b1ef)
 | Creacion del usuario y guardado en la base de datos | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/27c5a03cdfe9b6ae437f2a154de872a75ba34921](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/27c5a03cdfe9b6ae437f2a154de872a75ba34921)
