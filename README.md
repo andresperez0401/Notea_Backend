@@ -118,8 +118,8 @@ $ npm run start:prod
 ### _Sergio Capon_
 | Actividades                                                                                                            | Detalles de commit                                               |
 |----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| | 
-| | 
+|Servicio de crear y buscar etiquetas | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/93e7db49442e32011500cb42312b5242e7eeb6c8
+|Actualizacion de los Eventos de Dominio | https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/e4b4a72e0955a27e7b588c61d4587283ca665506
 
 ## Diagrama de Clases
 
