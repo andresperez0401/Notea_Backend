@@ -23,10 +23,6 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
                                           //crear grupo dado un nombre y un id de usuario
   async creargrupo(grupo: Grupo): Promise<Either<Grupo, Error>> {
     
-    if (grupo.getNombre() == "General"){
-      return Either.makeRight<Grupo, Error>(new Error("No se puede crear un grupo con el nombre General"));
-    }
-    
     const resp: EntidadUsuario = await this.repoUsuario.findOne({
       where: { id: grupo.getIdUsuario() },
     });
@@ -174,21 +170,30 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
   async grupoAPapelera(grupo: GrupoAPapeleraDto): Promise<Either<Grupo, Error>> {
     const group = await this.grupoRepo.findOneBy({ id: grupo.id });
     if (group) {
-      //debemos cambiar el estado de las notas del grupo a papelera
-      const notas = await this.notaRepo.update({grupo: grupo.id}, {estado: "PAPELERA"});
-      //puede dar problemas, tengo que revisar
-      if (notas) { 
-        const grupoEditado: Grupo = Grupo.crearGrupo(
-          group.nombre,
-          group.idUsuario,
-          group.id,
-        );
-        return Either.makeLeft<Grupo, Error>(grupoEditado);
+
+      if (group.nombre != "General"){
+
+        //debemos cambiar el estado de las notas del grupo a papelera
+        const notas = await this.notaRepo.update({grupo: grupo.id}, {estado: "PAPELERA"});
+        //puede dar problemas, tengo que revisar
+        if (notas) { 
+          const grupoEditado: Grupo = Grupo.crearGrupo(
+            group.nombre,
+            group.idUsuario,
+            group.id,
+          );
+          return Either.makeLeft<Grupo, Error>(grupoEditado);
+        } else {
+          return Either.makeRight<Grupo, Error>(
+            new Error('Error al mover grupo a papelera'),
+          );
+        }
       } else {
         return Either.makeRight<Grupo, Error>(
-          new Error('Error al mover grupo a papelera'),
+          new Error('No se puede mover el grupo General a papelera'),
         );
       }
+
     } else {
       return Either.makeRight<Grupo, Error>(
         new Error('No se encontro el grupo por id' + grupo.id),
