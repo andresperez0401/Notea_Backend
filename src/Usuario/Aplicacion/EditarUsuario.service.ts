@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IAplicationService } from 'src/core/domain/appService/IAplicationService';
 import { Either } from 'src/Utils/Either';
 import { Usuario } from '../Dominio/AgregadoUsuario';

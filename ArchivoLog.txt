@@ -659,3 +659,199 @@
 
 7/19/2023 - 6:20:52 PM: Usuario no encontrado
 
+7/19/2023 - 9:08:22 PM: Loguear Usuario Service: El usuario: qwert@gmail.com ha hecho login
+
+7/19/2023 - 9:08:23 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:08:23 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:08:23 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:08:23 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:08:28 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:08:29 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:08:42 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:08:45 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:08:45 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:08:45 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:08:45 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:08:48 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:08:48 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:27 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:27 PM: Crear Nota Service: la nota: hola, ha sido creada
+
+7/19/2023 - 9:09:27 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:27 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:27 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:27 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:27 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:41 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:41 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:42 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:42 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:59 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:59 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:59 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:59 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:59 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:09:59 PM: Modificar Nota Service: La nota de id: 6ec026be-2df7-4475-af9d-e0e3184d8bbd ha sido modificada
+
+7/19/2023 - 9:09:59 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:59 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:09:59 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:10:55 PM: Loguear Usuario Service: El usuario: qwert@gmail.com ha hecho login
+
+7/19/2023 - 9:10:55 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:10:55 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:10:55 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:10:56 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:11:03 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:11:04 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:12:05 PM: Loguear Usuario Service: El usuario: qwert@gmail.com ha hecho login
+
+7/19/2023 - 9:12:06 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:12:06 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:12:06 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:12:07 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:12:11 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:12:12 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:19:59 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:19:59 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:19:59 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:20:00 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:20:14 PM: Loguear Usuario Service: El usuario: qwert@gmail.com ha hecho login
+
+7/19/2023 - 9:20:15 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:20:15 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:20:15 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:20:15 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:20:19 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:20:20 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:21:03 PM: Loguear Usuario Service: El usuario: qwert@gmail.com ha hecho login
+
+7/19/2023 - 9:21:03 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:21:03 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:21:03 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:21:04 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:21:09 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:21:10 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:22:30 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:22:30 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:22:30 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:22:31 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:22:54 PM: Loguear Usuario Service: El usuario: qwert@gmail.com ha hecho login
+
+7/19/2023 - 9:22:54 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:22:54 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:22:54 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:22:55 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:22:58 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:22:59 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:27:18 PM: Loguear Usuario Service: El usuario: qwert@gmail.com ha hecho login
+
+7/19/2023 - 9:27:19 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:27:19 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:27:19 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:27:20 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:27:23 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:27:24 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:27:53 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:27:53 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:27:53 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:27:54 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:27:56 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:27:56 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:38:17 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:38:17 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:38:17 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:38:18 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 9:38:27 PM: Buscar grupos por usuario service: se han buscado los grupos del usuario: 1fc38174-ecdd-4f64-b4bc-9960d45769af
+
+7/19/2023 - 9:38:28 PM: Buscar Notas de Grupos de Usuario Service: se han buscado todas las notas de los grupos de id: 5934c58c-a434-4bc2-9a42-43df9de37e29
+
+7/19/2023 - 10:22:09 PM: Usuario no encontrado
+
+7/19/2023 - 10:22:09 PM: Usuario no encontrado
+
