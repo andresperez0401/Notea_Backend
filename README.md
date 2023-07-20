@@ -46,7 +46,7 @@ $ npm install
 ```bash
 $ npm install --save multer
 ```
-
+ccccccccc
 ## Para correr la Aplicacion
 
 Una vez instaladas las dependencias, deberas correr el siguiente comando para ejecutar la aplicacion:
@@ -54,12 +54,21 @@ Una vez instaladas las dependencias, deberas correr el siguiente comando para ej
 ```bash
 #development
 $ npm run start
-
 #watch mode
 $ npm run start:dev
 
 #production mode
 $ npm run start:prod
 ```
+
+## Aportes destacados por integrante
+
+Integrantes:
+- Sergio Capon
+- Angel Hernandez
+- Jose Nuñez
+- Andres Perez
+- Italo Visconti
+
 
 
