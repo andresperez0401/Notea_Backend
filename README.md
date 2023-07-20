@@ -71,8 +71,13 @@ $ npm run start:prod
 ### _Angel Hernandez_
 | Actividades                                                                                                            | Detalles de commit                                               |
 |----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
-| | 
-| | 
+| Configuración de TypeORM | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/1b175a7061177a9aff0213b423bde5d0be87b1ef](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/1b175a7061177a9aff0213b423bde5d0be87b1ef)
+| Creacion del usuario y guardado en la base de datos | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/27c5a03cdfe9b6ae437f2a154de872a75ba34921](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/27c5a03cdfe9b6ae437f2a154de872a75ba34921)
+| Endpoint EditarUsuario funcional | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/a1abb751fd5817693eef5f215208c8cc2dc7c842](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/a1abb751fd5817693eef5f215208c8cc2dc7c842)
+| Editar usuario | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/b2544f746dc858dc5afaf4ddfbf79296111eb4bb](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/b2544f746dc858dc5afaf4ddfbf79296111eb4bb)
+| Eliminar usuario | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/b2544f746dc858dc5afaf4ddfbf79296111eb4bb](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/b2544f746dc858dc5afaf4ddfbf79296111eb4bb)
+|Trabajando con variables de entorno | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/c30629fd211f86f6a6aae8326f81cb7f0dcd6037](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/c30629fd211f86f6a6aae8326f81cb7f0dcd6037)
+|Servicio para la busqueda de las notas segun id grupo | [https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/2b71702503e7be815202852804557a1ff4bec1f6](https://github.com/Solid-Coders-Rojo-UCAB/Notea_Backend/commit/2b71702503e7be815202852804557a1ff4bec1f6)
 
 ### _Italo Visconti_
 | Actividades                                                                                                            | Detalles de commit                                               |
