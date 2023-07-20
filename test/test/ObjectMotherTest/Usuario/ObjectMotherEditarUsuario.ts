@@ -23,6 +23,7 @@ export class EditarUsuarioPrueba {
   public static crearUsuarioDtoNoValidoVacio(): EditarUsuarioPO {
     const dto = new EditarUsuarioPO();
     dto.id = 'c87eb4cb-0d04-49de-8aec-df4abe9c345b';
+    dto.payload = {};
     return dto;
   }
   public static crearUsuarioDtoNoValidoIdNoEncontrada(): EditarUsuarioPO {

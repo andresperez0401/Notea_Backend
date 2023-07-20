@@ -21,6 +21,7 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
   }
 
   async crearEtiqueta(etiqueta: Etiqueta): Promise<Either<Etiqueta, Error>> {
+
     const entidadEtiqueta: entidadEtiqueta = {
       id: etiqueta.getId(),
       nombre: etiqueta.getNombre(),
@@ -28,7 +29,6 @@ export class repositorioEtiquetaImp implements RepositorioEtiqueta {
       usuarioId: etiqueta.getUsuarioId(),
       notas: null,
     };
-
 
     const e = await this.repositorio.save(entidadEtiqueta);
 

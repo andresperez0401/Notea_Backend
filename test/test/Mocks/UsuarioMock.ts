@@ -15,7 +15,7 @@ export class MockRepositorioUsuario implements RepositorioUsuario {
   async editarUsuario(usuario: EditarUsuarioPO): Promise<Either<Usuario, Error>> {
     if(usuario.id != 'c87eb4cb-0d04-49de-8aec-df4abe9c345b'){
       return Either.makeRight<Usuario, Error>(new Error('Usuario no encontrado'));
-    }else if (!usuario.payload.nombre && !usuario.payload.apellido && !usuario.payload.email && !usuario.payload.clave && !usuario.payload.suscripcion){
+    }else if (usuario.payload === null || Object.keys(usuario.payload).length === 0){
       return Either.makeRight<Usuario, Error>(new Error('No hay nada que editar'));
     }
     const user = Usuario.crearUsuario(usuario.payload.nombre, usuario.payload.apellido, usuario.payload.email, usuario.payload.clave, usuario.payload.suscripcion);
