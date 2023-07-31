@@ -16,6 +16,7 @@ import { CrearNotaDto } from 'src/Nota/Aplicacion/dto/CrearNota.dto';
 import { IdContenidoNota } from 'src/Nota/Dominio/Entidades/ValueObjectsContenido/IdContenidoNota';
 import { RepositorioSuscripcionImp } from 'src/Suscripcion/Infraestructura/RepositorioSuscripcionImpl';
 import { CrearSuscripcionService } from 'src/Suscripcion/Aplicacion/crearSuscripcionService';
+import { exit } from 'process';
 
 @EventsHandler(UsuarioCreadoEvent)
 export class UsuarioCreadoEventHandler
@@ -44,7 +45,8 @@ export class UsuarioCreadoEventHandler
   async handle(event: UsuarioCreadoEvent) {
     const idUsuario = event.getIdUsuario();
 
-    // Creamos las etiquetas por defecto
+    // Creamos las etiquetas por defecto)
+
     for (const color in colorEtiqueta) {
 
       if (colorEtiqueta.hasOwnProperty(color)) {
@@ -54,7 +56,10 @@ export class UsuarioCreadoEventHandler
           color: colorEtiqueta[color as keyof typeof colorEtiqueta],
           
         });
-       
+      }
+
+      if (color == 'INDIGO') {
+        break;
       }
     }
     const result=await this.grupoService.execute({

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Either } from "src/Utils/Either";
 import { Optional } from "src/Utils/Opcional";
 import { Suscripcion } from "../Dominio/AgregadoSuscripcion";

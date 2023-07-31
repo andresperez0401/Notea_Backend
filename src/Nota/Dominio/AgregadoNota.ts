@@ -5,7 +5,6 @@ import { VOTituloNota } from "./ValueObjectsNota/VOTituloNota";
 import { VOubicacionNota } from "./ValueObjectsNota/VOUbicacionNota";
 import { idGrupo } from "src/Grupo/Dominio/ValueObjectsGrupo/idGrupo";
 import { Optional } from "src/Utils/Opcional";
-import { EntidadContenidoNota } from "./Entidades/EntidadContenidoNota";
 import { FabricaContenido, IContenidoNota } from "./Entidades/IContenidoNota";
 import { idEtiqueta } from "src/Etiqueta/Dominio/ValueObjectsEtiqueta/idEtiqueta";
 
