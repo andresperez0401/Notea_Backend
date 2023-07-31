@@ -1,16 +1,13 @@
 /* eslint-disable prettier/prettier */
 import EntidadContenido from '../entities/EntidadContenido';
 import { Either } from 'src/Utils/Either';
-import { EntidadContenidoNota } from 'src/Nota/Dominio/Entidades/EntidadContenidoNota';
 import EntidadTarea from '../entities/EntidadTarea';
 import EntidadImagen from '../entities/EntidadImagen';
-import { EntidadTareaNota } from 'src/Nota/Dominio/Entidades/EntidadTarea';
 import { Nota } from 'src/Nota/Dominio/AgregadoNota';
 import { EntidadUbicacion } from '../entities/EntidadUbicacion';
 import { EntidadNota } from '../entities/EntidadNota';
 import { IContenidoNota } from 'src/Nota/Dominio/Entidades/IContenidoNota';
 import { entidadEtiqueta } from 'src/Etiqueta/Infraestructura/entities/entidadEtiqueta';
-import { buscarEtiquetasService } from 'src/Etiqueta/Aplicacion/buscarEtiquetas.service';
 import { IInfraestructureService } from 'src/core/domain/infService/IInfraestructureService';
 import EntidadTexto from '../entities/EntidadTexto';
 

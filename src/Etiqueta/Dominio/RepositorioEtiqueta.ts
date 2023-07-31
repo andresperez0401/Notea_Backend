@@ -7,5 +7,3 @@ export interface RepositorioEtiqueta {
   actualizarEtiqueta(etiqueta: actualizarEtiquetaDto): Promise<Either<string, Error>>;
   buscarEtiquetas(idUsuario: string): Promise<Either<Iterable<Etiqueta>, Error>>;
 }
-
-

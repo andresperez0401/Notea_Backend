@@ -22,6 +22,11 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
 
                                           //crear grupo dado un nombre y un id de usuario
   async creargrupo(grupo: Grupo): Promise<Either<Grupo, Error>> {
+    
+    if (grupo.getNombre() == "General"){
+      return Either.makeRight<Grupo, Error>(new Error("No se puede crear un grupo con el nombre General"));
+    }
+    
     const resp: EntidadUsuario = await this.repoUsuario.findOne({
       where: { id: grupo.getIdUsuario() },
     });
@@ -67,21 +72,27 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
       where: { id },
     });
     if (grupoAEliminar) {
-      const resultado = await this.grupoRepo.delete(grupoAEliminar);
-      if (resultado) {
+      if (grupoAEliminar.nombre != "General" ){
+        const resultado = await this.grupoRepo.delete(grupoAEliminar);
+        if (resultado) {
 
-        const general = await this.grupoRepo.findOne({where: {nombre: "General"}});
+          const general = await this.grupoRepo.findOne({where: {nombre: "General"}});
 
-        if(general){//se asignan las notas del grupo eliminado al grupo general
-          await this.notaRepo.update({grupo: id}, {grupo: general.id});
+          if(general){//se asignan las notas del grupo eliminado al grupo general
+            await this.notaRepo.update({grupo: id}, {grupo: general.id});
+          }
+
+          return Either.makeLeft<string, Error>(
+            `Grupo de id #${id} ha sido eliminado`,
+          );
+        } else {
+          return Either.makeRight<string, Error>(
+            new Error('Error al eliminar el grupo'),
+          );
         }
-
-        return Either.makeLeft<string, Error>(
-          `Grupo de id #${id} ha sido eliminado`,
-        );
       } else {
         return Either.makeRight<string, Error>(
-          new Error('Error al eliminar el grupo'),
+          new Error('No se puede eliminar el grupo General'),
         );
       }
     } else {
@@ -92,6 +103,11 @@ export class RepositorioGrupoImp implements RepositorioGrupo {
   }
 
   async editarGrupo(info: EditarGrupoDto): Promise<Either<Grupo, Error>> {
+
+    if (info.payload.nombre == "General"){
+      return Either.makeRight<Grupo, Error>(new Error("No se puede editar el nombre del grupo General"));
+    }
+
     const group = await this.grupoRepo.findOneBy({ id: info.id });
     if (group) {
       await this.grupoRepo.merge(group, info.payload);
